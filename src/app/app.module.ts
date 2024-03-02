@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA,NgModule } from '@angular/core'; // swiper
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'; // swiper
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,10 +19,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-// import function to register Swiper custom elements
-import { register } from 'swiper/element/bundle';
-// register Swiper custom elements
-register();
+// swiper
+import { SwiperModule } from 'swiper/angular';
 
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -55,7 +53,10 @@ import { HomeComponent } from './pages/home/home.component';
     MatToolbarModule,
     MatTableModule,
     MatBadgeModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+
+    //swiper
+    SwiperModule
   ],
   providers: [],
   bootstrap: [AppComponent],
