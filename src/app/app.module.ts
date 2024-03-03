@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'; // swiper
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'; // swiper@10
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,8 +19,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-// swiper
-import { SwiperModule } from 'swiper/angular';
+// swiper@8
+// import { SwiperModule } from 'swiper/angular';
 
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -55,11 +55,11 @@ import { HomeComponent } from './pages/home/home.component';
     MatBadgeModule,
     MatSnackBarModule,
 
-    //swiper
-    SwiperModule
+    //swiper@8
+    // SwiperModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA] // swiper
+  schemas: [CUSTOM_ELEMENTS_SCHEMA] // swiper@10
 })
 export class AppModule { }
