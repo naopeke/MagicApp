@@ -24,11 +24,11 @@
 
     --negro-bg: rgba(0, 0, 0, 0.85);
     
-    --bg-morado:url(/assets/images/fondos/"Fondo_morado.png");
-    --bg-amarillo:url(/assets/images/fondos/"Fondo_naranja.png");
-    --bg-verde:url(/assets/images/fondos/"Fondo_verde.png");
-    --bg-rojo:url(/assets/images/fondos/"Fondo_rojo.png");
-    --bg-azul:url(/assets/images/fondos/"Fondo_azul.png");
+    --bg-morado:url(./assets/images/fondos/Fondo_morado.png);
+    --bg-amarillo:url(./assets/images/fondos/Fondo_narajna.png);
+    --bg-verde:url(./assets/images/fondos/Fondo_verde.png);
+    --bg-rojo:url(./assets/images/fondos/Fondo_rojo.png);
+    --bg-azul:url(./assets/images/fondos/Fondo_azul.png);
     
     /* border radius*/
     --borde-input:10px;
@@ -40,5 +40,4 @@
 
     /* border width */
     --ancho-borde: 3px;
-
 }

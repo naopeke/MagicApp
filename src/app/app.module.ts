@@ -30,6 +30,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CardComponent } from './components/card/card.component';
 import { HomeComponent } from './pages/home/home.component';
+import { CardInfoComponent } from './components/card-info/card-info.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { HomeComponent } from './pages/home/home.component';
     HeaderComponent,
     FooterComponent,
     CardComponent,
-    HomeComponent
+    HomeComponent,
+    CardInfoComponent
   ],
   imports: [
     BrowserModule,
