@@ -14,5 +14,5 @@ p{
 #divpieFooter{
     border: var(--morado-2paints) solid 1px;
     width: 90%;
-    align-items: center;
+    padding-top: 10px;
 }
