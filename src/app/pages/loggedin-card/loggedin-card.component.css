@@ -1,4 +1,10 @@
 .background-wrapper {
+    background-image: url('/assets/images/fondos/carta-loggedin.png');
+    width:100%;
+    top: 186px;
+    left:11px;
+    object-fit: cover;
+
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-template-rows: repeat(3, 1fr);
@@ -9,7 +15,11 @@
 }
 
 .title {
-    grid-area: title;
+    font-size: 64px;
+    font-family: var(--antiqua);
+    color:var(--azul);
+    text-align: center;
+    padding-top:21px;
 
 }
 
