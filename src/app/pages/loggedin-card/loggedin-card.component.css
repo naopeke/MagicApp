@@ -1,0 +1,28 @@
+.background-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:
+    'title deckArea'
+    'searchInput deckArea'
+    'resultsArea deckArea'
+}
+
+.title {
+    grid-area: title;
+
+}
+
+.search-container {
+    grid-area: searchInput;
+}
+
+.results-container {
+    grid-area: resultsArea;
+}
+
+.builder-container {
+    grid-area: deckArea;
+    background-color: var(--negro-bg);
+}
+
