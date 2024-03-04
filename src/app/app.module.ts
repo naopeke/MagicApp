@@ -22,12 +22,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 // swiper@8
 // import { SwiperModule } from 'swiper/angular';
 
-//swiper@10 https://swiperjs.com/element
+//swiper@10.3.1 https://swiperjs.com/element
 // import function to register Swiper custom elements
 import { register } from 'swiper/element/bundle';
-// register Swiper custom elements
-register();
-
 
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -67,6 +64,11 @@ import { HomeComponent } from './pages/home/home.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA] // swiper@10
+  schemas: [CUSTOM_ELEMENTS_SCHEMA] // swiper@10.3.1
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(){
+    // register Swiper custom elements swiper@10.3.1
+    register();
+  }
+}
