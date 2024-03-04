@@ -12,7 +12,7 @@ header{
     margin-top: 20px;
     display: flex;
 }
-
+/* btn */
 #btnIniciarSesion{
     border: var(--amarillo) solid 2px;
     background-color: rgba(0, 0, 0, 0);
