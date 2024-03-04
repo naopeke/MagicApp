@@ -11,8 +11,20 @@ header{
 p{
     color:  var(--blanco);
 }
+<<<<<<< HEAD
 #divpieFooter{
     border: var(--morado-2paints) solid 1px;
     width: 90%;
     align-items: center;
+=======
+/* btn */
+#btnIniciarSesion{
+    border: var(--amarillo) solid 2px;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: var(--borde-boton);
+    height: 50px;
+    width: 100px;
+    color: var(--amarillo);
+    margin: 20px 10px;
+>>>>>>> header
 }
