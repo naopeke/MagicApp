@@ -34,7 +34,7 @@
     --borde-input:10px;
 
      /* todos los cuadrados como modals */
-    --borde-cuadrado:3px;
+    --borde-cuadrado:20px;
     
     --borde-boton:10px;
 
@@ -42,5 +42,5 @@
     --ancho-borde: 3px;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */

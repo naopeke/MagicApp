@@ -56,6 +56,7 @@ import { EventoComponent } from './pages/evento/evento.component';
     CalendarioComponent,
     EventoComponent
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
