@@ -31,6 +31,13 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CardComponent } from './components/card/card.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CardInfoComponent } from './components/card-info/card-info.component';
+import { AboutComponent } from './pages/about/about.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { CartasComponent } from './pages/cartas/cartas.component';
+import { MisMazosComponent } from './pages/mis-mazos/mis-mazos.component';
+import { ExploraComponent } from './pages/explora/explora.component';
+import { CalendarioComponent } from './pages/calendario/calendario.component';
+import { EventoComponent } from './pages/evento/evento.component';
 
 
 @NgModule({
@@ -40,7 +47,14 @@ import { CardInfoComponent } from './components/card-info/card-info.component';
     FooterComponent,
     CardComponent,
     HomeComponent,
-    CardInfoComponent
+    CardInfoComponent,
+    AboutComponent,
+    ProfileComponent,
+    CartasComponent,
+    MisMazosComponent,
+    ExploraComponent,
+    CalendarioComponent,
+    EventoComponent
   ],
   imports: [
     BrowserModule,
