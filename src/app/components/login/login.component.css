@@ -1,6 +1,6 @@
 .container{
     width: 620px;
-    height: 740px;
+    height: 750px;
     background-image: url(src/assets/images/fondos/login.png);
     display: flex;
     flex-direction: column;

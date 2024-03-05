@@ -11,7 +11,7 @@
 
 .container{
     width: 593px;
-    height: 799px;
+    height: 750px;
     background-color:rgba(10, 4, 11, 1) ;
     border-radius: var(--borde-cuadrado);
     margin-top: 110px;
