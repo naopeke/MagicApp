@@ -1,31 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import SwiperCore, { Swiper } from 'swiper';
-
-SwiperCore.use([]);
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
-  bgColor: string ='';
+export class HomeComponent  {
+  slidesPerView: number = 3;
 
-  ngOnInit(): void {
-    const swiper = new Swiper('.mySwiper', {})
+  screenWidth!: number;
+  @HostListener('window:resize')
+  getScreenWidth(){
+    this.screenWidth = window.innerWidth;
+    if(this.screenWidth >= 320 && this.screenWidth <=480){
+      this.slidesPerView = 1
+    } else if(this.screenWidth >= 320 && this.screenWidth <=480){
+      this.slidesPerView = 2
+    } else  if(this.screenWidth >= 320 && this.screenWidth <=480){
+      this.slidesPerView = 3
+    }
   }
 
-  onSwiper(swiper:Swiper){
-    swiper.on('slideChange', () => {
-      const currentIndex= swiper.activeIndex;
 
-      if(currentIndex == 0){
-        this.bgColor = 'slide1'
-      } else if (currentIndex == 1) {
-        this.bgColor = 'slide2'
-      } else if (currentIndex == 2) {
-        this.bgColor = 'slide3'
-      }
-    })
-  }
+
+
 }
