@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginComponent } from 'src/app/components/login/login.component';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,6 @@ export class RegisterComponent implements OnInit {
   }
 
   private buildForm(){
-
     let minLength: number = 8; 
     this.registerForm = this.formBuilder.group({
       name: [, Validators.required],
