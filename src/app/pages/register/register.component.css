@@ -14,7 +14,7 @@
     height: 799px;
     background-color:rgba(10, 4, 11, 1) ;
     border-radius: var(--borde-cuadrado);
-    margin-top: 120px;
+    margin-top: 110px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,7 +25,7 @@ h3{
     text-align:center;
     font-family: var(--antiqua);
     color: var(--amarillo);
-    margin-top: 40px;
+    margin-top: 50px;
     margin-bottom: 30px;
     font-size: 48px;
 }
@@ -80,6 +80,7 @@ input{
     height: 61px;
     font-family: var(--antiqua);
     background-color: var(--morado);
+    filter: brightness(80%);
     margin-top: 30px;
     font-size: 20px ;
 
