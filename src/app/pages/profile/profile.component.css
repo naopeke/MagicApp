@@ -1,0 +1,107 @@
+main{
+    width: 100vw;
+    height: 950px;
+
+    display: flex;
+    align-items: center;
+    background-image: url(../../../assets/images/profile/fondo.png);
+    background-size: cover
+
+}
+
+.container{
+    width: 1450px;
+    height: 820px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+
+
+    background-color: var(--negro-bg);
+    border-radius: var(--borde-cuadrado);
+}
+
+.infoPerfil, .tituloPerfil, .modificarPerfil{
+    display: flex;
+    /* border: solid red 2px; */
+    width: 400px;
+    height: 100%;
+    
+}
+.tituloPerfil{
+    width: 350px;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+#titulo{
+    font-family: var(--antiqua);
+    color: var(--amarillo);
+    font-size: 34pt;
+}
+.infoPerfil{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+.cardPerfil{
+    position: relative;
+    width: 100%;
+    padding-top: 20px;
+}
+
+.imgCard{
+    position: relative;
+    right: 11px;
+    z-index: 99;
+}
+
+.imgFondo{
+    position: absolute;
+    top: 100px;
+    left: 16px;
+    z-index: 9;
+}
+
+.imgAvatar{
+    position: absolute;
+   top: 105px;
+    z-index: 999;
+}
+
+
+.sobreMi, .iconSobreMi{
+    position: absolute;
+    z-index: 99;
+}
+
+.sobreMi{
+    font-size: 14pt;
+    font-family: var(--antiqua);
+    left: 90px;
+    top: 368px;
+}
+
+.iconSobreMi{
+    left: 320px;
+    top: 365px;
+}
+
+.buttonEditFoto{
+    height: 60px;
+    width: 300px;
+
+    font-family: var(--antiqua);
+    font-size: 15pt;
+    font-weight: bold;
+    background-color: var(--amarillo);
+    border: none;
+    border-radius: var(--borde-boton);
+
+}
