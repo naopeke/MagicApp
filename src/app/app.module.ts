@@ -18,6 +18,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+
 
 // swiper@8
 // import { SwiperModule } from 'swiper/angular';
@@ -31,6 +35,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CardComponent } from './components/card/card.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CardInfoComponent } from './components/card-info/card-info.component';
+import { LoggedoutCardComponent } from './components/loggedout-card/loggedout-card.component';
+import { LoggedinCardComponent } from './components/loggedin-card/loggedin-card.component';
+import { CartasComponent } from './pages/cartas/cartas.component';
 
 
 @NgModule({
@@ -40,7 +47,10 @@ import { CardInfoComponent } from './components/card-info/card-info.component';
     FooterComponent,
     CardComponent,
     HomeComponent,
-    CardInfoComponent
+    CardInfoComponent,
+    LoggedoutCardComponent,
+    LoggedinCardComponent,
+    CartasComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +70,10 @@ import { CardInfoComponent } from './components/card-info/card-info.component';
     MatTableModule,
     MatBadgeModule,
     MatSnackBarModule,
-
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule
+    
     //swiper@8
     // SwiperModule
   ],

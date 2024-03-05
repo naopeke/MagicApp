@@ -1,0 +1,39 @@
+<div class="background-wrapper">
+    <div class="title-search">
+        <p class="title">CARTAS</p>
+
+        <div class="search-container">
+        <form action="">
+            <input type="text" id="buscador" name="buscador" placeholder="Buscar" size="10" />
+            <select name="filtrar" id="filtrar">
+                <option value="nombre">Nombre</option>
+                <option value="colleccion">Colección</option>
+            </select>
+            <button type="submit" class="btn-buscador"></button>
+        </form>      
+    </div>
+</div>
+
+<div class="results-container">
+
+    <div class="bg-cards">
+    <!-- <div *ngFor="let card of cards; let i = index"> -->
+        <app-card></app-card>
+        <!-- </div> -->
+
+    </div>
+
+</div>
+
+
+<div class="builder-container">
+<button class="btn-builder1">Construcción de Mazos</button>
+
+<div class="bg-builder">
+    
+</div>
+
+<app-card></app-card>
+
+<button class="btn-builder2">Añadir a tu mazo</button>
+</div>
