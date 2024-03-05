@@ -1,4 +1,5 @@
 .container{
+    position: relative;
     width: 620px;
     height: 750px;
     background-image: url(src/assets/images/fondos/login.png);
@@ -6,7 +7,7 @@
     flex-direction: column;
     align-items: center;
     box-sizing: border-box;
-    margin-top: 150px;
+    z-index: 2;
 }
 
 .form{

@@ -1,6 +1,9 @@
 <div class="body">
-    <div [ngClass]= "myClass ? 'bg_dark' : ''" (click)="login()">
+    <div [ngClass]= "myClass ? 'bg_dark' : ''">
         <div class="container">
+            <div class="container_login" *ngIf="show_login">
+                <app-login></app-login>
+            </div>
             <h3>Registro</h3>
             <form class="form"[formGroup]="registerForm" >
                 <div class="form-group"> 
@@ -22,9 +25,9 @@
                     </div>
                 </div>
                 <div class="form-group"> 
-                    <input type="password" placeholder="Repite Contraseña" formControlName="repeat_password" [ngClass]="{'is-invalid': (registerForm.get('repeatPassword').dirty || registerForm.get('repeatPassword').touched) && !registerForm.get('repeatPassword').valid}" >
+                    <input type="password" placeholder="Repite Contraseña" formControlName="repeat_password" [ngClass]="{'is-invalid': (registerForm.get('repeat_password').dirty || registerForm.get('repeat_password').touched) && !registerForm.get('repeat_password').valid}" >
                     <div *ngIf="!registerForm.get('repeat_password').valid" class="invalid-feedback">
-                        <div *ngIf="registerForm.get('repeat-password').errors.required">La contraseña es necesaria.</div>
+                        <div *ngIf="registerForm.get('repeat_password').errors.required">La contraseña es necesaria.</div>
                         <div *ngIf="registerForm.get('repeat_password').errors.matchPassword">La contraseña tiene que ser la misma.</div>
                     </div>
                 </div>
@@ -32,7 +35,7 @@
                     <div class="pie1">*Términos y Condiciones *Política de Privacidad </div>
                     <div class="pie2">
                         <div>Si ya tienes cuenta </div>
-                        <button class="link">inicia sesión aquí</button>
+                        <button class="link" (click)="login()">inicia sesión aquí</button>
                     </div>
                 </div>
                 <button class="button" [disabled]="registerForm.invalid" (click)="register()">Registrate</button>

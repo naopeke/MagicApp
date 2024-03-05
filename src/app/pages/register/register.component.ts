@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginComponent } from 'src/app/components/login/login.component';
+// import { LoginComponent } from 'src/app/components/login/login.component';
 
 @Component({
   selector: 'app-register',
@@ -11,6 +11,7 @@ import { LoginComponent } from 'src/app/components/login/login.component';
 export class RegisterComponent implements OnInit {
   public registerForm: FormGroup;
   public myClass:boolean = false; 
+  public show_login:boolean = false; 
 
   constructor(private formBuilder: FormBuilder, private router: Router){
     this.buildForm(); 
@@ -35,6 +36,7 @@ export class RegisterComponent implements OnInit {
 
   public login(){
     this.myClass=true; 
+    this.show_login = true; 
   }
 
   public register(){

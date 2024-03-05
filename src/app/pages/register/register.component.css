@@ -7,6 +7,7 @@
     background-image: url(src/assets/images/fondos/aArco_register.png) ;
     background-position: center;
     background-size: cover;
+    z-index: -1;
 }
 
 .bg_dark{
@@ -18,18 +19,29 @@
     align-items: center;
     background: rgba(0,0,0,0.85) ;
     background-position: center;
+    z-index:0;
 }
 
 .container{
     width: 593px;
     height: 750px;
-    background-color:rgba(10, 4, 11, 1) ;
+    background-color:rgba(10, 4, 11, 1);
     border-radius: var(--borde-cuadrado);
     margin-top: 110px;
     display: flex;
     flex-direction: column;
     align-items: center;
     box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+}
+
+.container_login{
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content: center;
+    width: 100%;
 }
 
 h3{
@@ -97,5 +109,5 @@ input{
     filter: brightness(80%);
     margin-top: 30px;
     font-size: 20px ;
-
+    color: #010208;
 }
