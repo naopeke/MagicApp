@@ -12,6 +12,7 @@ export class LoggedoutCardComponent implements OnInit {
   public cards: Card[]
   public card: Card;
   public parametro: string;
+  public searchInput: string = '';
 
   constructor(
     public cardsService: CardsService,
@@ -23,7 +24,8 @@ export class LoggedoutCardComponent implements OnInit {
   this.parametro = this.rutaActiva.snapshot.params.cardId;
   }
 
-  filterCards(searchParam: string): void {
+  // buscar con las palabras completas
+  searchCards(searchParam: string): void {
     let card = this.cardsService.getByName(searchParam);
       if (card) {
         console.log('Result: ', card);
@@ -31,8 +33,9 @@ export class LoggedoutCardComponent implements OnInit {
       } else {
         console.log('No hay datos');
       }
-
   }
+
+
 
 
 
