@@ -1,66 +1,46 @@
 .container{
-    width: 593px;
-    height: 799px;
+    width: 620px;
+    height: 740px;
     background-image: url(src/assets/images/fondos/login.png);
-    border-radius: var(--borde-cuadrado);
-    margin-top: 110px;
+    margin-top: 70px;
     display: flex;
     flex-direction: column;
     align-items: center;
     box-sizing: border-box;
 }
 
-h3{
-    text-align:center;
-    font-family: var(--antiqua);
-    color: var(--amarillo);
-    margin-top: 50px;
-    margin-bottom: 30px;
-    font-size: 48px;
-}
-
 .form{
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: var(--borde-cuadrado);
+    background-color: rgba(2, 3, 11, 0.9);
+    height: 350px;
+    width: 500px;
+    margin-top: 130px;
+}
 
+h3{
+    text-align:center;
+    font-family: var(--antiqua);
+    color: var(--amarillo);
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 40px;
 }
 
 input{
-    border: 2px solid var(--morado);
+    border: 2px solid var(--azul);
     background-color: var(--negro);
-    color: var(--blanco);
+    color: #6A89A8;
     padding:10px;
     margin-top:10px;
     border-radius: var(--borde-input);
-    width: 432px ;
-    height: 70px;
+    width: 383px ;
+    height: 52px;
     font-family: var(--inter);
-    font-size: 24px;
-
-}
-
-.pie1{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top:30px;
-    color: var(--morado);
-}
-
-.pie2{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    color: var(--morado);
-}
-
-.link{
-    margin-left: 5px;
-    color: var(--amarillo);
-    text-decoration: underline;
+    font-size: 18px;
+    text-align: center;
 }
 
 .button{
@@ -68,9 +48,8 @@ input{
     width: 187px;
     height: 61px;
     font-family: var(--antiqua);
-    background-color: var(--morado);
+    background-color: #3576B5;
     filter: brightness(80%);
     margin-top: 30px;
-    font-size: 20px ;
-
+    font-size: 20px;
 }
