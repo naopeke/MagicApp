@@ -32,6 +32,7 @@ import { CardComponent } from './components/card/card.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CardInfoComponent } from './components/card-info/card-info.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { RegisterComponent } from './pages/register/register.component';
     CardComponent,
     HomeComponent,
     CardInfoComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
