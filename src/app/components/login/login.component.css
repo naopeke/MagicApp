@@ -18,7 +18,7 @@
     background-color: rgba(2, 3, 11, 0.9);
     height: 350px;
     width: 500px;
-    margin-top: 140px;
+    margin-top: 70px;
 }
 
 h3{
@@ -54,4 +54,13 @@ input{
     filter: brightness(80%);
     margin-top: 30px;
     font-size: 20px;
+}
+
+button.btn-close{
+    position: relative;
+    align-self: flex-end;
+    background-color: rgb(102, 102, 133);
+    width: 42px;
+    height: 42px;
+    right: -11px;
 }

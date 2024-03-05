@@ -39,6 +39,11 @@ export class RegisterComponent implements OnInit {
     this.show_login = true; 
   }
 
+  loginClose(show: boolean){
+    this.myClass = show;
+    this.show_login = show;
+  }
+
   public register(){
 
   }

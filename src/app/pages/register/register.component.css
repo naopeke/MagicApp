@@ -51,13 +51,15 @@ h3{
     margin-top: 50px;
     margin-bottom: 30px;
     font-size: 48px;
+    position: absolute;
 }
 
 .form{
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    position:absolute;
+    margin-top: 130px;
 }
 
 input{

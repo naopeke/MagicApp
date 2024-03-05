@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -8,7 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+ @Output() onLoginClose = new EventEmitter<boolean>(); 
+
   public loginForm: FormGroup; 
+  public myClass:boolean = false; 
+  public show_login:boolean = false; 
 
   constructor (private formBuilder: FormBuilder,
     private router: Router){
@@ -26,6 +30,10 @@ private buildForm(){
 
 public login(){
   
+}
+
+public loginClose(){
+  this.onLoginClose.emit(false);
 }
 
 ngOnInit(): void {
