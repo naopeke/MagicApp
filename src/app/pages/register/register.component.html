@@ -1,40 +1,42 @@
 <div class="body">
-    <div class="container">
-        <h3>Registro</h3>
-        <form class="form"[formGroup]="registerForm" >
-            <div class="form-group"> 
-                <input type="text" placeholder="Nombre De Usuario" formControlName="name" [ngClass]="{'is-invalid': (registerForm.get('name').dirty || registerForm.get('name').touched) && !registerForm.get('name').valid}">
-                <div *ngIf="!registerForm.get('name').valid" class="invalid-feedback">El nombre es necesario.</div>
-            </div>
-            <div class="form-group"> 
-                <input type="email" placeholder="Correo Electrónico" formControlName="email" [ngClass]="{'is-invalid': (registerForm.get('email').dirty || registerForm.get('email').touched) && !registerForm.get('email').valid}">
-                <div *ngIf="!registerForm.get('email').valid" class="invalid-feedback">
-                    <div *ngIf="registerForm.get('email').errors.required">El email es necesario.</div>
-                    <div *ngIf="registerForm.get('email').errors.email">Dirección email incorrecta.</div>
+    <div [ngClass]= "myClass ? 'bg_dark' : ''" (click)="login()">
+        <div class="container">
+            <h3>Registro</h3>
+            <form class="form"[formGroup]="registerForm" >
+                <div class="form-group"> 
+                    <input type="text" placeholder="Nombre De Usuario" formControlName="name" [ngClass]="{'is-invalid': (registerForm.get('name').dirty || registerForm.get('name').touched) && !registerForm.get('name').valid}">
+                    <div *ngIf="!registerForm.get('name').valid" class="invalid-feedback">El nombre es necesario.</div>
                 </div>
-            </div>
-            <div class="form-group"> 
-                <input type="password" placeholder="Contraseña" formControlName="password" [ngClass]="{'is-invalid': (registerForm.get('password').dirty || registerForm.get('password').touched) && !registerForm.get('password').valid}">
-                <div *ngIf="!registerForm.get('password').valid" class="invalid-feedback">
-                    <div *ngIf="registerForm.get('password').errors.required">La contraseña es necesaria.</div>
-                    <div *ngIf="registerForm.get('password').errors.minLength">La contraseña tiene que tener un mínimo de 8 carácteres.</div>
+                <div class="form-group"> 
+                    <input type="email" placeholder="Correo Electrónico" formControlName="email" [ngClass]="{'is-invalid': (registerForm.get('email').dirty || registerForm.get('email').touched) && !registerForm.get('email').valid}">
+                    <div *ngIf="!registerForm.get('email').valid" class="invalid-feedback">
+                        <div *ngIf="registerForm.get('email').errors.required">El email es necesario.</div>
+                        <div *ngIf="registerForm.get('email').errors.email">Dirección email incorrecta.</div>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group"> 
-                <input type="password" placeholder="Repite Contraseña" formControlName="repeat_password" [ngClass]="{'is-invalid': (registerForm.get('repeatPassword').dirty || registerForm.get('repeatPassword').touched) && !registerForm.get('repeatPassword').valid}" >
-                <div *ngIf="!registerForm.get('repeat_password').valid" class="invalid-feedback">
-                    <div *ngIf="registerForm.get('repeat-password').errors.required">La contraseña es necesaria.</div>
-                    <div *ngIf="registerForm.get('repeat_password').errors.matchPassword">La contraseña tiene que ser la misma.</div>
+                <div class="form-group"> 
+                    <input type="password" placeholder="Contraseña" formControlName="password" [ngClass]="{'is-invalid': (registerForm.get('password').dirty || registerForm.get('password').touched) && !registerForm.get('password').valid}">
+                    <div *ngIf="!registerForm.get('password').valid" class="invalid-feedback">
+                        <div *ngIf="registerForm.get('password').errors.required">La contraseña es necesaria.</div>
+                        <div *ngIf="registerForm.get('password').errors.minLength">La contraseña tiene que tener un mínimo de 8 carácteres.</div>
+                    </div>
                 </div>
-            </div>
-            <div class="pie">
-                <div class="pie1">*Términos y Condiciones *Política de Privacidad </div>
-                <div class="pie2">
-                    <div>Si ya tienes cuenta </div>
-                    <div class="link">inicia sesión aquí</div>
+                <div class="form-group"> 
+                    <input type="password" placeholder="Repite Contraseña" formControlName="repeat_password" [ngClass]="{'is-invalid': (registerForm.get('repeatPassword').dirty || registerForm.get('repeatPassword').touched) && !registerForm.get('repeatPassword').valid}" >
+                    <div *ngIf="!registerForm.get('repeat_password').valid" class="invalid-feedback">
+                        <div *ngIf="registerForm.get('repeat-password').errors.required">La contraseña es necesaria.</div>
+                        <div *ngIf="registerForm.get('repeat_password').errors.matchPassword">La contraseña tiene que ser la misma.</div>
+                    </div>
                 </div>
-            </div>
-            <button class="button" [disabled]="registerForm.invalid" (click)="register()">Registrate</button>
-        </form>
+                <div class="pie">
+                    <div class="pie1">*Términos y Condiciones *Política de Privacidad </div>
+                    <div class="pie2">
+                        <div>Si ya tienes cuenta </div>
+                        <button class="link">inicia sesión aquí</button>
+                    </div>
+                </div>
+                <button class="button" [disabled]="registerForm.invalid" (click)="register()">Registrate</button>
+            </form>
+        </div>
     </div>
 </div>

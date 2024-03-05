@@ -9,6 +9,17 @@
     background-size: cover;
 }
 
+.bg_dark{
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.85) ;
+    background-position: center;
+}
+
 .container{
     width: 593px;
     height: 750px;
@@ -72,6 +83,9 @@ input{
     margin-left: 5px;
     color: var(--amarillo);
     text-decoration: underline;
+    background:none;
+    border: none; 
+    cursor: pointer;
 }
 
 .button{

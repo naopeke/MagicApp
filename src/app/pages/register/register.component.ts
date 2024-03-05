@@ -10,6 +10,7 @@ import { LoginComponent } from 'src/app/components/login/login.component';
 })
 export class RegisterComponent implements OnInit {
   public registerForm: FormGroup;
+  public myClass:boolean = false; 
 
   constructor(private formBuilder: FormBuilder, private router: Router){
     this.buildForm(); 
@@ -32,7 +33,11 @@ export class RegisterComponent implements OnInit {
     return result; 
   }
 
-  register(){
+  public login(){
+    this.myClass=true; 
+  }
+
+  public register(){
 
   }
 
