@@ -1,7 +1,6 @@
-<<<<<<< HEAD
-<app-header></app-header>
+<!-- Si el statusLogin es true en usersService -->
+<app-loggedin-card *ngIf="usersService.statusLogin()"></app-loggedin-card>
 
-<app-footer></app-footer>
-=======
-<p>cartas works!</p>
->>>>>>> 83e53d3aecfc4dc6bda2ad50a83b3556f55cd655
+<!-- Si el statusLogin es false en usersService -->
+<app-loggedout-card *ngIf="!usersService.statusLogin()"></app-loggedout-card>
+
