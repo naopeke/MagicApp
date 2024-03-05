@@ -42,6 +42,7 @@ import { CardInfoComponent } from './components/card-info/card-info.component';
     HomeComponent,
     CardInfoComponent
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -1,0 +1,224 @@
+
+
+main{
+  width: 100vw;
+  height: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../../../assets/images/home/bg-negro-home.png);
+  
+}
+
+swiper-container {
+  width: 1600px;
+  height: 850px;
+}
+
+swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.myswipper.swiper-button-next , .swiper-button-prev{
+  color: var(--blanco);
+}
+
+/* #bgEventos , #bgEventos2, #bgMazos{
+  width: 1600px;
+  height: 850px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  background-size: cover;
+} */
+
+/* #bgEventos{
+  background-image: url(../../../assets/images/home/bg-foto-bosque.png);
+}
+
+#bgEventos2{
+  background-image: url(../../../assets/images/home/bg-foto-bosque2.png);
+}
+
+#bgMazos{
+  background-image: url(../../../assets/images/home/bg-foto-montaña.png);
+} */
+
+#misEventos{
+  background-image: url(../../../assets/images/home/bg-foto-bosque.png);
+}
+
+#eventos{
+  background-image: url(../../../assets/images/home/bg-foto-bosque2.png);
+}
+
+#mazos{
+  background-image: url(../../../assets/images/home/bg-foto-montaña.png);
+}
+
+#misEventos, #eventos, #mazos{
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+}
+
+.titulo, .titulo-eventos, .titulo-mazos{
+  height: 70px;
+  padding: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+  font-family: var(--antiqua);
+  background-color: var(--negro-bg);
+  border-radius: var(--borde-cuadrado);
+}
+.titulo{
+  color: var(--amarillo);
+  width: 550px;
+}
+.titulo-eventos{
+  color: var(--blanco);
+  width: 720px;
+}
+
+.titulo-mazos{
+  color: var(--rojo);
+  width: 480px;
+}
+
+.card-container{
+  display: flex;
+  gap: 50px;
+}
+.cardEvento, .cardEvento2, .cardMazo {
+  width: 400px;
+  height: 600px;
+  background-color: var(--negro-bg);
+  border-radius: var(--borde-cuadrado);
+  font-family: var(--antiqua);
+}
+
+.cardEvento, .cardEvento2{
+  padding: 20px;
+}
+
+.cardMazo{
+  gap: 20px;
+  padding: 40px;
+}
+
+.cardEvento:hover{
+  border: solid var(--amarillo) 2px;
+}
+.cardEvento2:hover{
+  border: solid var(--verde) 2px;
+}
+.cardMazo:hover{
+  border: solid var(--rojo) 2px;
+}
+
+ .img-fondo{
+  z-index: 9;
+  border-radius: var(--borde-cuadrado);
+}
+
+.img-avatar{
+  position: relative;
+  bottom: 250px;
+
+  z-index: 99;
+} 
+
+.tituloEvento, .tituloEvento2{
+  font-size: 18pt;
+}
+.tituloEvento{
+  color: var(--verde);
+}
+.tituloEvento2{
+  color: var(--amarillo);
+}
+
+.estrellas{
+  margin-top: 10px;
+}
+.card-info{
+  position: relative;
+  bottom: 230px;
+}
+.info{ 
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  border: solid var(--verde) 0.5px;
+  border-radius: var(--borde-cuadrado);
+  color: var(--blanco);
+}
+
+.info-mazo{
+  color: var(--rojo);
+}
+
+.info-user{
+  color: var(--blanco);
+}
+
+
+.moreInfo{
+  color: var(--amarillo);
+  margin-top: 25px;
+}
+
+.moreInfo:hover{
+  color: var(--blanco);
+  cursor: pointer;
+}
+
+.button-participar{
+  padding: 5px;
+  width: 150px;
+  margin-top: 18px;
+  background-color: var(--verde);
+  border-radius: var(--borde-boton);
+  border: none;
+}
+
+.button-participar:hover{
+  background-color: var(--blanco);
+}
+
+.button-explorar{
+  padding: 5px;
+  width: 150px;
+  background-color: var(--amarillo);
+  border-radius: var(--borde-boton);
+  border: none;
+}
+
+.button-explorar:hover{
+  background-color: var(--rojo);
+}
+
+
+
+.line-container{
+  display: flex;
+  justify-content: center;
+}
+.line{
+  border: solid var(--blanco) 2px;
+  width: 300px;
+}
+
