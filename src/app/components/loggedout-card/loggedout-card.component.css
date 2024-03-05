@@ -3,7 +3,8 @@
     font-family: var(--antiqua);
     color:var(--azul);
     text-align: center;
-    padding-top:21px;
+    padding-top:56px;
+    margin-bottom: 40px;
 }
 
 .background-wrapper {
@@ -31,6 +32,9 @@ input {
     height: 60px;
     border-color: var(--azul);
     background-color: var(--negro-bg);
+    padding-left: 25px;
+    color: var(--blanco);
+    font-size: 26px;
 }
 
 input::placeholder {
@@ -44,6 +48,7 @@ select {
     background-color: var(--negro-bg);
     color: var(--blanco);
     font-family: var(--inter);
+    font-size: 20px;
     border: 3px solid var(--azul);
     text-align: center;
 }
@@ -70,7 +75,7 @@ select {
 .bg-cards {
     background-color: var(--negro-bg);
     min-height: 700px;
-    width: 80%;
+    width: 90%;
     height: auto;
     padding: 60px;
     border-radius: 30px;

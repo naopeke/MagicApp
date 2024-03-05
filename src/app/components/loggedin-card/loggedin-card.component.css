@@ -43,6 +43,8 @@ input {
     background-color: var(--negro-bg);
     border-radius: 10px 0 0 10px;
     padding-left: 25px;
+    color: var(--blanco);
+    font-size: 26px;
 }
 
 input::placeholder {

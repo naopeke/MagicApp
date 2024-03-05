@@ -3,8 +3,8 @@
     <p class="title">CARTAS</p>
     
     <div class="search-container">
-        <form action="">
-            <input type="text" id="buscador" name="buscador" placeholder="Buscar" size="10" />
+        <form (submit)="filterCards(searchParam.value); $event.preventDefault()">
+            <input type="text" id="buscador" name="buscador" placeholder="Buscar" size="10" #searchParam/>
             <select name="filtrar" id="filtrar">
                 <option value="nombre">Nombre</option>
                 <option value="colleccion">Colección</option>
