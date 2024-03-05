@@ -1,1 +1,30 @@
-<p>card works!</p>
+
+<div *ngIf="templateType === 'type1'">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-8 col-lg-12">
+                <mat-card class="card">
+                    <mat-card-header>
+                        <div class="delete-wrapper">
+                            <div class="delete" (click)="deleteCard2()">×</div>     
+                        </div>
+                    </mat-card-header>
+                    <img mat-card-image class="img" src="{{ childCard.image_uris }}" alt="img"/>
+                    <mat-card-content>
+                        <p class="output booktype"> - </p>
+                        <p class="output booktitle"> 18 </p>
+                        <p class="output bookauthor"> + </p>
+                    
+                    </mat-card-content>
+                    <mat-card-actions class="cart-btn">
+                        <button mat-button><mat-icon>shopping_cart</mat-icon></button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div *ngIf="templateType === 'type2'">
+    
+  </div>

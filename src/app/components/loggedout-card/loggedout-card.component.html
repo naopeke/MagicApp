@@ -17,9 +17,14 @@
     <div class="results-container">
     
         <div class="bg-cards">
-        <!-- <div *ngFor="let card of cards; let i = index"> -->
-            <app-card></app-card>
-            <!-- </div> -->
+        <div>
+
+            <!-- <app-card [card]="someCard" [templateType]="'type1'"></app-card> -->
+
+
+            <app-card *ngFor="let card of cards; let i = index">
+            </app-card>
+        </div>
     
         </div>
     

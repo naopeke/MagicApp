@@ -21,7 +21,8 @@
     font-family: var(--antiqua);
     color:var(--azul);
     text-align: center;
-    padding-top:21px;
+    padding-top:56px;
+    margin-bottom: 40px;
 }
 
 .search-container {
@@ -58,6 +59,7 @@ select {
     background-color: var(--negro-bg);
     color: var(--blanco);
     font-family: var(--inter);
+    font-size: 20px;
     border: 3px solid var(--azul);
     text-align: center;
 }

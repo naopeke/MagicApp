@@ -1,0 +1,38 @@
+.container {
+    padding-top: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+} 
+
+.img{
+    height:280px;
+    object-fit: cover;
+}
+
+.delete-wrapper{
+    width:240px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.delete{
+    font-size: 125%;
+    font-weight: bold;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+.mat-card-content p {
+    text-align: center;
+}
+
+.booktitle{
+    min-height: 3em;
+}
+
+.cart-btn {
+    display: flex;
+    justify-content: flex-end;
+    min-width: 80px;
+}
