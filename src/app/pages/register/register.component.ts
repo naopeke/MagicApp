@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +10,7 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 export class RegisterComponent implements OnInit {
   public registerForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder){
+  constructor(private formBuilder: FormBuilder, private router: Router){
     this.buildForm(); 
   }
 
@@ -32,7 +33,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register(){
-    
+
   }
 
 

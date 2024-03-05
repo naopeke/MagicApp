@@ -1,5 +1,5 @@
 <div class="container">
-    <form class="form">
+    <form class="form" [formGroup]="loginForm">
         <h3>Inicia Sesión</h3>
         <div class="form-group"> 
             <input type="text" placeholder="Correo Electrónico" formControlName="email" [ngClass]="{'is-invalid':(loginForm.get('email').dirty ||loginForm.get('email').touched) && !loginForm.get('email').valid}">
