@@ -31,9 +31,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CardComponent } from './components/card/card.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CardInfoComponent } from './components/card-info/card-info.component';
-import { LoginComponent } from './component/login/login.component';
-import { AboutComponent } from './components/about/about.component';
-import { ProfileComponent } from './components/profile/profile.component';
+import { AboutComponent } from './pages/about/about.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 import { CartasComponent } from './pages/cartas/cartas.component';
 import { MisMazosComponent } from './pages/mis-mazos/mis-mazos.component';
 import { ExploraComponent } from './pages/explora/explora.component';
@@ -49,7 +48,6 @@ import { EventoComponent } from './pages/evento/evento.component';
     CardComponent,
     HomeComponent,
     CardInfoComponent,
-    LoginComponent,
     AboutComponent,
     ProfileComponent,
     CartasComponent,
