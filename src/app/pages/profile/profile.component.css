@@ -16,23 +16,27 @@ main{
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 35px;
+    gap: 40px;
 
 
     background-color: var(--negro-bg);
     border-radius: var(--borde-cuadrado);
 }
 
-.infoPerfil, .tituloPerfil, .modificarPerfil{
+.infoPerfil,  .modificarPerfil{
     display: flex;
-    /* border: solid red 2px; */
+    border: solid red 2px;
     width: 400px;
     height: 100%;
-    
 }
-.tituloPerfil{
-    width: 350px;
 
+.tituloPerfil{
+    border: solid red 2px;
+    width: 300px;
+    height: 100%;
+
+
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -54,18 +58,38 @@ main{
     position: relative;
     width: 100%;
     padding-top: 20px;
+
+    display: flex;
+    justify-content: center;
+}
+.nameContainer{
+    position: absolute;
+    top: 60px;
+    left: 10px;
+    z-index: 999;
+    height: 30px;
+    width: 330px;
+
+    display: flex;
+    justify-content: center;
+}
+#nameUser{
+    text-align: center;
+    height: 100%;
+
+    font-family: var(--antiqua);
+    font-size: 16pt;
+    font-weight: bold;
 }
 
 .imgCard{
     position: relative;
-    right: 11px;
     z-index: 99;
 }
 
 .imgFondo{
     position: absolute;
     top: 100px;
-    left: 16px;
     z-index: 9;
 }
 
@@ -85,7 +109,7 @@ main{
     font-size: 14pt;
     font-family: var(--antiqua);
     left: 90px;
-    top: 368px;
+    top: 369px;
 }
 
 .iconSobreMi{
@@ -93,6 +117,49 @@ main{
     top: 365px;
 }
 
+.infoUser{
+    position: absolute;
+    top: 405px;
+    z-index: 999;
+
+    width: 92%;
+    height: 235px;
+    padding: 12px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.email, .description, .line{
+    width: 100%;
+}
+
+.email{
+    height: 25%;
+}
+
+.line{
+    border: solid var(--amarillo) 2px;
+}
+
+.description{
+    height: 63%;
+}
+#emailTitle, #descriptionTitle{
+    font-family: var(--antiqua);
+    font-weight: bold;
+    font-size: 12pt;
+}
+
+#emailUser, #descriptionUser{
+    font-family: var(--inter);
+}
+
+#emailUser{
+    font-size: 12pt;
+}
 .buttonEditFoto{
     height: 60px;
     width: 300px;
@@ -103,5 +170,50 @@ main{
     background-color: var(--amarillo);
     border: none;
     border-radius: var(--borde-boton);
+}
 
+.modificarPerfil{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+.editTitle{
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#title2{
+    color: var(--amarillo);
+    font-family: var(--antiqua);
+    font-size: 22pt;
+}
+
+#line2{
+    border: solid var(--blanco) 2px;
+    width: 80%;
+}
+.editForm{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+input{
+    height: 60px;
+    width: 95%;
+    border:solid var(--amarillo) 2px;
+    border-radius: var(--borde-input);
+    background-color: var(--negro-bg);
+    padding: 10px;
+}
+
+textarea{
+    height: 80px;
 }

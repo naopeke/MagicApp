@@ -2,14 +2,34 @@
     <section class="container">
         <div class="infoPerfil">
             <div class="cardPerfil">
+
+                <div class="nameContainer">
+                    <p id="nameUser">Elara Moonshadow</p>
+                </div>
+
                 <img class="imgCard" src="../../../assets/images/profile/cartaAmarilla.png" alt="">
                 <img class="imgFondo" src="../../../assets/images/profile/fondoCarta.png" alt="">
                 <img class="imgAvatar" src="../../../assets/images/personajes/avatar2.png" alt="">
+                
                 <div class="sobreMiContainer">
                     <p class="sobreMi">Criatura - humano</p>
                     <img class="iconSobreMi" src="../../../assets/images/iconos/humano.png" alt="">
                 </div>
                 
+                <div class="infoUser">
+                    <div class="email">
+                        <p id="emailTitle">Correo Electrónico</p>
+                        <p id="emailUser">elaramoonshadow@gmail.com</p>
+                    </div>
+                    <hr class="line">
+                    <div class="description">
+                        <p id="descriptionTitle">Descripción</p>
+                        <p id="descriptionUser">
+                            Con armadura reluciente y mirada decidida, Elara lidera con valentía y  determinación. Su espíritu protector y su coraje infunden esperanza en  los corazones de aquellos que la rodean.
+                        </p>
+                    </div>
+                </div>
+
             </div>
             <div>
                 <button class="buttonEditFoto">Editar Foto/Tierra</button>
@@ -21,6 +41,23 @@
             <img src="../../../assets/images/iconos/cartas.png" alt="">
         </div>
 
-        <div class="modificarPerfil"></div>
+        <div class="modificarPerfil">
+            
+            <div class="editTitle">
+                <h2 id="title2">Modificar perfil</h2>
+                <hr id="line2">
+            </div>
+
+
+            <form class="editForm">
+                <input type="text" name="user" id="user" placeholder="Elara Moonshadow" disabled>
+                <input type="email" name="email" id="email" placeholder="elaramoonshadow@gmail.com" disabled>
+                <textarea name="description" id="description" cols="1" rows="4" placeholder="Con armadura reluciente y mirada decidida, Juana lidera con valentía y  determinación. Su espíritu protector y su coraje infunden esperanza en  los corazones de aquellos que la rodean." disabled></textarea>
+                <input type="password" name="password" id="password" placeholder="**********" disabled>
+                <input type="password" name="password2" id="password2" placeholder="Repite Contraseña" disabled>
+                <button id="editButton" (click)="editar()">Editar</button>
+            </form>
+
+        </div>
     </section>
 </main>
