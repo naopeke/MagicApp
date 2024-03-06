@@ -54,7 +54,7 @@ import { EventoComponent } from './pages/evento/evento.component';
     MisMazosComponent,
     ExploraComponent,
     CalendarioComponent,
-    EventoComponent
+    EventoComponent,
   ],
 
   imports: [
