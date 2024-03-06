@@ -32,10 +32,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CardComponent } from './components/card/card.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CardInfoComponent } from './components/card-info/card-info.component';
-<<<<<<< HEAD
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './components/login/login.component';
-=======
 import { AboutComponent } from './pages/about/about.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { CartasComponent } from './pages/cartas/cartas.component';
@@ -43,7 +41,6 @@ import { MisMazosComponent } from './pages/mis-mazos/mis-mazos.component';
 import { ExploraComponent } from './pages/explora/explora.component';
 import { CalendarioComponent } from './pages/calendario/calendario.component';
 import { EventoComponent } from './pages/evento/evento.component';
->>>>>>> ffe4fa33b891532dfeabf0cb93b4bd83f034b037
 
 
 @NgModule({
@@ -54,10 +51,8 @@ import { EventoComponent } from './pages/evento/evento.component';
     CardComponent,
     HomeComponent,
     CardInfoComponent,
-<<<<<<< HEAD
     RegisterComponent,
-    LoginComponent
-=======
+    LoginComponent,
     AboutComponent,
     ProfileComponent,
     CartasComponent,
@@ -65,7 +60,6 @@ import { EventoComponent } from './pages/evento/evento.component';
     ExploraComponent,
     CalendarioComponent,
     EventoComponent
->>>>>>> ffe4fa33b891532dfeabf0cb93b4bd83f034b037
   ],
 
   imports: [
