@@ -1,14 +1,99 @@
 <body>
     <main>
         <div class="bloque1-container">
-            <div class="swiper-container">
+            <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" navigation="true" space-between="0"
+            centered-slides="true" autoplay-delay="12000" autoplay-disable-on-interaction="false" style="--swiper-navigation-color: #B3B3B3; --swiper-pagination-color: #B3B3B3;">
 
-            </div>
+            <swiper-slide id="bienvenido">
+                <h4 class="titulo">BIENVENIDO A MAGyDeck</h4>
+                <div class="parrafo-telarana">
+                    <div class="telarana-container">
+                        <div class="telarana"></div>
+                    </div>
+                    <h4>Vas a conocer la herramienta esencial para todos los aficionados a Magic. Ya seas un jugador <br>
+                    experimentado o estés comenzando tu viaje en el multiverso, <span style="color: #C38A31; font-family: Uncial Antiqua;">MagyDeck</span> está aquí para potenciar <br>
+                tu experiencia de juego como nunca antes.</h4>
+                </div>
 
+                <div class="parrafo-antifaz">
+                    <div class="antifaz-container">
+                        <div class="antifaz"></div>
+                    </div>
+                    <h4>Descubre todas las características que hacen de <span style="color: #C38A31; font-family: Uncial Antiqua;">MagyDeck</span> la elección número uno para los <br>
+                    jugadores de Magic The Gathering <br></h4>
+                </div>
+
+                <div class="parrafo-cartas1">
+                    <div class="cartas1-container">
+                        <div class="cartas1"></div>
+                    </div>
+                    <h4>Selección de cartas personalizada. Encuentra la carta que buscas y filtra según tus preferencias</h4>
+                </div>
+
+                <div class="parrafo-mazo">
+                    <div class="mazo-container">
+                        <div class="mazo"></div>
+                    </div>
+                    <h4>Crea y personaliza tus propios mazos con facilidad, así podrás optimizar tu estrategia de juego</h4>
+                </div>
+
+                <div class="parrafo-dragon">
+                    <div class="dragon-container">
+                        <div class="dragon"></div>
+                    </div>
+                    <h4>Organiza o encuentra eventos locales, torneos y encuentros de jugadores cerca de ti</h4>
+                </div>
+            </swiper-slide>
+            
+            <swiper-slide id="slideSenora">
+                <div class="cabeceraSlide">
+                    <div class="logoMagic"></div>
+                    <h4 class="titulo2">¡Empieza tu nueva aventura en <br>
+                    MagyDeck!</h4>
+                </div>
+
+                <div class="senoraYtexto">
+                    <div class="textoSenora">
+                        <h3><p>No importa si eres un aventurero experimentado o apenas estás <br>
+                            comenzando tu viaje, aquí encontrarás <span style="color: #28669F;">un mundo de posibilidades</span>.</p>
+                        <p>Tendrás la oportunidad de <span style="color: #5C724B;">conocer</span> a otros valientes exploradores, <br>
+                            <span style="color: #5C724B;">compartir</span> tus conocimientos, <span style="color: #643D6A;">aprender</span> de las experiencias de los <br>
+                            demás y <span style="color: #B6281A;">desafiar</span> a tus compañeros en emocionantes batallas.</p>
+                        <p>Prepárate para sumergirte en un universo de descubrimientos, <br>
+                            donde cada encuentro te llevará más lejos en tu búsqueda de <br>
+                            grandes logros y nuevos horizontes.
+                        </h3>
+                    </div>
+                    <div class="senora-container">
+                        <div class="senora"></div>
+                    </div>
+                </div>
+
+            </swiper-slide>
+
+            <swiper-slide id="slideOrco">
+
+            </swiper-slide>
+            </swiper-container>
             <div class="secciones-container">
-                <img src="/assets/images/img_cincoColores_landing.png" alt="">
+                <div class="guerrero-container">
+                    <div class="guerreroAmarillo">ABOUT</div>
+                </div>
+                <div class="guerrero-container">
+                    <div class="guerreroAzul">CARTAS</div>
+                </div>
+                <div class="guerrero-container">
+                    <div class="guerreroMorado">MIS MAZOS</div>
+                </div>
+                <div class="guerrero-container">
+                    <div class="guerreroRojo">EXPLORA</div>
+                </div>
+                <div class="guerrero-container">
+                    <div class="guerreroVerde">EVENTOS</div>
+                </div>
             </div>
         </div>
+
         <div class="orco-container">
             <div class="registrate">
                 <p>Regístrate y únete a una comunidad vibrante de jugadores</p>
@@ -31,13 +116,13 @@
                 <h4>¡<a href="">Explora</a> y lleva tu juego al siguiente nivel!</h4>
             </div>
             <div class="inputBuscador-container">
-                <form action="">
-                    <input type="text" id="buscador" name="buscador" placeholder="Buscar" size="10" />
+                <form>
+                    <input type="text" id="buscador" name="buscador" placeholder="Asesinato en la mansión Karlov" size="10" />
                     <select name="filtrar" id="filtrar">
                         <option value="nombre">Nombre</option>
                         <option value="colleccion">Colección</option>
                     </select>
-                    <button type="submit" class="btn-buscador"></button>
+                    <button type="submit" class="btn-buscador" disabled></button>
                 </form>
             <div class="cartas-container">
                 <div class="carta1"></div>
