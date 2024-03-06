@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // angular material
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -37,6 +38,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { CardInfoComponent } from './components/card-info/card-info.component';
 import { LoggedoutCardComponent } from './components/loggedout-card/loggedout-card.component';
 import { LoggedinCardComponent } from './components/loggedin-card/loggedin-card.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { LoginComponent } from './components/login/login.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { CartasComponent } from './pages/cartas/cartas.component';
@@ -56,6 +59,8 @@ import { EventoComponent } from './pages/evento/evento.component';
     CardInfoComponent,
     LoggedoutCardComponent,
     LoggedinCardComponent,
+    RegisterComponent,
+    LoginComponent,
     AboutComponent,
     ProfileComponent,
     CartasComponent,
@@ -64,10 +69,13 @@ import { EventoComponent } from './pages/evento/evento.component';
     CalendarioComponent,
     EventoComponent
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
 
     // angular material
     MatSidenavModule,

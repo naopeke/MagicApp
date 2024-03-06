@@ -4,27 +4,32 @@
         <div id="btnHeader"><button id="btnIniciarSesion">Inicia sesión</button></div>
     </div>
     <div id="iconosHeader">
+        <!-- <div *ngIf="!User.logueado"> -->
         <div>
-            <img class="icono" routerLink="" src="../../../assets/images/header/Llamita_marron.png" alt="Magic Llanuras">
+            <img class="icono" routerLink="about" src="../../../assets/images/header/Llamita_marron.png" alt="Magic Llanuras">
             <p id="pAmarillo">About</p>
         </div>
         <div>
-            <img class="icono" routerLink="" src="../../../assets/images/header/Llamita_azul.png" alt="Magic Isla">
+        <!-- <div *ngIf="!User.logueado"> -->
+            <img class="icono" routerLink="cartas" src="../../../assets/images/header/Llamita_azul.png" alt="Magic Isla">
             <p id="pAzul">Cartas</p>
         </div>
+        <!-- <div *ngIf="User.logueado"> -->
         <div>
-            <img class="icono" routerLink=""  src="../../../assets/images/header/Llamita_morada.png" alt="Magic Pantano">
+            <img class="icono" routerLink="mis-mazos"  src="../../../assets/images/header/Llamita_morada.png" alt="Magic Pantano">
             <p id="pMorado">Mis mazos</p>
         </div>
+        <!-- <div *ngIf="User.logueado"> -->
         <div>
-            <img class="icono" routerLink="" src="../../../assets/images/header/Llamita_roja.png" alt="Magic Montaña">
+            <img class="icono" routerLink="explora" src="../../../assets/images/header/Llamita_roja.png" alt="Magic Montaña">
             <p id="pRojo">Explora</p>
         </div>
+        <!-- <div *ngIf="User.logueado"> -->
         <div>
-            <img class="icono" routerLink="" src="../../../assets/images/header/Llamita_verde.png" alt="Magic Bosque">
+
+            <img class="icono" routerLink="evento" src="../../../assets/images/header/Llamita_verde.png" alt="Magic Bosque">
             <p id="pVerde">Eventos</p>
         </div>
     </div>
-
-
+    
 </header>

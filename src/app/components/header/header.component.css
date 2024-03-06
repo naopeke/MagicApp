@@ -1,7 +1,7 @@
 header{
     background-color: black;
     text-align: center;
-    height: 230px; /*corregido*/
+    height: 25vh;
     width: 100%;
     display: flex;
     flex-direction: column;
