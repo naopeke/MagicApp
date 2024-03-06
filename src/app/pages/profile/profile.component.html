@@ -1,15 +1,15 @@
 <main>
-    <section class="container">
+    <section [ngClass]="modal == false ? 'container': 'editContainer'">
         <div class="infoPerfil">
             <div class="cardPerfil">
 
                 <div class="nameContainer">
-                    <p id="nameUser">Elara Moonshadow</p>
+                    <p id="nameUser">{{user.name}}</p>
                 </div>
 
-                <img class="imgCard" src="../../../assets/images/profile/cartaAmarilla.png" alt="">
+                <img class="imgCard" [src]="user.marco" alt="">
                 <img class="imgFondo" src="../../../assets/images/profile/fondoCarta.png" alt="">
-                <img class="imgAvatar" src="../../../assets/images/personajes/avatar2.png" alt="">
+                <img class="imgAvatar" [src]="user.photo" alt="">
                 
                 <div class="sobreMiContainer">
                     <p class="sobreMi">Criatura - humano</p>
@@ -19,45 +19,74 @@
                 <div class="infoUser">
                     <div class="email">
                         <p id="emailTitle">Correo Electrónico</p>
-                        <p id="emailUser">elaramoonshadow@gmail.com</p>
+                        <p id="emailUser">{{user.email}}</p>
                     </div>
                     <hr class="line">
                     <div class="description">
                         <p id="descriptionTitle">Descripción</p>
-                        <p id="descriptionUser">
-                            Con armadura reluciente y mirada decidida, Elara lidera con valentía y  determinación. Su espíritu protector y su coraje infunden esperanza en  los corazones de aquellos que la rodean.
-                        </p>
+                        <p id="descriptionUser">{{user.description}}</p>
                     </div>
                 </div>
 
             </div>
-            <div>
-                <button class="buttonEditFoto">Editar Foto/Tierra</button>
+            <div *ngIf="editarFoto == false; else cambiar">
+                <button class="buttonEditFoto" (click)="editPhoto()">Editar Foto/Tierra</button>
+            </div>
+            <ng-template #cambiar>
+                <button type="button" class="buttonSaveFoto" (click)="editPhoto()">Guardar cambios </button>
+            </ng-template>
+        </div>
+
+        <div *ngIf="modal == false; else viewModal" class="container2">
+            <div class="tituloPerfil">
+                <h1 id="titulo">Perfil</h1>
+                <img src="../../../assets/images/iconos/cartas.png" alt="">
+            </div>
+    
+            <div class="modificarPerfil">
+                
+                <div class="editTitle">
+                    <h2 id="title2">Modificar perfil</h2>
+                    <hr id="line2">
+                </div>
+    
+                <!-- *NOTE - AÑADIR VALIDACIONES A LA VISTA + maxlength en name -->
+                <form [formGroup]="editForm" class="editForm">
+                   
+                    <input type="text" name="user" id="user" placeholder="Nombre de usuario" 
+                    #name formControlName="name">
+                    
+                    <input type="email" name="email" id="email" placeholder="Correo electrónico" 
+                    #email formControlName="email">
+                 
+                    <textarea name="description" id="description" cols="1" rows="4" placeholder="Añade aquí tu descripción" 
+                    #description formControlName="description"></textarea>
+                    
+                    <input type="password" name="password" id="password" placeholder="Contraseña" 
+                    #password formControlName="password">
+          
+                    
+                    <input type="password" name="password2" id="password2" placeholder="Repite Contraseña" 
+                    #password2 formControlName="password2">
+    
+                    <div *ngIf="editar == false; else guardar">
+                        <button type="button" class="editButton" (click)="edit(name.value, email.value, password.value, description.value)">Editar</button>
+                    </div>
+    
+                    <ng-template #guardar>
+                        <button type="button" [ngClass]="editar == true ? 'saveButton': ''" (click)="edit(name.value, email.value, password.value, description.value)">Guardar Cambios</button>
+                    </ng-template>
+    
+                </form>
             </div>
         </div>
+      
+        <ng-template #viewModal>
+            <app-modal-profile></app-modal-profile>
+        </ng-template>
+        
+
+
        
-        <div class="tituloPerfil">
-            <h1 id="titulo">Perfil</h1>
-            <img src="../../../assets/images/iconos/cartas.png" alt="">
-        </div>
-
-        <div class="modificarPerfil">
-            
-            <div class="editTitle">
-                <h2 id="title2">Modificar perfil</h2>
-                <hr id="line2">
-            </div>
-
-
-            <form class="editForm">
-                <input type="text" name="user" id="user" placeholder="Elara Moonshadow" [disabled]="editar">
-                <input type="email" name="email" id="email" placeholder="elaramoonshadow@gmail.com" [disabled]="editar">
-                <textarea name="description" id="description" cols="1" rows="4" maxlength="160" placeholder="Con armadura reluciente y mirada decidida, Juana lidera con valentía y  determinación. Su espíritu protector y su coraje infunden esperanza en  los corazones de aquellos que la rodean." [disabled]="editar"></textarea>
-                <input type="password" name="password" id="password" placeholder="**********" [disabled]="editar">
-                <input type="password" name="password2" id="password2" placeholder="Repite Contraseña" [disabled]="editar">
-                <button type="button" id="editButton" (click)="edit()">Editar</button>
-            </form>
-
-        </div>
     </section>
 </main>

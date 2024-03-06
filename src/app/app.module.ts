@@ -1,5 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'; // swiper@10
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -38,6 +39,7 @@ import { MisMazosComponent } from './pages/mis-mazos/mis-mazos.component';
 import { ExploraComponent } from './pages/explora/explora.component';
 import { CalendarioComponent } from './pages/calendario/calendario.component';
 import { EventoComponent } from './pages/evento/evento.component';
+import { ModalProfileComponent } from './components/modal-profile/modal-profile.component';
 
 
 @NgModule({
@@ -54,13 +56,15 @@ import { EventoComponent } from './pages/evento/evento.component';
     MisMazosComponent,
     ExploraComponent,
     CalendarioComponent,
-    EventoComponent
+    EventoComponent,
+    ModalProfileComponent
   ],
 
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
 
     // angular material
     MatSidenavModule,
