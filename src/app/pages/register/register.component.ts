@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
-// import { LoginComponent } from 'src/app/components/login/login.component';
 
 @Component({
   selector: 'app-register',
@@ -39,7 +38,7 @@ export class RegisterComponent implements OnInit {
     this.show_login = true; 
   }
 
-  loginClose(show: boolean){
+  public loginClose(show: boolean){
     this.myClass = show;
     this.show_login = show;
   }

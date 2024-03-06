@@ -36,6 +36,11 @@ public loginClose(){
   this.onLoginClose.emit(false);
 }
 
+public navegate_home(){
+  this.router.navigate(['/home'])
+
+}
+
 ngOnInit(): void {
 }
 
