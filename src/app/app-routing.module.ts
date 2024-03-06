@@ -6,6 +6,7 @@ import { EventoComponent } from './pages/evento/evento.component';
 import { AboutComponent } from './pages/about/about.component';
 import { MisMazosComponent } from './pages/mis-mazos/mis-mazos.component';
 import { CartasComponent } from './pages/cartas/cartas.component';
+import { CalendarioComponent } from './pages/calendario/calendario.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'explora', component:ExploraComponent},
   { path: 'evento', component:EventoComponent},
   { path: 'about', component:AboutComponent},
-  { path: 'cartas', component: CartasComponent}
+  { path: 'cartas', component: CartasComponent},
+  {path: 'calendario', component: CalendarioComponent}
 ];
 
 @NgModule({

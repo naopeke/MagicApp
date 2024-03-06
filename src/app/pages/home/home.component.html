@@ -1,6 +1,6 @@
 <main>
     <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" navigation="true" space-between="0"
-    centered-slides="true" autoplay-delay="5000" autoplay-disable-on-interaction="false" style="--swiper-navigation-color: #B3B3B3; --swiper-pagination-color: #B3B3B3;">
+    centered-slides="true" autoplay-delay="100000" autoplay-disable-on-interaction="false" style="--swiper-navigation-color: #B3B3B3; --swiper-pagination-color: #B3B3B3;">
 
         <swiper-slide id="misEventos">
             <!-- <div id="bgEventos"> -->
@@ -17,15 +17,18 @@
                             <img class="img-avatar" src="../../../assets/images/personajes/avatar2.png" alt="">
                         </div>
                         <div class="card-info">
-                            <p class="tituloEvento">Festival de Asesinatos en la Mansión Karlov </p>
+                            <div class="tituloEvento"> 
+                                <p>Festival de Asesinatos en la Mansión Karlov</p>
+                            </div>
+
                             <!-- AÑADIR ICONOS DE FECHA HORA Y LUGAR -->
                             <div class="info">
                                 <p>15/03/2024</p>
                                 <p>18:00</p>
                                 <p>Centro Metropolitano</p>
                             </div>
-                            <!-- AÑADIR ROUTING A MI CALENDARIO -->
-                            <p class="moreInfo">Ver en mi Calendario</p>
+                           
+                            <a routerLink="/calendario"><p class="moreInfo">Ver en mi Calendario</p></a>
                         </div>
                     </div>
                     <div class="cardEvento">
@@ -34,15 +37,19 @@
                             <img class="img-avatar" src="../../../assets/images/personajes/avatar2.png" alt="">
                         </div>
                         <div class="card-info">
-                            <p class="tituloEvento">Festival de Asesinatos en la Mansión Karlov </p>
+
+                            <div class="tituloEvento">
+                                <p>Festival de Asesinatos en la Mansión Karlov </p>
+                            </div>
+                            
                             <!-- AÑADIR ICONOS DE FECHA HORA Y LUGAR -->
                             <div class="info">
                                 <p>15/03/2024</p>
                                 <p>18:00</p>
                                 <p>Centro Metropolitano</p>
                             </div>
-                            <!-- AÑADIR ROUTING A MI CALENDARIO -->
-                            <p class="moreInfo">Ver en mi Calendario</p>
+                
+                            <a routerLink="/calendario"><p class="moreInfo">Ver en mi Calendario</p></a>
                         </div>
                     </div>
                     <div class="cardEvento">
@@ -51,7 +58,10 @@
                             <img class="img-avatar" src="../../../assets/images/personajes/avatar2.png" alt="">
                         </div>
                         <div class="card-info">
-                            <p class="tituloEvento">Festival de Asesinatos en la Mansión Karlov </p>
+                            <div class="tituloEvento">
+                                <p>Festival de Asesinatos en la Mansión Karlov </p>
+                            </div>
+                            
                             <!-- AÑADIR ICONOS DE FECHA HORA Y LUGAR -->
                             <div class="info">
                                 <p>15/03/2024</p>
@@ -59,7 +69,7 @@
                                 <p>Centro Metropolitano</p>
                             </div>
                             <!-- AÑADIR ROUTING A MI CALENDARIO -->
-                            <p class="moreInfo">Ver en mi Calendario</p>
+                            <a routerLink="/calendario"><p class="moreInfo">Ver en mi Calendario</p></a>
                         </div>
                     </div>
     
@@ -82,15 +92,18 @@
                             <img class="img-avatar" src="../../../assets/images/personajes/avatar2.png" alt="">
                         </div>
                         <div class="card-info">
-                            <p class="tituloEvento2">Festival de Asesinatos en la Mansión Karlov </p>
+                            <div class="tituloEvento2">
+                                <p>Festival de Asesinatos en la Mansión Karlov </p>
+                            </div>
+                            
                             <!-- AÑADIR ICONOS DE FECHA HORA Y LUGAR -->
                             <div class="info">
                                 <p>15/03/2024</p>
                                 <p>18:00</p>
                                 <p>Centro Metropolitano</p>
                             </div>
-                            <!-- AÑADIR ROUTING A EVENTOS -->
-                            <button class="button-participar">Participar</button>
+
+                            <button [routerLink]="['/evento']" class="button-participar">Participar</button>
                         </div>
                     </div>
                     <div class="cardEvento2">
@@ -99,15 +112,17 @@
                             <img class="img-avatar" src="../../../assets/images/personajes/avatar3.png" alt="">
                         </div>
                         <div class="card-info">
-                            <p class="tituloEvento2">Festival de Asesinatos en la Mansión Karlov </p>
+                            <div class="tituloEvento2">
+                                <p>Festival de Asesinatos en la Mansión Karlov </p>
+                            </div>
                             <!-- AÑADIR ICONOS DE FECHA HORA Y LUGAR -->
                             <div class="info">
                                 <p>15/03/2024</p>
                                 <p>18:00</p>
                                 <p>Centro Metropolitano</p>
                             </div>
-                            <!-- AÑADIR ROUTING A EVENTOS -->
-                            <button class="button-participar">Participar</button>
+                        
+                            <button [routerLink]="['/evento']" class="button-participar">Participar</button>
                         </div>
                     </div>
     
@@ -117,15 +132,18 @@
                             <img class="img-avatar" src="../../../assets/images/personajes/avatar3.png" alt="">
                         </div>
                         <div class="card-info">
-                            <p class="tituloEvento2">Festival de Asesinatos en la Mansión Karlov </p>
+                            <div  class="tituloEvento2">
+                                <p>Festival de Asesinatos en la Mansión Karlov </p>
+                            </div>
+            
                             <!-- AÑADIR ICONOS DE FECHA HORA Y LUGAR -->
                             <div class="info">
                                 <p>15/03/2024</p>
                                 <p>18:00</p>
                                 <p>Centro Metropolitano</p>
                             </div>
-                            <!-- AÑADIR ROUTING A EVENTOS -->
-                            <button class="button-participar">Participar</button>
+
+                            <button [routerLink]="['/evento']" class="button-participar">Participar</button>
                         </div>
                     </div>
                 </div>
@@ -136,9 +154,9 @@
 
         <swiper-slide id="mazos">
             <!-- <div id="bgMazos"> -->
-                <div class="titulo-mazos">
+                <div >
                     <!-- AÑADIR PIPE PARA SIMBOLOS -->
-                    <h3 class="titulo-mazos" > <img src="../../../assets/images/iconos/estrella.png" alt="">  &nbsp; Mazos más votados  &nbsp; <img src="../../../assets/images/iconos/estrella.png" alt=""></h3>
+                    <h3 class="titulo-mazos"> <img src="../../../assets/images/iconos/estrella.png" alt="">  &nbsp; Mazos más votados  &nbsp; <img src="../../../assets/images/iconos/estrella.png" alt=""></h3>
                 </div>
      
                 <div class="card-container">
@@ -152,7 +170,7 @@
                                 <img class="img-estrellas" src="../../../assets/images/iconos/estrellita.png" alt="">
                                 <img class="img-estrellas" src="../../../assets/images/iconos/estrellita.png" alt="">
                                 <img class="img-estrellas" src="../../../assets/images/iconos/estrellita.png" alt="">
-                                <img class="img-estrellas" src="../../../assets/images/iconos/estrella2.png" alt="">
+                                <img class="img-estrellas" src="../../../assets/images/iconos/estrellita.png" alt="">
                             </div>
                             <div class="line-container">
                                 <hr class="line">
@@ -163,8 +181,8 @@
                                 <p class="info-mazo">Fuego del Bosque</p>
                                 <p class="info-user">JoseH35</p>
                             </div>
-                            <!-- AÑADIR ROUTING A EVENTOS -->
-                            <button class="button-explorar">Explorar</button>
+                          
+                            <button [routerLink]="['/explora']" class="button-explorar">Explorar</button>
                         </div>
                     </div>
     
@@ -189,8 +207,8 @@
                                 <p class="info-mazo">Fuego del Bosque</p>
                                 <p class="info-user">JoseH35</p>
                             </div>
-                            <!-- AÑADIR ROUTING A EVENTOS -->
-                            <button class="button-explorar">Explorar</button>
+                            
+                            <button [routerLink]="['/explora']" class="button-explorar">Explorar</button>
                         </div>
                     </div>
     
@@ -215,8 +233,8 @@
                                 <p class="info-mazo">Fuego del Bosque</p>
                                 <p class="info-user">JoseH35</p>
                             </div>
-                            <!-- AÑADIR ROUTING A EVENTOS -->
-                            <button class="button-explorar">Explorar</button>
+                           
+                            <button [routerLink]="['/explora']" class="button-explorar">Explorar</button>
                         </div>
                     </div>
                 </div>
