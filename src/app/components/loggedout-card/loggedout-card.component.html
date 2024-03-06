@@ -18,10 +18,10 @@
     <div class="bg-cards">
         <div class="list-cards" *ngIf="resultsCards.length > 0">
             <div *ngFor="let card of resultsCards; let i = index">
-                <app-card [childCard]="card" [templateCard]="'type1'"></app-card>
+                <app-card [childCard]="card" [templateCard]="'type5'"></app-card>
             </div>
         
-            <div class="results-wrapper" *ngIf="resultsCards === 0">
+            <div class="results-wrapper" *ngIf="resultsCards.length === 0">
                 <div class="no-results-message">
                   No hemos podido encontrar. Intenta otra vez.
                 </div>

@@ -1,40 +1,206 @@
-.container {
-    padding-top: 0px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-} 
 
-.img{
-    width: 100%;
+mat-card {
+    /* border:2px solid yellow; */
+    width: 246px;
+    height:382px;
+    margin-bottom: 50px;
+    overflow: hidden;
+    background-color: var(--negro);
+}
+
+mat-card-content {
+    height:331.16px;
+}
+
+/* type1 */
+.img-type1{
+    width: 245px;
     height:auto;
-    object-fit: contain;
+    object-fit: cover;
     border-radius: var(--ancho-borde);
 }
 
-.delete-wrapper{
-    width:240px;
-    display: flex;
-    justify-content: flex-end;
+/* type2  explorar */
+.type2-image-container{
+    /* border:2px solid red; */
+    position: relative;   /* padre */
+    display: inline-block;
+    object-fit: cover;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.delete{
-    font-size: 125%;
-    font-weight: bold;
-    padding-right: 10px;
-    cursor: pointer;
+.img1-type2{
+    display: block;
+    width: 245px;
+    height:auto;
+    border-radius: var(--ancho-borde);
+    border: 1px solid var(--nergro);
 }
 
-.mat-card-content p {
-    text-align: center;
+.img2-type2{
+    position: absolute; /* hijo */
+    height: 36px;
+    width:auto;
+    bottom: 1px;
+    z-index: 1;
 }
 
-.booktitle{
-    min-height: 3em;
+.text-type2{
+    position: absolute; /* hijo */
+    top: 7px;
+    color: var(--negro);
+    font-size: 14px;
+    font-family:var(--antiqua);
+    z-index: 2;
 }
 
-.cart-btn {
-    display: flex;
-    justify-content: flex-end;
-    min-width: 80px;
+
+/* type3  cartas logueado busqueda*/
+.type3-image-container{
+    /* border:2px solid red; */
+    position: relative;   /* padre */
+    display: inline-block;
+    object-fit: cover;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img1-type3{
+    display: block;
+    width: 245px;
+    height:auto;
+    border-radius: var(--ancho-borde);
+    border: 1px solid var(--nergro);
+}
+
+.img2-type3{
+    position: absolute; /* hijo */
+    height: 30px;
+    width:auto;
+    bottom: 5px;
+    z-index: 1;
+}
+
+.img1-type3:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+.img2-type3:hover {
+    transform: scale(1.50);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* type4  cartas logueado favorito*/
+.card4 {
+    background: linear-gradient(180deg, rgba(40, 102, 159, 0.71) 0%, rgba(14, 37, 57, 0.73) 49%);
+    width:169px;
+    height:249px;
+    margin-bottom: 50px;
+    overflow: hidden;
+    z-index:1;
+}
+
+/*carta*/
+.img1-type4{
+    display: block;
+    width: 152px;
+    height:auto;
+    border-radius: var(--ancho-borde);
+    border: 1px solid var(--nergro);
+    top: 15px;
+    left: 8px;
+}
+
+/* x button*/
+.img2-type4{
+    position: absolute; /* hijo */
+    height: 15px;
+    width:auto;
+    top: 7px;
+    right: 7px;
+    z-index: 2;
+}
+
+.img1-type4:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+.img2-type4:hover {
+    transform: scale(1.50);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* type5  mis mazos */
+.type2-image-container{
+    /* border:2px solid red; */
+    position: relative;   /* padre */
+    display: inline-block;
+    object-fit: cover;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*carta*/
+.img1-type5{
+    display: block;
+    width: 245px;
+    height:auto;
+    border-radius: var(--ancho-borde);
+    border: 1px solid var(--nergro);
+}
+
+/* menos cuadrado */
+.img2-type5{
+    position: absolute; /* hijo */
+    height: 30px;
+    width:auto;
+    bottom: 7px;
+    left: 17px;
+    z-index: 1;
+}
+
+/* cuadrado amarillo */
+.img3-type5{
+    position: absolute; /* hijo */
+    height: 33px;
+    width:auto;
+    bottom: 0px;
+    left: 47px;
+    z-index: 1;
+}
+
+.text-type5{
+    position: absolute; /* hijo */
+    left: 72px;
+    bottom: 11px;
+    color: var(--nergro);
+    font-size: 14px;
+    font-family:var(--antiqua);
+    z-index: 3;
+}
+
+/* plus cuadrado */
+.img4-type5{
+    position: absolute; /* hijo */
+    height: 30px;
+    width:auto;
+    bottom: 7px;
+    left: 115px;
+    z-index: 1;
+}
+
+/* calavera cuadrado */
+.img5-type5{
+    position: absolute; /* hijo */
+    height: 30px;
+    width:auto;
+    bottom: 6px;
+    right: 18px;
+    z-index: 1;
 }

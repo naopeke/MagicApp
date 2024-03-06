@@ -10,4 +10,11 @@ export class CardComponent {
   @Input() childCard: Card;
   @Input() templateCard: string;
 
+  onPlusButtonClick(){
+    console.log('cliked plus button');
+  }
+
+  onDeleteButtonClick(){
+    console.log('clicked x button');
+  }
 }

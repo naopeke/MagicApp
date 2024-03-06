@@ -77,14 +77,18 @@ select {
     min-height: 700px;
     width: 90%;
     height: auto;
-    padding: 60px;
-    border-radius: 30px;
-    margin-top:60px;
+    padding: 30px;
+    border-radius: var(--ancho-borde);
+    margin-top:30px;
     margin-bottom: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* gap: 72px; */
 }
 
 .list-cards {
-    border:2px solid red;
+    /* border:2px solid red; */
     display:flex;
     flex-wrap:wrap;
     margin: 10px;
