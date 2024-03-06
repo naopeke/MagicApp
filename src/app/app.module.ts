@@ -31,6 +31,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CardComponent } from './components/card/card.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CardInfoComponent } from './components/card-info/card-info.component';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { CardInfoComponent } from './components/card-info/card-info.component';
     FooterComponent,
     CardComponent,
     HomeComponent,
-    CardInfoComponent
+    CardInfoComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,

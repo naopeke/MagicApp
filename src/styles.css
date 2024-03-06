@@ -16,7 +16,8 @@
     --negro:rgba(0, 0, 0, 0.85);
     --fondo-morado: rgba(10, 4, 11, 0.85);
     --morado-2paints: #643D6A;
-
+    --vino: #1E0603;
+    
     --antiqua:"Uncial Antiqua", system-ui;
     --inter: "Inter", sans-serif;
 
@@ -41,3 +42,6 @@
     /* border width */
     --ancho-borde: 3px;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
