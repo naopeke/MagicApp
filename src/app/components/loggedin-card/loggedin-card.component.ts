@@ -28,7 +28,7 @@ export class LoggedinCardComponent {
     let card = this.cardsService.getByName(searchParam);
       if (card) {
         console.log('Result: ', card);
-        this.router.navigate(['/cartas', card.id_card]);
+        // this.router.navigate(['/cartas', card.id_card]);
       } else {
         console.log('No hay datos');
       }

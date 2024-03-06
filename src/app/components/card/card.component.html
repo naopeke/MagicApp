@@ -1,5 +1,19 @@
 
-<div *ngIf="templateType === 'type1'">
+<div *ngIf="templateCard === 'type1'">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-8 col-lg-12">
+                <mat-card class="card">
+                    <img mat-card-image class="img" src="{{ childCard.image_uris }}" alt="img"/>
+<!-- <img mat-card-image class="img" src="https://cards.scryfall.io/large/front/d/5/d5806e68-1054-458e-866d-1f2470f682b2.jpg?1696020224" alt="img"/> -->
+
+                </mat-card>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div *ngIf="templateCard === 'type2'">
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-md-8 col-lg-12">
@@ -23,8 +37,4 @@
             </div>
         </div>
     </div>
-  </div>
-
-  <div *ngIf="templateType === 'type2'">
-    
   </div>

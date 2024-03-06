@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Card } from '../models/card';
+import { Card } from 'src/app/models/card';
 
 @Component({
   selector: 'app-card',
@@ -7,7 +7,7 @@ import { Card } from '../models/card';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent {
-  @Input() card: Card;
-  @Input() templateType: string;
+  @Input() childCard: Card;
+  @Input() templateCard: string;
 
 }

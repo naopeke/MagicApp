@@ -109,15 +109,28 @@ export class CardsService {
     )    
   ]
 
-  public getByName(name:string): Card | null {
-    let card = this.cards.find(card => card.name === name);
-    console.log('Obtained info: ', name, card);
-    if (card) {
-      return card; //si se ha encontrado con una carta, devuelve esa carta 
-    } else {
-      return null; // si no, devuelve null
-    }
+// array de cartas, parcial, lowercase
+  public getByName(name:string): Card[] | null {
+  let lowerCaseName = name.toLowerCase();
+  let cards = this.cards.filter(card => card.name.toLowerCase().includes(name));
+  console.log('Obtained info: ', name, cards);
+  if (cards) {
+    return cards; //si se ha encontrado con una carta, devuelve esa carta 
+  } else {
+    return null; // si no, devuelve null
   }
+}
+
+  //solo una carta
+  // public getByName(name:string): Card | null {
+  //   let card = this.cards.find(card => card.name === name);
+  //   console.log('Obtained info: ', name, card);
+  //   if (card) {
+  //     return card; //si se ha encontrado con una carta, devuelve esa carta 
+  //   } else {
+  //     return null; // si no, devuelve null
+  //   }
+  // }
 
   constructor() { }
 }
