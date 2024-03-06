@@ -1,19 +1,47 @@
 
+<!-- cartas sin logueado -->
 <div *ngIf="templateCard === 'type1'">
     <div class="container">
         <div class="row">
-            <div class="col-sm-6 col-md-8 col-lg-12">
+            <div class="col-sm-6 col-md-4 col-lg-3">
                 <mat-card class="card">
                     <img mat-card-image class="img" src="{{ childCard.image_uris }}" alt="img"/>
-<!-- <img mat-card-image class="img" src="https://cards.scryfall.io/large/front/d/5/d5806e68-1054-458e-866d-1f2470f682b2.jpg?1696020224" alt="img"/> -->
-
                 </mat-card>
             </div>
         </div>
     </div>
-  </div>
+</div>
 
-  <div *ngIf="templateCard === 'type2'">
+<!-- cartas logueado busqueda -->
+<div *ngIf="templateCard === 'type2'">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-8 col-lg-12">
+            <mat-card class="card">
+                <mat-card-header>
+                    <div class="delete-wrapper">
+                        <div class="delete" (click)="deleteCard2()">×</div>     
+                    </div>
+                </mat-card-header>
+                <img mat-card-image class="img" src="{{ childCard.image_uris }}" alt="img"/>
+                <mat-card-content>
+                    <p class="output booktype"> - </p>
+                    <p class="output booktitle"> 18 </p>
+                    <p class="output bookauthor"> + </p>
+                
+                </mat-card-content>
+                <mat-card-actions class="cart-btn">
+                    <button mat-button><mat-icon>shopping_cart</mat-icon></button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<!-- cartas logueado favorito-->
+<div *ngIf="templateCard === 'type3'">
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-md-8 col-lg-12">
@@ -37,4 +65,60 @@
             </div>
         </div>
     </div>
-  </div>
+</div>
+
+
+<!-- mis mazos-->
+<div *ngIf="templateCard === 'type4'">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-8 col-lg-12">
+                <mat-card class="card">
+                    <mat-card-header>
+                        <div class="delete-wrapper">
+                            <div class="delete" (click)="deleteCard2()">×</div>     
+                        </div>
+                    </mat-card-header>
+                    <img mat-card-image class="img" src="{{ childCard.image_uris }}" alt="img"/>
+                    <mat-card-content>
+                        <p class="output booktype"> - </p>
+                        <p class="output booktitle"> 18 </p>
+                        <p class="output bookauthor"> + </p>
+                    
+                    </mat-card-content>
+                    <mat-card-actions class="cart-btn">
+                        <button mat-button><mat-icon>shopping_cart</mat-icon></button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- explora -->
+<div *ngIf="templateCard === 'type5'">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-8 col-lg-12">
+                <mat-card class="card">
+                    <mat-card-header>
+                        <div class="delete-wrapper">
+                            <div class="delete" (click)="deleteCard2()">×</div>     
+                        </div>
+                    </mat-card-header>
+                    <img mat-card-image class="img" src="{{ childCard.image_uris }}" alt="img"/>
+                    <mat-card-content>
+                        <p class="output booktype"> - </p>
+                        <p class="output booktitle"> 18 </p>
+                        <p class="output bookauthor"> + </p>
+                    
+                    </mat-card-content>
+                    <mat-card-actions class="cart-btn">
+                        <button mat-button><mat-icon>shopping_cart</mat-icon></button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

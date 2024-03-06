@@ -16,9 +16,9 @@
     
     <div class="results-container">
     <div class="bg-cards">
-        <div *ngIf="resultsCards.length > 0">
+        <div class="list-cards" *ngIf="resultsCards.length > 0">
             <div *ngFor="let card of resultsCards; let i = index">
-                <app-card [childCard]="card" [template]="'type1'"></app-card>
+                <app-card [childCard]="card" [templateCard]="'type1'"></app-card>
             </div>
         
             <div class="results-wrapper" *ngIf="resultsCards === 0">

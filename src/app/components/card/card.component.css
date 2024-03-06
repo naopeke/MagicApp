@@ -6,8 +6,10 @@
 } 
 
 .img{
-    height:280px;
-    object-fit: cover;
+    width: 100%;
+    height:auto;
+    object-fit: contain;
+    border-radius: var(--ancho-borde);
 }
 
 .delete-wrapper{
