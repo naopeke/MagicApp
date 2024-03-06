@@ -6,7 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
-editar(){
-  
+  editar: boolean = true
+  // user: object
+
+
+edit(){
+  this.editar = false
 }
 }

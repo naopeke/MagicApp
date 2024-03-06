@@ -25,13 +25,13 @@ main{
 
 .infoPerfil,  .modificarPerfil{
     display: flex;
-    border: solid red 2px;
+    /* border: solid red 2px; */
     width: 400px;
     height: 100%;
 }
 
 .tituloPerfil{
-    border: solid red 2px;
+    /* border: solid red 2px; */
     width: 300px;
     height: 100%;
 
@@ -49,10 +49,11 @@ main{
     font-size: 34pt;
 }
 .infoPerfil{
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 50px;
+    gap: 25px;
 }
 .cardPerfil{
     position: relative;
@@ -161,7 +162,7 @@ main{
     font-size: 12pt;
 }
 .buttonEditFoto{
-    height: 60px;
+    height: 55px;
     width: 300px;
 
     font-family: var(--antiqua);
@@ -172,29 +173,38 @@ main{
     border-radius: var(--borde-boton);
 }
 
+.buttonEditFoto:hover{
+    background-color: var(--blanco);
+}
+
 .modificarPerfil{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 20px;
+    justify-content: flex-end;
+    align-items: center;
+    
 }
 .editTitle{
-    height: 30%;
+    width: 100%;
+    height: 15%;
+    padding: 10px;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
 }
 
 #title2{
     color: var(--amarillo);
     font-family: var(--antiqua);
-    font-size: 22pt;
+    font-size: 24pt;
 }
 
 #line2{
     border: solid var(--blanco) 2px;
-    width: 80%;
+    width: 100%;
 }
 .editForm{
     width: 100%;
@@ -202,18 +212,56 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
 }
 
-input{
-    height: 60px;
-    width: 95%;
+input, textarea{
+    width: 100%;
+
+
     border:solid var(--amarillo) 2px;
     border-radius: var(--borde-input);
     background-color: var(--negro-bg);
-    padding: 10px;
+    color: var(--blanco);
+}
+
+input{
+    padding: 15px;
+    height: 60px;
+    font-size: 12pt;
 }
 
 textarea{
-    height: 80px;
+    padding: 10px;
+    height: 110px;
+    overflow: hidden;
+    resize: none;
 }
+
+input::placeholder, textarea::placeholder{
+    font-family: var(--inter);
+}
+
+input::placeholder{
+    font-size: 12pt;
+}
+
+#editButton{
+    height: 55px;
+    width: 250px;
+    margin-top: 5px;
+
+    font-family: var(--antiqua);
+    font-size: 15pt;
+    font-weight: bold;
+    background-color: var(--amarillo);
+    border: none;
+    border-radius: var(--borde-boton);
+}
+
+#editButton:hover{
+    background-color: var(--blanco);
+}
+
+
+

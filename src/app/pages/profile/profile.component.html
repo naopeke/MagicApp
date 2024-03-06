@@ -50,12 +50,12 @@
 
 
             <form class="editForm">
-                <input type="text" name="user" id="user" placeholder="Elara Moonshadow" disabled>
-                <input type="email" name="email" id="email" placeholder="elaramoonshadow@gmail.com" disabled>
-                <textarea name="description" id="description" cols="1" rows="4" placeholder="Con armadura reluciente y mirada decidida, Juana lidera con valentía y  determinación. Su espíritu protector y su coraje infunden esperanza en  los corazones de aquellos que la rodean." disabled></textarea>
-                <input type="password" name="password" id="password" placeholder="**********" disabled>
-                <input type="password" name="password2" id="password2" placeholder="Repite Contraseña" disabled>
-                <button id="editButton" (click)="editar()">Editar</button>
+                <input type="text" name="user" id="user" placeholder="Elara Moonshadow" [disabled]="editar">
+                <input type="email" name="email" id="email" placeholder="elaramoonshadow@gmail.com" [disabled]="editar">
+                <textarea name="description" id="description" cols="1" rows="4" maxlength="160" placeholder="Con armadura reluciente y mirada decidida, Juana lidera con valentía y  determinación. Su espíritu protector y su coraje infunden esperanza en  los corazones de aquellos que la rodean." [disabled]="editar"></textarea>
+                <input type="password" name="password" id="password" placeholder="**********" [disabled]="editar">
+                <input type="password" name="password2" id="password2" placeholder="Repite Contraseña" [disabled]="editar">
+                <button type="button" id="editButton" (click)="edit()">Editar</button>
             </form>
 
         </div>
