@@ -27,7 +27,7 @@ export interface DialogData {
   selector: 'app-mazo-selector-modal',
   templateUrl: './mazo-selector-modal.component.html',
   styleUrls: ['./mazo-selector-modal.component.css'],
-  encapsulation: ViewEncapsulation.None //desabilitar Encapsulation de style
+  // encapsulation: ViewEncapsulation.None //desabilitar Encapsulation de style
 })
 export class MazoSelectorModalComponent {
   constructor(
