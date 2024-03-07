@@ -14,6 +14,7 @@ export class LoggedoutCardComponent implements OnInit {
   public parametro: string;
   public searchInput: string = '';
   public resultsCards: Card[] =[]; //para meter datos de resultados
+  public searchType: string = 'nombre' //default searchtype es nombre
 
   constructor(
     public cardsService: CardsService,
@@ -28,7 +29,13 @@ export class LoggedoutCardComponent implements OnInit {
 
 // buscar con nombre completa y array
   searchCards(searchParam: string): void {
-    const cards = this.cardsService.getByName(searchParam);
+    let cards = [];
+    if (this.searchType == 'nombre'){
+      cards = this.cardsService.getByName(searchParam);
+    } else if (this.searchType === 'colleccion'){
+      cards = this.cardsService.getByCollection(searchParam);
+    }
+
     // si hay 1 o más cartas en array, meter datos en resultsCards
     if (cards && cards.length > 0) {
       this.resultsCards = cards;
@@ -39,17 +46,8 @@ export class LoggedoutCardComponent implements OnInit {
       console.log('No hay datos en resultsCards');
     }
   }
-  // buscar con las palabras completas 1 carta
-  // searchCards(searchParam: string): void {
-  //   let card = this.cardsService.getByName(searchParam);
-  //     if (card) {
-  //       console.log('Result: ', card);
-  //   this.resultsCards = this.cardsService.getByName(searchParam)
-  //       // this.router.navigate(['/cartas', card.id_card]);
-  //     } else {
-  //       console.log('No hay datos');
-  //     }
-  // }
+
+
 
 
 

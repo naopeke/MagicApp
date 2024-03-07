@@ -10,6 +10,8 @@ export class Card {
         public oracle_text?: string,
         public legalities?: any,
         public prices?: number,
+        public set_name?: string,
+        public set_type?: string
  
         ) { }
 }

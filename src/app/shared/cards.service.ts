@@ -44,6 +44,8 @@ export class CardsService {
     "premodern": "not_legal",
     "predh": "not_legal"},
     3.63,
+    "Murders at Karlov Manor Commander",
+    "commander"
     ),
     new Card("e57815d4-b21f-4ceb-a3f1-73cff5f0e612", 
     2, 
@@ -75,6 +77,8 @@ export class CardsService {
     "premodern": "not_legal",
     "predh": "not_legal"},
     0.11,
+    "Murders at Karlov Manor Commander",
+    "commander"
     ),
     new Card("123e", 
     3, 
@@ -106,6 +110,8 @@ export class CardsService {
     "premodern": "not_legal",
     "predh": "not_legal"},
     5.11,
+    "Murders at Karlov Manor Commander",
+    "commander"
     ),
     new Card("123e", 
     3, 
@@ -137,6 +143,8 @@ export class CardsService {
     "premodern": "not_legal",
     "predh": "not_legal"},
     5.11,
+    "Murders at Karlov Manor Commander",
+    "commander"
     ),
     new Card("123e", 
     3, 
@@ -168,6 +176,8 @@ export class CardsService {
     "premodern": "not_legal",
     "predh": "not_legal"},
     5.11,
+    "Murders at Karlov Manor Commander",
+    "commander"
     ),
     new Card("123e", 
     3, 
@@ -199,6 +209,8 @@ export class CardsService {
     "premodern": "not_legal",
     "predh": "not_legal"},
     5.11,
+    "Murders at Karlov Manor Commander",
+    "commander"
     ),
     new Card("123e", 
     3, 
@@ -230,6 +242,8 @@ export class CardsService {
     "premodern": "not_legal",
     "predh": "not_legal"},
     5.11,
+    "Murders at Karlov Manor Commander",
+    "commander"
     ),
     new Card("123e", 
     3, 
@@ -261,6 +275,8 @@ export class CardsService {
     "premodern": "not_legal",
     "predh": "not_legal"},
     5.11,
+    "Murders at Karlov Manor Commander",
+    "commander"
     ),
     new Card("123e", 
     3, 
@@ -292,13 +308,27 @@ export class CardsService {
     "premodern": "not_legal",
     "predh": "not_legal"},
     5.11,
+    "Murders at Karlov Manor Commander",
+    "commander"
     )
   ]
 
 // array de cartas, parcial, lowercase
-  public getByName(name:string): Card[] | null {
+public getByName(name:string): Card[] | null {
   let lowerCaseName = name.toLowerCase();
-  let cards = this.cards.filter(card => card.name.toLowerCase().includes(name));
+  let cards = this.cards.filter(card => card.name.toLowerCase().includes(lowerCaseName));
+  console.log('Obtained info: ', name, cards);
+  if (cards) {
+    return cards; //si se ha encontrado con una carta, devuelve esa carta 
+  } else {
+    return null; // si no, devuelve null
+  }
+}
+
+
+public getByCollection(name:string): Card[] | null {
+  let lowerCaseName = name.toLowerCase();
+  let cards = this.cards.filter(card => card.set_name.toLowerCase().includes(lowerCaseName));
   console.log('Obtained info: ', name, cards);
   if (cards) {
     return cards; //si se ha encontrado con una carta, devuelve esa carta 
