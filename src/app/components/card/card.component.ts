@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Card } from 'src/app/models/card';
 
 @Component({
@@ -9,15 +9,19 @@ import { Card } from 'src/app/models/card';
 export class CardComponent {
   @Input() childCard: Card;
   @Input() templateCard: string;
+  @Output() addCardToBuilder = new EventEmitter<Card>();
 
+  // pagina cartas
   onPlusButtonClick(){
     console.log('cliked the plus button');
+    this.addCardToBuilder.emit(this.childCard);
   }
 
   onDeleteButtonClick(){
     console.log('clicked the x button');
   }
 
+  //pagina mis mazos
   onCountPlusButtonClick(){
     console.log('clicked the count plus button');
   }

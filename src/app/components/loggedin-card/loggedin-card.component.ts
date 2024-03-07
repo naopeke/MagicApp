@@ -12,6 +12,10 @@ export class LoggedinCardComponent {
   public cards: Card[]
   public card: Card;
   public parametro: string;
+  public searchInput: string = '';
+  public resultsCards: Card[] =[]; //para meter datos de resultados
+  public searchType: string = 'nombre' //default searchtype es nombre
+  public builderCards: Card[] = []; // para meter datos en builder(constcucción)
 
   constructor(
     public cardsService: CardsService,
@@ -23,15 +27,28 @@ export class LoggedinCardComponent {
   this.parametro = this.rutaActiva.snapshot.params.cardId;
   }
 
-  // buscar con las palabras completas
   searchCards(searchParam: string): void {
-    let card = this.cardsService.getByName(searchParam);
-      if (card) {
-        console.log('Result: ', card);
-        // this.router.navigate(['/cartas', card.id_card]);
-      } else {
-        console.log('No hay datos');
-      }
+    let cards = [];
+    if (this.searchType == 'nombre'){
+      cards = this.cardsService.getByName(searchParam);
+    } else if (this.searchType === 'colleccion'){
+      cards = this.cardsService.getByCollection(searchParam);
+    }
+
+    // si hay 1 o más cartas en array, meter datos en resultsCards
+    if (cards && cards.length > 0) {
+      this.resultsCards = cards;
+      console.log('Results:', cards);
+      console.log('resultsCards: ', this.resultsCards);
+    } else {
+      this.resultsCards = [];
+      console.log('No hay datos en resultsCards');
+    }
+  }
+
+  onAddCardToBuilder(card:Card){
+    this.builderCards.push(card);
+    console.log('Added to Builder: ', this.builderCards);
   }
 
   ngOnInit(): void {
