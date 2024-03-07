@@ -1,6 +1,6 @@
 main{
     width: 100%;
-    height: 950px;
+    height: 1000px;
 
     display: flex;
     align-items: center;
@@ -12,7 +12,7 @@ main{
 
 .container, .editContainer{
     min-width: 1350px;
-    height: 820px;
+    height: 880px;
 
     display: flex;
     align-items: center;
@@ -67,9 +67,9 @@ main{
 
 /* Carta Perfil */
 .infoPerfil{
-    margin-top: 50px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     gap: 25px;
 }
@@ -180,7 +180,7 @@ main{
     font-size: 12pt;
 }
 .buttonEditFoto, .buttonSaveFoto{
-    height: 55px;
+    height: 50px;
     width: 300px;
 
     font-family: var(--antiqua);
@@ -202,19 +202,16 @@ main{
 
 /* Modificar perfil */
 .modificarPerfil{
-    /* border: solid red 2px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-top: 10px;
     align-items: center;
-    /* gap: 20px; */
+    gap: 15px;
     
 }
 .editTitle{
+    /* border: solid red 2px;; */
     width: 100%;
-    height: 15%;
-    padding: 10px;
 
     display: flex;
     flex-direction: column;
@@ -226,10 +223,8 @@ main{
 #title2{
     color: var(--amarillo);
     font-family: var(--antiqua);
-    font-size: 26pt;
+    font-size: 22pt;
 }
-
-
 
 #line2{
     border: solid var(--blanco) 2px;
@@ -237,7 +232,6 @@ main{
 }
 .editForm{
     width: 100%;
-    height: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -251,17 +245,18 @@ input, textarea{
     border-radius: var(--borde-input);
     background-color: var(--negro-bg);
     color: var(--blanco);
+    text-align: center;
 }
 
 input{
     padding: 15px;
-    height: 65px;
+    height: 60px;
     font-size: 14pt;
 }
 
 textarea{
     padding: 10px;
-    height: 120px;
+    height: 110px;
     overflow: hidden;
     resize: none;
 }
@@ -275,12 +270,11 @@ input::placeholder{
 }
 
 .editButton, .saveButton{
-    height: 55px;
+    height: 50px;
     width: 250px;
-    margin-top: 12px;
 
     font-family: var(--antiqua);
-    font-size: 15pt;
+    font-size: 14pt;
     font-weight: bold;
     border: none;
     border-radius: var(--borde-boton);

@@ -47,7 +47,7 @@
                 
                 <div class="editTitle">
                     <h2 id="title2">Modificar perfil</h2>
-                    <hr id="line2">
+
                 </div>
     
                 <!-- *NOTE - AÑADIR VALIDACIONES A LA VISTA + maxlength en name -->
@@ -98,7 +98,24 @@
                     <div *ngIf="!editForm.get('description').valid && editForm.get('description').errors?.maxlength" class="invalid-feedback m-0 text-center fw-bold">
                         Descripción demasiado larga
                     </div>
-                    
+
+                    <div *ngIf="editar == false; else guardar">
+                        <button type="button" class="editButton" (click)="edit()">Editar</button>
+                    </div>
+    
+                    <ng-template #guardar>
+                        <button type="button" [ngClass]="editar == true ? 'saveButton': ''" [disabled]="!editForm.valid" (click)="edit()">Guardar Cambios</button>
+                    </ng-template>
+                </form>
+
+                <hr id="line2">
+
+                <div class="editTitle">
+                    <h2 id="title2">Modificar contraseña</h2>
+                </div>
+
+                <form [formGroup]="editPassword" class="editForm">
+
                     <input type="password" name="password" id="password" placeholder="Nueva Contraseña" 
                     formControlName="password"
                     [style.borderColor]="user.marco == this.marcos[1] ? '#28669F' :
@@ -106,14 +123,14 @@
                     user.marco == this.marcos[3] ? '#B6281A':
                     user.marco == this.marcos[4] ? '#5C724B':''"
                     [ngClass]="{
-                        'is-invalid': !editForm.get('password').valid,
-                        'is-valid': editForm.get('password').valid}"
-                    >
-                    <div *ngIf="!editForm.get('password').valid && editForm.get('password').errors?.minlength" class="invalid-feedback m-0 text-center fw-bold">
-                        La contraseña debe contener mínimo 8 caracteres
+                    'is-invalid': (editPassword.get('password').dirty || editPassword.get('password').touched) && !editPassword.get('password').valid,
+                    'valid': editPassword.get('password').valid
+                }">
+                    <div *ngIf="!editPassword.get('password').valid" class="invalid-feedback m-0 text-center fw-bold">
+                        <div *ngIf="editPassword.get('password').errors?.required">Escribe la nueva contraseña</div>
+                        <div *ngIf="editPassword.get('password').errors?.minlength">Contraseña no valida</div>
                     </div>
           
-                    
                     <input type="password" name="password2" id="password2" placeholder="Repite Contraseña" 
                     formControlName="password2"
                     [style.borderColor]="user.marco == this.marcos[1] ? '#28669F' :
@@ -121,19 +138,21 @@
                     user.marco == this.marcos[3] ? '#B6281A':
                     user.marco == this.marcos[4] ? '#5C724B':''"
                     [ngClass]="{
-                        'is-invalid': !editForm.get('password2').valid,
-                        'is-valid': editForm.get('password2').valid}">
+                        'is-invalid': (editPassword.get('password2').dirty || editPassword.get('password2').touched) && !editPassword.get('password2').valid,
+                        'valid': editPassword.get('password2').valid
+                    }">
 
-                    <div *ngIf="!editForm.get('password2').valid && editForm.get('password2').errors?.noMatch" class="invalid-feedback m-0 text-center fw-bold">
-                        Las contraseñas no coinciden
+                    <div *ngIf="!editPassword.get('password2').valid" class="invalid-feedback m-0 text-center fw-bold">
+                        <div *ngIf="editPassword.get('password2').errors?.required">Repite la Contraseña</div>
+                        <div *ngIf="editPassword.get('password2').errors?.noMatch">Contraseñas no coinciden</div>
                     </div>
                         
-                    <div *ngIf="editar == false; else guardar">
-                        <button type="button" class="editButton" (click)="edit()">Editar</button>
+                    <div *ngIf="editarPass == false; else guardar2">
+                        <button type="button" class="editButton" (click)="editPass()">Editar</button>
                     </div>
     
-                    <ng-template #guardar>
-                        <button type="button" [ngClass]="editar == true ? 'saveButton': ''" [disabled]="!editForm.valid" (click)="edit()">Guardar Cambios</button>
+                    <ng-template #guardar2>
+                        <button type="button" [ngClass]="editarPass == true ? 'saveButton': ''" [disabled]="!editPassword.valid" (click)="editPass()">Guardar Cambios</button>
                     </ng-template>
     
                 </form>

@@ -10,7 +10,9 @@ export class ProfileComponent implements OnInit {
   
   public editarFoto = false
   public editForm: FormGroup
+  public editPassword: FormGroup
   public editar: boolean = false
+  public editarPass: boolean = false
   public modal: boolean = false
 
   public tierras: string[] = [
@@ -46,10 +48,12 @@ export class ProfileComponent implements OnInit {
     }
 
     this.buildForm();
+    this.buildForm2();
   }
 
   ngOnInit(): void {
     this.editForm.disable();
+    this.editPassword.disable();
   }
   
   
@@ -59,28 +63,28 @@ export class ProfileComponent implements OnInit {
     const minPassLength = 8
 
     this.editForm = this.formBuilder.group({
-      name: [this.user.name, Validators.maxLength(23)],
+      name: [this.user.name, Validators.maxLength(20)],
       email: [this.user.email, Validators.email],
       description: [this.user.description, Validators.maxLength(200)],
-      password: [null, Validators.minLength(minPassLength)],
-      password2: [null, this.check]
-
-      
     })
   }
-  
-  private check(control:AbstractControl){
-    let resultado = {noMatch: true}
-    let password = control.parent?.value.password
-    let password2 = control.value
 
-      if(password == control.value || !password2 ){
+  private buildForm2(){
+    const minPassLength = 8
+
+    this.editPassword = this.formBuilder.group({
+      password: [,[Validators.required, Validators.minLength(minPassLength)]],
+      password2: [,[Validators.required, this.check]]
+    })
+  }
+
+  private check(control:AbstractControl){
+
+    let resultado = {noMatch: true}
+      if(control.parent?.value.password == control.value){
         resultado = null
-        console.log(password2);
-        
-      } else {
-        console.log('Contraseñas no coinciden');
       }
+
     return resultado
   }
 
@@ -89,26 +93,42 @@ export class ProfileComponent implements OnInit {
       this.editar = true;
       this.editForm.enable();
     
-    } else {
-      this.editar = false
-      this.editForm.disable();
+      } else {
+        this.editar = false
+        this.editForm.disable();
+      }
 
-      if(!this.editForm.valid){
+    if(!this.editForm.valid){
         let editValues = this.editForm.value
         this.user.name = editValues.name
         this.user.email = editValues.email
         this.user.description = editValues.description
-        this.user.password = editValues.password
         console.log(this.editForm.value);
-      } else {
+    } else {
         console.log('error');
       }
+    
+  }
+
+  public editPass(){
+    if (this.editarPass == false){
+      this.editarPass = true;
+      this.editPassword.enable();
+    
+      } else {
+        this.editarPass = false
+        this.editPassword.disable();
+      }
+
+    if(!this.editPassword.valid){
+      let editValues = this.editPassword.value
+      this.user.password = editValues.password
+      console.log(editValues);
+      
+      console.log(this.user.password);
+  } else {
+      console.log('error');
     }
-
-
-
-   
-
   }
 
   // MODIFICAR FOTO Y MARCO 
