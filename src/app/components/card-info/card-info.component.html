@@ -4,22 +4,23 @@
             <div class="delete_button">
                 <button type="button" class="btn-close" >X</button>
             </div>
-            <div class="title">title + number</div>
+            <div class="title">{{ card.name }} {{ card.mana_cost}}</div>
             <div class="row main">
                 <div class="col-5 box_left">
-                    <img src="" alt="">
-                    <div class="pie_photo">precio: (pipe)€ 0.35</div>
+                    <img src="{{ card.image_uris }}" alt="Image">
+                    <div class="pie_photo">precio: € {{ card.prices }}</div>
                 </div>
                 <div class="col-7 box_right">
                     <div class="text_box">
-                        <h3 class="subtitle">Tipo: dhdhdh</h3>
-                        <h4 class="subtitle2">dewde</h4>
-                        <h4 class="text">dede</h4>
+                        <h3 class="subtitle">Tipo: {{card.type_line}}</h3>
+                        <h4 class="subtitle2">Indestructible</h4>
+                        <h4 class="text">Texto que no tengo</h4>
+                        <h4 class="text">{{card.oracle_text}}</h4>
                     </div>  
                     <div class="etiquetas">
-                        <div class="etiqueta">
-                            <div class="button_type">vfdgdfg</div>
-                            <div class="name_button_type">gfdgdr</div>
+                        <div *ngFor="let legality of card.legalities" class="etiqueta">
+                            <div class="button_type">{{ legality.key }}</div>
+                            <div class="name_button_type">{{ legality.value }}</div>
                         </div>
                     </div>  
                 </div>
