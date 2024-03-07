@@ -47,6 +47,7 @@ import { MisMazosComponent } from './pages/mis-mazos/mis-mazos.component';
 import { ExploraComponent } from './pages/explora/explora.component';
 import { CalendarioComponent } from './pages/calendario/calendario.component';
 import { EventoComponent } from './pages/evento/evento.component';
+import { ModalProfileComponent } from './components/modal-profile/modal-profile.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 
 
@@ -69,7 +70,8 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
     MisMazosComponent,
     ExploraComponent,
     CalendarioComponent,
-    EventoComponent
+    EventoComponent,
+    ModalProfileComponent
   ],
 
   imports: [
