@@ -12,7 +12,7 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent},
+  // { path: '', component: HomeComponent},
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent},
   { path: 'mis-mazos', component: MisMazosComponent},
