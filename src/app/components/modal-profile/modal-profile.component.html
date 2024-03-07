@@ -3,21 +3,14 @@
         <div class="titulos">
             <h2 class="titulo">Personajes</h2>
         </div>
+        <div  class="imgPersonajes" >
+            <div *ngFor="let avatar of avatares"  >
+                <div  class="img">
+                    <img class="avatar" type="image" [src]="avatar" (click)="enviaAvatar(avatar)" alt="imagen personaje">
+                </div>
+            </div>
+        </div>
 
-        <form class="imgPersonajes">
-            <div class="img">
-                <input class="avatar" type="image" [src]="avatares[0]">
-            </div>
-            <div class="img">
-                <input class="avatar" type="image" [src]="avatares[1]">
-            </div>
-            <div class="img">
-                <input class="avatar" type="image" [src]="avatares[2]">
-            </div>
-            <div class="img">
-                <input class="avatar" type="image" [src]="avatares[3]">
-            </div>
-        </form>
     </section>
     <section class="tierrasContainer">
         <div class="titulos">
@@ -25,24 +18,13 @@
 
         </div>
 
-        <form class="imgTierras">
-            <div class="tierras">
-                <input type="image" [src]="tierras[0]" alt="">
+        <div class="imgTierras">
+            <div *ngFor="let tierra of tierras">
+                <div class="tierras">
+                    <img type="image" [src]="tierra" (click)="enviarTierra(tierra)" alt="imagen color/tierra">
+                </div>
             </div>
-            <div class="tierras">
-                <input type="image" [src]="tierras[1]"alt="">
-            </div>
-            <div class="tierras">
-                <input type="image"[src]="tierras[2]" alt="">
-            </div>
-            <div class="tierras">
-                <input type="image" [src]="tierras[3]" alt="">
-            </div>
-            <div class="tierras">
-                <input type="image" [src]="tierras[4]" alt="">
-            </div>
-
-        </form>
+        </div>
 
     </section>
 </main>

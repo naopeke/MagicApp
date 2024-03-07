@@ -50,6 +50,7 @@ main{
     flex-wrap: wrap;
     gap: 20px;
 }
+
 .img:hover, .tierras:hover{ 
     outline: solid var(--amarillo) 2px;
     cursor: pointer;

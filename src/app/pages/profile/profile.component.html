@@ -39,14 +39,26 @@
 
         <div *ngIf="modal == false; else viewModal" class="container2">
             <div class="tituloPerfil">
-                <h1 id="titulo">Perfil</h1>
+                <h1 id="titulo" 
+                [style.color]="user.marco == this.marcos[1] ? '#28669F' :
+                                user.marco == this.marcos[2] ? '#643D6A':
+                                user.marco == this.marcos[3] ? '#B6281A':
+                                user.marco == this.marcos[4] ? '#5C724B':''">
+                    Perfil
+                </h1>
                 <img src="../../../assets/images/iconos/cartas.png" alt="">
             </div>
     
             <div class="modificarPerfil">
                 
                 <div class="editTitle">
-                    <h2 id="title2">Modificar perfil</h2>
+                    <h2 id="title2"
+                    [style.color]="user.marco == this.marcos[1] ? '#28669F' :
+                                user.marco == this.marcos[2] ? '#643D6A':
+                                user.marco == this.marcos[3] ? '#B6281A':
+                                user.marco == this.marcos[4] ? '#5C724B':''">
+                        Modificar perfil
+                    </h2>
                     <hr id="line2">
                 </div>
     
@@ -54,20 +66,40 @@
                 <form [formGroup]="editForm" class="editForm">
                    
                     <input type="text" name="user" id="user" placeholder="Nombre de usuario" 
-                    #name formControlName="name">
+                    #name formControlName="name"
+                    [style.borderColor]="user.marco == this.marcos[1] ? '#28669F' :
+                                user.marco == this.marcos[2] ? '#643D6A':
+                                user.marco == this.marcos[3] ? '#B6281A':
+                                user.marco == this.marcos[4] ? '#5C724B':''">
                     
                     <input type="email" name="email" id="email" placeholder="Correo electrónico" 
-                    #email formControlName="email">
+                    #email formControlName="email"
+                    [style.borderColor]="user.marco == this.marcos[1] ? '#28669F' :
+                    user.marco == this.marcos[2] ? '#643D6A':
+                    user.marco == this.marcos[3] ? '#B6281A':
+                    user.marco == this.marcos[4] ? '#5C724B':''">
                  
                     <textarea name="description" id="description" cols="1" rows="4" placeholder="Añade aquí tu descripción" 
-                    #description formControlName="description"></textarea>
+                    #description formControlName="description"
+                    [style.borderColor]="user.marco == this.marcos[1] ? '#28669F' :
+                    user.marco == this.marcos[2] ? '#643D6A':
+                    user.marco == this.marcos[3] ? '#B6281A':
+                    user.marco == this.marcos[4] ? '#5C724B':''"></textarea>
                     
                     <input type="password" name="password" id="password" placeholder="Contraseña" 
-                    #password formControlName="password">
+                    #password formControlName="password"
+                    [style.borderColor]="user.marco == this.marcos[1] ? '#28669F' :
+                    user.marco == this.marcos[2] ? '#643D6A':
+                    user.marco == this.marcos[3] ? '#B6281A':
+                    user.marco == this.marcos[4] ? '#5C724B':''">
           
                     
                     <input type="password" name="password2" id="password2" placeholder="Repite Contraseña" 
-                    #password2 formControlName="password2">
+                    #password2 formControlName="password2"
+                    [style.borderColor]="user.marco == this.marcos[1] ? '#28669F' :
+                    user.marco == this.marcos[2] ? '#643D6A':
+                    user.marco == this.marcos[3] ? '#B6281A':
+                    user.marco == this.marcos[4] ? '#5C724B':''">
     
                     <div *ngIf="editar == false; else guardar">
                         <button type="button" class="editButton" (click)="edit(name.value, email.value, password.value, description.value)">Editar</button>
@@ -82,11 +114,7 @@
         </div>
       
         <ng-template #viewModal>
-            <app-modal-profile></app-modal-profile>
+            <app-modal-profile (eventoAvatar) = seleccionAvatar($event) (eventoTierra) = seleccionTierra($event)></app-modal-profile>
         </ng-template>
-        
-
-
-       
     </section>
 </main>

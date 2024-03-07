@@ -12,6 +12,22 @@ export class ProfileComponent implements OnInit {
   public editForm: FormGroup
   public editar: boolean = false
   public modal: boolean = false
+
+  public tierras: string[] = [
+    '../../../assets/images/profile/llanura.png',
+    '../../../assets/images/profile/isla.png', 
+    '../../../assets/images/profile/pantano.png', 
+    '../../../assets/images/profile/montaña.png',
+    '../../../assets/images/profile/bosque.png'
+  ]
+
+  public marcos: string[] = [
+    '../../../assets/images/profile/cartaAmarilla.png',
+    '../../../assets/images/profile/cardAzul.png',
+    '../../../assets/images/profile/cardMorada.png',
+    '../../../assets/images/profile/cardRoja.png',
+    '../../../assets/images/profile/cardVerde.png',
+  ]
   
   // *NOTE - CREAR CLASE USER
   public user: any
@@ -92,5 +108,33 @@ public editPhoto(){
   
 }
 
+  public seleccionAvatar(avatar:string){
+    this.user.photo = avatar
+  }
+  
+  public seleccionTierra(tierra:string){
+    // if(tierra == this.tierras[0]){
+    //   this.user.marco = this.marcos[0]
+    // } else if (tierra == this.tierras[1]){
+    //   this.user.marco = this.marcos[1]
+    // } else if (tierra == this.tierras[2]){
+    //   this.user.marco = this.marcos[2]
+    // } else if (tierra == this.tierras[3]){
+    //   this.user.marco = this.marcos[3]
+    // } else if (tierra == this.tierras[4]){
+    //   this.user.marco = this.marcos[4]
+    // }
+
+    this.user.marco = 
+      tierra === this.tierras[0] ? this.marcos[0] :
+      tierra === this.tierras[1] ? this.marcos[1] :
+      tierra === this.tierras[2] ? this.marcos[2] :
+      tierra === this.tierras[3] ? this.marcos[3] :
+      tierra === this.tierras[4] ? this.marcos[4] :
+      console.log('Error');
+      
+
+  
+}
 }
 

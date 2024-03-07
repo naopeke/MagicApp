@@ -45,6 +45,7 @@ main{
     height: 100%;
 }
 
+/* Titulo */
 .tituloPerfil{
     width: 300px;
     height: 100%;
@@ -61,6 +62,10 @@ main{
     color: var(--amarillo);
     font-size: 34pt;
 }
+
+
+
+/* Carta Perfil */
 .infoPerfil{
     margin-top: 50px;
     display: flex;
@@ -109,8 +114,9 @@ main{
 
 .imgAvatar{
     position: absolute;
-   top: 105px;
+    top: 104px;
     z-index: 999;
+    width: 365px;
 }
 
 .sobreMi, .iconSobreMi{
@@ -194,11 +200,15 @@ main{
     background-color: var(--blanco);
 }
 
+/* Modificar perfil */
 .modificarPerfil{
+    /* border: solid red 2px; */
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
+    /* margin-top: 50px; */
     align-items: center;
+    /* gap: 20px; */
     
 }
 .editTitle{
@@ -216,8 +226,10 @@ main{
 #title2{
     color: var(--amarillo);
     font-family: var(--antiqua);
-    font-size: 24pt;
+    font-size: 26pt;
 }
+
+
 
 #line2{
     border: solid var(--blanco) 2px;
@@ -265,7 +277,7 @@ input::placeholder{
 .editButton, .saveButton{
     height: 55px;
     width: 250px;
-    margin-top: 5px;
+    margin-top: 10px;
 
     font-family: var(--antiqua);
     font-size: 15pt;
@@ -283,8 +295,6 @@ input::placeholder{
 .editButton:hover, .saveButton:hover{
     background-color: var(--blanco);
 }
-
-
 
 
 
