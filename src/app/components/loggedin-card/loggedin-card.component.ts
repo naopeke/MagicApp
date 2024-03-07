@@ -73,16 +73,33 @@ export class LoggedinCardComponent implements OnInit {
       height: '500px'
     });
   
+
+    // dialogRef.afterClosed().subscribe(deckIndex => {
+    //   try {
+    //     console.log('The dialog was closed with deckIndex: ', deckIndex);
+    //     let cardIds = this.builderCards.map(card => card.id_card);
+    //     console.log('modal: ', cardIds);
+    //     // 以下のコードはそのまま
+    //     this.cardsService.addCardsToDeck(deckIndex, cardIds);
+    //     this.snackBar.open(`Añadido tu carta al mazo #${deckIndex + 1}`, 'Cerrar', {
+    //       duration: 4000,
+    //       verticalPosition: 'top',
+    //     });
+    //     this.builderCards = []; // eliminar todas 
+    //   } catch (error) {
+    //     console.error('An error occurred: ', error);
+    //   }
+    // });
     dialogRef.afterClosed().subscribe(deckIndex => {
       console.log('The dialog was closed');
-      if (typeof deckIndex !== 'undefined') {
-        this.cardsService.addCardsToDeck(deckIndex, Array.from(this.selectedCards));
+        let cardIds = this.builderCards.map(card => card.id_card);
+        console.log('modal: ', cardIds);
+        this.cardsService.addCardsToDeck(deckIndex, cardIds);
         this.snackBar.open(`Añadido tu carta al mazo #${deckIndex + 1}`, 'Cerrar', {
           duration: 4000,
           verticalPosition: 'top',
         });
-        this.selectedCards.clear();
-      }
+        this.builderCards = []; // eliminar todas 
     });
   }
   
