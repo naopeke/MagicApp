@@ -21,6 +21,8 @@ export class LoggedinCardComponent implements OnInit {
   public resultsCards: Card[] =[]; //para meter datos de resultados
   public searchType: string = 'nombre' //default searchtype es nombre
   public builderCards: Card[] = []; // para meter datos en builder(constcucción)
+  public searchPerformed: boolean = false; // si ha hecho la busqueda o no  default false
+
 
   constructor(
     public cardsService: CardsService,
@@ -35,6 +37,7 @@ export class LoggedinCardComponent implements OnInit {
   }
 
   searchCards(searchParam: string): void {
+    this.searchPerformed = true;
     let cards = [];
     if (this.searchType == 'nombre'){
       cards = this.cardsService.getByName(searchParam);
