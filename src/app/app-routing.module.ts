@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'about', component:AboutComponent},
   { path: 'cartas', component: CartasComponent},
   {path: 'calendario', component: CalendarioComponent},
-  { path: 'landing-page', component: LandingPageComponent}
+  { path: 'landing-page', component: LandingPageComponent},
   { path: 'profile', component: ProfileComponent},
 ];
 
