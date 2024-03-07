@@ -77,6 +77,7 @@ import { EventoComponent } from './pages/evento/evento.component';
 
     //swiper@8
     // SwiperModule
+
   ],
   providers: [],
   bootstrap: [AppComponent],
