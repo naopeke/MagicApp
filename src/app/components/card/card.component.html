@@ -1,1 +1,97 @@
-<p>card works!</p>
+
+<!-- cartas sin logueado -->
+<div *ngIf="templateCard === 'type1'">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-lg-6">
+                <mat-card class="card">
+                    <img mat-card-image class="img-type1" src="{{ childCard.image_uris }}" alt="img"/>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- explorar -->
+<div *ngIf="templateCard === 'type2'">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-lg-2">
+                <mat-card class="card">
+                    <img mat-card-image class="img1-type2" src="{{ childCard.image_uris }}" alt="img"/>
+                    <mat-card-content class="type2-image-container">
+                        <img mat-card-image class="img2-type2" src="./assets/images/iconos/card-explorar.png" alt="img"/>
+                        <div class="text-type2">10</div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- cartas logueado busqueda-->
+<div *ngIf="templateCard === 'type3'">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-lg-2">
+                <mat-card class="card3">
+                    <img mat-card-image class="img1-type3" src="{{ childCard.image_uris }}" alt="img"/>
+                    <mat-card-content class="type3-image-container">
+                        <img mat-card-image 
+                            class="img2-type3" 
+                            src="./assets/images/iconos/+.png" 
+                            alt="img" 
+                            (click)="onPlusButtonClick()"
+                        />
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- cartas logueado favorito-->
+<div *ngIf="templateCard === 'type4'">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-lg-2">
+                <mat-card class="card4">
+                    <mat-card-header>
+                        <img mat-card-image 
+                            class="img2-type4" 
+                            src="./assets/images/iconos/X.png" 
+                            alt="img" 
+                            (click)="onDeleteButtonClick()"
+                        />
+                    </mat-card-header>
+                    <img mat-card-image class="img1-type4" src="{{ childCard.image_uris }}" alt="img"/>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- mis mazos-->
+<div *ngIf="templateCard === 'type5'">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-lg-2">
+                <mat-card class="card">
+                    <img mat-card-image class="img1-type5" src="{{ childCard.image_uris }}" alt="img"/>
+                    <mat-card-content class="type5-image-container">
+                        <img mat-card-image class="img2-type5" src="./assets/images/iconos/-cuadrado.png" alt="img" (click)="onCountPlusButtonClick()"/>
+                        <img mat-card-image class="img3-type5" src="./assets/images/iconos/card-explorar.png" alt="img"/>
+                        <div class="text-type5">10</div>
+                        <img mat-card-image class="img4-type5" src="./assets/images/iconos/+cuadrado.png" alt="img" (click)="onCountMinusButtonClick()"/>
+                        <img mat-card-image class="img5-type5" src="./assets/images/iconos/calavera-cuadrado.png" alt="img" (click)="onDeleteAllButtonClick()"/>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
+
+
