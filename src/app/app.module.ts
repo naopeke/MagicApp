@@ -98,6 +98,7 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
     
     //swiper@8
     // SwiperModule
+
   ],
   providers: [],
   bootstrap: [AppComponent],
