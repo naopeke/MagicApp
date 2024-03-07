@@ -1,8 +1,8 @@
 <header>
-    <div id="img_header"><img src="../../../assets/images/Logo.png" alt="MagyDeck"></div>
+    <div id="img_header" routerLink="landing-page"><img src="../../../assets/images/Logo.png" alt="MagyDeck"></div>
    
     <div class="dropdown">
-        <button class="button_lateral" routerLink=""  *ngIf="idBotonActivo === 'btnIniciarSesion'">Iniciar sesión</button>
+        <button class="button_lateral" routerLink="register"  *ngIf="idBotonActivo === 'btnIniciarSesion'">Iniciar sesión</button>
         <button class="button_lateral dropdown-toggle" (click)="modal_visible = !modal_visible" *ngIf="idBotonActivo === 'btnUsuario'">{{login1.user.name}}</button>
         <div *ngIf="modal_visible" class="dropdown-child">
           <span routerLink="profile">&nbsp;&nbsp;Perfil</span>
