@@ -11,10 +11,22 @@ export class CardComponent {
   @Input() templateCard: string;
 
   onPlusButtonClick(){
-    console.log('cliked plus button');
+    console.log('cliked the plus button');
   }
 
   onDeleteButtonClick(){
-    console.log('clicked x button');
+    console.log('clicked the x button');
+  }
+
+  onCountPlusButtonClick(){
+    console.log('clicked the count plus button');
+  }
+
+  onCountMinusButtonClick(){
+    console.log('clicked the count minus button');
+  }
+
+  onDeleteAllButtonClick(){
+    console.log('clicked the delete all button');
   }
 }
