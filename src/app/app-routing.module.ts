@@ -11,7 +11,7 @@ import { CalendarioComponent } from './pages/calendario/calendario.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent},
+  { path: '', component: LandingPageComponent},
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent},
   { path: 'mis-mazos', component: MisMazosComponent},
