@@ -39,26 +39,14 @@
 
         <div *ngIf="modal == false; else viewModal" class="container2">
             <div class="tituloPerfil">
-                <h1 id="titulo" 
-                [style.color]="user.marco == this.marcos[1] ? '#28669F' :
-                                user.marco == this.marcos[2] ? '#643D6A':
-                                user.marco == this.marcos[3] ? '#B6281A':
-                                user.marco == this.marcos[4] ? '#5C724B':''">
-                    Perfil
-                </h1>
+                <h1 id="titulo">Perfil</h1>
                 <img src="../../../assets/images/iconos/cartas.png" alt="">
             </div>
     
             <div class="modificarPerfil">
                 
                 <div class="editTitle">
-                    <h2 id="title2"
-                    [style.color]="user.marco == this.marcos[1] ? '#28669F' :
-                                user.marco == this.marcos[2] ? '#643D6A':
-                                user.marco == this.marcos[3] ? '#B6281A':
-                                user.marco == this.marcos[4] ? '#5C724B':''">
-                        Modificar perfil
-                    </h2>
+                    <h2 id="title2">Modificar perfil</h2>
                     <hr id="line2">
                 </div>
     
@@ -66,47 +54,86 @@
                 <form [formGroup]="editForm" class="editForm">
                    
                     <input type="text" name="user" id="user" placeholder="Nombre de usuario" 
-                    #name formControlName="name"
+                    formControlName="name"
                     [style.borderColor]="user.marco == this.marcos[1] ? '#28669F' :
                                 user.marco == this.marcos[2] ? '#643D6A':
                                 user.marco == this.marcos[3] ? '#B6281A':
-                                user.marco == this.marcos[4] ? '#5C724B':''">
+                                user.marco == this.marcos[4] ? '#5C724B':''"
+                    [ngClass]="{
+                    'is-invalid': !editForm.get('name').valid,
+                    'is-valid': editForm.get('name').valid}">
+
+                    <div *ngIf="!editForm.get('name').valid && editForm.get('name').errors?.maxlength" class="invalid-feedback m-0 text-center fw-bold">
+                        Nombre demasiado largo
+                    </div>
                     
                     <input type="email" name="email" id="email" placeholder="Correo electrónico" 
-                    #email formControlName="email"
+                    formControlName="email"
+                    
                     [style.borderColor]="user.marco == this.marcos[1] ? '#28669F' :
                     user.marco == this.marcos[2] ? '#643D6A':
                     user.marco == this.marcos[3] ? '#B6281A':
-                    user.marco == this.marcos[4] ? '#5C724B':''">
+                    user.marco == this.marcos[4] ? '#5C724B':''"
+                    
+                    [ngClass]="{
+                    'is-invalid': !editForm.get('email').valid ||editForm.get('email').hasError('email'),
+                    'is-valid': editForm.get('email').valid}">
+
+                    <div *ngIf="editForm.get('email').errors?.email"
+                        class="invalid-feedback m-0 text-center fw-bold">
+                        El email no es correcto
+                    </div>
                  
                     <textarea name="description" id="description" cols="1" rows="4" placeholder="Añade aquí tu descripción" 
-                    #description formControlName="description"
+                    formControlName="description"
                     [style.borderColor]="user.marco == this.marcos[1] ? '#28669F' :
                     user.marco == this.marcos[2] ? '#643D6A':
                     user.marco == this.marcos[3] ? '#B6281A':
-                    user.marco == this.marcos[4] ? '#5C724B':''"></textarea>
+                    user.marco == this.marcos[4] ? '#5C724B':''"
+                    [ngClass]="{
+                        'is-invalid': !editForm.get('description').valid,
+                        'is-valid': editForm.get('description').valid}">
+                    </textarea>
+
+                    <div *ngIf="!editForm.get('description').valid && editForm.get('description').errors?.maxlength" class="invalid-feedback m-0 text-center fw-bold">
+                        Descripción demasiado larga
+                    </div>
                     
-                    <input type="password" name="password" id="password" placeholder="Contraseña" 
-                    #password formControlName="password"
+                    <input type="password" name="password" id="password" placeholder="Nueva Contraseña" 
+                    formControlName="password"
                     [style.borderColor]="user.marco == this.marcos[1] ? '#28669F' :
                     user.marco == this.marcos[2] ? '#643D6A':
                     user.marco == this.marcos[3] ? '#B6281A':
-                    user.marco == this.marcos[4] ? '#5C724B':''">
+                    user.marco == this.marcos[4] ? '#5C724B':''"
+                    [ngClass]="{
+                        'is-invalid': !editForm.get('password').valid,
+                        'is-valid': editForm.get('password').valid}"
+                    >
+                    <div *ngIf="!editForm.get('password').valid && editForm.get('password').errors?.minlength" class="invalid-feedback m-0 text-center fw-bold">
+                        La contraseña debe contener mínimo 8 caracteres
+                    </div>
           
                     
                     <input type="password" name="password2" id="password2" placeholder="Repite Contraseña" 
-                    #password2 formControlName="password2"
+                    formControlName="password2"
                     [style.borderColor]="user.marco == this.marcos[1] ? '#28669F' :
                     user.marco == this.marcos[2] ? '#643D6A':
                     user.marco == this.marcos[3] ? '#B6281A':
-                    user.marco == this.marcos[4] ? '#5C724B':''">
-    
+                    user.marco == this.marcos[4] ? '#5C724B':''"
+                    [ngClass]="{
+                        'is-invalid': !editForm.get('password2').valid,
+                        'is-valid': editForm.get('password2').valid}">
+
+                    <div *ngIf="!editForm.get('password2').valid && editForm.get('password2').errors?.noMatch" class="invalid-feedback m-0 text-center fw-bold">
+                        Las contraseñas no coinciden
+                    </div>
+                        
                     <div *ngIf="editar == false; else guardar">
-                        <button type="button" class="editButton" (click)="edit(name.value, email.value, password.value, description.value)">Editar</button>
+                        <button type="button" class="editButton" (click)="edit()">Editar</button>
                     </div>
     
                     <ng-template #guardar>
-                        <button type="button" [ngClass]="editar == true ? 'saveButton': ''" (click)="edit(name.value, email.value, password.value, description.value)">Guardar Cambios</button>
+                        <button type="button" [ngClass]="editar == true ? 'saveButton': ''" [disabled]="!editForm.valid" (click)="edit()">Guardar Cambios</button>
                     </ng-template>
     
                 </form>

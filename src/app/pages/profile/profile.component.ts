@@ -31,6 +31,7 @@ export class ProfileComponent implements OnInit {
   
   // *NOTE - CREAR CLASE USER
   public user: any
+  
 
 
   constructor(private formBuilder: FormBuilder){
@@ -58,41 +59,56 @@ export class ProfileComponent implements OnInit {
     const minPassLength = 8
 
     this.editForm = this.formBuilder.group({
-      name: [this.user.name],
+      name: [this.user.name, Validators.maxLength(23)],
       email: [this.user.email, Validators.email],
-      description: [this.user.description, Validators.maxLength(160)],
-      password: [this.user.password, Validators.minLength(minPassLength)],
-      password2: [this.user.password, this.check]
+      description: [this.user.description, Validators.maxLength(200)],
+      password: [null, Validators.minLength(minPassLength)],
+      password2: [null, this.check]
+
+      
     })
   }
   
   private check(control:AbstractControl){
     let resultado = {noMatch: true}
-      if(control.parent?.value.password == control.value){
+    let password = control.parent?.value.password
+    let password2 = control.value
+
+      if(password == control.value || !password2 ){
         resultado = null
+        console.log(password2);
+        
       } else {
         console.log('Contraseñas no coinciden');
       }
     return resultado
   }
 
-  public edit(name:string, email: string, password: string, description: string){
+  public edit(){
     if (this.editar == false){
       this.editar = true;
       this.editForm.enable();
     
     } else {
-        this.user = {
-          name: name, 
-          email: email, 
-          password: password, 
-          description: description,
-          photo: this.user.photo,
-          marco: this.user.marco
-        }
-        this.editar = false
-        this.editForm.disable();
+      this.editar = false
+      this.editForm.disable();
+
+      if(!this.editForm.valid){
+        let editValues = this.editForm.value
+        this.user.name = editValues.name
+        this.user.email = editValues.email
+        this.user.description = editValues.description
+        this.user.password = editValues.password
+        console.log(this.editForm.value);
+      } else {
+        console.log('error');
+      }
     }
+
+
+
+   
+
   }
 
   // MODIFICAR FOTO Y MARCO 
@@ -113,17 +129,6 @@ public editPhoto(){
   }
   
   public seleccionTierra(tierra:string){
-    // if(tierra == this.tierras[0]){
-    //   this.user.marco = this.marcos[0]
-    // } else if (tierra == this.tierras[1]){
-    //   this.user.marco = this.marcos[1]
-    // } else if (tierra == this.tierras[2]){
-    //   this.user.marco = this.marcos[2]
-    // } else if (tierra == this.tierras[3]){
-    //   this.user.marco = this.marcos[3]
-    // } else if (tierra == this.tierras[4]){
-    //   this.user.marco = this.marcos[4]
-    // }
 
     this.user.marco = 
       tierra === this.tierras[0] ? this.marcos[0] :
@@ -132,9 +137,6 @@ public editPhoto(){
       tierra === this.tierras[3] ? this.marcos[3] :
       tierra === this.tierras[4] ? this.marcos[4] :
       console.log('Error');
-      
-
-  
-}
+  }
 }
 
