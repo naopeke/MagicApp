@@ -1,14 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Card } from 'src/app/models/card';
 import { CardsService } from 'src/app/shared/cards.service';
+import { MazoSelectorModalComponent } from '../mazo-selector-modal/mazo-selector-modal.component';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+
 
 @Component({
   selector: 'app-loggedin-card',
   templateUrl: './loggedin-card.component.html',
   styleUrls: ['./loggedin-card.component.css']
 })
-export class LoggedinCardComponent {
+export class LoggedinCardComponent implements OnInit {
   public cards: Card[]
   public card: Card;
   public parametro: string;
@@ -20,7 +25,9 @@ export class LoggedinCardComponent {
   constructor(
     public cardsService: CardsService,
     private router: Router,
-    private rutaActiva: ActivatedRoute
+    private rutaActiva: ActivatedRoute,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
   ){
 
     //app.routing.module.ts  {path: "cartas/:cardId", component:CartasComponent},
@@ -51,7 +58,29 @@ export class LoggedinCardComponent {
     console.log('Added to Builder: ', this.builderCards);
   }
 
+  openDeckDialog():void{
+    const dialogRef = this.dialog.open(MazoSelectorModalComponent, {
+      width: '700px',
+      height: '500px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if (result){
+        this.snackBar.open(`Añadido tu carta al mazo #${result}`, 'Cerrar', {
+          duration: 4000,
+          verticalPosition: 'top',
+        });
+      }
+    });
+  }
+
+
   ngOnInit(): void {
       
   }
-}
+  }
+
+
+
+
