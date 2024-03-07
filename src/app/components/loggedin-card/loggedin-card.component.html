@@ -37,7 +37,7 @@
          <div class="bg-builder">
             <div class="list-cards" *ngIf="builderCards.length > 0">
             <div *ngFor="let card of builderCards; let i = index">
-                <app-card [childCard]="card" [templateCard]="'type4'"></app-card>
+                <app-card [childCard]="card" [templateCard]="'type4'" (deleteFromChild)="onDeleteFromChild($event)"></app-card>
             </div>
             </div>
 

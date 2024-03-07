@@ -22,7 +22,7 @@ export class LoggedinCardComponent implements OnInit {
   public searchType: string = 'nombre' //default searchtype es nombre
   public builderCards: Card[] = []; // para meter datos en builder(constcucción)
   public searchPerformed: boolean = false; // si ha hecho la busqueda o no  default false
-
+  public selectedCards = new Set<string>(); // id de selected cards
 
   constructor(
     public cardsService: CardsService,
@@ -61,23 +61,31 @@ export class LoggedinCardComponent implements OnInit {
     console.log('Added to Builder: ', this.builderCards);
   }
 
-  openDeckDialog():void{
+  onDeleteFromChild(cardId: string){
+    this.builderCards = this.builderCards.filter(card => card.id_card !== cardId);
+    console.log('After deleting from Builder: ', this.builderCards);
+  }
+
+  //modal
+  openDeckDialog(): void {
     const dialogRef = this.dialog.open(MazoSelectorModalComponent, {
       width: '700px',
       height: '500px'
     });
-
-    dialogRef.afterClosed().subscribe(result => {
+  
+    dialogRef.afterClosed().subscribe(deckIndex => {
       console.log('The dialog was closed');
-      if (result){
-        this.snackBar.open(`Añadido tu carta al mazo #${result}`, 'Cerrar', {
+      if (typeof deckIndex !== 'undefined') {
+        this.cardsService.addCardsToDeck(deckIndex, Array.from(this.selectedCards));
+        this.snackBar.open(`Añadido tu carta al mazo #${deckIndex + 1}`, 'Cerrar', {
           duration: 4000,
           verticalPosition: 'top',
         });
+        this.selectedCards.clear();
       }
     });
   }
-
+  
 
   ngOnInit(): void {
       
