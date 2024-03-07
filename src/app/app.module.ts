@@ -49,6 +49,7 @@ import { CalendarioComponent } from './pages/calendario/calendario.component';
 import { EventoComponent } from './pages/evento/evento.component';
 import { ModalProfileComponent } from './components/modal-profile/modal-profile.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { CdkScrollableModule, CdkVirtualScrollViewport, ScrollingModule } from '@angular/cdk/scrolling';
 
 
 @NgModule({
@@ -96,7 +97,11 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
     MatSnackBarModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule, 
+    MatListModule, 
+    CdkVirtualScrollViewport, 
+    ScrollingModule
+
     
     //swiper@8
     // SwiperModule

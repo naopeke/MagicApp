@@ -1,1 +1,66 @@
-<p>explora works!</p>
+<main>
+    <section class="mazos">
+        <div class="buscador">
+
+            <div class="titulo">
+                <h2 class="tituloh2" >Vota y descubre los mejores mazos</h2>
+            </div>
+
+            <div class="buscar">
+                <form>
+                    <input type="text" id="name" placeholder="Nombre de Usuario/Mazo">
+                    <select name="filter" id="filter" required>
+                        <option value="nombre">Nombre Usuario</option>
+                        <option value="mazo">Nombre Mazo</option>
+                    </select>
+                    <button class="searchButton"><img src="../../../assets/images/explora/monocle.png" alt=""></button>
+                    
+                </form>
+            </div>
+
+            <div class="resultados">
+                <!-- <mat-list class=" scrolling-container mat-elevation-z7">
+                   
+                        <mat-list-item>
+                            <ng-container *ngFor="let dato of datos">
+                                <mat-list-item>
+                                    <div>{{ dato.puntuacion }}</div>
+                                    <div>{{ dato.nombreUsuario }}</div>
+                                    <div>{{ dato.nombreMazo }}</div>
+                                    <div *ngFor="let estrella of dato.estrellas">
+                                        <img [src]="estrella" alt="">
+                                    </div>
+                                </mat-list-item>
+                            </ng-container>
+
+                        </mat-list-item>
+                </mat-list> -->
+                <cdk-virtual-scroll-viewport itemSize="150" class="resultados">
+                    <div *cdkVirtualFor="let dato of datos">
+                      <div>{{ dato.puntuacion }}</div>
+                      <div>{{ dato.nombreUsuario }}</div>
+                      <div>{{ dato.nombreMazo }}</div>
+                      <div *ngFor="let estrella of dato.estrellas">
+                        <img [src]="estrella" alt="Estrella">
+                      </div>
+                    </div>
+                  </cdk-virtual-scroll-viewport>
+                  
+                <!-- <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+                    <div *cdkVirtualFor="let item of items" class="example-item">{{item}}</div>
+                  </cdk-virtual-scroll-viewport> -->
+            </div>
+
+        </div>
+
+        <div class="buscador">
+            <div class="titulo">
+                <h2 class="tituloh2">Mazos más votados</h2>
+            </div>
+
+        </div>
+    </section>
+    <section class="explora">
+
+    </section>
+</main>

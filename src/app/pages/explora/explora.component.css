@@ -1,0 +1,80 @@
+main{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.mazos, .explora{
+    height: 1100px;
+    width: 100%;
+    padding: 60px;
+    background-size: cover;
+}
+
+/* BUSCADORES */
+.mazos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 40px;
+
+    background-image: url(../../../assets/images/explora/fondoExplora.png);
+}
+
+.buscador{
+    width: 1200px;
+    height: 470px;
+    padding: 40px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    background-color: var(--negro-bg);
+    border-radius: var(--borde-cuadrado);
+}
+
+.titulo{
+    display: flex;
+    justify-content: center;
+}
+
+.tituloh2{
+    color: var(--amarillo);
+    font-family: var(--antiqua);
+    font-size: 24pt;
+}
+
+.searchButton{
+    background-color: transparent; 
+    border-color: var(--rojo);
+}
+
+/* Resultados1 */
+
+.resultados{
+    display: flex; 
+    width: 100%;
+    height: 220px;
+    background-color: transparent;
+    border: solid var(--rojo) 2px;
+    border-radius: var(--borde-cuadrado);
+}
+
+.example-viewport {
+    height: 200px;
+    width: 200px;
+    border: 1px solid black;
+  }
+  
+  .example-item {
+    height: 50px;
+  }
+
+
+/* EXPLORA */
+.explora{
+    background-image: url(../../../assets/images/explora/fondoExplora2.png);
+}
+
