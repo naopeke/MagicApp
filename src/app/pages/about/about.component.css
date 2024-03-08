@@ -9,11 +9,12 @@ main{
 
 .bloqueFoto{
     width: 100%;
-    height: 910px;
+    height: 920.6px;
     background-image: url('src/assets/images/about/foto1Nieve.png');
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .titulo-container{
@@ -24,6 +25,7 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 20px;
 }
 
 .bloqueAmarillo{
