@@ -1,0 +1,9 @@
+.swiper-wrapper {
+    background-image: url('./assets/images/fondos/fondo-mismazos.png');
+    background-repeat: no-repeat;
+}
+
+.deckcards-wrapper {
+    background-image: url('./assets/images/fondos/Fondo_morado.png');
+    background-repeat: repeat;
+}
