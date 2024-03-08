@@ -10,7 +10,7 @@ export class UsersService {
 
   constructor() { }
 
-  private loggedIn = true;
+  private loggedIn = false;
 
   public login(){
     this.loggedIn = true;

@@ -10,9 +10,10 @@
 .background-wrapper {
     background-image: url('/assets/images/fondos/carta-loggedout.png');
     width:100%;
-    top: 186px;
-    left:11px;
+    /* top: 186px;
+    left:11px; */
     object-fit: cover;
+    position: relative;
 }
 
 .search-container{

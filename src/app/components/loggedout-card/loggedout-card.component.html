@@ -1,7 +1,10 @@
 <div class="background-wrapper">
     <div [ngClass]= "darkenOverlay ? 'bg_dark' : ''">
+        <div class="container_login" *ngIf="show_cardinfo">
+            <app-card-info (onCardInfoClose)="card_info_close($event)"></app-card-info>
+        </div>
+
         <p class="title">CARTAS</p>
-        
         <div class="search-container">
             <form (submit)="searchCards(searchParam.value); $event.preventDefault()">
                 <input type="text" id="buscador" name="buscador" placeholder="Buscar" size="10" #searchParam (focus)="searchParam.value=''"/>
@@ -17,7 +20,7 @@
             <div class="bg-cards">
                 <div class="list-cards" *ngIf="resultsCards.length > 0">
                     <div *ngFor="let card of resultsCards; let i = index">
-                        <app-card [childCard]="card" [templateCard]="'type1'"></app-card>
+                        <app-card [childCard]="card" [templateCard]="'type1'" (click)="onCardInfoOpen()"></app-card>
                     </div>
                 
                     <div class="results-wrapper" *ngIf="resultsCards.length === 0 && searchPerformed">
