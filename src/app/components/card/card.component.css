@@ -54,7 +54,7 @@ mat-card-content {
     height: 36px;
     width:auto;
     bottom: 1px;
-    z-index: 1;
+    z-index: 9;
 }
 
 .text-type2{
@@ -64,7 +64,7 @@ mat-card-content {
     color: var(--negro);
     font-size: 14px;
     font-family:var(--antiqua);
-    z-index: 2;
+    z-index: 99;
 }
 
 

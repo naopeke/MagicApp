@@ -7,48 +7,35 @@
             </div>
 
             <div class="buscar">
-                <form>
-                    <input type="text" id="name" placeholder="Nombre de Usuario/Mazo">
-                    <select name="filter" id="filter" required>
+                <form class="form">
+                    <input class="input input2" type="text" id="name" placeholder="Nombre de Usuario/Mazo">
+                    <select class="input select" name="filter" id="filter" required>
                         <option value="nombre">Nombre Usuario</option>
                         <option value="mazo">Nombre Mazo</option>
                     </select>
-                    <button class="searchButton"><img src="../../../assets/images/explora/monocle.png" alt=""></button>
+                    <button type="button" class=" input searchButton">
+                        <img id="lupa" src="../../../assets/images/explora/monocle.png" alt="">
+                    </button>
                     
                 </form>
             </div>
 
             <div class="resultados">
-                <!-- <mat-list class=" scrolling-container mat-elevation-z7">
-                   
-                        <mat-list-item>
-                            <ng-container *ngFor="let dato of datos">
-                                <mat-list-item>
-                                    <div>{{ dato.puntuacion }}</div>
-                                    <div>{{ dato.nombreUsuario }}</div>
-                                    <div>{{ dato.nombreMazo }}</div>
-                                    <div *ngFor="let estrella of dato.estrellas">
-                                        <img [src]="estrella" alt="">
-                                    </div>
-                                </mat-list-item>
-                            </ng-container>
-
-                        </mat-list-item>
-                </mat-list> -->
-                <cdk-virtual-scroll-viewport itemSize="150" class="resultados">
-                    <div *cdkVirtualFor="let dato of datos">
-                      <div>{{ dato.puntuacion }}</div>
-                      <div>{{ dato.nombreUsuario }}</div>
-                      <div>{{ dato.nombreMazo }}</div>
-                      <div *ngFor="let estrella of dato.estrellas">
-                        <img [src]="estrella" alt="Estrella">
-                      </div>
+                <cdk-virtual-scroll-viewport itemSize="100" class="scroll">
+                    <div class="bucleContainer"> 
+                        <div *cdkVirtualFor="let dato of datos" class="bucle">
+                            <div class="datos puntuacion">{{ dato.puntuacion }}</div>
+                            <div class="datos usuario">{{ dato.nombreUsuario }}</div>
+                            <div class="datos mazo">{{ dato.nombreMazo }}</div>
+                            <div class="datos explorar" (click)="explora()">Explora</div>
+                            <div  class="datos estrellas">
+                              <div *ngFor="let estrella of dato.estrellas">
+                                  <img id="estrella" [src]="estrella" alt="Estrella">
+                              </div>
+                            </div>
+                          </div>
                     </div>
-                  </cdk-virtual-scroll-viewport>
-                  
-                <!-- <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
-                    <div *cdkVirtualFor="let item of items" class="example-item">{{item}}</div>
-                  </cdk-virtual-scroll-viewport> -->
+                </cdk-virtual-scroll-viewport>
             </div>
 
         </div>
@@ -58,9 +45,53 @@
                 <h2 class="tituloh2">Mazos más votados</h2>
             </div>
 
+            <div class="resultados2">
+                <cdk-virtual-scroll-viewport itemSize="100" class="scroll2">
+                    <div class="bucleContainer"> 
+                        <div *cdkVirtualFor="let dato of datosVotados" class="bucle">
+                            <div class="datos puntuacion">{{ dato.puntuacion }}</div>
+                            <div class="datos usuario">{{ dato.nombreUsuario }}</div>
+                            <div class="datos mazo">{{ dato.nombreMazo }}</div>
+                            <div class="datos explorar" (click)="explora()">Explora</div>
+                            <div  class="datos estrellas">
+                              <div *ngFor="let estrella of dato.estrellas">
+                                  <img id="estrella" [src]="estrella" alt="Estrella">
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                </cdk-virtual-scroll-viewport>
+            </div>
+
         </div>
     </section>
-    <section class="explora">
+    <section class="explora" *ngIf="explorar == true">
+            <div class=" titulo">
+                <h2 class="tituloh2">{{datos[0].nombreMazo}}</h2>
+            </div>
+            <div class="filtros">
+                <div class="nombreFiltro"><p class="textoFiltro">Todas las cartas</p></div>
+                <div class="nombreFiltro"><p class="textoFiltro">Criaturas</p></div>
+                <div class="nombreFiltro"><p class="textoFiltro">Artefactos</p></div>
+                <div class="nombreFiltro"><p class="textoFiltro">Encantamientos</p></div>
+                <div class="nombreFiltro"><p class="textoFiltro">Conjuros</p></div>
+                <div class="nombreFiltro"><p class="textoFiltro">Instantáneas</p></div>
+                <div class="nombreFiltro"><p class="textoFiltro">Planswalkers</p></div>
+                <div class="nombreFiltro"><p class="textoFiltro">Batallas</p></div>
+                <div class="nombreFiltro"><p class="textoFiltro">Tierras</p></div>
+            </div>
+            <div class="cartas">
+                <cdk-virtual-scroll-viewport itemSize="40" class="bucleContainer">
+                    <div class="cartasContainer">
+                        <div *cdkVirtualFor="let cartas of datos[1].cartas">
+                            <app-card [templateCard] = "'type2'" [childCard] = "cartas"></app-card>
+                        </div>
+                    </div>
+                </cdk-virtual-scroll-viewport>
 
+               
+
+            </div>
+    
     </section>
 </main>
