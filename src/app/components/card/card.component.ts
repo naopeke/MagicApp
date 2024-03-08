@@ -18,8 +18,9 @@ export class CardComponent {
   }
 
   // pagina cartas
-  onPlusButtonClick(){
+  onPlusButtonClick(event:Event){
     console.log('cliked the plus button');
+    event.stopPropagation(); 
     this.addCardToBuilder.emit(this.childCard);
   }
 

@@ -59,7 +59,7 @@ export class LoggedinCardComponent implements OnInit {
     }
   }
 
-  onAddCardToBuilder(card:Card){
+  onAddCardToBuilder(card: Card): void {
     this.builderCards.push(card);
     console.log('Added to Builder: ', this.builderCards);
   }

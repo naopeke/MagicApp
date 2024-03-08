@@ -48,12 +48,12 @@
 }
 
 .title {
-    font-size: 58px;
+    font-size: 48px;
     font-family: var(--antiqua);
     color:var(--azul);
     text-align: center;
-    padding-top:48px;
-    margin-bottom: 40px;
+    padding-top:32px;
+    margin-bottom: 32px;
 }
 
 .search-container {
@@ -179,7 +179,7 @@ select {
     /* border:2px solid red; */
     padding: 100px 120px 0 120px;
     font-family: var(--antiqua);
-    font-size: 25px;
+    font-size: 18px;
     color:var(--blanco);
     line-height: 180%;
 }
