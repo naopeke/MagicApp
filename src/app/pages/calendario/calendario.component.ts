@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatCalendar } from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-calendario',
