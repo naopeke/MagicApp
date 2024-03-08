@@ -135,3 +135,7 @@ img{
 .name_button_type{
     padding-top: 5px;
 }
+
+.container {
+    z-index: 10000;
+}
