@@ -15,4 +15,17 @@ p{
     border: var(--morado-2paints) solid 1px;
     width: 90%;
     padding-top: 10px;
+    margin-top: 10px;
+}
+img{
+    width: 500px;
+}
+#img_footer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+p{
+    font-family: var(--inter);
 }
