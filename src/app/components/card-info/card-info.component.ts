@@ -58,6 +58,9 @@ export class CardInfoComponent implements OnInit{
       {"key": "standard", "value": "not_legal"},
       {"key": "future", "value": "not_legal"},
       {"key": "commander", "value": "legal"},
+      {"key": "standard", "value": "not_legal"},
+      {"key": "future", "value": "restrict"},
+      {"key": "commander", "value": "banned"}
     ],
     3.63,
     "Murders at Karlov Manor Commander",
