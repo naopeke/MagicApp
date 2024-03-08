@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-sm-6 col-md-4 col-lg-6">
                 <mat-card class="card">
-                    <img mat-card-image class="img-type1" src="{{ childCard.image_uris }}" alt="img"/>
+                    <img mat-card-image class="img-type1" [src]="childCard.image_uris" alt="img"/>
                 </mat-card>
             </div>
         </div>
@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-sm-6 col-md-4 col-lg-2">
                 <mat-card class="card">
-                    <img mat-card-image class="img1-type2" src="{{ childCard.image_uris }}" alt="img"/>
+                    <img mat-card-image class="img1-type2" [src]="childCard.image_uris" alt="img"/>
                     <mat-card-content class="type2-image-container">
                         <img mat-card-image class="img2-type2" src="./assets/images/iconos/card-explorar.png" alt="img"/>
                         <div class="text-type2">10</div>
@@ -35,7 +35,7 @@
         <div class="row">
             <div class="col-sm-6 col-md-4 col-lg-2">
                 <mat-card class="card3">
-                    <img mat-card-image class="img1-type3" src="{{ childCard.image_uris }}" alt="img"/>
+                    <img mat-card-image class="img1-type3" [src]="childCard.image_uris" alt="img"/>
                     <mat-card-content class="type3-image-container">
                         <img mat-card-image 
                             class="img2-type3" 
@@ -66,7 +66,7 @@
                             (click)="onDeleteButtonClick()"
                         />
                     </mat-card-header>
-                    <img mat-card-image class="img1-type4" src="{{ childCard.image_uris }}" alt="img"/>
+                    <img mat-card-image class="img1-type4" [src]="childCard.image_uris" alt="img"/>
                 </mat-card>
             </div>
         </div>
@@ -80,7 +80,7 @@
         <div class="row">
             <div class="col-sm-6 col-md-4 col-lg-2">
                 <mat-card class="card">
-                    <img mat-card-image class="img1-type5" src="{{ childCard.image_uris }}" alt="img"/>
+                    <img mat-card-image class="img1-type5" [src]="childCard.image_uris" alt="img"/>
                     <mat-card-content class="type5-image-container">
                         <img mat-card-image class="img2-type5" src="./assets/images/iconos/-cuadrado.png" alt="img" (click)="onCountPlusButtonClick()"/>
                         <img mat-card-image class="img3-type5" src="./assets/images/iconos/card-explorar.png" alt="img"/>

@@ -1,0 +1,20 @@
+<div class="modal-wrapper">
+    <div class="top-wrapper">
+        <div class="deck-lists">
+            <ul>
+                <li (click)="selectDeck(1)"><span>Mazo #1</span></li>
+                <li (click)="selectDeck(2)"><span>Mazo #2</span></li>
+                <li (click)="selectDeck(3)"><span>Mazo #3</span></li>
+                <li (click)="selectDeck(4)"><span>Mazo #4</span></li>
+                <li (click)="selectDeck(5)"><span>Mazo #5</span></li>
+            </ul>
+        </div>
+        <img src="./assets/images/personajes/modal-deck.png" alt="">
+    </div>
+    
+    <div class="bottom-wrapper">
+        <mat-dialog-actions>
+            <button mat-button [mat-dialog-close] cdkFocusInitial class="btn-close">OK</button>
+        </mat-dialog-actions>
+    </div>
+</div>
