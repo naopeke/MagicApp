@@ -22,7 +22,10 @@ export class LoggedinCardComponent implements OnInit {
   public searchType: string = 'nombre' //default searchtype es nombre
   public builderCards: Card[] = []; // para meter datos en builder(constcucción)
   public searchPerformed: boolean = false; // si ha hecho la busqueda o no  default false
-  public selectedCards = new Set<string>(); // id de selected cards
+ 
+  public darkenOverlay:boolean = false; // modal de xisca
+  public show_cardinfo:boolean = false; // modal de xisca
+
 
   constructor(
     public cardsService: CardsService,
@@ -107,6 +110,18 @@ export class LoggedinCardComponent implements OnInit {
   ngOnInit(): void {
       
   }
+
+
+  public login(){
+    this.darkenOverlay=true; 
+    this.show_cardinfo = true; 
+  }
+
+  public OnCardInfoClose(show: boolean){
+    this.darkenOverlay = show;
+    this.show_cardinfo = show;
+  }
+
   }
 
 
