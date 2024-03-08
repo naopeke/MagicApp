@@ -11,18 +11,41 @@ export class CardInfoComponent implements OnInit{
   @Input() origin: string;
   @Input() id_card: number;
   public card: Card;
+
+  legalities = [
+    {text: 'not legal', color: 'grey'},
+    {text: 'not legal', color: 'red'},
+    {text: 'not legal', color: 'blue'},
+    {text: 'not legal', color: 'green'},
+  ];
+
+  public getColor(value:string){
+    if (value === 'not legal'){
+      return '#616161'
+    }
+    else if (value === 'banned'){
+      return '#B6281A'
+    }
+    else if (value === 'restrict'){
+      return '#28669F'
+    }
+    else if (value === 'legal'){
+      return '#5C724B'
+    }
+  }
+
+  card_info_close(){
+    // this.onCardInfoClose.emit(false);
+
+  }
+
+
   
   constructor(public cardsService: CardsService){}
 
   ngOnInit(): void {
-    //TODO: llamar a servicio por id y incializar "card" con los datos
+    //TODO: llamar a servicio por id y incializar "card" con los datos reales de BBDD
 
-    //Es necesario que las legalities sean un array de objetos legality
-    // [
-    //   {"key": "standard", "value": "not_legal"},
-    //   {"key": "future", "value": "not_legal"},
-    //   {"key": "commander", "value": "legal"},
-    // ]
 
     this.card = new Card("175b3d28-5c74-4972-9b5c-5e39762c78f4", 
     1, 

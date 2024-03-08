@@ -2,7 +2,7 @@
     <div class="bg_img">
         <div class="bg_dark">
             <div class="delete_button">
-                <button type="button" class="btn-close" >X</button>
+                <button type="button" class="btn-close" (click)="card_info_close" >X</button>
             </div>
             <div class="title">{{ card.name }} {{ card.mana_cost}}</div>
             <div class="row main">
@@ -14,12 +14,11 @@
                     <div class="text_box">
                         <h3 class="subtitle">Tipo: {{card.type_line}}</h3>
                         <h4 class="subtitle2">Indestructible</h4>
-                        <h4 class="text">Texto que no tengo</h4>
                         <h4 class="text">{{card.oracle_text}}</h4>
                     </div>  
                     <div class="etiquetas">
                         <div *ngFor="let legality of card.legalities" class="etiqueta">
-                            <div class="button_type">{{ legality.key }}</div>
+                            <div class="button_type" [ngStyle]="{'background': getColor(legality.value)}">{{ legality.key }}</div>
                             <div class="name_button_type">{{ legality.value }}</div>
                         </div>
                     </div>  
