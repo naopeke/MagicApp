@@ -53,6 +53,8 @@ import { ExploraComponent } from './pages/explora/explora.component';
 import { CalendarioComponent } from './pages/calendario/calendario.component';
 import { EventoComponent } from './pages/evento/evento.component';
 import { MazoSelectorModalComponent } from './components/mazo-selector-modal/mazo-selector-modal.component';
+import { ModalProfileComponent } from './components/modal-profile/modal-profile.component';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 
 
 @NgModule({
@@ -63,6 +65,7 @@ import { MazoSelectorModalComponent } from './components/mazo-selector-modal/maz
     CardComponent,
     HomeComponent,
     CardInfoComponent,
+    LandingPageComponent,
     LoggedoutCardComponent,
     LoggedinCardComponent,
     RegisterComponent,
@@ -74,7 +77,8 @@ import { MazoSelectorModalComponent } from './components/mazo-selector-modal/maz
     ExploraComponent,
     CalendarioComponent,
     EventoComponent,
-    MazoSelectorModalComponent,
+    ModalProfileComponent,
+    MazoSelectorModalComponent
   ],
 
   imports: [
@@ -106,6 +110,7 @@ import { MazoSelectorModalComponent } from './components/mazo-selector-modal/maz
     
     //swiper@8
     // SwiperModule
+
   ],
   providers: [],
   bootstrap: [AppComponent],

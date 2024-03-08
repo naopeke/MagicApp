@@ -1,1 +1,166 @@
-<p>profile works!</p>
+<main>
+    <section [ngClass]="modal == false ? 'container': 'editContainer'">
+        <div class="infoPerfil">
+            <div class="cardPerfil">
+
+                <div class="nameContainer">
+                    <p id="nameUser">{{user.name}}</p>
+                </div>
+
+                <img class="imgCard" [src]="user.marco" alt="">
+                <img class="imgFondo" src="../../../assets/images/profile/fondoCarta.png" alt="">
+                <img class="imgAvatar" [src]="user.photo" alt="">
+                
+                <div class="sobreMiContainer">
+                    <p class="sobreMi">Criatura - humano</p>
+                    <img class="iconSobreMi" src="../../../assets/images/iconos/humano.png" alt="">
+                </div>
+                
+                <div class="infoUser">
+                    <div class="email">
+                        <p id="emailTitle">Correo Electrónico</p>
+                        <p id="emailUser">{{user.email}}</p>
+                    </div>
+                    <hr class="line">
+                    <div class="description">
+                        <p id="descriptionTitle">Descripción</p>
+                        <p id="descriptionUser">{{user.description}}</p>
+                    </div>
+                </div>
+
+            </div>
+            <div *ngIf="editarFoto == false; else cambiar">
+                <button class="buttonEditFoto" (click)="editPhoto()">Editar Foto/Tierra</button>
+            </div>
+            <ng-template #cambiar>
+                <button type="button" class="buttonSaveFoto" (click)="editPhoto()">Guardar cambios </button>
+            </ng-template>
+        </div>
+
+        <div *ngIf="modal == false; else viewModal" class="container2">
+            <div class="tituloPerfil">
+                <h1 id="titulo">Perfil</h1>
+                <img src="../../../assets/images/iconos/cartas.png" alt="">
+            </div>
+    
+            <div class="modificarPerfil">
+                
+                <div class="editTitle">
+                    <h2 id="title2">Modificar perfil</h2>
+
+                </div>
+    
+                <!-- *NOTE - AÑADIR VALIDACIONES A LA VISTA + maxlength en name -->
+                <form [formGroup]="editForm" class="editForm">
+                   
+                    <input type="text" name="user" id="user" placeholder="Nombre de usuario" 
+                    formControlName="name"
+                    [style.borderColor]="user.marco == this.marcos[1] ? '#28669F' :
+                                user.marco == this.marcos[2] ? '#643D6A':
+                                user.marco == this.marcos[3] ? '#B6281A':
+                                user.marco == this.marcos[4] ? '#5C724B':''"
+                    [ngClass]="{
+                    'is-invalid': !editForm.get('name').valid,
+                    'is-valid': editForm.get('name').valid}">
+
+                    <div *ngIf="!editForm.get('name').valid && editForm.get('name').errors?.maxlength" class="invalid-feedback m-0 text-center fw-bold">
+                        Nombre demasiado largo
+                    </div>
+                    
+                    <input type="email" name="email" id="email" placeholder="Correo electrónico" 
+                    formControlName="email"
+                    
+                    [style.borderColor]="user.marco == this.marcos[1] ? '#28669F' :
+                    user.marco == this.marcos[2] ? '#643D6A':
+                    user.marco == this.marcos[3] ? '#B6281A':
+                    user.marco == this.marcos[4] ? '#5C724B':''"
+                    
+                    [ngClass]="{
+                    'is-invalid': !editForm.get('email').valid ||editForm.get('email').hasError('email'),
+                    'is-valid': editForm.get('email').valid}">
+
+                    <div *ngIf="editForm.get('email').errors?.email"
+                        class="invalid-feedback m-0 text-center fw-bold">
+                        El email no es correcto
+                    </div>
+                 
+                    <textarea name="description" id="description" cols="1" rows="4" placeholder="Añade aquí tu descripción" 
+                    formControlName="description"
+                    [style.borderColor]="user.marco == this.marcos[1] ? '#28669F' :
+                    user.marco == this.marcos[2] ? '#643D6A':
+                    user.marco == this.marcos[3] ? '#B6281A':
+                    user.marco == this.marcos[4] ? '#5C724B':''"
+                    [ngClass]="{
+                        'is-invalid': !editForm.get('description').valid,
+                        'is-valid': editForm.get('description').valid}">
+                    </textarea>
+
+                    <div *ngIf="!editForm.get('description').valid && editForm.get('description').errors?.maxlength" class="invalid-feedback m-0 text-center fw-bold">
+                        Descripción demasiado larga
+                    </div>
+
+                    <div *ngIf="editar == false; else guardar">
+                        <button type="button" class="editButton" (click)="edit()">Editar</button>
+                    </div>
+    
+                    <ng-template #guardar>
+                        <button type="button" [ngClass]="editar == true ? 'saveButton': ''" [disabled]="!editForm.valid" (click)="edit()">Guardar Cambios</button>
+                    </ng-template>
+                </form>
+
+                <hr id="line2">
+
+                <div class="editTitle">
+                    <h2 id="title2">Modificar contraseña</h2>
+                </div>
+
+                <form [formGroup]="editPassword" class="editForm">
+
+                    <input type="password" name="password" id="password" placeholder="Nueva Contraseña" 
+                    formControlName="password"
+                    [style.borderColor]="user.marco == this.marcos[1] ? '#28669F' :
+                    user.marco == this.marcos[2] ? '#643D6A':
+                    user.marco == this.marcos[3] ? '#B6281A':
+                    user.marco == this.marcos[4] ? '#5C724B':''"
+                    [ngClass]="{
+                    'is-invalid': (editPassword.get('password').dirty || editPassword.get('password').touched) && !editPassword.get('password').valid,
+                    'valid': editPassword.get('password').valid
+                }">
+                    <div *ngIf="!editPassword.get('password').valid" class="invalid-feedback m-0 text-center fw-bold">
+                        <div *ngIf="editPassword.get('password').errors?.required">Escribe la nueva contraseña</div>
+                        <div *ngIf="editPassword.get('password').errors?.minlength">Contraseña no valida</div>
+                    </div>
+          
+                    <input type="password" name="password2" id="password2" placeholder="Repite Contraseña" 
+                    formControlName="password2"
+                    [style.borderColor]="user.marco == this.marcos[1] ? '#28669F' :
+                    user.marco == this.marcos[2] ? '#643D6A':
+                    user.marco == this.marcos[3] ? '#B6281A':
+                    user.marco == this.marcos[4] ? '#5C724B':''"
+                    [ngClass]="{
+                        'is-invalid': (editPassword.get('password2').dirty || editPassword.get('password2').touched) && !editPassword.get('password2').valid,
+                        'valid': editPassword.get('password2').valid
+                    }">
+
+                    <div *ngIf="!editPassword.get('password2').valid" class="invalid-feedback m-0 text-center fw-bold">
+                        <div *ngIf="editPassword.get('password2').errors?.required">Repite la Contraseña</div>
+                        <div *ngIf="editPassword.get('password2').errors?.noMatch">Contraseñas no coinciden</div>
+                    </div>
+                        
+                    <div *ngIf="editarPass == false; else guardar2">
+                        <button type="button" class="editButton" (click)="editPass()">Editar</button>
+                    </div>
+    
+                    <ng-template #guardar2>
+                        <button type="button" [ngClass]="editarPass == true ? 'saveButton': ''" [disabled]="!editPassword.valid" (click)="editPass()">Guardar Cambios</button>
+                    </ng-template>
+    
+                </form>
+            </div>
+        </div>
+      
+        <ng-template #viewModal>
+            <app-modal-profile (eventoAvatar) = seleccionAvatar($event) (eventoTierra) = seleccionTierra($event)></app-modal-profile>
+        </ng-template>
+    </section>
+</main>
