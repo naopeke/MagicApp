@@ -12,7 +12,7 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
-  // { path: '', component: HomeComponent},
+  { path: '', component: LandingPageComponent},
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent},
   { path: 'mis-mazos', component: MisMazosComponent},
@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'evento', component:EventoComponent},
   { path: 'about', component:AboutComponent},
   { path: 'cartas', component: CartasComponent},
-  {path: 'calendario', component: CalendarioComponent},
+  { path: 'calendario', component: CalendarioComponent},
   { path: 'landing-page', component: LandingPageComponent},
   { path: 'profile', component: ProfileComponent},
 ];
