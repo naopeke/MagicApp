@@ -1,0 +1,44 @@
+.mazos{
+    display: flex;
+    gap:5px
+}
+
+.datos{
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    
+    align-items: center;
+    background-color: #330a05;
+    border-radius: var(--borde-input);
+    color: var(--blanco);
+    font-family: var(--inter);
+    font-size: 18pt;
+
+}
+
+.puntuacion{
+    width: 100px;
+    color: var(--amarillo);
+}
+
+.usuario, .mazo{
+    width: 250px;
+}
+
+.explorar{
+    width: 200px;;
+}
+
+.explorar:hover{
+    border: solid var(--amarillo);
+    cursor: pointer;
+}
+.estrellas{
+    width: 200px;
+    gap: 5px;
+}
+
+#estrella{
+    width: 30px;
+}

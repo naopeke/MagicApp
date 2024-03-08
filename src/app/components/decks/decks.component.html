@@ -1,0 +1,13 @@
+<div class="mazos">
+    <div class="datos puntuacion">{{ dato.score }}</div>
+    <div class="datos usuario">{{ dato.nameUser }}</div>
+    <div class="datos mazo">{{ dato.nameDeck }}</div>
+    <div class="datos explorar" (click)="explora(dato.id_deck)">Explora</div>
+    <div  class="datos estrellas">
+    <div *ngFor="let estrella of dato.stars">
+        <img id="estrella" [src]="estrella" alt="Estrella">
+    </div>
+</div>
+
+
+

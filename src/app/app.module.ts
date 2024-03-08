@@ -50,6 +50,7 @@ import { EventoComponent } from './pages/evento/evento.component';
 import { ModalProfileComponent } from './components/modal-profile/modal-profile.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { CdkScrollableModule, CdkVirtualScrollViewport, ScrollingModule } from '@angular/cdk/scrolling';
+import { DecksComponent } from './components/decks/decks.component';
 
 
 @NgModule({
@@ -72,7 +73,8 @@ import { CdkScrollableModule, CdkVirtualScrollViewport, ScrollingModule } from '
     ExploraComponent,
     CalendarioComponent,
     EventoComponent,
-    ModalProfileComponent
+    ModalProfileComponent,
+    DecksComponent
   ],
 
   imports: [

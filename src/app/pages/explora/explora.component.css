@@ -23,7 +23,7 @@ main{
 }
 
 .buscador{
-    width: 1200px;
+    width: 66%;
     height: 470px;
     padding: 40px;
 
@@ -38,12 +38,14 @@ main{
 .titulo{
     display: flex;
     justify-content: center;
+    
 }
 
 .tituloh2{
     color: var(--amarillo);
     font-family: var(--antiqua);
     font-size: 28pt;
+    text-align: center;
 }
 /* input */
 
@@ -106,26 +108,23 @@ main{
 
 /* Resultados1 */
 
-.resultados, .scroll, .resultados2, .scroll2{
+.scroll, .scroll2{
     display: flex; 
     width: 100%;
-
     border-radius: var(--borde-cuadrado);
     background-color: rgba(30, 6, 3, 0.5);
-
 }
 
-.resultados, .scroll{
+.scroll{
     height: 250px;
 }
 
-.resultados2, .scroll2{
+ .scroll2{
     height: 320px;
 }
 
-
 .bucleContainer{
-    padding-top: 30px;
+    padding-top: 20px;
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -133,52 +132,8 @@ main{
 .bucle{
     display: flex;
     justify-content: center;
-    gap: 10px;
 }
 
-.datos{
-    height: 55px;
-    display: flex;
-    justify-content: center;
-    
-    align-items: center;
-    background-color: #330a05;
-    border-radius: var(--borde-input);
-    color: var(--blanco);
-    font-family: var(--inter);
-    font-size: 18pt;
-
-}
-
-.puntuacion{
-    width: 100px;
-    color: var(--amarillo);
-}
-
-.usuario, .mazo{
-    width: 250px;
-}
-
-.explorar{
-    width: 200px;;
-}
-
-.explorar:hover{
-    border: solid var(--amarillo);
-    cursor: pointer;
-}
-.estrellas{
-    width: 200px;
-    gap: 5px;
-}
-
-#estrella{
-    width: 30px;
-}
-
-/* #estrella:hover{
-    filter: hue-rotate(90deg)
-} */
 
 cdk-virtual-scroll-viewport::-webkit-scrollbar{
      background-color: transparent;
@@ -203,13 +158,14 @@ cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb:hover{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
+    gap: 60px;
 }
 
 .filtros{
     width: 100%;
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 .nombreFiltro{
@@ -234,22 +190,135 @@ cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb:hover{
     width: 87%;
     height: 800px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
     background-color: var(--negro-bg);
     border-radius: var(--borde-cuadrado);
 }
 
+.contador{
+    position: relative;
+    bottom: 40px;
+}
+
+#numCartas{
+    position: absolute;
+    top: 27px;
+    left: 40px;
+    font-family: var(--antiqua);
+    color: var(--amarillo);
+    font-size: 20pt;
+}
+
 .bucleContainer{
     width: 100%;
-    height: 100%;
+    height: 700px;
 }
 
 .cartasContainer{
-    padding-top: 40px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 5px;
     width: 100%;
 }
+
+@media screen and (max-width: 1900px) 
+{
+    .buscador{
+        width: 68%;
+    }
+}
+
+@media screen and (max-width: 1850px) 
+{
+    .buscador{
+        width: 69%;
+    }
+}
+
+@media screen and (max-width: 1800px) 
+{
+    .buscador{
+        width: 72%;
+    }
+}
+
+@media screen and (max-width: 1750px) 
+{
+    .buscador{
+        width: 74%;
+    }
+}
+
+@media screen and (max-width: 1700px) 
+{
+    .buscador{
+        width: 76%;
+    }
+}
+
+@media screen and (max-width: 1650px) 
+{
+    .buscador{
+        width: 78%;
+    }
+}
+
+@media screen and (max-width: 1600px) 
+{
+    .buscador{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 1550px) 
+{
+    .buscador{
+        width: 83%;
+    }
+}
+
+@media screen and (max-width: 1500px) 
+{
+    .buscador{
+        width: 85%;
+    }
+}
+
+@media screen and (max-width: 1450px) 
+{
+    .buscador{
+        width: 89%;
+    }
+}
+@media screen and (max-width: 1400px) 
+{
+    .buscador{
+        width: 92%;
+    }
+}
+
+@media screen and (max-width: 1350px) 
+{
+    .buscador{
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 1300px) 
+{
+    .buscador{
+        width: 97%;
+    }
+}
+
+@media screen and (max-width: 1250px) 
+{
+    .buscador{
+        width: 100%;
+    }
+}
+
 

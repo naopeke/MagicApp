@@ -2,180 +2,179 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import { Card } from 'src/app/models/card';
+import { Deck } from 'src/app/models/deck';
+
 
 @Component({
   selector: 'app-explora',
   templateUrl: './explora.component.html',
-  styleUrls: ['./explora.component.css']
+  styleUrls: ['./explora.component.css'],
+
 })
 export class ExploraComponent {
-
-  public datos: object[]
-  public datosVotados: object[]
-  public explorar: boolean = true
+  
+  public datos: Deck[]
+  public mazo: Deck
+  public datosVotados: Deck[]
+  public explorar: boolean = false
 
   constructor(){
     this.datos = [
-      {
-        puntuacion: 5, 
-        nombreUsuario: 'Kaoser',
-        nombreMazo: 'dragonfly',
-        estrellas: ["../../../assets/images/iconos/estrella2.png",
-        "../../../assets/images/iconos/estrella2.png",
-        "../../../assets/images/iconos/estrella2.png",
-        "../../../assets/images/iconos/estrella2.png",
-        "../../../assets/images/iconos/estrella2.png"],
-        cartas: [ new Card('1', 0,"../../../assets/images/carta1landing.png"),
+      new Deck(1, 'Dragonfly', 'Kaoser', 5, [ new Card('1', 0,"../../../assets/images/carta1landing.png"),
         new Card('2', 0,"../../../assets/images/carta1landing.png"),
         new Card('3', 0,"../../../assets/images/carta1landing.png"),
-        new Card('4', 0,"../../../assets/images/carta1landing.png")]
-      },
-      {
-        puntuacion: 5, 
-        nombreUsuario: 'Kaoser',
-        nombreMazo: 'dragonfly',
-        estrellas: ["../../../assets/images/iconos/estrella2.png",
+        new Card('4', 0,"../../../assets/images/carta1landing.png")], 
+        ["../../../assets/images/iconos/estrella2.png",
         "../../../assets/images/iconos/estrella2.png",
         "../../../assets/images/iconos/estrella2.png",
         "../../../assets/images/iconos/estrella2.png",
-        "../../../assets/images/iconos/estrella2.png"],
-        cartas: [ new Card('1', 1,"../../../assets/images/carta1landing.png"),
-        new Card('2', 1,"../../../assets/images/carta1landing.png"),
-        new Card('3', 1,"../../../assets/images/carta1landing.png"),
-        new Card('4', 1,"../../../assets/images/carta1landing.png"),
-        new Card('1', 1,"../../../assets/images/carta1landing.png"),
-        new Card('2', 1,"../../../assets/images/carta1landing.png"),
-        new Card('3', 1,"../../../assets/images/carta1landing.png"),
-        new Card('4', 1,"../../../assets/images/carta1landing.png"),
-        new Card('1', 1,"../../../assets/images/carta1landing.png"),
-        new Card('2', 1,"../../../assets/images/carta1landing.png"),
-        new Card('3', 1,"../../../assets/images/carta1landing.png"),
-        new Card('4', 1,"../../../assets/images/carta1landing.png"),
-        new Card('1', 1,"../../../assets/images/carta1landing.png"),
-        new Card('2', 1,"../../../assets/images/carta1landing.png"),
-        new Card('3', 1,"../../../assets/images/carta1landing.png"),
-        new Card('4', 1,"../../../assets/images/carta1landing.png")]
-      }, 
-      {
-        puntuacion: 5, 
-        nombreUsuario: 'Kaoser',
-        nombreMazo: 'dragonfly',
-        estrellas: ["../../../assets/images/iconos/estrella2.png",
-        "../../../assets/images/iconos/estrella2.png",
-        "../../../assets/images/iconos/estrella2.png",
-        "../../../assets/images/iconos/estrella2.png",
-        "../../../assets/images/iconos/estrella2.png"],
-        cartas: [ new Card('1', 2,"../../../assets/images/carta1landing.png"),
-        new Card('2', 2,"../../../assets/images/carta1landing.png"),
-        new Card('3', 2,"../../../assets/images/carta1landing.png"),
-        new Card('4', 2,"../../../assets/images/carta1landing.png")]
-      },
-      {
-        puntuacion: 5, 
-        nombreUsuario: 'Kaoser',
-        nombreMazo: 'dragonfly',
-        estrellas: ["../../../assets/images/iconos/estrella2.png",
-        "../../../assets/images/iconos/estrella2.png",
-        "../../../assets/images/iconos/estrella2.png",
-        "../../../assets/images/iconos/estrella2.png",
-        "../../../assets/images/iconos/estrella2.png"],
-        cartas: [ new Card('1', 1,"../../../assets/images/carta1landing.png"),
-        new Card('2', 3,"../../../assets/images/carta1landing.png"),
-        new Card('3', 3,"../../../assets/images/carta1landing.png"),
-        new Card('4', 3,"../../../assets/images/carta1landing.png")]
-      },
-      {
-        puntuacion: 5, 
-        nombreUsuario: 'Kaoser',
-        nombreMazo: 'dragonfly',
-        estrellas: ["../../../assets/images/iconos/estrella2.png",
-        "../../../assets/images/iconos/estrella2.png",
-        "../../../assets/images/iconos/estrella2.png",
-        "../../../assets/images/iconos/estrella2.png",
-        "../../../assets/images/iconos/estrella2.png"],
-        cartas: [ new Card('1', 4,"../../../assets/images/carta1landing.png"),
-        new Card('2', 4,"../../../assets/images/carta1landing.png"),
-        new Card('3', 4,"../../../assets/images/carta1landing.png"),
-        new Card('4', 4,"../../../assets/images/carta1landing.png")]
-      }
-
+        "../../../assets/images/iconos/estrella2.png"
+      ]), 
+      new Deck(2, 'onFire', 'Kaoser', 5, [ 
+        new Card('1', 0,"../../../assets/images/carta1landing.png"),
+        new Card('2', 0,"../../../assets/images/carta1landing.png"),
+        new Card('3', 0,"../../../assets/images/carta1landing.png"),
+        new Card('4', 0,"../../../assets/images/carta1landing.png"),
+        new Card('5', 0,"../../../assets/images/carta1landing.png"),
+        new Card('6', 0,"../../../assets/images/carta1landing.png"),
+        new Card('7', 0,"../../../assets/images/carta1landing.png"),
+        new Card('8', 0,"../../../assets/images/carta1landing.png"),
+        new Card('9', 0,"../../../assets/images/carta1landing.png"),
+        new Card('10', 0,"../../../assets/images/carta1landing.png"),
+        new Card('11', 0,"../../../assets/images/carta1landing.png"),
+        new Card('12', 0,"../../../assets/images/carta1landing.png")], 
+      ["../../../assets/images/iconos/estrella2.png",
+      "../../../assets/images/iconos/estrella2.png",
+      "../../../assets/images/iconos/estrella2.png",
+      "../../../assets/images/iconos/estrella2.png",
+      "../../../assets/images/iconos/estrella2.png"
+      ]),
+      new Deck(3, 'Dragonfly', 'Deimos', 5, [ 
+        new Card('1', 0,"../../../assets/images/carta1landing.png"),
+        new Card('2', 0,"../../../assets/images/carta1landing.png"),
+        new Card('3', 0,"../../../assets/images/carta1landing.png"),
+        new Card('4', 0,"../../../assets/images/carta1landing.png"),
+        new Card('5', 0,"../../../assets/images/carta1landing.png"),
+        new Card('6', 0,"../../../assets/images/carta1landing.png"),
+        new Card('7', 0,"../../../assets/images/carta1landing.png"),
+        new Card('8', 0,"../../../assets/images/carta1landing.png"),
+        new Card('9', 0,"../../../assets/images/carta1landing.png"),
+        new Card('10', 0,"../../../assets/images/carta1landing.png"),
+        new Card('11', 0,"../../../assets/images/carta1landing.png"),
+        new Card('12', 0,"../../../assets/images/carta1landing.png")], 
+      ["../../../assets/images/iconos/estrella2.png",
+      "../../../assets/images/iconos/estrella2.png",
+      "../../../assets/images/iconos/estrella2.png",
+      "../../../assets/images/iconos/estrella2.png",
+      "../../../assets/images/iconos/estrella2.png"
+      ])
     ]
 
     this.datosVotados = [
-      {
-        puntuacion: 5, 
-        nombreUsuario: 'Kaoser',
-        nombreMazo: 'dragonfly',
-        estrellas: ["../../../assets/images/iconos/estrella.png",
-        "../../../assets/images/iconos/estrella.png",
-        "../../../assets/images/iconos/estrella.png",
-        "../../../assets/images/iconos/estrella.png",
-        "../../../assets/images/iconos/estrella.png"],
-        cartas: [ new Card('1', 1,"../../../assets/images/carta1landing.png"),
-        new Card('2', 1,"../../../assets/images/carta1landing.png"),
-        new Card('3', 1,"../../../assets/images/carta1landing.png"),
-        new Card('4', 1,"../../../assets/images/carta1landing.png")]
-      }, 
-      {
-        puntuacion: 5, 
-        nombreUsuario: 'Kaoser',
-        nombreMazo: 'dragonfly',
-        estrellas: ["../../../assets/images/iconos/estrella.png",
-        "../../../assets/images/iconos/estrella.png",
-        "../../../assets/images/iconos/estrella.png",
-        "../../../assets/images/iconos/estrella.png",
-        "../../../assets/images/iconos/estrella.png"],
-        cartas: [ new Card('1', 1,"../../../assets/images/carta1landing.png"),
-        new Card('2', 1,"../../../assets/images/carta1landing.png"),
-        new Card('3', 1,"../../../assets/images/carta1landing.png"),
-        new Card('4', 1,"../../../assets/images/carta1landing.png")]
-      }, 
-      {
-        puntuacion: 5, 
-        nombreUsuario: 'Kaoser',
-        nombreMazo: 'dragonfly',
-        estrellas: ["../../../assets/images/iconos/estrella.png",
-        "../../../assets/images/iconos/estrella.png",
-        "../../../assets/images/iconos/estrella.png",
-        "../../../assets/images/iconos/estrella.png",
-        "../../../assets/images/iconos/estrella.png"],
-        cartas: [ new Card('1', 2,"../../../assets/images/carta1landing.png"),
-        new Card('2', 2,"../../../assets/images/carta1landing.png"),
-        new Card('3', 2,"../../../assets/images/carta1landing.png"),
-        new Card('4', 2,"../../../assets/images/carta1landing.png")]
-      },
-      {
-        puntuacion: 5, 
-        nombreUsuario: 'Kaoser',
-        nombreMazo: 'dragonfly',
-        estrellas: ["../../../assets/images/iconos/estrella.png",
-        "../../../assets/images/iconos/estrella.png",
-        "../../../assets/images/iconos/estrella.png",
-        "../../../assets/images/iconos/estrella.png",
-        "../../../assets/images/iconos/estrella2.png"],
-        cartas: [ new Card('1', 2,"../../../assets/images/carta1landing.png"),
-        new Card('2', 2,"../../../assets/images/carta1landing.png"),
-        new Card('3', 2,"../../../assets/images/carta1landing.png"),
-        new Card('4', 2,"../../../assets/images/carta1landing.png")]
-      },
-      {
-        puntuacion: 5, 
-        nombreUsuario: 'Kaoser',
-        nombreMazo: 'dragonfly',
-        estrellas: ["../../../assets/images/iconos/estrella.png",
-        "../../../assets/images/iconos/estrella.png",
-        "../../../assets/images/iconos/estrella.png",
-        "../../../assets/images/iconos/estrella2.png",
-        "../../../assets/images/iconos/estrella2.png"],
-        cartas: [ new Card('1', 2,"../../../assets/images/carta1landing.png"),
-        new Card('2', 2,"../../../assets/images/carta1landing.png"),
-        new Card('3', 2,"../../../assets/images/carta1landing.png"),
-        new Card('4', 2,"../../../assets/images/carta1landing.png")]
-      }
+      new Deck(1, 'Dragonfly', 'Kaoser', 5, [ new Card('1', 0,"../../../assets/images/carta1landing.png"),
+      new Card('2', 0,"../../../assets/images/carta1landing.png"),
+      new Card('3', 0,"../../../assets/images/carta1landing.png"),
+      new Card('4', 0,"../../../assets/images/carta1landing.png")], 
+      ["../../../assets/images/iconos/estrella2.png",
+      "../../../assets/images/iconos/estrella2.png",
+      "../../../assets/images/iconos/estrella2.png",
+      "../../../assets/images/iconos/estrella2.png",
+      "../../../assets/images/iconos/estrella2.png"
+      ]), 
+      new Deck(1, 'Dragonfly', 'Kaoser', 5, [ 
+        new Card('1', 0,"../../../assets/images/carta1landing.png"),
+        new Card('2', 0,"../../../assets/images/carta1landing.png"),
+        new Card('3', 0,"../../../assets/images/carta1landing.png"),
+        new Card('4', 0,"../../../assets/images/carta1landing.png"),
+        new Card('5', 0,"../../../assets/images/carta1landing.png"),
+        new Card('6', 0,"../../../assets/images/carta1landing.png"),
+        new Card('7', 0,"../../../assets/images/carta1landing.png"),
+        new Card('8', 0,"../../../assets/images/carta1landing.png"),
+        new Card('9', 0,"../../../assets/images/carta1landing.png"),
+        new Card('10', 0,"../../../assets/images/carta1landing.png"),
+        new Card('11', 0,"../../../assets/images/carta1landing.png"),
+        new Card('12', 0,"../../../assets/images/carta1landing.png")], 
+      ["../../../assets/images/iconos/estrella2.png",
+      "../../../assets/images/iconos/estrella2.png",
+      "../../../assets/images/iconos/estrella2.png",
+      "../../../assets/images/iconos/estrella2.png",
+      "../../../assets/images/iconos/estrella2.png"
+      ]),
+      new Deck(1, 'Dragonfly', 'Kaoser', 5, [ new Card('1', 0,"../../../assets/images/carta1landing.png"),
+      new Card('2', 0,"../../../assets/images/carta1landing.png"),
+      new Card('3', 0,"../../../assets/images/carta1landing.png"),
+      new Card('4', 0,"../../../assets/images/carta1landing.png")], 
+      ["../../../assets/images/iconos/estrella2.png",
+      "../../../assets/images/iconos/estrella2.png",
+      "../../../assets/images/iconos/estrella2.png",
+      "../../../assets/images/iconos/estrella2.png",
+      "../../../assets/images/iconos/estrella2.png"
+      ]), 
+      new Deck(1, 'Dragonfly', 'Kaoser', 5, [ 
+        new Card('1', 0,"../../../assets/images/carta1landing.png"),
+        new Card('2', 0,"../../../assets/images/carta1landing.png"),
+        new Card('3', 0,"../../../assets/images/carta1landing.png"),
+        new Card('4', 0,"../../../assets/images/carta1landing.png"),
+        new Card('5', 0,"../../../assets/images/carta1landing.png"),
+        new Card('6', 0,"../../../assets/images/carta1landing.png"),
+        new Card('7', 0,"../../../assets/images/carta1landing.png"),
+        new Card('8', 0,"../../../assets/images/carta1landing.png"),
+        new Card('9', 0,"../../../assets/images/carta1landing.png"),
+        new Card('10', 0,"../../../assets/images/carta1landing.png"),
+        new Card('11', 0,"../../../assets/images/carta1landing.png"),
+        new Card('12', 0,"../../../assets/images/carta1landing.png")], 
+      ["../../../assets/images/iconos/estrella2.png",
+      "../../../assets/images/iconos/estrella2.png",
+      "../../../assets/images/iconos/estrella2.png",
+      "../../../assets/images/iconos/estrella2.png",
+      "../../../assets/images/iconos/estrella2.png"
+      ])
     ]
   }
+  
+  public search(input:string, filter:string){
+  // instalar TOASTR PARA ERRORES
+    console.log(this.datos[0].nameUser);
+    
+    if (filter === 'nombreUsuario'){
+      let datosFilter = this.datos.filter((dato) => {
+        return dato.nameUser == input
+      })
+        if(datosFilter.length != 0){
+          this.datos = datosFilter
+        } else {
+          console.log('Usuario no encontrado');
+        }
+    }
 
-  public explora(){
-    this.explorar = true
+    else if(filter === 'nombreMazo'){
+      let datosFilter = this.datos.filter((dato) => {
+        return dato.nameDeck == input
+      })
+      if(datosFilter.length != 0){
+        this.datos = datosFilter
+      } else {
+        console.log('Mazo no encontrado');
+      }
+    }
+  
   }
+  
+  public seleccionMazo(id_deck:number){
+    this.explorar = true
+    let cartas = this.datos.find ((deck) => {
+      return deck.id_deck == id_deck
+    })
+
+   this.mazo = cartas
+   console.log(this.mazo);
+   
+    
+
+
+
+  }
+
+
+
 }
