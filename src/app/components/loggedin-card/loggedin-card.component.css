@@ -1,0 +1,126 @@
+.background-wrapper {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    grid-auto-rows: minmax(100px, auto);
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('/assets/images/fondos/carta-loggedin.jpg');
+    background-color: var(--negro-bg);
+    width:100%;
+    top: 186px;
+    left:11px;
+    object-fit: cover;
+}
+
+.title-search {
+    grid-column: 1 / 2;
+    grid-row: 1;
+    /* border: 2px solid pink; */
+}
+
+.title {
+    font-size: 64px;
+    font-family: var(--antiqua);
+    color:var(--azul);
+    text-align: center;
+    padding-top:56px;
+    margin-bottom: 40px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+
+input {
+    width: 400px;
+    height: 60px;
+    border-color: var(--azul);
+    background-color: var(--negro-bg);
+    border-radius: 10px 0 0 10px;
+    padding-left: 25px;
+    color: var(--blanco);
+    font-size: 26px;
+}
+
+input::placeholder {
+    color: var(--blanco);
+    font-size:32px;
+}
+    
+select {
+    width: 150px;
+    height: 60px;
+    background-color: var(--negro-bg);
+    color: var(--blanco);
+    font-family: var(--inter);
+    font-size: 20px;
+    border: 3px solid var(--azul);
+    text-align: center;
+}
+
+.btn-buscador {
+    width:60px;
+    height:60px;
+    color:var(--azul);
+    background-color: var(--azul);
+    background-image: url('/assets/images/iconos/ojo.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 0 10% 10% 0;
+    border:none;
+    }
+
+.results-container {
+    /* border: 2px solid blue; */
+    grid-column: 1 / 2;
+    grid-row: 2;
+
+    min-height: 700px;
+    padding: 60px;
+    margin-top:60px;
+    margin-bottom: 60px;
+}
+
+.builder-container {
+    /* border: 2px solid red; */
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+    background-color: var(--negro-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.bg-builder {
+    min-height: 800px;
+}
+
+.btn-builder1 {
+    width:551px;
+    height:60px;
+    font-family: var(--antiqua);
+    font-size: 24px;
+    color:var(--blanco);
+    background-color: var(--azul);
+    border-radius: var(--borde-boton);
+    border:none;
+}
+
+.btn-builder2{
+    width:551px;
+    height:60px;
+    font-family: var(--inter);
+    font-size: 25px;
+    color:var(--blanco);
+    background-color: var(--azul);
+    border-radius: var(--borde-boton);
+    border:none;
+}

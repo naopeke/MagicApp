@@ -1,43 +1,36 @@
 header{
     background-color: black;
     text-align: center;
-    height: 25vh;
+    height: 200px;
     width: 100%;
     display: flex;
     flex-direction: column;
+    padding-top: 10px;
 }
 /* Estilos de img y boton */
-#headerSuper{
-    width: 100%;
-    margin-top: 20px;
-    display: flex;
-}
 
-#btnIniciarSesion{
+img{
+    width: 500px;
+}
+#img_header{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.button_lateral{
+    position: absolute;
+    margin: 20px 10px;
+    right: 0;
+    width: 150px;
     border: var(--amarillo) solid 2px;
     background-color: rgba(0, 0, 0, 0);
     border-radius: var(--borde-boton);
-    height: 50px;
-    width: 100px;
+    padding: 10px;
     color: var(--amarillo);
-    margin: 20px 10px;
 }
-#imgHeader{
-    width: 90%; 
-}
-#btnHeader{
-    width: 10%;
-}
-
+  
 /* Estilos de menu */
-#iconosHeader{
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-}
-.icono{
-    width: 50px;
-}
 #pAmarillo{
     color: var(--amarillo);
 }
@@ -50,9 +43,95 @@ header{
 #pRojo{
     color: var(--rojo);
 }
-#pVerde{
+.pVerde{
     color: var(--verde);
 }
-.icono:active {
-    width: 70px;
+
+/* CSS ANIMACION */
+
+.icono {
+    width: 50px;
+    height: 50px;
+    transition: all 0.3s ease;
+}
+.linkActive{
+    opacity: 0.7;
+}
+.linkActive:active {
+    opacity: 1;
+}
+.linkActive:hover {
+    opacity: 1;
+}
+header nav {
+	z-index:1000;
+	max-width: 1000px;
+	width:100%;
+	margin:20px auto;
+}
+header nav ul {
+	list-style:none;
+    display: block;
+    width: 100%;
+    padding: 0;
+}
+header nav ul li {
+	display:inline-block;
+	position: relative;
+    width: 20%;
+}
+header nav ul li a {
+	display:block;
+	text-decoration:none;
+}
+header nav ul li:hover .children {
+	display:block;
+}
+header nav ul li .children {
+	display: none;
+	background:#000000;
+	position: absolute;
+    left: 20px;
+	width: 150px;
+	z-index:1000;
+}
+header nav ul li .children li {
+	display:block;
+	overflow: hidden;
+    padding: 10px;
+    width: 100%;
+	border-bottom: 1px solid rgba(255,255,255,.5);
+}
+header nav ul li .children li a {
+	display: block;
+}
+
+/*Estilos modal usuario*/
+.boton_secundario{
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-top: var(--amarillo) 2px solid;
+}
+
+/* new */
+.dropdown {
+    position: absolute;
+    width: 150px;
+    right: 15px;
+}
+.dropdown-child {
+    min-width: 150px;
+    margin-top: 65px;
+}
+.dropdown-child span {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    color: var(--amarillo);
+    cursor: pointer;
+}
+.dropdown-child span:hover {
+    background-color: rgba(132, 133, 133, 0.096);
 }

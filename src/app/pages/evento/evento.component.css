@@ -1,0 +1,70 @@
+/* div buscador y boton añadir evento */
+
+.search-container {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    margin-top: 70px;
+    margin-bottom: 50px;
+  }
+  
+  #formBuscador {
+    display: flex;
+    width: 80%;
+    margin-right: 5%;
+  }
+  
+  #buscador {
+    width: 900px;
+    height: 60px;
+    border-color: var(--verde);
+    background-color: var(--negro-bg);
+    border-radius: 10px 0 0 10px;
+    padding-left: 25px;
+    color: var(--blanco);
+  }
+  
+  #buscador::placeholder {
+    color: var(--verde);
+    font-size: 22px;
+  }
+  
+  .btn-buscador {
+    width: 60px;
+    height: 60px;
+    color: var(--verde);
+    background-color: var(--verde);
+    background-image: url('/assets/images/iconos/ojo.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 0 10% 10% 0;
+    border: none;
+  }
+  
+  .button_lateral {
+    height: 60px;
+    width: 15%;
+    border: var(--verde) solid 2px;
+    background-color: var(--verde);
+    border-radius: var(--borde-boton);
+    color: var(--negro);
+    font-family: var(--antiqua);
+    font-size: 18px;
+  }
+  
+  #cont_buscador{
+      width: 80%;
+      margin: auto;
+  }
+  
+  #buscador2{
+      width: 80%;
+      margin-right: 10%;
+  }
+  
+  #boton_buscador{
+      width: 10%;
+  }
+  
