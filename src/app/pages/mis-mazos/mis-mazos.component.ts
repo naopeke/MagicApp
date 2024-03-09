@@ -16,9 +16,8 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
 
 
   @ViewChild('mySwiper') mySwiper: any = null; // Swiperの要素にアクセスするためのViewChild
-  onSwiper([swiper]) {
-    console.log(swiper);
-  }
+  
+
 
 
 
@@ -54,12 +53,12 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
         ),
         new Deck(4, 'onPoison', 'Deimos', 2, [ 
           new Card('1', 0,"https://cards.scryfall.io/normal/front/2/c/2c5a7550-fe1a-4797-9583-70ab56cfac0d.jpg?1707739807"),
-          new Card('2', 0,"https://cards.scryfall.io/normal/front/2/c/2c5a7550-fe1a-4797-9583-70ab56cfac0d.jpg?1707739807")
+          new Card('2', 0,"https://cards.scryfall.io/normal/front/2/c/2c5a7550-fe1a-4797-9583-70ab56cfac0d.jpg?1707739807"),
+          new Card('3', 0,"https://cards.scryfall.io/large/front/1/7/175b3d28-5c74-4972-9b5c-5e39762c78f4.jpg?1686964447")
         ]
           ),
           new Deck(5, 'onLightening', 'Deimos', 2, [ 
-            new Card('1', 0,"https://cards.scryfall.io/normal/front/2/c/2c5a7550-fe1a-4797-9583-70ab56cfac0d.jpg?1707739807"),
-            new Card('2', 0,"https://cards.scryfall.io/normal/front/2/c/2c5a7550-fe1a-4797-9583-70ab56cfac0d.jpg?1707739807")
+            
           ]
             )
     ]

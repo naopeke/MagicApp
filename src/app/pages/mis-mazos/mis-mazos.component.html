@@ -39,7 +39,7 @@
 
     <section class="deckcards-wrapper">
             <div class="deckname-wrapper">
-                <!-- <h2 class="deckname">{{datos[1].nameDeck}}</h2> -->
+                <h2 class="deckname">{{datos[1].nameDeck}}</h2>
             </div>
             <div class="filter">
                 <div class="filter-list"><p class="filter-name">Todas las cartas</p></div>
@@ -55,29 +55,29 @@
             <div class="cards-wrapper">
                 <div class="counter">
                     <img src="/assets/images/iconos/contador-morado.png" alt="">
-                    <p id="total-cards">60/60</p>
+                    <p id="total-cards">{{ mazo?.cards?.length || 0 }}/60</p>
                 </div>
 
 
-                <!-- <div class="list-cards" *ngIf="mazo.cards.length > 0">
+                <!-- <div class="list-cards" *ngIf="mazo?.cards?.length > 0"> -->
+                    <!-- <div *ngFor="let card of mazo.cards; let i = index">
+                      <app-card [childCard]="card" [templateCard]="'type5'" (click)="onCardInfoOpen()"></app-card>
+                    </div>
+                  </div> -->
+                  
+
+                <div class="list-cards" *ngIf="mazo?.cards?.length > 0">
                     <div *ngFor="let card of mazo.cards; let i = index">
-                        <app-card [childCard]="cartas" [templateCard]="'type5'" (click)="onCardInfoOpen()"></app-card>
+                        <app-card [childCard]="card" [templateCard]="'type5'" (click)="onCardInfoOpen()"></app-card>
                     </div>
                 
-                    <div class="results-wrapper" *ngIf="mazo.cards.length === 0">
+                    <div class="results-wrapper" *ngIf="mazo?.cards?.length === 0">
                         <div class="no-results-message">
-                        <p>No hay ninguna carta en este mazo.</p>
+                        <p class="message">No hay ninguna carta en este mazo.</p>
                         </div>
                     </div>
-                </div> -->
-<!-- 
-                <cdk-virtual-scroll-viewport itemSize="40" class="bucleContainer">
-                    <div class="cartasContainer">
-                        <div *cdkVirtualFor="let cartas of mazo.cards">
-                            <app-card [templateCard] = "'type2'" [childCard] = "cartas"></app-card>
-                        </div>
-                    </div>
-                </cdk-virtual-scroll-viewport> -->
+                </div>
+
             </div>
     </section>
 </div>

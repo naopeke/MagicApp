@@ -113,6 +113,10 @@
     flex-wrap: wrap;
 }
 
+.message{
+    font-family: var(--inter);
+    color: var(--blanco);
+}
 
 @media screen and (1025 < width) {
     .swiper-container {
