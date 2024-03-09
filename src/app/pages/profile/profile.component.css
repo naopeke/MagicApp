@@ -1,0 +1,294 @@
+main{
+    width: 100%;
+    height: 1000px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../../../assets/images/profile/fondo.png);
+    background-size: cover
+
+}
+
+.container, .editContainer{
+    min-width: 1350px;
+    height: 880px;
+
+    display: flex;
+    align-items: center;
+   
+
+    background-color: var(--negro-bg);
+    border-radius: var(--borde-cuadrado);
+}
+
+.container{
+    gap: 30px;
+    justify-content: center;
+}
+
+.editContainer{
+ justify-content: center;
+ gap: 60px;
+}
+
+.container2{
+    height: 100%;
+    display: flex;
+    gap: 30px;
+
+}
+
+.infoPerfil,  .modificarPerfil{
+    display: flex;
+    width: 400px;
+    height: 100%;
+}
+
+/* Titulo */
+.tituloPerfil{
+    width: 300px;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+#titulo{
+    font-family: var(--antiqua);
+    color: var(--amarillo);
+    font-size: 34pt;
+}
+
+
+
+/* Carta Perfil */
+.infoPerfil{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+.cardPerfil{
+    position: relative;
+    width: 100%;
+    padding-top: 20px;
+
+    display: flex;
+    justify-content: center;
+}
+.nameContainer{
+    position: absolute;
+    top: 60px;
+    left: 10px;
+    z-index: 999;
+    height: 30px;
+    width: 330px;
+
+    display: flex;
+    justify-content: center;
+}
+#nameUser{
+    text-align: center;
+    height: 100%;
+
+    font-family: var(--antiqua);
+    font-size: 16pt;
+    font-weight: bold;
+}
+
+.imgCard{
+    position: relative;
+    z-index: 99;
+}
+
+.imgFondo{
+    position: absolute;
+    top: 100px;
+    z-index: 9;
+}
+
+.imgAvatar{
+    position: absolute;
+    top: 104px;
+    z-index: 999;
+    width: 365px;
+}
+
+.sobreMi, .iconSobreMi{
+    position: absolute;
+    z-index: 99;
+}
+
+.sobreMi{
+    font-size: 14pt;
+    font-family: var(--antiqua);
+    left: 90px;
+    top: 369px;
+}
+
+.iconSobreMi{
+    left: 320px;
+    top: 365px;
+}
+
+.infoUser{
+    position: absolute;
+    top: 405px;
+    z-index: 999;
+
+    width: 92%;
+    height: 235px;
+    padding: 12px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.email, .description, .line{
+    width: 100%;
+}
+
+.email{
+    height: 25%;
+}
+
+.line{
+    border: solid var(--amarillo) 2px;
+}
+
+.description{
+    height: 63%;
+}
+#emailTitle, #descriptionTitle{
+    font-family: var(--antiqua);
+    font-weight: bold;
+    font-size: 12pt;
+}
+
+#emailUser, #descriptionUser{
+    font-family: var(--inter);
+}
+
+#emailUser{
+    font-size: 12pt;
+}
+.buttonEditFoto, .buttonSaveFoto{
+    height: 50px;
+    width: 300px;
+
+    font-family: var(--antiqua);
+    font-size: 15pt;
+    font-weight: bold;
+    border: none;
+    border-radius: var(--borde-boton);
+}
+.buttonEditFoto{
+    background-color: var(--amarillo);
+}
+
+.buttonSaveFoto{
+    background-color: var(--verde);
+}
+.buttonEditFoto:hover, .buttonSaveFoto:hover{
+    background-color: var(--blanco);
+}
+
+/* Modificar perfil */
+.modificarPerfil{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    
+}
+.editTitle{
+    /* border: solid red 2px;; */
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#title2{
+    color: var(--amarillo);
+    font-family: var(--antiqua);
+    font-size: 22pt;
+}
+
+#line2{
+    border: solid var(--blanco) 2px;
+    width: 100%;
+}
+.editForm{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+input, textarea{
+    width: 100%;
+
+    border:solid var(--amarillo) 2px;
+    border-radius: var(--borde-input);
+    background-color: var(--negro-bg);
+    color: var(--blanco);
+    text-align: center;
+}
+
+input{
+    padding: 15px;
+    height: 60px;
+    font-size: 14pt;
+}
+
+textarea{
+    padding: 10px;
+    height: 110px;
+    overflow: hidden;
+    resize: none;
+}
+
+input::placeholder, textarea::placeholder{
+    font-family: var(--inter);
+}
+
+input::placeholder{
+    font-size: 12pt;
+}
+
+.editButton, .saveButton{
+    height: 50px;
+    width: 250px;
+
+    font-family: var(--antiqua);
+    font-size: 14pt;
+    font-weight: bold;
+    border: none;
+    border-radius: var(--borde-boton);
+}
+.editButton{
+    background-color: var(--amarillo);
+}
+
+.saveButton{
+    background-color: var(--verde);
+}
+.editButton:hover, .saveButton:hover{
+    background-color: var(--blanco);
+}
+
+
+

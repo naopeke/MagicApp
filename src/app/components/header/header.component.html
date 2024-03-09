@@ -1,0 +1,53 @@
+<header>
+    <div id="img_header" routerLink="landing-page"><img src="../../../assets/images/Logo.png" alt="MagyDeck"></div>
+   
+    <div class="dropdown">
+        <button class="button_lateral" routerLink="register"  *ngIf="idBotonActivo === 'btnIniciarSesion'">Iniciar sesión</button>
+        <button class="button_lateral dropdown-toggle" (click)="modal_visible = !modal_visible" *ngIf="idBotonActivo === 'btnUsuario'">{{login1.user.name}}</button>
+        <div *ngIf="modal_visible" class="dropdown-child">
+          <span routerLink="profile">&nbsp;&nbsp;Perfil</span>
+          <span (click)="loggout()">&nbsp;&nbsp;Cerrar sesión</span>
+        </div>
+    </div>
+
+    <nav>
+        <ul>
+            <li >
+                <a routerLink="about" class="linkActive">
+                    <img class="icono" src="../../../assets/images/header/Llamita_marron.png" alt="Magic Llanuras">
+                    <p id="pAmarillo">About</p>
+                </a>
+            </li>
+            <li >
+                <a routerLink="cartas" class="linkActive">
+                    <img class="icono" src="../../../assets/images/header/Llamita_azul.png" alt="Magic Isla">
+                    <p id="pAzul">Cartas</p>
+                </a>
+            </li>
+            <li *ngIf="idBotonActivo === 'btnUsuario'">
+                <a routerLink="mis-mazos" class="linkActive">
+                    <img class="icono" src="../../../assets/images/header/Llamita_morada.png" alt="Magic Pantano">
+                    <p id="pMorado">Mis mazos</p>
+                </a>
+            </li>
+            <li *ngIf="idBotonActivo === 'btnUsuario'">
+                <a routerLink="explora" class="linkActive">
+                    <img class="icono" src="../../../assets/images/header/Llamita_roja.png" alt="Magic Montaña">
+                <p id="pRojo">Explora</p>
+                </a>
+            </li>
+            <li class="submenu" *ngIf="idBotonActivo === 'btnUsuario'">
+                <a class="linkActive">
+                    <img class="icono" src="../../../assets/images/header/Llamita_verde.png" alt="Magic Bosque">
+                    <p class="pVerde">Eventos</p>
+                </a>
+                <ul class="children">
+                    <li><a href="#" routerLink="evento"><p class="pVerde">Próximos eventos</p></a></li>
+                    <li><a href="#" routerLink="calendario"><p class="pVerde">Calendario</p></a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    
+</header>
+

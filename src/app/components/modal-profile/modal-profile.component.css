@@ -1,0 +1,67 @@
+main{
+    width: 700px;
+    height: 730px;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--negro-bg);
+    border-radius: var(--borde-cuadrado);
+}
+
+.personajes{
+    height: 75%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding-top: 15px;
+}
+
+.tierrasContainer{
+    height: 20%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.titulos{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.titulo{
+    color: var(--amarillo);
+    font-family: var(--antiqua);
+    font-size: 24pt;
+    text-align: center;
+}
+
+.imgPersonajes{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.img:hover, .tierras:hover{ 
+    outline: solid var(--amarillo) 2px;
+    cursor: pointer;
+}
+.avatar{
+    width: 290px;
+}
+
+.imgTierras{
+
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
