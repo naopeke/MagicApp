@@ -12,6 +12,9 @@ export class CardComponent {
   @Input() templateCard: string;
   @Output() addCardToBuilder = new EventEmitter<Card>();
   @Output() deleteFromChild = new EventEmitter<string>();
+  @Output() countPlusFromChild = new EventEmitter<string>();
+  @Output() countMinusFromChild = new EventEmitter<string>();
+  @Output() deteleAllQuantityFromChild = new EventEmitter<string>();
 
   constructor(private cardsService: CardsService){
 
@@ -20,7 +23,7 @@ export class CardComponent {
   // pagina cartas
   onPlusButtonClick(event:Event){
     console.log('cliked the plus button');
-    event.stopPropagation(); 
+    event.stopPropagation(); //para resolver bubbling
     this.addCardToBuilder.emit(this.childCard);
   }
 
@@ -32,13 +35,16 @@ export class CardComponent {
   //pagina mis mazos
   onCountPlusButtonClick(){
     console.log('clicked the count plus button');
+    this.countPlusFromChild.emit(this.childCard.id_card);
   }
 
   onCountMinusButtonClick(){
     console.log('clicked the count minus button');
+    this.countMinusFromChild.emit(this.childCard.id_card);
   }
 
   onDeleteAllButtonClick(){
     console.log('clicked the delete all button');
+    this.deteleAllQuantityFromChild.emit(this.childCard.id_card);
   }
 }

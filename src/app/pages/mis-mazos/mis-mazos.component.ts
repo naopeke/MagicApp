@@ -13,6 +13,8 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
   public datos: Deck[];
   public mazo: Deck;
   public datosVotados: Deck[];
+  public card: Card;
+  public cards: Card[];
 
 
   @ViewChild('mySwiper') mySwiper: any = null; // Swiperの要素にアクセスするためのViewChild
@@ -65,7 +67,16 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
   }
 
 
+  // onCountPlusFromChild(cardId: string){
+  //   this.builderCards = this.builderCards.filter(card => card.id_card !== cardId);
+  //   console.log('After deleting from Deck: ', this.builderCards);
+  // }
 
+  onCountMinusFromChild(cardId: string){
+    console.log('After adding from Deck: ', )
+  }
+
+  on
 
 
   ngOnInit(): void {

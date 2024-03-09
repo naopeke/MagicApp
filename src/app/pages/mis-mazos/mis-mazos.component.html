@@ -68,7 +68,15 @@
 
                 <div class="list-cards" *ngIf="mazo?.cards?.length > 0">
                     <div *ngFor="let card of mazo.cards; let i = index">
-                        <app-card [childCard]="card" [templateCard]="'type5'" (click)="onCardInfoOpen()"></app-card>
+                        <app-card 
+                            [childCard]="card" 
+                            [templateCard]="'type5'"
+                            (countPlusFromChild)="onCountPlusFromChild"
+                            (countMinusFromChild)="onCountMinusFromChild"
+                            (deteleAllQuantityFromChild)="onDeleteAllQuantityFromChild"
+                            (click)="onCardInfoOpen()"
+    
+                        ></app-card>
                     </div>
                 
                     <div class="results-wrapper" *ngIf="mazo?.cards?.length === 0">
