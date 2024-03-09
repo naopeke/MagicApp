@@ -5,10 +5,10 @@ export class Card {
         public id_user?: number,
         public image_uris?: string,
         public name?: string,
-        public mana_cost?: string,
         public type_line?: string,
         public oracle_text?: string,
-        public legalities?: any,
+        public color_identity?: string[],
+        public legalities?: any, /* object*/
         public prices?: number,
         public set_name?: string,
         public set_type?: string

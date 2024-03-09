@@ -64,6 +64,10 @@ export class LoggedoutCardComponent implements OnInit {
     this.show_cardinfo = show;
   }
 
+  public card_info_close() {
+    this.darkenOverlay = false;
+    this.show_cardinfo = false;
+  }
 
   ngOnInit(): void {
       

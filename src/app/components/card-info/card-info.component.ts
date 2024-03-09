@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CardsService } from 'src/app/shared/cards.service';
 import { Card } from 'src/app/models/card';
 
@@ -8,13 +8,14 @@ import { Card } from 'src/app/models/card';
   styleUrls: ['./card-info.component.css']
 })
 export class CardInfoComponent implements OnInit{
+  @Output() onCardInfoClose = new EventEmitter<boolean>();
   @Input() origin: string;
   @Input() id_card: number;
-  @Output() OnCardInfoClose = new EventEmitter<boolean>();
 
   public card: Card;
   public darkenOverlay: boolean = false;
   public show_cardinfo: boolean = false;
+
 
   legalities = [
     {text: 'not legal', color: 'grey'},
@@ -38,6 +39,11 @@ export class CardInfoComponent implements OnInit{
     }
   }
 
+  public card_info_close(){
+    this.onCardInfoClose.emit(false);
+  }
+
+
   
   constructor(public cardsService: CardsService){}
 
@@ -49,9 +55,9 @@ export class CardInfoComponent implements OnInit{
     1, 
     "https://cards.scryfall.io/png/front/1/7/175b3d28-5c74-4972-9b5c-5e39762c78f4.png?1686964447",
     "Relic of Sauron",
-    "{4}",
     "Artifact",
     "{T}: Add two mana in any combination of {U}, {B}, and/or {R}.\n{3}, {T}: Draw two cards, then discard a card.",
+    ["B","W"],
     [
       {"key": "standard", "value": "not_legal"},
       {"key": "future", "value": "not_legal"},
@@ -65,9 +71,4 @@ export class CardInfoComponent implements OnInit{
     "commander"
     );
   }
-
-  public card_info_close(){
-    this.OnCardInfoClose.emit(false);
-  }
-
 }
