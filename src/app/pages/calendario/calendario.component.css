@@ -3,18 +3,17 @@ main{
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
-    height: 1300px;
+    height: 1200px;
     display: flex;
 }
 
 .cuadroIzq{
-    height: 950px;
+    height: 1100px;
     width: 60%;
     border-radius: 20px 0 0 20px;
     margin-left: 120px;
     margin-top: 160px;
-    background-image: url('src/assets/images/fondos/Fondo_verde2.png');
-    display: flex;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('src/assets/images/fondos/Fondo_verde2.png');    display: flex;
     flex-direction: column;
     align-items: center;
     gap: 30px;
@@ -29,7 +28,7 @@ main{
 
 
  #calendar{
-    height: 800px;
+    height: 965px;
     width: 85%;
     color: var(--blanco);
     font-family: var(--antiqua);
@@ -39,21 +38,36 @@ main{
 .mat-calendar{
     color: var(--blanco);
     font-family: var(--antiqua);
-    border: solid yellow 2px;
     height: 100%;
 } 
 
-::ng-deep .mat-calendar-body-label{
+span{
+    color: var(--blanco);
+    font-family: var(--antiqua);
+}
+
+polygon {
+    fill: var(--blanco);
+}
+
+td.mat-calendar-body-label {
+    font-family: var(--antiqua);
     color: var(--blanco);
 }
 
-::ng-deep .mat-calendar-body-cell-content{
+span.mat-calendar-body-cell-content.mat-focus-indicator {
     color: var(--blanco);
+    border-color: var(--blanco);
+    border-radius: 0;
 }
 
-
+span.mat-calendar-body-cell-content.mat-focus-indicator.mat-calendar-body-selected.mat-calendar-body-today {
+    border-color: var(--amarillo);
+    background-color: var(--verde);
+    color: var(--blanco);
+}
 .cuadroDcha{
-    height: 950px;
+    height: 1100px;
     width: 32%;
     margin-right: 120px;
     margin-top: 160px;
