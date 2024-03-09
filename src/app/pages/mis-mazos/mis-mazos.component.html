@@ -10,7 +10,6 @@
         slides-per-view="3"
         space-between="30" 
         centered-slides="true"
-        (swiperslideclicked)="onSlideClicked($event)"
         >
             <swiper-slide lazy="true">
             <img src="https://picsum.photos/190/257?random=1" loading="lazy" class="image-slide">
@@ -40,7 +39,7 @@
 
     <section class="deckcards-wrapper">
             <div class="deckname-wrapper">
-                <h2 class="deckname">{{datos[1].nameDeck}}</h2>
+                <!-- <h2 class="deckname">{{datos[1].nameDeck}}</h2> -->
             </div>
             <div class="filter">
                 <div class="filter-list"><p class="filter-name">Todas las cartas</p></div>
@@ -60,7 +59,7 @@
                 </div>
 
 
-                <div class="list-cards" *ngIf="mazo.cards.length > 0">
+                <!-- <div class="list-cards" *ngIf="mazo.cards.length > 0">
                     <div *ngFor="let card of mazo.cards; let i = index">
                         <app-card [childCard]="cartas" [templateCard]="'type5'" (click)="onCardInfoOpen()"></app-card>
                     </div>
@@ -70,7 +69,7 @@
                         <p>No hay ninguna carta en este mazo.</p>
                         </div>
                     </div>
-                </div>
+                </div> -->
 <!-- 
                 <cdk-virtual-scroll-viewport itemSize="40" class="bucleContainer">
                     <div class="cartasContainer">

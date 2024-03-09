@@ -16,13 +16,16 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
 
 
   @ViewChild('mySwiper') mySwiper: any = null; // Swiperの要素にアクセスするためのViewChild
+  onSwiper([swiper]) {
+    console.log(swiper);
+  }
+
 
 
 
   constructor(
     private cardsService: CardsService,
   ){
-  
     this.datos = [
       new Deck(1, 'Dragonfly', 'Kaoser', 4, [
         new Card('1', 0,"https://cards.scryfall.io/normal/front/2/c/2c5a7550-fe1a-4797-9583-70ab56cfac0d.jpg?1707739807"),
@@ -48,64 +51,40 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
         new Card('1', 0,"https://cards.scryfall.io/normal/front/2/c/2c5a7550-fe1a-4797-9583-70ab56cfac0d.jpg?1707739807"),
         new Card('2', 0,"https://cards.scryfall.io/normal/front/2/c/2c5a7550-fe1a-4797-9583-70ab56cfac0d.jpg?1707739807")
       ]
-        )
+        ),
+        new Deck(4, 'onPoison', 'Deimos', 2, [ 
+          new Card('1', 0,"https://cards.scryfall.io/normal/front/2/c/2c5a7550-fe1a-4797-9583-70ab56cfac0d.jpg?1707739807"),
+          new Card('2', 0,"https://cards.scryfall.io/normal/front/2/c/2c5a7550-fe1a-4797-9583-70ab56cfac0d.jpg?1707739807")
+        ]
+          ),
+          new Deck(5, 'onLightening', 'Deimos', 2, [ 
+            new Card('1', 0,"https://cards.scryfall.io/normal/front/2/c/2c5a7550-fe1a-4797-9583-70ab56cfac0d.jpg?1707739807"),
+            new Card('2', 0,"https://cards.scryfall.io/normal/front/2/c/2c5a7550-fe1a-4797-9583-70ab56cfac0d.jpg?1707739807")
+          ]
+            )
     ]
   }
 
 
-  ngOnInit(): void {
+
+
+
+  ngOnInit(): void {}
+
+  //https://qiita.com/frtklog/items/df7f1c4d5d870212e779
+  //event.detail[0].activeIndexで現在表示中のスライドがどれなのか
+  ngAfterViewInit(): void {
     this.mySwiper.nativeElement.addEventListener('slidechange', (event: any) => {
       console.log(event);
       console.log('activeIndex: ', event.detail[0].activeIndex); //現在表示中のスライドのインデックス。ただし初期値がでない
+      let slideIndex = event.detail[0].activeIndex;
+      if (event.detail[0].activeIndex){
+        console.log('this is inside of the deck: ', this.datos[slideIndex]);
+      } else if (slideIndex === 0){
+        console.log('first deck: ', this.datos[0])
+      }
+      
     });
   }
-  
 
-      //https://qiita.com/frtklog/items/df7f1c4d5d870212e779
-    //event.detail[0].activeIndexで現在表示中のスライドがどれなのか
-    ngAfterViewInit(): void {
-      this.mySwiper.nativeElement.addEventListener('slidechange', (event: any) => {
-        console.log(event);
-        console.log('activeIndex: ', event.detail[0].activeIndex); //現在表示中のスライドのインデックス。ただし初期値がでない
-      });
-    }
-
-    onSlideClicked(event: any) {
-      const clickedIndex = event.clickedIndex; // クリックされたスライドのインデックスを取得
-      console.log('Clicked slide index:', clickedIndex);
-    }
-
-  public chooseDeck(id_deck:number):void{
-    let cartas = this.datos.find(deck => deck.id_deck === id_deck);
-
-    if(cartas){
-      this.mazo = cartas
-      console.log(this.mazo);
-    } else {
-      console.log('No ha encontrado: ', id_deck)
-    }
-
-  }
-
-
-
-  onSwiper([swiper]) {
-    console.log(swiper);
-  }
-  onSlideChange() {
-    console.log('slide change');
-  }
-
-  // スライドがクリックされたときの処理
-  // onSlideClicked(event: any) {
-  //   console.log('slide clicked')
-  // const clickedIndex = event.clickedIndex; // クリックされたスライドのインデックスを取得
-  // console.log('Clicked slide index:', clickedIndex);
-
-  // ここでクリックされたスライドに関連するデータを処理し、表示するなどの操作を行う
-  // 例えば、clickedIndexに基づいてデータを取得して表示するなどの処理を行う
-  // }
-
-
-  
 }
