@@ -1,12 +1,15 @@
-import { Component } from '@angular/core';
 import { MatCalendar } from '@angular/material/datepicker';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-calendario',
   templateUrl: './calendario.component.html',
-  styleUrls: ['./calendario.component.css']
+  styleUrls: ['./calendario.component.css'],
+  encapsulation: ViewEncapsulation.None // add this line
 })
+
 export class CalendarioComponent {
 
   // elegir dia de hoy
