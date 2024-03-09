@@ -58,13 +58,27 @@
                     <img src="/assets/images/iconos/contador-morado.png" alt="">
                     <p id="total-cards">60/60</p>
                 </div>
+
+
+                <div class="list-cards" *ngIf="mazo.cards.length > 0">
+                    <div *ngFor="let card of mazo.cards; let i = index">
+                        <app-card [childCard]="cartas" [templateCard]="'type5'" (click)="onCardInfoOpen()"></app-card>
+                    </div>
+                
+                    <div class="results-wrapper" *ngIf="mazo.cards.length === 0">
+                        <div class="no-results-message">
+                        <p>No hay ninguna carta en este mazo.</p>
+                        </div>
+                    </div>
+                </div>
+<!-- 
                 <cdk-virtual-scroll-viewport itemSize="40" class="bucleContainer">
                     <div class="cartasContainer">
                         <div *cdkVirtualFor="let cartas of mazo.cards">
                             <app-card [templateCard] = "'type2'" [childCard] = "cartas"></app-card>
                         </div>
                     </div>
-                </cdk-virtual-scroll-viewport>
+                </cdk-virtual-scroll-viewport> -->
             </div>
     </section>
 </div>
