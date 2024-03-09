@@ -69,22 +69,44 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
 
 
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   //https://qiita.com/frtklog/items/df7f1c4d5d870212e779
-  //event.detail[0].activeIndexで現在表示中のスライドがどれなのか
+  //event.detail[0].activeIndex   saber qual es indice de slide de ahora
+  // ngAfterViewInit(): void {
+  //   this.mySwiper.nativeElement.addEventListener('slidechange', (event: any) => {
+  //     console.log(event);
+  //     console.log('activeIndex: ', event.detail[0].activeIndex); // indice de current slide
+  //     let slideIndex = event.detail[0].activeIndex;
+  //     if (event.detail[0].activeIndex){
+  //       console.log('this is inside of the deck: ', this.datos[slideIndex]);
+  //     } else if (slideIndex === 0){
+  //       console.log('first deck: ', this.datos[0])
+  //     }
+  //   });
+  // }
+
   ngAfterViewInit(): void {
-    this.mySwiper.nativeElement.addEventListener('slidechange', (event: any) => {
-      console.log(event);
-      console.log('activeIndex: ', event.detail[0].activeIndex); //現在表示中のスライドのインデックス。ただし初期値がでない
-      let slideIndex = event.detail[0].activeIndex;
-      if (event.detail[0].activeIndex){
-        console.log('this is inside of the deck: ', this.datos[slideIndex]);
-      } else if (slideIndex === 0){
-        console.log('first deck: ', this.datos[0])
-      }
+    // Swiperが完全に初期化されたことを確認
+    if (this.mySwiper && this.mySwiper.nativeElement.swiper) {
+      const swiper = this.mySwiper.nativeElement.swiper;
       
-    });
+      swiper.slideTo(0, 0); //  indice por la primera vez, tiempo
+      
+      // con indice por la primera vez y primer mazo
+      console.log('Initial deck: ', this.datos[0]);
+      this.mazo = this.datos[0];
+  
+      // con slideChange, 
+      swiper.on('slideChange', () => {
+        const activeIndex = swiper.activeIndex;
+          console.log('This is inside of the deck: ', this.datos[activeIndex]);
+          this.mazo = this.datos[activeIndex]; // asociado con indice de mazo
+        
+      });
+    }
   }
+  
 
 }
