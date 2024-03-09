@@ -11,6 +11,14 @@ export class CalendarioComponent {
 
   // elegir dia de hoy
   selectedDate: Date = new Date();
+  events = [
+    {fecha: '2 enero 2024',
+    event: [
+      {titulo: 'superpartida', lugar_hora: 'madrid 20h', descripcion: 'descripcion1' },
+      {titulo: 'superpartida', lugar_hora: 'madrid 20h', descripcion: 'descripcion2' },
+      {titulo: 'superpartida', lugar_hora: 'madrid 20h', descripcion: 'descripcion3' }
+    ]}
+  ]
 
  constructor() {}
 

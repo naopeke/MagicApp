@@ -63,4 +63,36 @@ main{
 
 }
 
+.barra{
+    width: 50px;
+    height: 100%;
+
+}
+
+.text{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    height: 950px;
+    margin-bottom:15px;
+}
+
+.title_date{
+    width: 330px;
+    height: 64px;
+    color: var(--amarillo);
+    font-family: var(--antiqua);
+}
+
+.detalle_evento{
+    color: #ffffff;
+    font-family: var(--antiqua);
+}
+
+.descripcion{
+    margin-left: 50px;
+
+}
+
 

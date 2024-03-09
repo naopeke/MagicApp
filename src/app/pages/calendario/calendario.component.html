@@ -12,7 +12,17 @@
 
           
     </div>
-    <div class="cuadroDcha">
-
+    <div class="cuadroDcha row">
+        <div class="col-3 barra">
+            <img src="src/assets/images/calendario/barra.png" alt="">
+        </div>
+        <div class="col-9 text">
+            <h1 class="title_date">27 enero 2024</h1>
+            <div class="evento" *ngFor="let info of events[0].event">
+                <h2 class="detalle_evento">{{info.titulo}}</h2>
+                <h3 class="detalle_evento lugar">{{info.lugar_hora}}</h3>
+                <h3 class="detalle_evento descripcion">{{info.descripcion}}</h3>
+            </div>
+        </div>
     </div>
 </main>
