@@ -1,16 +1,151 @@
-.bg-mismazos {
-    background-image: url('/assets/images/fondos/fondo-mismazos.png'), url('/assets/images/fondos/Fondo_morado.png');
-    background-position: top center, bottom center;
-    background-size: cover, contain; /* 1枚目はカバー、2枚目はコンテンツのサイズに合わせる */
-    background-repeat: no-repeat, repeat; 
+.bg-wrapper {
+    min-height: 100vh;
+    position: relative;
 }
-
 .swiper-wrapper {
     background-image: url('/assets/images/fondos/fondo-mismazos.png');
     background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding:64px 0 48px 0;
+}
+
+.title {
+    font-family: var(--antiqua);
+    font-size: 58px;
+    color: var(--amarillo);
+    padding: 0 0 32px 0;
 }
 
 .deckcards-wrapper {
-    background-image: url('/assets/images/fondos/Fondo_morado.png');
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('/assets/images/fondos/Fondo_morado.png');
     background-repeat: repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.swiper-container {
+    width: 1000px;
+    height: 320px;
+}
+
+.deckcards-wrapper{
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('/assets/images/fondos/Fondo_morado.png');
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+}
+
+.deckname-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.deckname {
+    font-family: var(--antiqua);
+    color: var(--amarillo);
+    font-size: 48px;
+    padding-top:32px;
+}
+
+.filter{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.filter-list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter-name{
+    font-size: 15pt;
+    font-family: var(--antiqua);
+    color: var(--blanco);
+}
+
+.filter-name:hover{
+    color: var(--amarillo);
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.cards-wrapper{
+    width: 87%;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    background-color: var(--negro-bg);
+    border-radius: var(--borde-cuadrado);
+}
+
+.counter{
+    position: relative;
+    bottom: 40px;
+}
+
+#total-cards{
+    position: absolute;
+    top: 27px;
+    left: 40px;
+    font-family: var(--antiqua);
+    color: var(--amarillo);
+    font-size: 20pt;
+}
+
+.bucleContainer{
+    width: 100%;
+    height: 700px;
+}
+
+.cartasContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    width: 100%;
+}
+
+
+@media screen and (1025 < width) {
+    .swiper-container {
+        width: 1000px;
+    }
+  }
+
+@media screen and (1025 <= width <= 1200) {
+    .swiper-container {
+        width: 880px;
+    }
+  }
+  
+@media screen and (769 <= width < 1025) {
+    .swiper-container {
+        width: 640px;
+    }
+}
+
+@media screen and (481 <= width < 769) {
+    .swiper-container {
+        width: 400px;
+    }
+}
+
+@media screen and (320 <= width < 481) {
+    .swiper-container {
+        width: 240px;
+    }
 }

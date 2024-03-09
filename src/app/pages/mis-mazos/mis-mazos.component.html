@@ -1,39 +1,70 @@
-<p>mis-mazos works!</p>
-<div class="bg-mismazos">
+<div class="bg-wrapper">
 
-    <swiper-container #mySwiper 
-    class="mySwiper" style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff; width:600px" 
-    grab-cursor="true"
-    pagination="true" 
-    pagination-clickable="true" 
-    slides-per-view="3"
-    space-between="30" 
-    centered-slides="true"
-    (swiperslideclicked)="onSlideClicked($event)"
-    >
-<swiper-slide lazy="true">
-<img src="https://picsum.photos/200/300?random=1" loading="lazy" class="image-slide">
-</swiper-slide>
+    <section class="swiper-wrapper">
+        <p class="title">Mis Mazos</p>
+        <swiper-container #mySwiper 
+        class="mySwiper" style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff; width:600px" 
+        grab-cursor="true"
+        pagination="true" 
+        pagination-clickable="true" 
+        slides-per-view="3"
+        space-between="30" 
+        centered-slides="true"
+        (swiperslideclicked)="onSlideClicked($event)"
+        >
+            <swiper-slide lazy="true">
+            <img src="https://picsum.photos/190/257?random=1" loading="lazy" class="image-slide">
+            </swiper-slide>
 
-<swiper-slide lazy="true">
-<img src="https://picsum.photos/200/300?random=2" loading="lazy" class="image-slide">
-</swiper-slide>
+            <swiper-slide lazy="true">
+            <img src="https://picsum.photos/190/257?random=2" loading="lazy" class="image-slide">
+            </swiper-slide>
 
-<swiper-slide lazy="true">
-<img src="https://picsum.photos/200/300?random=3" loading="lazy" class="image-slide">
-</swiper-slide>
+            <swiper-slide lazy="true">
+            <img src="https://picsum.photos/190/257?random=3" loading="lazy" class="image-slide">
+            </swiper-slide>
 
-<swiper-slide lazy="true">
-<img src="https://picsum.photos/200/300?random=4" loading="lazy" class="image-slide">
-</swiper-slide>
+            <swiper-slide lazy="true">
+            <img src="https://picsum.photos/190/257?random=4" loading="lazy" class="image-slide">
+            </swiper-slide>
 
-<swiper-slide lazy="true">
-<img src="https://picsum.photos/600/300?random=5" loading="lazy" class="image-slide">
-</swiper-slide>
+            <swiper-slide lazy="true">
+            <img src="https://picsum.photos/190/257?random=5" loading="lazy" class="image-slide">
+            </swiper-slide>
 
-</swiper-container>
+        </swiper-container>
 
-</div>
-<div class="deckcards-wrapper">
-    
+    </section>
+
+
+
+    <section class="deckcards-wrapper">
+            <div class="deckname-wrapper">
+                <h2 class="deckname">{{datos[1].nameDeck}}</h2>
+            </div>
+            <div class="filter">
+                <div class="filter-list"><p class="filter-name">Todas las cartas</p></div>
+                <div class="filter-list"><p class="filter-name">Criaturas</p></div>
+                <div class="filter-list"><p class="filter-name">Artefactos</p></div>
+                <div class="filter-list"><p class="filter-name">Encantamientos</p></div>
+                <div class="filter-list"><p class="filter-name">Conjuros</p></div>
+                <div class="filter-list"><p class="filter-name">Instantáneas</p></div>
+                <div class="filter-list"><p class="filter-name">Planswalkers</p></div>
+                <div class="filter-list"><p class="filter-name">Batallas</p></div>
+                <div class="filter-list"><p class="filter-name">Tierras</p></div>
+            </div>
+            <div class="cards-wrapper">
+                <div class="counter">
+                    <img src="/assets/images/iconos/contador-morado.png" alt="">
+                    <p id="total-cards">60/60</p>
+                </div>
+                <cdk-virtual-scroll-viewport itemSize="40" class="bucleContainer">
+                    <div class="cartasContainer">
+                        <div *cdkVirtualFor="let cartas of mazo.cards">
+                            <app-card [templateCard] = "'type2'" [childCard] = "cartas"></app-card>
+                        </div>
+                    </div>
+                </cdk-virtual-scroll-viewport>
+            </div>
+    </section>
 </div>

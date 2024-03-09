@@ -53,6 +53,7 @@ import { ExploraComponent } from './pages/explora/explora.component';
 import { CalendarioComponent } from './pages/calendario/calendario.component';
 import { EventoComponent } from './pages/evento/evento.component';
 import { MazoSelectorModalComponent } from './components/mazo-selector-modal/mazo-selector-modal.component';
+import { CdkScrollableModule, CdkVirtualScrollViewport, ScrollingModule } from '@angular/cdk/scrolling';
 
 
 @NgModule({
@@ -102,7 +103,9 @@ import { MazoSelectorModalComponent } from './components/mazo-selector-modal/maz
     MatSelectModule,
     MatDialogModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    CdkVirtualScrollViewport,
+    ScrollingModule
     
     //swiper@8
     // SwiperModule
