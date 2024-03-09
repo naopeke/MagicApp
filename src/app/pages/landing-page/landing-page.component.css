@@ -16,12 +16,12 @@ main{
     background-size: cover;
     opacity: 0.85;
     padding-top: 45px;
-    height: 1200px;
+    height: 1300px;
 }
 
 swiper-container{
     background-color: black;
-    height: 675px;
+    height: 775px;
     margin: 35px;
     opacity: 0.85;
     display: flex;
@@ -30,7 +30,6 @@ swiper-container{
 
 #bienvenido{
     text-align: center;
-    font-size: 18px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,7 +44,7 @@ swiper-container{
 .titulo{
     font-family: var(--antiqua);
     color: var(--amarillo);
-    font-size: xx-large;
+    font-size: 2rem;
 }
 
 .parrafo-telarana{
@@ -76,6 +75,7 @@ swiper-container{
     color: var(--blanco);
     text-align: left;
     margin: 50px;
+    font-size: 1.5rem;
 }
 
 .parrafo-antifaz{
@@ -106,6 +106,8 @@ swiper-container{
     color: var(--blanco);
     text-align: left;
     margin: 50px;
+    font-size: 1.5rem;
+
 }
 .parrafo-cartas1{
     display: flex;
@@ -136,6 +138,8 @@ swiper-container{
     color: var(--blanco);
     text-align: left;
     margin: 50px;
+    font-size: 1.5rem;
+
 }
 .parrafo-mazo{
     display: flex;
@@ -162,6 +166,7 @@ swiper-container{
     color: var(--blanco);
     text-align: left;
     margin: 50px;
+    font-size: 1.5rem;
 }
 
 .parrafo-dragon{
@@ -189,6 +194,7 @@ swiper-container{
     color: var(--blanco);
     text-align: left;
     margin: 50px;
+    font-size: 1.5rem;
 }
 
 #slideSenora{
@@ -242,6 +248,7 @@ swiper-container{
     color: var(--blanco);
     text-align: left;
     width: 100%;
+    font-size: 1.5rem;
 }
 
 .textoSenora h3 p{
@@ -261,14 +268,14 @@ swiper-container{
     width: 100%;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url('src/assets/images/senoraSwiper.png');
+    background-image: url('src/assets/images/landing/senoraSwiper.png');
 
 }
 #slideOrco{
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url('src/assets/images/OrcoSliderLanding.png');
+    background-image: url('src/assets/images/landing/OrcoSliderLanding.png');
 
 }
 .secciones-container{
@@ -303,29 +310,29 @@ swiper-container{
     border-radius: 20px;
 }
 .guerreroAmarillo{
-    background-image: url('src/assets/images/guerreroAmarillo.png');
+    background-image: url('src/assets/images/landing/guerreroAmarillo.png');
 
 }
 
 .guerreroAzul{
-    background-image: url('src/assets/images/guerreroAzul.png');
+    background-image: url('src/assets/images/landing/guerreroAzul.png');
 }
 
 .guerreroMorado{
-    background-image: url('src/assets/images/guerreroMorado.png');
+    background-image: url('src/assets/images/landing/guerreroMorado.png');
 }
 
 .guerreroRojo{
-    background-image: url('src/assets/images/guerreroRojo.png');
+    background-image: url('src/assets/images/landing/guerreroRojo.png');
 }
 
 .guerreroVerde{
-    background-image: url('src/assets/images/guerreroVerde.png');
+    background-image: url('src/assets/images/landing/guerreroVerde.png');
 }
 
 .orco-container{
     height: 890px;
-    background-image: url('src/assets/images/orco_cetro_landing.png');
+    background-image: url('src/assets/images/landing/orco_cetro_landing.png');
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -382,7 +389,7 @@ a:visited{
     border: solid var(--azul);
     border-radius: 20px;
     height: 650px;
-    width: 670px;
+    width: 690px;
     padding-top: 45px;
     display: flex;
     flex-direction: column;
@@ -394,16 +401,21 @@ a:visited{
     color: var(--azul);
     font-family: var(--antiqua);
     text-align: center;
+    font-size: 1.5rem;
+    width: 100%;
+    margin-bottom: 45px;
 }
 
 .buscador-container h5{
     color: var(--blanco);
     font-family: var(--inter);
-    margin-top: 25px;
+    margin-top: 45px;
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
+    font-size: 1.2rem;
+
 }
 
 .textoBuscador-container h5{
@@ -428,6 +440,8 @@ a:visited{
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
+    font-size: 1.5rem;
+
 }
 
 .textoBuscador-container h4 a{
@@ -511,21 +525,21 @@ select {
 .carta1{
     width: 250px;
     height: 100%;
-    background-image: url('src/assets/images/carta1landing.png');
+    background-image: url('src/assets/images/landing/carta1landing.png');
     background-repeat: no-repeat;
 }
 
 .carta2{
     width: 250px;
     height: 100%;
-    background-image: url('src/assets/images/carta2landing.png');
+    background-image: url('src/assets/images/landing/carta2landing.png');
     background-repeat: no-repeat;
 }
 
 .carta3{
     width: 250px;
     height: 100%;
-    background-image: url('src/assets/images/carta3landing.png');
+    background-image: url('src/assets/images/landing/carta3landing.png');
     background-repeat: no-repeat;
 }
 
@@ -555,6 +569,7 @@ select {
     color: var(--morado);
     font-family: var(--antiqua);
     text-align: center;
+    font-size: 1.5rem;
 }
 
 .creacionMazos{
@@ -568,7 +583,7 @@ img-container{
     height: 520px;
     width: 520px;
     background-size: contain;
-    background-image: url('src/assets/images/cartasEsparcidasLanding.png');
+    background-image: url('src/assets/images/landing/cartasEsparcidasLanding.png');
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -578,7 +593,7 @@ img-container{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 120px;
+    gap: 50px;
 }
 
 .martillo{
@@ -593,24 +608,25 @@ img-container{
 .texto-martillo{
     color: var(--blanco);
     font-family: var(--inter);
-    margin-top: 60px;
+    width: 800px;
 }
 
 .texto-martillo h5 p{
     margin-bottom: 15px;
     text-align: left;
     width: 100%;
+    font-size: 1.3rem;
 }
 
 .texto-martillo h5 a{
     color: var(--morado);
     font-family: var(--inter);
-    font-size: larger;
+    font-size: 1.3rem;
 }
 
 .comparte-container{
     height: 675px;
-    background-image: url('src/assets/images/islaLandingPage.png');
+    background-image: url('src/assets/images/landing/islaLandingPage.png');
 }
 
 .comparte{
@@ -656,6 +672,7 @@ img-container{
     color: var(--amarillo);
     font-family: var(--antiqua);
     text-align: center;
+    font-size: 1.5rem;
 }
 
 .comparteYdescubre h5{
@@ -664,6 +681,7 @@ img-container{
     text-align: center;
     width: 100%;
     margin-top: 35px;
+    font-size: 1.3rem;
 }
 
 .comparteYdescubre h5 p{
@@ -691,6 +709,7 @@ img-container{
     color: var(--amarillo);
     font-family: var(--antiqua);
     text-align: center;
+    font-size: 1.5rem;
 }
 
 .vota h5{
@@ -700,6 +719,7 @@ img-container{
     margin-top: 35px;
     margin-bottom: 15px;
     width: 100%;
+    font-size: 1.3rem;
 }
 
 .vota h5 p{
@@ -728,6 +748,7 @@ img-container{
     color: var(--amarillo);
     font-family: var(--antiqua);
     padding-top: 35px;
+    font-size: 1.5rem;
 }
 
 .explora h5{
@@ -736,6 +757,7 @@ img-container{
     text-align: left;
     margin: 35px;
     width: 100%;
+    font-size: 1.3rem;
 }
 
 .explora h5 p{
@@ -765,7 +787,7 @@ img-container{
 }
 
 .castillo{
-    background-image: url('src/assets/images/castillo_landing.png');
+    background-image: url('src/assets/images/landing/castillo_landing.png');
     height: 775px;
 }
 
@@ -791,7 +813,7 @@ img-container{
 .sumergete h2{
     font-family: var(--antiqua);
     color: var(--verde);
-    font-size: x-large;
+    font-size: 1.5rem;
 }
 
 .texto-sumergete{
@@ -807,6 +829,7 @@ img-container{
     margin-top: 25px;
     margin-bottom: 15px;
     width: 100%;
+    font-size: 1.3rem;
 }
 
 .texto-sumergete h5 p{
@@ -820,6 +843,7 @@ img-container{
     color: var(--amarillo);
     font-family: var(--inter);
     margin-top: 45px;
+    font-size: 1.5rem;
 }
 
 

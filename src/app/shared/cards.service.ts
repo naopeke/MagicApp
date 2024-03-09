@@ -7,6 +7,7 @@ import { Card } from  '../models/card';
 export class CardsService {
 
   private url = "http://localhost:3000/cartas";
+  private decks: string[][] = [[], [], [], [], []]; //5 mazos, 5 arrays en 1 array
 
 
   public card: Card;
@@ -337,16 +338,14 @@ public getByCollection(name:string): Card[] | null {
   }
 }
 
-  //solo una carta
-  // public getByName(name:string): Card | null {
-  //   let card = this.cards.find(card => card.name === name);
-  //   console.log('Obtained info: ', name, card);
-  //   if (card) {
-  //     return card; //si se ha encontrado con una carta, devuelve esa carta 
-  //   } else {
-  //     return null; // si no, devuelve null
-  //   }
-  // }
+public addCardsToDeck(deckIndex: number, cardIds: string[]): void {
+  console.log('Cards added to the deck: ', cardIds);
+    cardIds.forEach(cardId => {
+      this.decks[deckIndex].push(cardId);
+    });
+  console.log('Deck index: ', this.decks[deckIndex]);
+  console.log('Card Ids added: ', cardIds);
+}
 
   constructor() { }
 }

@@ -15,6 +15,7 @@ export class LoggedoutCardComponent implements OnInit {
   public searchInput: string = '';
   public resultsCards: Card[] =[]; //para meter datos de resultados
   public searchType: string = 'nombre' //default searchtype es nombre
+  public searchPerformed: boolean = false; // si ha hecho la busqueda o no  default false
 
   constructor(
     public cardsService: CardsService,
@@ -29,6 +30,7 @@ export class LoggedoutCardComponent implements OnInit {
 
 // buscar con nombre completa y array
   searchCards(searchParam: string): void {
+    this.searchPerformed = true;
     let cards = [];
     if (this.searchType == 'nombre'){
       cards = this.cardsService.getByName(searchParam);
