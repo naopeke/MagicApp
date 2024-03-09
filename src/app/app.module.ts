@@ -20,14 +20,13 @@ import { MatTableModule } from '@angular/material/table';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule} from '@angular/material/dialog'; 
 
 //calendario
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-
+import { MatInputModule } from '@angular/material/input';
 
 // swiper@8
 // import { SwiperModule } from 'swiper/angular';
@@ -53,6 +52,8 @@ import { ExploraComponent } from './pages/explora/explora.component';
 import { CalendarioComponent } from './pages/calendario/calendario.component';
 import { EventoComponent } from './pages/evento/evento.component';
 import { MazoSelectorModalComponent } from './components/mazo-selector-modal/mazo-selector-modal.component';
+import { ModalProfileComponent } from './components/modal-profile/modal-profile.component';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 
 
 @NgModule({
@@ -63,6 +64,7 @@ import { MazoSelectorModalComponent } from './components/mazo-selector-modal/maz
     CardComponent,
     HomeComponent,
     CardInfoComponent,
+    LandingPageComponent,
     LoggedoutCardComponent,
     LoggedinCardComponent,
     RegisterComponent,
@@ -74,7 +76,8 @@ import { MazoSelectorModalComponent } from './components/mazo-selector-modal/maz
     ExploraComponent,
     CalendarioComponent,
     EventoComponent,
-    MazoSelectorModalComponent,
+    ModalProfileComponent,
+    MazoSelectorModalComponent
   ],
 
   imports: [
@@ -106,6 +109,7 @@ import { MazoSelectorModalComponent } from './components/mazo-selector-modal/maz
     
     //swiper@8
     // SwiperModule
+
   ],
   providers: [],
   bootstrap: [AppComponent],
