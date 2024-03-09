@@ -1,7 +1,7 @@
 <div class="background-wrapper">
     <div [ngClass]= "darkenOverlay ? 'bg_dark' : ''">
         <div class="container_cardinfo" *ngIf="show_cardinfo">
-            <app-card-info (onCardInfoClose)="card_info_close($event)"></app-card-info>
+            <app-card-info (onCardInfoClose)="card_info_close($event)">X</app-card-info>
         </div>
 
         <div class="container_cardinfo" *ngIf="!show_cardinfo">

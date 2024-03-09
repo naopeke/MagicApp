@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CardsService } from 'src/app/shared/cards.service';
 import { Card } from 'src/app/models/card';
 
@@ -8,13 +8,14 @@ import { Card } from 'src/app/models/card';
   styleUrls: ['./card-info.component.css']
 })
 export class CardInfoComponent implements OnInit{
+  @Output() onCardInfoClose = new EventEmitter<boolean>();
   @Input() origin: string;
   @Input() id_card: number;
-  @Output() OnCardInfoClose = new EventEmitter<boolean>();
 
   public card: Card;
   public darkenOverlay: boolean = false;
   public show_cardinfo: boolean = false;
+
 
   legalities = [
     {text: 'not legal', color: 'grey'},
@@ -37,6 +38,11 @@ export class CardInfoComponent implements OnInit{
       return '#5C724B'
     }
   }
+
+  public card_info_close(){
+    this.onCardInfoClose.emit(false);
+  }
+
 
   
   constructor(public cardsService: CardsService){}
@@ -65,9 +71,4 @@ export class CardInfoComponent implements OnInit{
     "commander"
     );
   }
-
-  public card_info_close(){
-    this.OnCardInfoClose.emit(false);
-  }
-
 }

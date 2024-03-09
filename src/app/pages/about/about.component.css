@@ -1,0 +1,256 @@
+body{
+    display: block;
+}
+
+main{
+    width: 100%;
+}
+
+.bloqueFoto{
+    width: 100%;
+    height: 920.6px;
+    background-image: url('src/assets/images/about/foto1Nieve.png');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.titulo-container{
+    background-color: black;
+    opacity: 0.85;
+    height: 200px;
+    width: 750px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.bloqueAmarillo{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('src/assets/images/fondos/Fondo_narajna2.png');
+    height: 642px;
+    gap: 160px;
+}
+
+
+.iconoAmarillo{
+    height: 100%;
+    width: 30%;
+    padding-top: 45px;
+}
+
+.textoAmarillo{
+    font-family: var(--antiqua);
+    color: var(--blanco);
+    font-size: x-large;
+}
+
+.bloqueAzul{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('src/assets/images/fondos/Fondo_azul2.png');
+    gap: 250px;
+}
+
+.iconoAzul{
+    height: 100%;
+    width: 30%;
+    padding-top: 45px;
+    padding-bottom: 45px;
+}
+
+.textoAzul h1{
+    font-family: var(--antiqua);
+    color: var(--blanco);
+    font-size: x-large;
+    text-align: center;
+}
+
+.textoAzul h2{
+    font-family: var(--inter);
+    color: var(--blanco);
+    text-align: left;
+}
+
+.textoAzul a{
+    font-family: var(--antiqua);
+    color: #88C8F2;
+    text-align: right;
+}
+
+.textoAzul a h1{
+    font-family: var(--antiqua);
+    color: #88C8F2;
+    text-align: right;
+}
+
+.fotoAzul{
+    width: 100%;
+    height: 600px;
+    background-image: url('src/assets/images/about/fotoAzul.png');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bloqueMorado{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('src/assets/images/fondos/Fondo_morado2.png');
+    height: 642px;
+    gap: 250px;
+}
+
+
+.iconoMorado{
+    height: 100%;
+    width: 30%;
+    padding-top: 45px;
+}
+
+.textoMorado h1{
+    font-family: var(--antiqua);
+    color: var(--blanco);
+    font-size: x-large;
+    text-align: center;
+}
+
+.textoMorado h2{
+    font-family: var(--inter);
+    color: var(--blanco);
+    text-align: left;
+}
+
+.textoMorado a{
+    font-family: var(--antiqua);
+    color: #F4B1FE;
+    text-align: right;
+}
+
+
+.textoMorado a h1{
+    font-family: var(--antiqua);
+    color: #F4B1FE;
+    text-align: right;
+}
+
+.fotoMorada{
+    width: 100%;
+    height: 600px;
+    background-image: url('src/assets/images/about/fotoMorada.png');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fotoRoja{
+    width: 100%;
+    height: 570px;
+    background-image: url('src/assets/images/about/fotoRoja.png');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+}
+
+.bloqueRojo{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('src/assets/images/fondos/Fondo_rojo2.png');
+    height: 650px;
+    gap: 250px;
+}
+
+
+.iconoRojo{
+    height: 100%;
+    width: 30%;
+    padding-top: 45px;
+}
+
+.textoRojo h1{
+    font-family: var(--antiqua);
+    color: var(--blanco);
+    font-size: x-large;
+    text-align: center;
+}
+
+.textoRojo h2{
+    font-family: var(--inter);
+    color: var(--blanco);
+    text-align: left;
+}
+
+.textoRojo a{
+    font-family: var(--antiqua);
+    color: #FF0000;
+    text-align: right;
+}
+
+.textoRojo a h1{
+    font-family: var(--antiqua);
+    color: #FF0000;
+    text-align: right;
+}
+
+.fotoVerde{
+    width: 100%;
+    height: 600px;
+    background-image: url('src/assets/images/about/fotoVerde.png');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bloqueVerde{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('src/assets/images/fondos/Fondo_verde2.png');
+    height: 642px;
+    gap: 250px;
+}
+
+
+.iconoVerde{
+    height: 100%;
+    width: 30%;
+    padding-top: 45px;
+}
+
+.textoVerde h1{
+    font-family: var(--antiqua);
+    color: var(--blanco);
+    font-size: x-large;
+    text-align: center;
+}
+
+.textoVerde h2{
+    font-family: var(--inter);
+    color: var(--blanco);
+    text-align: left;
+}
+
+.textoVerde a{
+    font-family: var(--antiqua);
+    color: #8BCB59;
+    text-align: right;
+}
+
+.textoVerde a h1{
+    font-family: var(--antiqua);
+    color: #8BCB59;
+    text-align: right;
+}

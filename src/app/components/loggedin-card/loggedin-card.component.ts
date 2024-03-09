@@ -117,9 +117,9 @@ export class LoggedinCardComponent implements OnInit {
     this.show_cardinfo = true; 
   }
 
-  public onCardInfoClose(show: boolean){
-    this.darkenOverlay = show;
-    this.show_cardinfo = show;
+  public card_info_close() {
+    this.darkenOverlay = false;
+    this.show_cardinfo = false;
   }
 
   }

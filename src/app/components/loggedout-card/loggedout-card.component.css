@@ -16,7 +16,9 @@
     text-align: center;
     padding:32px 0 32px 0;
     position: absolute;
+    top: 10px;
 }
+
 
 .search-container{
  display: flex;
@@ -24,7 +26,7 @@
  justify-content: center;
  position: absolute;
  width: 100%;
- top: 84px;
+ top: 100px;
 }
 
 form {
@@ -91,7 +93,7 @@ select {
 .bg-cards {
     background-color: var(--negro-bg);
     min-height: 700px;
-    width: 90%;
+    width: 90vw;
     height: auto;
     padding: 30px;
     border-radius: var(--ancho-borde);
