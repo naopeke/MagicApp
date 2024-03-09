@@ -3,17 +3,17 @@ body{
 }
 
 main{
-    min-height: 300%;
     width: 100%;
 }
 
 .bloqueFoto{
     width: 100%;
-    height: 910px;
+    height: 920.6px;
     background-image: url('src/assets/images/about/foto1Nieve.png');
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .titulo-container{
@@ -24,6 +24,7 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 20px;
 }
 
 .bloqueAmarillo{
@@ -49,15 +50,6 @@ main{
     font-size: x-large;
 }
 
-.fotoAmarilla{
-    width: 100%;
-    height: 600px;
-    background-image: url('src/assets/images/about/fotoAmarilla.png');
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .bloqueAzul{
     position: relative;
     display: flex;
@@ -66,7 +58,6 @@ main{
     background-image: url('src/assets/images/fondos/Fondo_azul2.png');
     gap: 250px;
 }
-
 
 .iconoAzul{
     height: 100%;
@@ -161,13 +152,23 @@ main{
     align-items: center;
 }
 
+.fotoRoja{
+    width: 100%;
+    height: 570px;
+    background-image: url('src/assets/images/about/fotoRoja.png');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+}
+
 .bloqueRojo{
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     background-image: url('src/assets/images/fondos/Fondo_rojo2.png');
-    height: 642px;
+    height: 650px;
     gap: 250px;
 }
 
