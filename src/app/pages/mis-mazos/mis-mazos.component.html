@@ -1,1 +1,39 @@
 <p>mis-mazos works!</p>
+<div class="bg-mismazos">
+
+    <swiper-container #mySwiper 
+    class="mySwiper" style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff; width:600px" 
+    grab-cursor="true"
+    pagination="true" 
+    pagination-clickable="true" 
+    slides-per-view="3"
+    space-between="30" 
+    centered-slides="true"
+    (swiperslideclicked)="onSlideClicked($event)"
+    >
+<swiper-slide lazy="true">
+<img src="https://picsum.photos/200/300?random=1" loading="lazy" class="image-slide">
+</swiper-slide>
+
+<swiper-slide lazy="true">
+<img src="https://picsum.photos/200/300?random=2" loading="lazy" class="image-slide">
+</swiper-slide>
+
+<swiper-slide lazy="true">
+<img src="https://picsum.photos/200/300?random=3" loading="lazy" class="image-slide">
+</swiper-slide>
+
+<swiper-slide lazy="true">
+<img src="https://picsum.photos/200/300?random=4" loading="lazy" class="image-slide">
+</swiper-slide>
+
+<swiper-slide lazy="true">
+<img src="https://picsum.photos/600/300?random=5" loading="lazy" class="image-slide">
+</swiper-slide>
+
+</swiper-container>
+
+</div>
+<div class="deckcards-wrapper">
+    
+</div>

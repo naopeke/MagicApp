@@ -1,0 +1,16 @@
+.bg-mismazos {
+    background-image: url('/assets/images/fondos/fondo-mismazos.png'), url('/assets/images/fondos/Fondo_morado.png');
+    background-position: top center, bottom center;
+    background-size: cover, contain; /* 1枚目はカバー、2枚目はコンテンツのサイズに合わせる */
+    background-repeat: no-repeat, repeat; 
+}
+
+.swiper-wrapper {
+    background-image: url('/assets/images/fondos/fondo-mismazos.png');
+    background-repeat: no-repeat;
+}
+
+.deckcards-wrapper {
+    background-image: url('/assets/images/fondos/Fondo_morado.png');
+    background-repeat: repeat;
+}
