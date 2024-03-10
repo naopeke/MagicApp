@@ -51,7 +51,7 @@
                         <h2 class="deckname">{{mazo?.nameDeck}}</h2>
                     </div>
                     <div class="filter">
-                        <div class="filter-list"><p class="filter-name">Todas las cartas</p></div>
+                        <div class="filter-list"  (click)="onFilterClick('Todas las cartas')"><p class="filter-name">Todas las cartas</p></div>
                         <div class="filter-list"><p class="filter-name">Criaturas</p></div>
                         <div class="filter-list"><p class="filter-name">Artefactos</p></div>
                         <div class="filter-list"><p class="filter-name">Encantamientos</p></div>
@@ -64,7 +64,7 @@
                     <div class="counter-wrapper">
                         <div class="counter">
                             <img src="/assets/images/iconos/contador-morado.png" alt="img-counter" class="img-counter">
-                            <p id="total-cards">{{ mazo?.cards?.length || 0 }}/60</p>
+                            <p id="total-cards">{{ mazo?.cards ? getTotalQuantity(mazo.cards) : 0  }}/60</p>
                         </div>
                     </div>
                     <div class="cards-wrapper">
