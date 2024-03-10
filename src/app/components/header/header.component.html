@@ -5,8 +5,10 @@
         <button class="button_lateral" routerLink="register"  *ngIf="idBotonActivo === 'btnIniciarSesion'">Iniciar sesión</button>
         <button class="button_lateral dropdown-toggle" (click)="modal_visible = !modal_visible" *ngIf="idBotonActivo === 'btnUsuario'">{{login1.user.name}}</button>
         <div *ngIf="modal_visible" class="dropdown-child">
-          <span routerLink="profile">&nbsp;&nbsp;Perfil</span>
-          <span (click)="loggout()">&nbsp;&nbsp;Cerrar sesión</span>
+            <!-- Crar un espacio de ruptura (&nbsp) -->
+            <span routerLink="profile">&nbsp;&nbsp;Perfil</span>
+            <span routerLink="">&nbsp;&nbsp;Cerrar sesión</span>
+            <span (click)="loggout()" routerLink="">&nbsp;&nbsp;</span>
         </div>
     </div>
 
