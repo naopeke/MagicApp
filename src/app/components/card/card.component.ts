@@ -10,6 +10,7 @@ import { CardsService } from 'src/app/shared/cards.service';
 export class CardComponent {
   @Input() childCard: Card;
   @Input() templateCard: string;
+  @Output() eventoidCard = new EventEmitter<number>()
   @Output() addCardToBuilder = new EventEmitter<Card>();
   @Output() deleteFromChild = new EventEmitter<string>();
 
@@ -40,5 +41,10 @@ export class CardComponent {
 
   onDeleteAllButtonClick(){
     console.log('clicked the delete all button');
+  }
+
+  idCard(id_card:number){
+    this.eventoidCard.emit(id_card)
+    console.log(id_card); 
   }
 }

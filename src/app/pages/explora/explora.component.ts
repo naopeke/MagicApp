@@ -13,9 +13,13 @@ import { Deck } from 'src/app/models/deck';
 export class ExploraComponent {
   
   public datos: Deck[]
+  
   public mazo: Deck
-
   public explorar: boolean = false
+  public id_card: number
+  public showCardInfo: boolean = false
+  public darkenOverlay:boolean = false; 
+ 
 
   constructor(){
     this.datos = [
@@ -111,9 +115,21 @@ export class ExploraComponent {
 
   public close(){
    this.explorar = false
+  }
+  
+  public idCard(id_card:number){
+    console.log(id_card);
+    this.id_card = id_card
     
   }
+  openCardInfo(){
+    this.showCardInfo = true
+    this.darkenOverlay=true;
+  }
 
+  closeCardInfo(event:boolean){
+    this.showCardInfo = event
+  }
   
 
 

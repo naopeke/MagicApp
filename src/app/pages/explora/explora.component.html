@@ -76,10 +76,16 @@
                 <cdk-virtual-scroll-viewport itemSize="40" class="bucleContainer">
                     <div class="cartasContainer">
                         <div *cdkVirtualFor="let cartas of mazo.cards">
-                            <app-card [templateCard] = "'type2'" [childCard] = "cartas"></app-card>
+                            <app-card [templateCard] = "'type2'" [childCard] = "cartas" 
+                            (eventoidCard) ="idCard($event)"
+                            (click) = "openCardInfo()"></app-card>
                         </div>
                     </div>
                 </cdk-virtual-scroll-viewport>
+
+                <div class="cardInfo" *ngIf="showCardInfo == true">
+                    <app-card-info [id_card] = "id_card" (onCardInfoClose) = "closeCardInfo($event)"></app-card-info>
+                </div>
             </div>
             
     

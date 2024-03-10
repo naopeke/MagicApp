@@ -244,6 +244,11 @@ cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb:hover{
     cursor: pointer;
 }
 
+.cardInfo{
+    position: absolute;
+    height: 100px;
+}
+
 @media screen and (max-width: 1900px) 
 {
     .buscador{
