@@ -1,45 +1,97 @@
-<div class="search-container">
-    <form id="formBuscador">
-      <input type="text" id="buscador" name="buscador" placeholder="Buscar" />
-      <button type="submit" class="btn-buscador"></button>
-    </form>
-    <button class="button_lateral">Añadir evento</button>
-</div>
+<div id="divfondo">
+    <div class="search-container searchContainer">
+        <form id="formBuscador">
+            <input type="text" id="buscador" name="buscador" placeholder="Buscar" />
+            <button type="submit" class="btn-buscador btnBuscador"></button>
+        </form>
+        <button class="button_lateral">Añadir evento</button>
+    </div>
+        
+    <div id="divEvento" *ngFor="let item of paginatedEvents; let i = index">
+        
+        <div id="divImg">
+            <img id="img_evento" src="../../../assets/images/personajes/avatar1.png" width="300px">
+            <h2>{{ item.creator.name }}</h2>
+        </div>
+        
 
-<div id="divEvento">
-    <div id="divImg">
-        <img id="img_evento" src="" alt="">
-        <!-- <p>{{event.avater}}</p> -->
+        <div id="div_info_evento">
+            <h1>{{ item.title }}</h1>
+            <div class="parr_img">
+                <img class="icono_evento" src="../../../assets/images/iconos/casco_evento.png" width="30px">
+                <p class="parr_p">&nbsp;&nbsp;{{ item.description }}</p>
+            </div>
+            <div class="parr_img">
+                <img class="icono_evento" src="../../../assets/images/iconos/fecha_evento.png" width="30px">
+                <p class="parr_p">&nbsp;&nbsp;{{ item.date | date:'dd/MM/yyyy' }}</p>
+            </div>
+            <div class="parr_img">
+                <img class="icono_evento" src="../../../assets/images/iconos/hora_evento.png" width="30px">
+                <p class="parr_p">&nbsp;&nbsp;{{ item.hour }}</p>
+            </div>
+            <div class="parr_img">
+                <img class="icono_evento" src="../../../assets/images/iconos/lugar_evento.png" width="30px">
+                <p class="parr_p">&nbsp;&nbsp;{{ item.place }}</p>
+            </div>
+            <div id="div_button" *ngIf="item.creator.id_user != login1.user.id_user">
+                <button class="button_participar" data-bs-toggle="modal" data-bs-target="#singUp">Participar</button>
+            </div>
+        </div>
+
+        <div id="icono_elim_edit" *ngIf="item.creator.id_user === login1.user.id_user">
+            <img data-bs-toggle="modal" data-bs-target="#editEvent" id="img_superior" src="../../../assets/images/iconos/editar_evento.png" width="45px">
+            <img data-bs-toggle="modal" data-bs-target="#deleteEvent" id="img_inferior"src="../../../assets/images/iconos/eliminar_evento.png" width="45px">
+        </div>
+        
     </div>
 
-    <div id="div_info_evento">
-        <h1></h1>
-        <div class="parr_img">
-            <img class="icono_evento" src="" alt="">
-            <p></p>
-        </div>
-        <div class="parr_img">
-            <img class="icono_evento" src="" alt="">
-            <p></p>
-        </div>
-        <div class="parr_img">
-            <img class="icono_evento" src="" alt="">
-            <p></p>
-        </div>
-        <div class="parr_img">
-            <img class="icono_evento" src="" alt="">
-            <p></p>
+    <!-- Pagination -->
+    <div class="pagination" *ngIf="totalPages > 1">
+        <button class="buttonPagination" (click)="prevPage()"><p class="p_pagiantion">Anterior</p></button>
+        <span class="paginationSpan">{{ currentPage + 1 }} / {{ totalPages }}</span>
+        <button class="buttonPagination" (click)="nextPage()"><p class="p_pagiantion">Siguiente</p></button>
+    </div>
+
+
+    <!--MODAL edit-->
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" id="editEvent" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-edit">
+            <div class="modal-content divEdit">
+                <h1>Editar evento</h1>
+                <form class="formEdit" [formGroup]="editForm">
+                    <input class="inputEdit" type="text" id="tituloEvento" formControlName="tituloEvento" required placeholder="Titulo ">
+                    <input class="inputEdit" type="time" id="hora" formControlName="hora" required placeholder="Hora">
+                    <input class="inputEdit" type="date" id="fecha" formControlName="fecha" required placeholder="Fecha">
+                    <input class="inputEdit" type="text" id="lugar" formControlName="lugar" required placeholder="Lugar">
+                    <textarea class="inputEdit"id="descripcion" formControlName="descripcion" required placeholder="Descripcion"></textarea>
+
+                    <button class="submitEdit" type="submit" (click)="onSubmit()">Guardar cambios</button>
+                </form>
+
+            </div>
         </div>
     </div>
 
-    <!-- <div id="icono_elim_edit" *ngIf="idBotonActivo === 'btnUsuario'"> -->
-    <div id="icono_elim_edit">
-
-        <img src="" alt="">
-        <img src="" alt="">
+    <!-- MODAL delete-->
+    <div class="modal fade bd-example-modal-sm " id="deleteEvent" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-general">
+            <div class="modal-content divDelete">
+                <p class="modalP">¿Deseas eliminar el evento?</p>
+                <button class="buttonDelete" (click)="deleteEvent()"><p>Aceptar</p></button>
+            </div>
+        </div>
     </div>
 
-    <!-- <button class="button_participar">Participar</button> -->
+    <!--MODAL singUp event-->
+    <div class="modal fade bd-example-modal-sm" id="singUp" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-general">
+            <div class="modal-content divSingUp">
+                <p class="modalP">¿Deseas participar en el evento?</p>
+                <button class="buttonsingUp" (click)="singUp()"><p>Aceptar</p></button>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 

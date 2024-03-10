@@ -48,6 +48,7 @@ import { ExploraComponent } from './pages/explora/explora.component';
 import { CalendarioComponent } from './pages/calendario/calendario.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { EventoComponent } from './pages/evento/evento.component';
+import { AddEventComponent } from './components/add-event/add-event.component';
 
 
 
@@ -73,6 +74,7 @@ import { EventoComponent } from './pages/evento/evento.component';
     ExploraComponent,
     CalendarioComponent,
     EventoComponent,
+    AddEventComponent,
   ],
 
   imports: [
