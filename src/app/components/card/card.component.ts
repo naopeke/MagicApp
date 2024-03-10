@@ -14,7 +14,7 @@ export class CardComponent {
   @Output() deleteFromChild = new EventEmitter<string>();
   @Output() countPlusFromChild = new EventEmitter<string>();
   @Output() countMinusFromChild = new EventEmitter<string>();
-  @Output() deteleAllQuantityFromChild = new EventEmitter<string>();
+  @Output() deleteAllQuantityFromChild = new EventEmitter<string>();
 
   constructor(private cardsService: CardsService){
 
@@ -48,6 +48,6 @@ export class CardComponent {
   onDeleteAllButtonClick(event:Event){
     console.log('clicked the delete all button');
     event.stopPropagation(); //para resolver bubbling
-    this.deteleAllQuantityFromChild.emit(this.childCard.id_card);
+    this.deleteAllQuantityFromChild.emit(this.childCard.id_card);
   }
 }

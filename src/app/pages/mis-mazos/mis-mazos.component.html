@@ -59,11 +59,17 @@
                         <div class="filter-list"><p class="filter-name">Batallas</p></div>
                         <div class="filter-list"><p class="filter-name">Tierras</p></div>
                     </div>
-                    <div class="cards-wrapper">
+                    <div class="counter-wrapper">
                         <div class="counter">
                             <img src="/assets/images/iconos/contador-morado.png" alt="img-counter" class="img-counter">
                             <p id="total-cards">{{ mazo?.cards?.length || 0 }}/60</p>
                         </div>
+                    </div>
+                    <div class="cards-wrapper">
+                        <!-- <div class="counter">
+                            <img src="/assets/images/iconos/contador-morado.png" alt="img-counter" class="img-counter">
+                            <p id="total-cards">{{ mazo?.cards?.length || 0 }}/60</p>
+                        </div> -->
 
 
                         <!-- <div class="list-cards" *ngIf="mazo?.cards?.length > 0"> -->
@@ -80,7 +86,7 @@
                                     [templateCard]="'type5'"
                                     (countMinusFromChild)="onDecreaseCardQuantityFromChild($event)"
                                     (countPlusFromChild)="onIncreaseCardQuantityFromChild($event)"
-                                    (deteleAllQuantityFromChild)="onDeleteAllCardsFromChild($event)"
+                                    (deleteAllQuantityFromChild)="onDeleteAllCardsFromChild($event)"
                                     (click)="onCardInfoOpen()"
             
                                 ></app-card>

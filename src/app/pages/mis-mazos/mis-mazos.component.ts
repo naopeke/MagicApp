@@ -98,16 +98,15 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
       card.quantity -= 1;
       console.log(`Quantity ${cardId}: `, card.quantity);
     }
-    console.log('After deleting from Deck: ', )
   }
 
   public onDeleteAllCardsFromChild(cardId:string){
     const card = this.mazo.cards.find(c => c.id_card === cardId);
+    console.log(card);
     if (card && card.quantity > 0) {  //para que la cantidad no sea menor que cero
       card.quantity = 0;
       console.log(`Quantity ${cardId}: `, card.quantity);
     }
-    console.log('After adding from Deck: ', )
   }
 
   public onCardInfoOpen(){
@@ -145,7 +144,6 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
       const swiper = this.mySwiper.nativeElement.swiper;
       
       swiper.slideTo(0, 0); //  indice por la primera vez, tiempo
-      
       // con indice por la primera vez y primer mazo
       console.log('Initial deck: ', this.datos[0]);
       this.mazo = this.datos[0];
