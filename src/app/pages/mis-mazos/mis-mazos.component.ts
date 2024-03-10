@@ -116,11 +116,7 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
 
   public onFilterClick(typeLine:string){
     console.log('filtered creatures');
-    if (typeLine === '' || typeLine === 'all'){
-      this.filteredCards = [...this.mazo.cards];
-    } else {
       this.filteredCards = this.mazo.cards.filter(c => c.type_line.toLowerCase().includes(typeLine.toLowerCase()));
-    }
     console.log('filtered card', this.filteredCards);
   }
 
@@ -142,6 +138,7 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit(): void {
+    
   }
 
   //https://qiita.com/frtklog/items/df7f1c4d5d870212e779

@@ -68,29 +68,28 @@
                         </div>
                     </div>
                     <div class="cards-wrapper">
-                        <!-- <div class="counter">
-                            <img src="/assets/images/iconos/contador-morado.png" alt="img-counter" class="img-counter">
-                            <p id="total-cards">{{ mazo?.cards?.length || 0 }}/60</p>
-                        </div> -->
 
 
-                        <!-- <div class="list-cards" *ngIf="mazo?.cards?.length > 0"> -->
-                            <!-- <div *ngFor="let card of mazo.cards; let i = index">
-                            <app-card [childCard]="card" [templateCard]="'type5'" (click)="onCardInfoOpen()"></app-card>
+
+                           <!-- <div class="list-cards" *ngIf="filteredCards.length > 0">
+                            <div *ngFor="let card of filteredCards; let i = index">
+                                <app-card 
+                                    [childCard]="card" 
+                                    [templateCard]="'type5'"
+                                    (countMinusFromChild)="onDecreaseCardQuantityFromChild($event)"
+                                    (countPlusFromChild)="onIncreaseCardQuantityFromChild($event)"
+                                    (deleteAllQuantityFromChild)="onDeleteAllCardsFromChild($event)"
+                                    (click)="onCardInfoOpen()"
+            
+                                ></app-card>
+                            </div>
+                        
+                            <div class="results-wrapper" *ngIf="mazo?.cards?.length === 0">
+                                <div class="no-results-message">
+                                <p class="message">No hay ninguna carta en este mazo.</p>
+                                </div>
                             </div>
                         </div> -->
-
-                        <div *ngFor="let card of filteredCards; let i = index">
-                            <app-card 
-                            [childCard]="card" 
-                            [templateCard]="'type5'"
-                            (countMinusFromChild)="onDecreaseCardQuantityFromChild($event)"
-                            (countPlusFromChild)="onIncreaseCardQuantityFromChild($event)"
-                            (deleteAllQuantityFromChild)="onDeleteAllCardsFromChild($event)"
-                            (click)="onCardInfoOpen()"    
-                        ></app-card>
-                          </div>
-
 
                         <div class="list-cards" *ngIf="mazo?.cards?.length > 0">
                             <div *ngFor="let card of mazo.cards; let i = index">
@@ -101,7 +100,6 @@
                                     (countPlusFromChild)="onIncreaseCardQuantityFromChild($event)"
                                     (deleteAllQuantityFromChild)="onDeleteAllCardsFromChild($event)"
                                     (click)="onCardInfoOpen()"
-            
                                 ></app-card>
                             </div>
                         
