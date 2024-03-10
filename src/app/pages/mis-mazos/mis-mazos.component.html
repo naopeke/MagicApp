@@ -51,15 +51,15 @@
                         <h2 class="deckname">{{mazo?.nameDeck}}</h2>
                     </div>
                     <div class="filter">
-                        <div class="filter-list"><p class="filter-name">Todas las cartas</p></div>
-                        <div class="filter-list" ><p class="filter-name" (click)="onFilterClick('creature')">Criaturas</p></div>
-                        <div class="filter-list" ><p class="filter-name" (click)="onFilterClick('artifact')">Artefactos</p></div>
-                        <div class="filter-list" ><p class="filter-name" (click)="onFilterClick('enchantment')">Encantamientos</p></div>
-                        <div class="filter-list" ><p class="filter-name" (click)="onFilterClick('sorcery')">Conjuros</p></div>
-                        <div class="filter-list" ><p class="filter-name" (click)="onFilterClick('instance')">Instantáneas</p></div>
-                        <div class="filter-list" ><p class="filter-name" (click)="onFilterClick('planeswalkers')">Planeswalkers</p></div>
-                        <div class="filter-list" ><p class="filter-name" (click)="onFilterClick('battle')">Batallas</p></div>
-                        <div class="filter-list" ><p class="filter-name" (click)="onFilterClick('land')">Tierras</p></div>
+                        <div class="filter-list"><p class="filter-name" (click)="onFilterClick('all')">Todas las cartas</p></div>
+                        <div class="filter-list"><p class="filter-name" (click)="onFilterClick('creature')">Criaturas</p></div>
+                        <div class="filter-list"><p class="filter-name" (click)="onFilterClick('artifact')">Artefactos</p></div>
+                        <div class="filter-list"><p class="filter-name" (click)="onFilterClick('enchantment')">Encantamientos</p></div>
+                        <div class="filter-list"><p class="filter-name" (click)="onFilterClick('sorcery')">Conjuros</p></div>
+                        <div class="filter-list"><p class="filter-name" (click)="onFilterClick('instance')">Instantáneas</p></div>
+                        <div class="filter-list"><p class="filter-name" (click)="onFilterClick('planeswalkers')">Planeswalkers</p></div>
+                        <div class="filter-list"><p class="filter-name" (click)="onFilterClick('battle')">Batallas</p></div>
+                        <div class="filter-list"><p class="filter-name" (click)="onFilterClick('land')">Tierras</p></div>
                     </div>
                     <div class="counter-wrapper">
                         <div class="counter">
@@ -79,6 +79,17 @@
                             <app-card [childCard]="card" [templateCard]="'type5'" (click)="onCardInfoOpen()"></app-card>
                             </div>
                         </div> -->
+
+                        <div *ngFor="let card of filteredCards; let i = index">
+                            <app-card 
+                            [childCard]="card" 
+                            [templateCard]="'type5'"
+                            (countMinusFromChild)="onDecreaseCardQuantityFromChild($event)"
+                            (countPlusFromChild)="onIncreaseCardQuantityFromChild($event)"
+                            (deleteAllQuantityFromChild)="onDeleteAllCardsFromChild($event)"
+                            (click)="onCardInfoOpen()"    
+                        ></app-card>
+                          </div>
 
 
                         <div class="list-cards" *ngIf="mazo?.cards?.length > 0">

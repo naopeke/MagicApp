@@ -116,8 +116,12 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
 
   public onFilterClick(typeLine:string){
     console.log('filtered creatures');
-    const filteredCards = this.mazo.cards.filter(c => c.type_line.toLowerCase().includes(typeLine.toLowerCase()));
-    console.log('filtered card', filteredCards);
+    if (typeLine === '' || typeLine === 'all'){
+      this.filteredCards = [...this.mazo.cards];
+    } else {
+      this.filteredCards = this.mazo.cards.filter(c => c.type_line.toLowerCase().includes(typeLine.toLowerCase()));
+    }
+    console.log('filtered card', this.filteredCards);
   }
 
 
