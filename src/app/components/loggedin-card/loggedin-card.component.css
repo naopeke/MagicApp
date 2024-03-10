@@ -178,7 +178,7 @@ select {
 .no-builder-message, .no-results-message {
     /* border:2px solid red; */
     padding: 100px 120px 0 120px;
-    font-family: var(--antiqua);
+    font-family: var(--inter);
     font-size: 18px;
     color:var(--blanco);
     line-height: 180%;
