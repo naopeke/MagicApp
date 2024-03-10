@@ -16,6 +16,10 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
   public card: Card;
   public cards: Card[];
 
+  public darkenOverlay:boolean = false; // modal de xisca
+  public show_cardinfo:boolean = false; // modal de xisca
+
+
 
   @ViewChild('mySwiper') mySwiper: any = null; // Swiperの要素にアクセスするためのViewChild
   
@@ -71,12 +75,50 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
   //   this.builderCards = this.builderCards.filter(card => card.id_card !== cardId);
   //   console.log('After deleting from Deck: ', this.builderCards);
   // }
+  // onCountPlusFromChild(cardId: string) {
+  //   this.mazo.cards.forEach(card => {
+  //     if (card.id_card === cardId) {
+  //       card.quantity += 1;
+  //       console.log(`Quantity ${cardId}: `, card.quantity);
+  //     }
+  //   });
+  // }
 
-  onCountMinusFromChild(cardId: string){
+  public onIncreaseCardQuantityFromChild(cardId: string) {
+    const card = this.mazo.cards.find(c => c.id_card === cardId);
+    if (card) {
+      card.quantity += 1;
+      console.log(`Quantity ${cardId}: `, card.quantity);
+    }
+  }
+
+  public onDecreaseCardQuantityFromChild(cardId: string){
+    const card = this.mazo.cards.find(c => c.id_card === cardId);
+    if (card && card.quantity > 0) {  //para que la cantidad no sea menor que cero
+      card.quantity -= 1;
+      console.log(`Quantity ${cardId}: `, card.quantity);
+    }
+    console.log('After deleting from Deck: ', )
+  }
+
+  public onDeleteAllCardsFromChild(cardId:string){
+    const card = this.mazo.cards.find(c => c.id_card === cardId);
+    if (card && card.quantity > 0) {  //para que la cantidad no sea menor que cero
+      card.quantity = 0;
+      console.log(`Quantity ${cardId}: `, card.quantity);
+    }
     console.log('After adding from Deck: ', )
   }
 
-  on
+  public onCardInfoOpen(){
+    this.darkenOverlay=true; 
+    this.show_cardinfo = true; 
+  }
+
+  public card_info_close() {
+    this.darkenOverlay = false;
+    this.show_cardinfo = false;
+  }
 
 
   ngOnInit(): void {

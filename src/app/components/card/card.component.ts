@@ -33,18 +33,21 @@ export class CardComponent {
   }
 
   //pagina mis mazos
-  onCountPlusButtonClick(){
+  onCountPlusButtonClick(event:Event){
     console.log('clicked the count plus button');
+    event.stopPropagation(); //para resolver bubbling
     this.countPlusFromChild.emit(this.childCard.id_card);
   }
 
-  onCountMinusButtonClick(){
+  onCountMinusButtonClick(event:Event){
     console.log('clicked the count minus button');
+    event.stopPropagation(); //para resolver bubbling
     this.countMinusFromChild.emit(this.childCard.id_card);
   }
 
-  onDeleteAllButtonClick(){
+  onDeleteAllButtonClick(event:Event){
     console.log('clicked the delete all button');
+    event.stopPropagation(); //para resolver bubbling
     this.deteleAllQuantityFromChild.emit(this.childCard.id_card);
   }
 }

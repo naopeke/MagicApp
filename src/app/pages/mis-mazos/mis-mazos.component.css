@@ -1,6 +1,21 @@
-.bg-wrapper {
+/*para modal de xisca*/
+.bg_dark{
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.85) ;
+    background-position: center;
+    z-index:0;
+    transition: background 1s ease;
+}
+
+.background-wrapper {
     min-height: 100vh;
     position: relative;
+    background-color: var(--negro-bg);
 }
 .swiper-wrapper {
     background-image: url('/assets/images/fondos/fondo-mismazos.png');
@@ -39,7 +54,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 60px;
+    gap: 30px;
 }
 
 .deckname-wrapper {
@@ -53,7 +68,7 @@
     font-family: var(--antiqua);
     color: var(--amarillo);
     font-size: 48px;
-    padding-top:32px;
+    padding-top:40px;
 }
 
 .filter{
@@ -67,11 +82,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-bottom: 30px;
 }
 
 .filter-name{
     font-size: 15pt;
-    font-family: var(--antiqua);
+    font-family: var(--inter);
     color: var(--blanco);
 }
 
@@ -94,13 +110,17 @@
 
 .counter{
     position: relative;
-    bottom: 40px;
+    bottom: 38px;
+}
+
+.img-counter{
+    width: 160px;
 }
 
 #total-cards{
     position: absolute;
-    top: 35px;
-    left: 70px;
+    top: 21px;
+    left: 49px;
     font-family: var(--antiqua);
     color: var(--amarillo);
     font-size: 20pt;

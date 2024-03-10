@@ -1,91 +1,100 @@
-<div class="bg-wrapper">
+<div class="background-wrapper">
+    <div [ngClass]= "darkenOverlay ? 'bg_dark' : ''">
+        <div class="container_cardinfo" *ngIf="show_cardinfo">
+            <app-card-info (onCardInfoClose)="card_info_close($event)">X</app-card-info>
+        </div>
 
-    <section class="swiper-wrapper">
-        <p class="title">Mis Mazos</p>
-        <swiper-container #mySwiper 
-        class="mySwiper" style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff; width:600px" 
-        grab-cursor="true"
-        pagination="true" 
-        pagination-clickable="true" 
-        slides-per-view="3"
-        space-between="30" 
-        centered-slides="true"
-        >
-            <swiper-slide lazy="true">
-            <img src="https://picsum.photos/190/257?random=1" loading="lazy" class="image-slide">
-            </swiper-slide>
-
-            <swiper-slide lazy="true">
-            <img src="https://picsum.photos/190/257?random=2" loading="lazy" class="image-slide">
-            </swiper-slide>
-
-            <swiper-slide lazy="true">
-            <img src="https://picsum.photos/190/257?random=3" loading="lazy" class="image-slide">
-            </swiper-slide>
-
-            <swiper-slide lazy="true">
-            <img src="https://picsum.photos/190/257?random=4" loading="lazy" class="image-slide">
-            </swiper-slide>
-
-            <swiper-slide lazy="true">
-            <img src="https://picsum.photos/190/257?random=5" loading="lazy" class="image-slide">
-            </swiper-slide>
-
-        </swiper-container>
-
-    </section>
+        <div class="container_cardinfo" *ngIf="!show_cardinfo">
 
 
+            <section class="swiper-wrapper">
+                <p class="title">Mis Mazos</p>
+                <swiper-container #mySwiper 
+                class="mySwiper" style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff; width:600px" 
+                grab-cursor="true"
+                pagination="true" 
+                pagination-clickable="true" 
+                slides-per-view="3"
+                space-between="30" 
+                centered-slides="true"
+                >
+                    <swiper-slide lazy="true">
+                    <img src="https://picsum.photos/190/257?random=1" loading="lazy" class="image-slide">
+                    </swiper-slide>
 
-    <section class="deckcards-wrapper">
-            <div class="deckname-wrapper">
-                <h2 class="deckname">{{mazo?.nameDeck}}</h2>
-            </div>
-            <div class="filter">
-                <div class="filter-list"><p class="filter-name">Todas las cartas</p></div>
-                <div class="filter-list"><p class="filter-name">Criaturas</p></div>
-                <div class="filter-list"><p class="filter-name">Artefactos</p></div>
-                <div class="filter-list"><p class="filter-name">Encantamientos</p></div>
-                <div class="filter-list"><p class="filter-name">Conjuros</p></div>
-                <div class="filter-list"><p class="filter-name">Instantáneas</p></div>
-                <div class="filter-list"><p class="filter-name">Planswalkers</p></div>
-                <div class="filter-list"><p class="filter-name">Batallas</p></div>
-                <div class="filter-list"><p class="filter-name">Tierras</p></div>
-            </div>
-            <div class="cards-wrapper">
-                <div class="counter">
-                    <img src="/assets/images/iconos/contador-morado.png" alt="">
-                    <p id="total-cards">{{ mazo?.cards?.length || 0 }}/60</p>
-                </div>
+                    <swiper-slide lazy="true">
+                    <img src="https://picsum.photos/190/257?random=2" loading="lazy" class="image-slide">
+                    </swiper-slide>
+
+                    <swiper-slide lazy="true">
+                    <img src="https://picsum.photos/190/257?random=3" loading="lazy" class="image-slide">
+                    </swiper-slide>
+
+                    <swiper-slide lazy="true">
+                    <img src="https://picsum.photos/190/257?random=4" loading="lazy" class="image-slide">
+                    </swiper-slide>
+
+                    <swiper-slide lazy="true">
+                    <img src="https://picsum.photos/190/257?random=5" loading="lazy" class="image-slide">
+                    </swiper-slide>
+
+                </swiper-container>
+
+            </section>
 
 
-                <!-- <div class="list-cards" *ngIf="mazo?.cards?.length > 0"> -->
-                    <!-- <div *ngFor="let card of mazo.cards; let i = index">
-                      <app-card [childCard]="card" [templateCard]="'type5'" (click)="onCardInfoOpen()"></app-card>
+
+            <section class="deckcards-wrapper">
+                    <div class="deckname-wrapper">
+                        <h2 class="deckname">{{mazo?.nameDeck}}</h2>
                     </div>
-                  </div> -->
-                  
-
-                <div class="list-cards" *ngIf="mazo?.cards?.length > 0">
-                    <div *ngFor="let card of mazo.cards; let i = index">
-                        <app-card 
-                            [childCard]="card" 
-                            [templateCard]="'type5'"
-                            (countPlusFromChild)="onCountPlusFromChild"
-                            (countMinusFromChild)="onCountMinusFromChild"
-                            (deteleAllQuantityFromChild)="onDeleteAllQuantityFromChild"
-                            (click)="onCardInfoOpen()"
-    
-                        ></app-card>
+                    <div class="filter">
+                        <div class="filter-list"><p class="filter-name">Todas las cartas</p></div>
+                        <div class="filter-list"><p class="filter-name">Criaturas</p></div>
+                        <div class="filter-list"><p class="filter-name">Artefactos</p></div>
+                        <div class="filter-list"><p class="filter-name">Encantamientos</p></div>
+                        <div class="filter-list"><p class="filter-name">Conjuros</p></div>
+                        <div class="filter-list"><p class="filter-name">Instantáneas</p></div>
+                        <div class="filter-list"><p class="filter-name">Planswalkers</p></div>
+                        <div class="filter-list"><p class="filter-name">Batallas</p></div>
+                        <div class="filter-list"><p class="filter-name">Tierras</p></div>
                     </div>
-                
-                    <div class="results-wrapper" *ngIf="mazo?.cards?.length === 0">
-                        <div class="no-results-message">
-                        <p class="message">No hay ninguna carta en este mazo.</p>
+                    <div class="cards-wrapper">
+                        <div class="counter">
+                            <img src="/assets/images/iconos/contador-morado.png" alt="img-counter" class="img-counter">
+                            <p id="total-cards">{{ mazo?.cards?.length || 0 }}/60</p>
                         </div>
-                    </div>
-                </div>
 
-            </div>
-    </section>
+
+                        <!-- <div class="list-cards" *ngIf="mazo?.cards?.length > 0"> -->
+                            <!-- <div *ngFor="let card of mazo.cards; let i = index">
+                            <app-card [childCard]="card" [templateCard]="'type5'" (click)="onCardInfoOpen()"></app-card>
+                            </div>
+                        </div> -->
+                        
+
+                        <div class="list-cards" *ngIf="mazo?.cards?.length > 0">
+                            <div *ngFor="let card of mazo.cards; let i = index">
+                                <app-card 
+                                    [childCard]="card" 
+                                    [templateCard]="'type5'"
+                                    (countMinusFromChild)="onDecreaseCardQuantityFromChild($event)"
+                                    (countPlusFromChild)="onIncreaseCardQuantityFromChild($event)"
+                                    (deteleAllQuantityFromChild)="onDeleteAllCardsFromChild($event)"
+                                    (click)="onCardInfoOpen()"
+            
+                                ></app-card>
+                            </div>
+                        
+                            <div class="results-wrapper" *ngIf="mazo?.cards?.length === 0">
+                                <div class="no-results-message">
+                                <p class="message">No hay ninguna carta en este mazo.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+            </section>
+        </div>
+    </div>
 </div>
