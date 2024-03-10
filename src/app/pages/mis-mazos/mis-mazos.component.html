@@ -8,15 +8,20 @@
 
 
             <section class="swiper-wrapper">
-                <p class="title">Mis Mazos</p>
+                <!-- <p class="title">Mis Mazos</p> -->
                 <swiper-container #mySwiper 
                 class="mySwiper" style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff; width:600px" 
+                effect="coverflow"
                 grab-cursor="true"
                 pagination="true" 
+                centered-slides="true"
                 pagination-clickable="true" 
                 slides-per-view="3"
-                space-between="30" 
-                centered-slides="true"
+                coverflow-effect-rotate="0"
+                coverflow-effect-stretch="0"
+                coverflow-effect-depth="100"
+                coverflow-effect-modifier="2.5"
+                coverflow-effect-slide-shadows="true"
                 >
                     <swiper-slide lazy="true">
                     <img src="https://picsum.photos/190/257?random=1" loading="lazy" class="image-slide">

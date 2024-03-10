@@ -109,6 +109,8 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
     }
   }
 
+  
+  /*modal de xisca*/
   public onCardInfoOpen(){
     this.darkenOverlay=true; 
     this.show_cardinfo = true; 
