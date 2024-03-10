@@ -69,7 +69,6 @@ main{
     padding: 10px;
     border: solid var(--rojo) 2px;
     border-radius: var(--borde-input);
-
 }
 
 .input, input::placeholder{
@@ -85,7 +84,18 @@ main{
 /* investigar estilos para select */
 .select{
     width: 200px;
+    background-color: transparent;
+
 }
+
+option{
+    background-color: var(--negro-bg);
+    color: var(--blanco);
+   
+   
+}
+
+select:focus{ outline: none;}
 
 .input:hover{
     border-color: var(--amarillo);
@@ -222,6 +232,16 @@ cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb:hover{
     justify-content: center;
     gap: 5px;
     width: 100%;
+}
+
+.close{
+    position: absolute;
+    right: 170px;
+}
+
+#imgClose{
+    width: 50px;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 1900px) 

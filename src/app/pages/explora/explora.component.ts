@@ -108,6 +108,11 @@ export class ExploraComponent {
     return parseFloat(media)
   }
 
+  public close(){
+   this.explorar = false
+    
+  }
+
   
 
 

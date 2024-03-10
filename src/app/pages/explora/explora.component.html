@@ -12,6 +12,7 @@
                 <form class="form">
                     <input class="input input2" type="text" id="name" placeholder="Nombre de Usuario/Mazo" #input>
                     <!-- Falta modificar estilo -->
+                  
                     <select class="input select" name="filter" id="filter" required #filter>
                         <option value="nombreUsuario">Nombre Usuario</option>
                         <option value="nombreMazo">Nombre Mazo</option>
@@ -39,7 +40,6 @@
                 <h2 class="tituloh2">Mazos más votados</h2>
             </div>
 
-         
             <cdk-virtual-scroll-viewport itemSize="50" class="scroll2">
                 <div class="bucleContainer"> 
                     <div *cdkVirtualFor="let dato of datos" class="bucle">
@@ -48,11 +48,9 @@
                     </div>
                 </div>
             </cdk-virtual-scroll-viewport>
-
-
         </div>
     </section>
-    <section class="explora" *ngIf="explorar == true">
+    <section class="explora" *ngIf="explorar == true" #explora>
             <div class=" titulo">
                 <h2 class="tituloh2">{{mazo.nameDeck}}</h2>
             </div>
@@ -68,6 +66,9 @@
                 <div class="nombreFiltro"><p class="textoFiltro">Tierras</p></div>
             </div>
             <div class="cartas">
+                <div class="close">
+                    <img (click)="close()" id="imgClose" src="../../../assets/images/explora/CloseRed.png" alt="">
+                </div>
                 <div class="contador">
                     <img src="../../../assets/images/explora/contador.png" alt="">
                     <p id="numCartas">{{mazo.cards.length || 0}}/60</p>
