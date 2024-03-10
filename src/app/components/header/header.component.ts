@@ -20,7 +20,7 @@ export class HeaderComponent {
 
   constructor(){
     this.login1 = new Logging(this.user1, true);
-    this.login2 = new Logging(this.user1, false);
+    this.login2 = new Logging(this.user1, true);
 
     if(this.login2.booleanLogeado){
       this.idBotonActivo = "btnUsuario";

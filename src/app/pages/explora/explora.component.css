@@ -1,0 +1,344 @@
+main{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.mazos, .explora{
+    height: 1100px;
+    width: 100%;
+    padding: 60px;
+    background-size: cover;
+}
+
+/* BUSCADORES */
+.mazos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 40px;
+
+    background-image: url(../../../assets/images/explora/fondoExplora.png);
+}
+
+.buscador{
+    width: 66%;
+    height: 470px;
+    padding: 40px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    background-color: var(--negro-bg);
+    border-radius: var(--borde-cuadrado);
+}
+
+.titulo{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.tituloh2{
+    color: var(--amarillo);
+    font-family: var(--antiqua);
+    font-size: 28pt;
+    text-align: center;
+}
+/* input */
+
+.buscar{
+    width: 100%;
+}
+
+.form{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+}
+
+.input{
+    height: 60px;
+    padding: 10px;
+    border: solid var(--rojo) 2px;
+    border-radius: var(--borde-input);
+}
+
+.input, input::placeholder{
+    background-color: transparent;
+    color: var(--blanco);
+    font-family: var(--inter);
+    font-size: 14pt;
+    text-align: center;
+}
+.input2{
+    width: 300px;
+}
+/* investigar estilos para select */
+.select{
+    width: 200px;
+    background-color: transparent;
+
+}
+
+option{
+    background-color: var(--negro-bg);
+    color: var(--blanco);
+   
+   
+}
+
+select:focus{ outline: none;}
+
+.input:hover{
+    border-color: var(--amarillo);
+}
+.searchButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent; 
+}
+
+.searchButton:hover{
+    background-color: rgba(92, 114, 75, 0.2);
+    border-color: var(--verde);
+}
+
+#lupa{
+    width: 50px;
+}
+
+/* Resultados1 */
+
+.scroll, .scroll2{
+    display: flex; 
+    width: 100%;
+    border-radius: var(--borde-cuadrado);
+    background-color: rgba(30, 6, 3, 0.5);
+}
+
+.scroll{
+    height: 250px;
+}
+
+ .scroll2{
+    height: 320px;
+}
+
+.bucleContainer{
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.bucle{
+    display: flex;
+    justify-content: center;
+}
+
+
+cdk-virtual-scroll-viewport::-webkit-scrollbar{
+     background-color: transparent;
+}
+
+cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb{
+    background-color: rgba(195, 138, 49, 0.6);
+    border-radius: var(--borde-cuadrado);
+}
+
+cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb:hover{
+    background-color: var(--amarillo); 
+    cursor: pointer;
+}
+
+
+
+
+/* EXPLORA */
+.explora{
+    background-image: url(../../../assets/images/explora/fondoExplora2.png);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+}
+
+.filtros{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.nombreFiltro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.textoFiltro{
+    font-size: 15pt;
+    font-family: var(--antiqua);
+    color: var(--blanco);
+}
+
+.textoFiltro:hover{
+    color: var(--amarillo);
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.cartas{
+    width: 87%;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    background-color: var(--negro-bg);
+    border-radius: var(--borde-cuadrado);
+}
+
+.contador{
+    position: relative;
+    bottom: 40px;
+}
+
+#numCartas{
+    position: absolute;
+    top: 27px;
+    left: 48px;
+    font-family: var(--antiqua);
+    color: var(--amarillo);
+    font-size: 20pt;
+}
+
+.bucleContainer{
+    width: 100%;
+    height: 700px;
+}
+
+.cartasContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    width: 100%;
+}
+
+.close{
+    position: absolute;
+    right: 170px;
+}
+
+#imgClose{
+    width: 50px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1900px) 
+{
+    .buscador{
+        width: 68%;
+    }
+}
+
+@media screen and (max-width: 1850px) 
+{
+    .buscador{
+        width: 69%;
+    }
+}
+
+@media screen and (max-width: 1800px) 
+{
+    .buscador{
+        width: 72%;
+    }
+}
+
+@media screen and (max-width: 1750px) 
+{
+    .buscador{
+        width: 74%;
+    }
+}
+
+@media screen and (max-width: 1700px) 
+{
+    .buscador{
+        width: 76%;
+    }
+}
+
+@media screen and (max-width: 1650px) 
+{
+    .buscador{
+        width: 78%;
+    }
+}
+
+@media screen and (max-width: 1600px) 
+{
+    .buscador{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 1550px) 
+{
+    .buscador{
+        width: 83%;
+    }
+}
+
+@media screen and (max-width: 1500px) 
+{
+    .buscador{
+        width: 85%;
+    }
+}
+
+@media screen and (max-width: 1450px) 
+{
+    .buscador{
+        width: 89%;
+    }
+}
+@media screen and (max-width: 1400px) 
+{
+    .buscador{
+        width: 92%;
+    }
+}
+
+@media screen and (max-width: 1350px) 
+{
+    .buscador{
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 1300px) 
+{
+    .buscador{
+        width: 97%;
+    }
+}
+
+@media screen and (max-width: 1250px) 
+{
+    .buscador{
+        width: 100%;
+    }
+}
+
+

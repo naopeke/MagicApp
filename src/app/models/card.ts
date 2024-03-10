@@ -11,7 +11,8 @@ export class Card {
         public legalities?: any, /* object*/
         public prices?: number,
         public set_name?: string,
-        public set_type?: string
+        public set_type?: string,
+        public quantity: number = 1
  
         ) { }
 }
