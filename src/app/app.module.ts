@@ -51,6 +51,7 @@ import { ModalProfileComponent } from './components/modal-profile/modal-profile.
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { CdkScrollableModule, CdkVirtualScrollViewport, ScrollingModule } from '@angular/cdk/scrolling';
 import { DecksComponent } from './components/decks/decks.component';
+import { RatingComponent } from './components/rating/rating.component';
 
 
 @NgModule({
@@ -74,7 +75,8 @@ import { DecksComponent } from './components/decks/decks.component';
     CalendarioComponent,
     EventoComponent,
     ModalProfileComponent,
-    DecksComponent
+    DecksComponent,
+    RatingComponent
   ],
 
   imports: [
@@ -102,7 +104,8 @@ import { DecksComponent } from './components/decks/decks.component';
     MatSelectModule, 
     MatListModule, 
     CdkVirtualScrollViewport, 
-    ScrollingModule
+    ScrollingModule,
+    CdkScrollableModule
 
     
     //swiper@8

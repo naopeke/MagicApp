@@ -1,6 +1,5 @@
 
-import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {ScrollingModule} from '@angular/cdk/scrolling';
+import { Component} from '@angular/core';
 import { Card } from 'src/app/models/card';
 import { Deck } from 'src/app/models/deck';
 
@@ -15,22 +14,17 @@ export class ExploraComponent {
   
   public datos: Deck[]
   public mazo: Deck
-  public datosVotados: Deck[]
+
   public explorar: boolean = false
 
   constructor(){
     this.datos = [
-      new Deck(1, 'Dragonfly', 'Kaoser', 5, [ new Card('1', 0,"../../../assets/images/carta1landing.png"),
+      new Deck(1, 'Dragonfly', 'Kaoser', [], 0,[ new Card('1', 0,"../../../assets/images/carta1landing.png"),
         new Card('2', 0,"../../../assets/images/carta1landing.png"),
         new Card('3', 0,"../../../assets/images/carta1landing.png"),
         new Card('4', 0,"../../../assets/images/carta1landing.png")], 
-        ["../../../assets/images/iconos/estrella2.png",
-        "../../../assets/images/iconos/estrella2.png",
-        "../../../assets/images/iconos/estrella2.png",
-        "../../../assets/images/iconos/estrella2.png",
-        "../../../assets/images/iconos/estrella2.png"
-      ]), 
-      new Deck(2, 'onFire', 'Kaoser', 5, [ 
+     ), 
+      new Deck(2, 'onFire', 'Kaoser', [], 0, [ 
         new Card('1', 0,"../../../assets/images/carta1landing.png"),
         new Card('2', 0,"../../../assets/images/carta1landing.png"),
         new Card('3', 0,"../../../assets/images/carta1landing.png"),
@@ -43,13 +37,8 @@ export class ExploraComponent {
         new Card('10', 0,"../../../assets/images/carta1landing.png"),
         new Card('11', 0,"../../../assets/images/carta1landing.png"),
         new Card('12', 0,"../../../assets/images/carta1landing.png")], 
-      ["../../../assets/images/iconos/estrella2.png",
-      "../../../assets/images/iconos/estrella2.png",
-      "../../../assets/images/iconos/estrella2.png",
-      "../../../assets/images/iconos/estrella2.png",
-      "../../../assets/images/iconos/estrella2.png"
-      ]),
-      new Deck(3, 'Dragonfly', 'Deimos', 5, [ 
+    ),
+      new Deck(3, 'Dragonfly', 'Deimos', [], 0, [ 
         new Card('1', 0,"../../../assets/images/carta1landing.png"),
         new Card('2', 0,"../../../assets/images/carta1landing.png"),
         new Card('3', 0,"../../../assets/images/carta1landing.png"),
@@ -57,79 +46,10 @@ export class ExploraComponent {
         new Card('5', 0,"../../../assets/images/carta1landing.png"),
         new Card('6', 0,"../../../assets/images/carta1landing.png"),
         new Card('7', 0,"../../../assets/images/carta1landing.png"),
-        new Card('8', 0,"../../../assets/images/carta1landing.png"),
-        new Card('9', 0,"../../../assets/images/carta1landing.png"),
-        new Card('10', 0,"../../../assets/images/carta1landing.png"),
-        new Card('11', 0,"../../../assets/images/carta1landing.png"),
-        new Card('12', 0,"../../../assets/images/carta1landing.png")], 
-      ["../../../assets/images/iconos/estrella2.png",
-      "../../../assets/images/iconos/estrella2.png",
-      "../../../assets/images/iconos/estrella2.png",
-      "../../../assets/images/iconos/estrella2.png",
-      "../../../assets/images/iconos/estrella2.png"
-      ])
+        new Card('8', 0,"../../../assets/images/carta1landing.png"),], 
+   )
     ]
 
-    this.datosVotados = [
-      new Deck(1, 'Dragonfly', 'Kaoser', 5, [ new Card('1', 0,"../../../assets/images/carta1landing.png"),
-      new Card('2', 0,"../../../assets/images/carta1landing.png"),
-      new Card('3', 0,"../../../assets/images/carta1landing.png"),
-      new Card('4', 0,"../../../assets/images/carta1landing.png")], 
-      ["../../../assets/images/iconos/estrella2.png",
-      "../../../assets/images/iconos/estrella2.png",
-      "../../../assets/images/iconos/estrella2.png",
-      "../../../assets/images/iconos/estrella2.png",
-      "../../../assets/images/iconos/estrella2.png"
-      ]), 
-      new Deck(1, 'Dragonfly', 'Kaoser', 5, [ 
-        new Card('1', 0,"../../../assets/images/carta1landing.png"),
-        new Card('2', 0,"../../../assets/images/carta1landing.png"),
-        new Card('3', 0,"../../../assets/images/carta1landing.png"),
-        new Card('4', 0,"../../../assets/images/carta1landing.png"),
-        new Card('5', 0,"../../../assets/images/carta1landing.png"),
-        new Card('6', 0,"../../../assets/images/carta1landing.png"),
-        new Card('7', 0,"../../../assets/images/carta1landing.png"),
-        new Card('8', 0,"../../../assets/images/carta1landing.png"),
-        new Card('9', 0,"../../../assets/images/carta1landing.png"),
-        new Card('10', 0,"../../../assets/images/carta1landing.png"),
-        new Card('11', 0,"../../../assets/images/carta1landing.png"),
-        new Card('12', 0,"../../../assets/images/carta1landing.png")], 
-      ["../../../assets/images/iconos/estrella2.png",
-      "../../../assets/images/iconos/estrella2.png",
-      "../../../assets/images/iconos/estrella2.png",
-      "../../../assets/images/iconos/estrella2.png",
-      "../../../assets/images/iconos/estrella2.png"
-      ]),
-      new Deck(1, 'Dragonfly', 'Kaoser', 5, [ new Card('1', 0,"../../../assets/images/carta1landing.png"),
-      new Card('2', 0,"../../../assets/images/carta1landing.png"),
-      new Card('3', 0,"../../../assets/images/carta1landing.png"),
-      new Card('4', 0,"../../../assets/images/carta1landing.png")], 
-      ["../../../assets/images/iconos/estrella2.png",
-      "../../../assets/images/iconos/estrella2.png",
-      "../../../assets/images/iconos/estrella2.png",
-      "../../../assets/images/iconos/estrella2.png",
-      "../../../assets/images/iconos/estrella2.png"
-      ]), 
-      new Deck(1, 'Dragonfly', 'Kaoser', 5, [ 
-        new Card('1', 0,"../../../assets/images/carta1landing.png"),
-        new Card('2', 0,"../../../assets/images/carta1landing.png"),
-        new Card('3', 0,"../../../assets/images/carta1landing.png"),
-        new Card('4', 0,"../../../assets/images/carta1landing.png"),
-        new Card('5', 0,"../../../assets/images/carta1landing.png"),
-        new Card('6', 0,"../../../assets/images/carta1landing.png"),
-        new Card('7', 0,"../../../assets/images/carta1landing.png"),
-        new Card('8', 0,"../../../assets/images/carta1landing.png"),
-        new Card('9', 0,"../../../assets/images/carta1landing.png"),
-        new Card('10', 0,"../../../assets/images/carta1landing.png"),
-        new Card('11', 0,"../../../assets/images/carta1landing.png"),
-        new Card('12', 0,"../../../assets/images/carta1landing.png")], 
-      ["../../../assets/images/iconos/estrella2.png",
-      "../../../assets/images/iconos/estrella2.png",
-      "../../../assets/images/iconos/estrella2.png",
-      "../../../assets/images/iconos/estrella2.png",
-      "../../../assets/images/iconos/estrella2.png"
-      ])
-    ]
   }
   
   public search(input:string, filter:string){
@@ -168,12 +88,30 @@ export class ExploraComponent {
 
    this.mazo = cartas
    console.log(this.mazo);
-   
-    
-
-
-
   }
+
+  public score(event:{id_deck:number, score:number}){
+      this.datos.find ((deck) => {
+      if(deck.id_deck == event.id_deck){
+        
+        deck.scores.push(event.score)
+        console.log(this.mediaScore(deck.scores));
+        deck.mediaScore = this.mediaScore(deck.scores)
+         
+       
+      }
+    
+    })
+  }
+
+  public mediaScore(array: number[]){
+    let suma = array.reduce( (accumulator, currentValue) => accumulator + currentValue)
+    let media = (suma/array.length).toFixed(1)
+  
+    return parseFloat(media)
+  }
+
+  
 
 
 

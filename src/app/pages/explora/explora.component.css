@@ -205,7 +205,7 @@ cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb:hover{
 #numCartas{
     position: absolute;
     top: 27px;
-    left: 40px;
+    left: 48px;
     font-family: var(--antiqua);
     color: var(--amarillo);
     font-size: 20pt;

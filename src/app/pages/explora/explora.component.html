@@ -11,6 +11,7 @@
             <div class="buscar">
                 <form class="form">
                     <input class="input input2" type="text" id="name" placeholder="Nombre de Usuario/Mazo" #input>
+                    <!-- Falta modificar estilo -->
                     <select class="input select" name="filter" id="filter" required #filter>
                         <option value="nombreUsuario">Nombre Usuario</option>
                         <option value="nombreMazo">Nombre Mazo</option>
@@ -25,7 +26,8 @@
             <cdk-virtual-scroll-viewport itemSize="50" class="scroll">
                 <div class="bucleContainer"> 
                     <div *cdkVirtualFor="let dato of datos" class="bucle">
-                        <app-decks [dato] = "dato" (eventoExplorar) = 'seleccionMazo($event)'></app-decks>
+                        <app-decks [dato] = "dato" (eventoExplorar) = 'seleccionMazo($event)'
+                        (eventoPuntuacion) = "score($event)"></app-decks>
                     </div>
                 </div>
             </cdk-virtual-scroll-viewport>
@@ -40,8 +42,8 @@
          
             <cdk-virtual-scroll-viewport itemSize="50" class="scroll2">
                 <div class="bucleContainer"> 
-                    <div *cdkVirtualFor="let dato of datosVotados" class="bucle">
-                        <app-decks [dato] = "dato"></app-decks>
+                    <div *cdkVirtualFor="let dato of datos" class="bucle">
+                        <app-decks [dato] = "dato" (eventoExplorar) = 'seleccionMazo($event)'></app-decks>
                     </div>
                 </div>
             </cdk-virtual-scroll-viewport>
@@ -51,7 +53,7 @@
     </section>
     <section class="explora" *ngIf="explorar == true">
             <div class=" titulo">
-                <h2 class="tituloh2">{{datos[1].nameDeck}}</h2>
+                <h2 class="tituloh2">{{mazo.nameDeck}}</h2>
             </div>
             <div class="filtros">
                 <div class="nombreFiltro"><p class="textoFiltro">Todas las cartas</p></div>
@@ -67,7 +69,7 @@
             <div class="cartas">
                 <div class="contador">
                     <img src="../../../assets/images/explora/contador.png" alt="">
-                    <p id="numCartas">60/60</p>
+                    <p id="numCartas">{{mazo.cards.length || 0}}/60</p>
                 </div>
                 <cdk-virtual-scroll-viewport itemSize="40" class="bucleContainer">
                     <div class="cartasContainer">
