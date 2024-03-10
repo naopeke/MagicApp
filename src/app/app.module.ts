@@ -51,12 +51,8 @@ import { MisMazosComponent } from './pages/mis-mazos/mis-mazos.component';
 import { ExploraComponent } from './pages/explora/explora.component';
 import { CalendarioComponent } from './pages/calendario/calendario.component';
 import { EventoComponent } from './pages/evento/evento.component';
-import { MazoSelectorModalComponent } from './components/mazo-selector-modal/mazo-selector-modal.component';
 import { ModalProfileComponent } from './components/modal-profile/modal-profile.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
-import { CdkScrollableModule, CdkVirtualScrollViewport, ScrollingModule } from '@angular/cdk/scrolling';
-import { DecksComponent } from './components/decks/decks.component';
-import { RatingComponent } from './components/rating/rating.component';
 
 
 @NgModule({
@@ -79,10 +75,7 @@ import { RatingComponent } from './components/rating/rating.component';
     ExploraComponent,
     CalendarioComponent,
     EventoComponent,
-    ModalProfileComponent,
-    DecksComponent,
-    RatingComponent,  
-    MazoSelectorModalComponent
+    ModalProfileComponent
   ],
 
   imports: [
@@ -107,15 +100,7 @@ import { RatingComponent } from './components/rating/rating.component';
     MatSnackBarModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule,
-    MatListModule, 
-    MatDialogModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    CdkVirtualScrollViewport, 
-    ScrollingModule,
-    CdkScrollableModule
-
+    MatSelectModule
     
     //swiper@8
     // SwiperModule
