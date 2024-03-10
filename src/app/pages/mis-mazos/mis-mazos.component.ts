@@ -15,6 +15,7 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
   public datosVotados: Deck[];
   public card: Card;
   public cards: Card[];
+  public filteredCards: Card[] = [];
 
   public darkenOverlay:boolean = false; // modal de xisca
   public show_cardinfo:boolean = false; // modal de xisca
@@ -114,8 +115,13 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
   }
 
   public onFilterClick(typeLine:string){
-
+    console.log('filtered creatures');
+    const filteredCards = this.mazo.cards.filter(c => c.type_line.toLowerCase().includes(typeLine.toLowerCase()));
+    console.log('filtered card', filteredCards);
   }
+
+
+  
 
 
 
