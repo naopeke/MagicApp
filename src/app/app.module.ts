@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'; // swiper@10
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, LOCALE_ID } from '@angular/core'; // swiper@10
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -27,6 +27,10 @@ import { MatDialogModule} from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
+import { registerLocaleData } from '@angular/common';
+import localeES from '@angular/common/locales/es'
+
+registerLocaleData(localeES)
 
 // swiper@8
 // import { SwiperModule } from 'swiper/angular';
@@ -111,7 +115,9 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
     // SwiperModule
 
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'es'}
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA] // swiper@10.3.1
 })
