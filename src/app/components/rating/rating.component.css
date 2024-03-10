@@ -2,6 +2,6 @@
     color: var(--amarillo);
 }
 
-mat-icon{
+.cursorPointer mat-icon{
     cursor: pointer;
 }

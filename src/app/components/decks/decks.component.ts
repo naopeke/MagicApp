@@ -9,10 +9,11 @@ import { Deck } from 'src/app/models/deck';
 export class DecksComponent {
 public explorar: boolean = false
 public score: number;
+@Input () typeRating: number;
 
 @Input () dato: Deck
-// para ngIf type stars
-@Input () rating: string;
+
+
 @Output() eventoExplorar = new EventEmitter<number>();
 @Output() eventoPuntuacion = new EventEmitter<{id_deck:number, score:number}>()
 

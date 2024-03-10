@@ -19,12 +19,12 @@ export class ExploraComponent {
 
   constructor(){
     this.datos = [
-      new Deck(1, 'Dragonfly', 'Kaoser', [], 0,[ new Card('1', 0,"../../../assets/images/carta1landing.png"),
+      new Deck(1, 'Dragonfly', 'Kaoser', [5], 5,[ new Card('1', 0,"../../../assets/images/carta1landing.png"),
         new Card('2', 0,"../../../assets/images/carta1landing.png"),
         new Card('3', 0,"../../../assets/images/carta1landing.png"),
         new Card('4', 0,"../../../assets/images/carta1landing.png")], 
      ), 
-      new Deck(2, 'onFire', 'Kaoser', [], 0, [ 
+      new Deck(2, 'onFire', 'Kaoser', [5], 5, [ 
         new Card('1', 0,"../../../assets/images/carta1landing.png"),
         new Card('2', 0,"../../../assets/images/carta1landing.png"),
         new Card('3', 0,"../../../assets/images/carta1landing.png"),
@@ -38,7 +38,7 @@ export class ExploraComponent {
         new Card('11', 0,"../../../assets/images/carta1landing.png"),
         new Card('12', 0,"../../../assets/images/carta1landing.png")], 
     ),
-      new Deck(3, 'Dragonfly', 'Deimos', [], 0, [ 
+      new Deck(3, 'Dragonfly', 'Deimos', [5], 5, [ 
         new Card('1', 0,"../../../assets/images/carta1landing.png"),
         new Card('2', 0,"../../../assets/images/carta1landing.png"),
         new Card('3', 0,"../../../assets/images/carta1landing.png"),
@@ -92,15 +92,12 @@ export class ExploraComponent {
 
   public score(event:{id_deck:number, score:number}){
       this.datos.find ((deck) => {
+
       if(deck.id_deck == event.id_deck){
-        
         deck.scores.push(event.score)
-        console.log(this.mediaScore(deck.scores));
         deck.mediaScore = this.mediaScore(deck.scores)
-         
-       
+        alert(`Has dado una puntuación de ${event.score}`)
       }
-    
     })
   }
 

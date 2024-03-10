@@ -8,33 +8,47 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class RatingComponent {
   @Input() maxrating: number = 5;
   @Input() SelectedStar= 0
-  previoSelection = 0
-
-  maxRatingArr:any = []
+  @Input() mediaScore: number
+  // para ngIf type stars
+  @Input () typeRating: number;
   @Output() onRating = new EventEmitter<number>()
+
+  previoSelection:number = 0
+  maxRatingArr:any = []
+
+  ngOnInit(): void {
+    this.maxRatingArr = Array(this.maxrating).fill(0);
+  }
 
   constructor(){}
   HandleMouseEnter(index:number){
     this.SelectedStar=index+1
-
   }
   HandleMouseLeave(){
     if(this.previoSelection == 0){
       this.SelectedStar = this.previoSelection
     }
-     
     else {
       this.SelectedStar = 0
     }
   }
   
   rating(index:number){
-  this.SelectedStar = index+1;
   this.previoSelection = this.SelectedStar
+  this.SelectedStar = index+1;
+  console.log(this.mediaScore);
   this.onRating.emit(this.SelectedStar)
   
   }
-  ngOnInit(): void {
-    this.maxRatingArr = Array(this.maxrating).fill(0);
+
+  roundMediaScore(){
+    let resultado;
+    if (this.mediaScore !== undefined) {
+      resultado =  Math.round(this.mediaScore);
+    } else {
+    resultado = 0
+    }
+    return resultado
   }
+  
 }

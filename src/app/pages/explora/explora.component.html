@@ -27,7 +27,7 @@
                 <div class="bucleContainer"> 
                     <div *cdkVirtualFor="let dato of datos" class="bucle">
                         <app-decks [dato] = "dato" (eventoExplorar) = 'seleccionMazo($event)'
-                        (eventoPuntuacion) = "score($event)"></app-decks>
+                        (eventoPuntuacion) = "score($event)" [typeRating] = "1"></app-decks>
                     </div>
                 </div>
             </cdk-virtual-scroll-viewport>
@@ -43,7 +43,8 @@
             <cdk-virtual-scroll-viewport itemSize="50" class="scroll2">
                 <div class="bucleContainer"> 
                     <div *cdkVirtualFor="let dato of datos" class="bucle">
-                        <app-decks [dato] = "dato" (eventoExplorar) = 'seleccionMazo($event)'></app-decks>
+                        <app-decks [dato] = "dato" (eventoExplorar) = 'seleccionMazo($event)'
+                        [typeRating] = "2"></app-decks>
                     </div>
                 </div>
             </cdk-virtual-scroll-viewport>
