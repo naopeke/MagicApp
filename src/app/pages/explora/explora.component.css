@@ -169,7 +169,11 @@ cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb:hover{
     flex-direction: column;
     align-items: center;
     gap: 60px;
+    z-index: 9;
 }
+
+
+
 
 .filtros{
     width: 100%;
@@ -203,9 +207,10 @@ cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb:hover{
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
-    background-color: var(--negro-bg);
+    background-color: rgba(0,0,0,0.50) ;
     border-radius: var(--borde-cuadrado);
 }
+
 
 .contador{
     position: relative;
@@ -246,8 +251,18 @@ cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb:hover{
 
 .cardInfo{
     position: absolute;
-    height: 100px;
+    transform: scale(0);
+    transition: 1.25s ease;
 }
+
+.cardInfo.visible{
+    transform: scale(1);
+}
+
+
+
+
+
 
 @media screen and (max-width: 1900px) 
 {

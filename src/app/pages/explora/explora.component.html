@@ -50,7 +50,9 @@
             </cdk-virtual-scroll-viewport>
         </div>
     </section>
-    <section class="explora" *ngIf="explorar == true" #explora>
+    
+    <section class="explora" *ngIf="explorar == true" id="exploraSection" >  
+       
             <div class=" titulo">
                 <h2 class="tituloh2">{{mazo.nameDeck}}</h2>
             </div>
@@ -65,29 +67,28 @@
                 <div class="nombreFiltro"><p class="textoFiltro">Batallas</p></div>
                 <div class="nombreFiltro"><p class="textoFiltro">Tierras</p></div>
             </div>
-            <div class="cartas">
-                <div class="close">
-                    <img (click)="close()" id="imgClose" src="../../../assets/images/explora/CloseRed.png" alt="">
-                </div>
-                <div class="contador">
-                    <img src="../../../assets/images/explora/contador.png" alt="">
-                    <p id="numCartas">{{mazo.cards.length || 0}}/60</p>
-                </div>
-                <cdk-virtual-scroll-viewport itemSize="40" class="bucleContainer">
-                    <div class="cartasContainer">
-                        <div *cdkVirtualFor="let cartas of mazo.cards">
-                            <app-card [templateCard] = "'type2'" [childCard] = "cartas" 
-                            (eventoidCard) ="idCard($event)"
-                            (click) = "openCardInfo()"></app-card>
-                        </div>
+            <div class="cartas" >
+                    <div class="close">
+                        <img (click)="close()" id="imgClose" src="../../../assets/images/explora/CloseRed.png" alt="">
                     </div>
-                </cdk-virtual-scroll-viewport>
+                    <div class="contador">
+                        <img src="../../../assets/images/explora/contador.png" alt="">
+                        <p id="numCartas">{{mazo.cards.length || 0}}/60</p>
+                    </div>
+                    <cdk-virtual-scroll-viewport itemSize="40" class="bucleContainer">
+                        <div class="cartasContainer">
+                            <div *cdkVirtualFor="let cartas of mazo.cards">
+                                <app-card [templateCard] = "'type2'" [childCard] = "cartas" 
+                                (eventoidCard) ="idCard($event)"
+                                (click) = "openCardInfo()"></app-card>
+                            </div>
+                        </div>
+                    </cdk-virtual-scroll-viewport>
 
-                <div class="cardInfo" *ngIf="showCardInfo == true">
-                    <app-card-info [id_card] = "id_card" (onCardInfoClose) = "closeCardInfo($event)"></app-card-info>
+                    <div class="cardInfo" *ngIf="showCardInfo == true" [ngClass]="animation ? 'visible': ''">
+                        <app-card-info [id_card] = "id_card" (onCardInfoClose) = "closeCardInfo($event)"></app-card-info>
+                    </div>
                 </div>
-            </div>
-            
-    
     </section>
+    
 </main>

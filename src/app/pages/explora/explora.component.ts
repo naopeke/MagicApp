@@ -1,5 +1,6 @@
 
 import { Component} from '@angular/core';
+import { Router} from '@angular/router';
 import { Card } from 'src/app/models/card';
 import { Deck } from 'src/app/models/deck';
 
@@ -18,10 +19,10 @@ export class ExploraComponent {
   public explorar: boolean = false
   public id_card: number
   public showCardInfo: boolean = false
-  public darkenOverlay:boolean = false; 
+  public animation: boolean = false
  
 
-  constructor(){
+  constructor(private router:Router){
     this.datos = [
       new Deck(1, 'Dragonfly', 'Kaoser', [5], 5,[ new Card('1', 0,"../../../assets/images/landing/carta1landing.png"),
         new Card('2', 0,"../../../assets/images/landing/carta1landing.png"),
@@ -92,7 +93,9 @@ export class ExploraComponent {
     })
 
    this.mazo = cartas
-   console.log(this.mazo);
+   this.router.navigateByUrl('/explora#exploraSection')
+   
+ 
   }
 
   public score(event:{id_deck:number, score:number}){
@@ -115,6 +118,7 @@ export class ExploraComponent {
 
   public close(){
    this.explorar = false
+   this.router.navigateByUrl('/explora')
   }
   
   public idCard(id_card:number){
@@ -124,11 +128,18 @@ export class ExploraComponent {
   }
   openCardInfo(){
     this.showCardInfo = true
-    this.darkenOverlay=true;
+    setTimeout(() => {
+      this.animation = true
+    },100)
+    
   }
 
   closeCardInfo(event:boolean){
-    this.showCardInfo = event
+    this.animation = false
+    setTimeout(() => {
+      this.showCardInfo = event
+    },800)
+
   }
   
 

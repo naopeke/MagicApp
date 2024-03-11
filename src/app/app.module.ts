@@ -57,6 +57,8 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { CdkScrollableModule, CdkVirtualScrollViewport, ScrollingModule } from '@angular/cdk/scrolling';
 import { DecksComponent } from './components/decks/decks.component';
 import { RatingComponent } from './components/rating/rating.component';
+import { Router, RouterModule } from '@angular/router';
+
 
 
 @NgModule({
@@ -91,6 +93,7 @@ import { RatingComponent } from './components/rating/rating.component';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule,
 
     // angular material
     MatSidenavModule,
