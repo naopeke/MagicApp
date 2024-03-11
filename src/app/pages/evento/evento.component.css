@@ -28,7 +28,7 @@
 }
 
 #buscador {
-  width: 900px;
+  width: 100%;
   height: 60px;
   border-color: var(--verde);
   background-color: var(--negro-bg);
@@ -140,6 +140,7 @@
 }
 
 .icono_evento {
+  display: inline;
   margin-right: 10px;
   margin-top: 10px;
 }
@@ -185,14 +186,14 @@
   margin: 0 auto;
 }
 .buttonPagination{
-  padding: 10px;
+  padding-top: 10px;
   width: 35%;
   background-color: var(--verde);
   border-radius: var(--borde-boton);
 }
 .p_pagiantion{
   font-family: var(--antiqua);
-  font-size: 11px;
+  font-size: 19px;
   color: var(--negro);
 }
 .paginationSpan{
@@ -202,6 +203,7 @@
   color: var(--blanco);
   font-family: var(--antiqua);
   padding: 10px;
+  font-size: 19px;
 }
 
 
@@ -235,13 +237,15 @@
   background-color: var(--verde);
   border-radius: var(--borde-boton);
   margin: 0 auto;
+  font-size: 19px;
   margin-bottom: 10%;
 }
 
 .modalP{
   text-align: center;
   margin-bottom: 25%;
-  margin-top: 10%;
+  margin-top: 25%;
+  font-size: 19px;
   color: var(--blanco);
 }
 
@@ -311,4 +315,19 @@
 }
 
 
-
+@media (max-width: 768px) {
+  #img_evento {
+    width: 80%; /* Ajusta el tamaño según tu diseño */
+  }
+  #img_superior, #img_inferior{
+    width:5px
+  }
+}
+@media (max-width: 1200px) {
+  #img_evento {
+    width: 70%; /* Ajusta el tamaño según tu diseño */
+  }
+  #img_superior, #img_inferior{
+    width:30px
+  }
+}
