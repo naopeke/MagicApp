@@ -37,7 +37,7 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
     private cardsService: CardsService,
   ){
     this.datos = [
-      new Deck(1, 'Dragonfly', 'Kaoser', 4, [
+      new Deck(1, 'Dragonfly', 'Kaoser', [4], 4, [
         new Card('1', 1,"https://cards.scryfall.io/normal/front/2/c/2c5a7550-fe1a-4797-9583-70ab56cfac0d.jpg?1707739807","Tomik, Wielder of Law","Legendary Creature","description", ["W", "B"], { "standard": "not_legal",  "commander": "legal"}, 1.05, "Load of the rings", "commander"),
         new Card('2', 1,"https://cards.scryfall.io/large/front/d/5/d5806e68-1054-458e-866d-1f2470f682b2.jpg?1696020224","The One ring", "Lengendary Artifact", "description", ["P", "W"],{ "standard": "not_legal",  "commander": "legal"}, 0.99, "Load of the rings", "booster"
          ),
@@ -45,7 +45,7 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
         new Card('4', 1,"https://cards.scryfall.io/large/front/e/5/e57815d4-b21f-4ceb-a3f1-73cff5f0e612.jpg?1686968563", "March from the Black Gate", "Enchantment", "description", ["B"], { "standard": "not_legal", "commander": "not_legal"}, 3.01, "Load of the rings", "commander"), 
         new Card('7', 1, "https://cards.scryfall.io/large/front/9/0/905f0dd4-0197-45f8-8e7f-396d6dcef600.jpg?1675956901", "The Eternal Wanderer", "Legendary Planeswalker", "description", ["B"], { "standard": "not_legal", "commander": "not_legal"}, 0.10, "SetName1", "SetType1" ),
       ]), 
-      new Deck(2, 'onFire', 'Kaoser', 3, [ 
+      new Deck(2, 'onFire', 'Kaoser', [3], 5, [ 
         new Card('7', 1, "https://cards.scryfall.io/large/front/9/0/905f0dd4-0197-45f8-8e7f-396d6dcef600.jpg?1675956901", "The Eternal Wanderer", "Legendary Planeswalker", "description", ["B"], { "standard": "not_legal", "commander": "not_legal"}, 0.10, "SetName1", "SetType1" ),
         new Card('1', 1,"https://cards.scryfall.io/normal/front/2/c/2c5a7550-fe1a-4797-9583-70ab56cfac0d.jpg?1707739807","Tomik, Wielder of Law","Legendary Creature","description", ["W", "B"], { "standard": "not_legal",  "commander": "legal"}, 1.05, "Load of the rings", "commander"),
         new Card('2', 1,"https://cards.scryfall.io/large/front/d/5/d5806e68-1054-458e-866d-1f2470f682b2.jpg?1696020224","The One ring", "Lengendary Artifact", "description", ["P", "W"],{ "standard": "not_legal",  "commander": "legal"}, 0.99, "Load of the rings", "booster"),
@@ -56,7 +56,7 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
         new Card('8', 1, "https://cards.scryfall.io/large/front/0/f/0fd1fc09-a09d-45e6-8a07-3a8a83b4e6ec.jpg?1686970224", "Mithril Coat", "Legendary Artifact", "description", ["W", "G"],    { "standard": "not_legal", "commander": "legal"},0.25, "test", "test")
       ]
       ),
-      new Deck(3, 'onIce', 'Deimos', 2, [ 
+      new Deck(3, 'onIce', 'Deimos', [2], 5, [ 
         new Card('7', 1, "https://cards.scryfall.io/large/front/9/0/905f0dd4-0197-45f8-8e7f-396d6dcef600.jpg?1675956901", "The Eternal Wanderer", "Legendary Planeswalker", "description", ["B"], { "standard": "not_legal", "commander": "not_legal"}, 0.10, "SetName1", "SetType1" ),
         new Card('1', 1,"https://cards.scryfall.io/normal/front/2/c/2c5a7550-fe1a-4797-9583-70ab56cfac0d.jpg?1707739807","Tomik, Wielder of Law","Legendary Creature","description", ["W", "B"], { "standard": "not_legal",  "commander": "legal"}, 1.05, "Load of the rings", "commander"),
         new Card('2', 1,"https://cards.scryfall.io/large/front/d/5/d5806e68-1054-458e-866d-1f2470f682b2.jpg?1696020224","The One ring", "Lengendary Artifact", "description", ["P", "W"],{ "standard": "not_legal",  "commander": "legal"}, 0.99, "Load of the rings", "booster"
@@ -64,14 +64,14 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
         new Card('3', 1,"https://cards.scryfall.io/large/front/1/7/175b3d28-5c74-4972-9b5c-5e39762c78f4.jpg?1686964447", "Relic of Sauron", "Artifact", "description", ["B"],{ "standard": "not_legal", "commander": "not_legal"}, 5.10, "Load of the rings", "booster" ),
       ]
         ),
-        new Deck(4, 'onPoison', 'Deimos', 2, [ 
+        new Deck(4, 'onPoison', 'Deimos', [2], 2, [ 
           new Card('1', 1,"https://cards.scryfall.io/normal/front/2/c/2c5a7550-fe1a-4797-9583-70ab56cfac0d.jpg?1707739807","Tomik, Wielder of Law","Legendary Creature","description", ["W", "B"], { "standard": "not_legal",  "commander": "legal"}, 1.05, "Load of the rings", "commander"),
           new Card('7', 1, "https://cards.scryfall.io/large/front/9/0/905f0dd4-0197-45f8-8e7f-396d6dcef600.jpg?1675956901", "The Eternal Wanderer", "Legendary Planeswalker", "description", ["B"], { "standard": "not_legal", "commander": "not_legal"}, 0.10, "SetName1", "SetType1" ),
           new Card('8', 1, "https://cards.scryfall.io/large/front/0/f/0fd1fc09-a09d-45e6-8a07-3a8a83b4e6ec.jpg?1686970224", "Mithril Coat", "Legendary Artifact", "description", ["W", "G"],    { "standard": "not_legal", "commander": "legal"},0.25, "test", "test")
   
         ]
           ),
-          new Deck(5, 'onLightening', 'Deimos', 2, [ 
+          new Deck(5, 'onLightening', 'Deimos', [3], 3, [ 
             
           ]
             )
