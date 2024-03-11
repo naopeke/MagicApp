@@ -77,8 +77,7 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
     ExploraComponent,
     CalendarioComponent,
     EventoComponent,
-    ModalProfileComponent,
-    MazoSelectorModalComponent
+    ModalProfileComponent
   ],
 
   imports: [

@@ -20,9 +20,9 @@ export class HeaderComponent {
 
   constructor(){
     this.login1 = new Logging(this.user1, true);
-    this.login2 = new Logging(this.user1, false);
+    this.login2 = new Logging(this.user1, true);
 
-    if(this.login2.booleanLogeado){
+    if(this.login1.booleanLogeado){
       this.idBotonActivo = "btnUsuario";
     }else{
       this.idBotonActivo = 'btnIniciarSesion'
@@ -34,7 +34,7 @@ export class HeaderComponent {
     
     this.login1.user == null;
     this.login1.booleanLogeado == false;
-    console.log("login1");
+    console.log("Cerrado sesion");
 
   }
 }

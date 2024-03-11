@@ -1,0 +1,11 @@
+<div  class="mazos">
+    <div class="datos puntuacion">{{ dato.mediaScore}}</div>
+    <div class="datos usuario">{{ dato.nameUser }}</div>
+    <div class="datos mazo">{{ dato.nameDeck }}</div>
+    <div class="datos explorar" (click)="explora(dato.id_deck)">Explora</div>
+    <div  class="datos estrellas">
+    <app-rating (onRating)="Handle(dato.id_deck, $event)" [mediaScore] = "dato.mediaScore" [typeRating]="typeRating"></app-rating>
+</div>
+
+
+
