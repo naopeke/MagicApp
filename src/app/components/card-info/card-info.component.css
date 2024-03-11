@@ -2,8 +2,8 @@
 .bg_img{
     position:relative;
     margin: 5vh;
-    width: 1028px;
-    height: 917px;
+    width: 100%;
+    height: 100%;
     background-image: url(src/assets/images/fondos-info-card/flor.jpeg);
     border-radius: 20px;
     background-position: 68% 15%;
@@ -46,10 +46,6 @@
     width: 100%;
     margin-top: 75px;
     color: #f3f3f3;
-    /* display: flex;
-    flex-direction: row;
-    justify-content:space-around; */
-
 }
 
 .box_right{
@@ -65,7 +61,6 @@
     justify-content: center;
     text-align: center;
     padding-left: 50px;
-
 }
 
 
@@ -79,6 +74,7 @@ img{
     font-size: 26px;
     font-family: var(--inter);
     margin-top: 36px;
+    margin-bottom: 20px;
 }
 
 .subtitle{
@@ -97,8 +93,6 @@ img{
     color: var(--blanco);
     font-family: var(--inter);
     font-size: 18px;
-    
-
 }
 
 .etiquetas{
@@ -110,7 +104,7 @@ img{
     color: var(--blanco);
     font-family: var(--inter);
     font-size: 18px;
-
+    margin-bottom: 20px;
 }
 
 .etiqueta{
@@ -133,7 +127,6 @@ img{
     margin-right: 10px;
     padding-top: 5px;
     color: white;
-
 }
 
 .name_button_type{
