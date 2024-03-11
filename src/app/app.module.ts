@@ -49,6 +49,7 @@ import { CalendarioComponent } from './pages/calendario/calendario.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { EventoComponent } from './pages/evento/evento.component';
 import { AddEventComponent } from './components/add-event/add-event.component';
+import { DeleteEventComponent } from './components/delete-event/delete-event.component';
 
 
 
@@ -75,6 +76,7 @@ import { AddEventComponent } from './components/add-event/add-event.component';
     CalendarioComponent,
     EventoComponent,
     AddEventComponent,
+    DeleteEventComponent,
   ],
 
   imports: [
