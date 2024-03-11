@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { MatCalendar } from '@angular/material/datepicker';
+import { MatCalendar, MatCalendarCellCssClasses } from '@angular/material/datepicker';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { DateAdapter } from '@angular/material/core';
@@ -14,14 +14,18 @@ import { DateAdapter } from '@angular/material/core';
   ]
 })
 export class CalendarioComponent {
-
-  eventDate: Date = new Date();
-  events = [
+  dates = [
     {fecha: '2 de enero 2024',
-  event:[
+  events:[
     {titulo: 'Superpartida', lugar_hora: 'Madrid 18h', descripcion: 'Partida entre señoras'},
     {titulo: 'Superpartida2', lugar_hora: 'Palma de Mallorca 19h', descripcion: 'Iniciación al juego'},
     {titulo: 'Superpartida3', lugar_hora: 'Elche 20h', descripcion: 'Invitación a nuevos jugadores'},
+  ]},
+  {fecha: '4 de enero 2024',
+  events:[
+    {titulo: 'Superpartidita', lugar_hora: 'Madrid 18h', descripcion: 'Partida entre señoras'},
+    {titulo: 'Superpartidita2', lugar_hora: 'Palma de Mallorca 19h', descripcion: 'Iniciación al juego'},
+    {titulo: 'Superpartidita3', lugar_hora: 'Elche 20h', descripcion: 'Invitación a nuevos jugadores'},
   ]}
   ]
   // elegir dia de hoy
@@ -41,13 +45,11 @@ export class CalendarioComponent {
 
   // cuando pulsa previous (anterior)
   previousClicked(): void {
-    // cambia el dia como el del mes anterior
     this.selectedDate.setMonth(this.selectedDate.getMonth() - 1);
   }
 
   // cuando pulsa next (siguiente) 
   nextClicked(): void {
-    // cambia el dia del mes que viene
     this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
   }
 
@@ -56,7 +58,16 @@ export class CalendarioComponent {
     console.log('Selected Date: ', event);
   }
 
+  dateClass = (date: Date): MatCalendarCellCssClasses => {
+    const highlightDate = this.dates.find(eventDate => {
+      const eventDateObj = new Date(eventDate.fecha);
+      return eventDateObj.getFullYear() === date.getFullYear() &&
+        eventDateObj.getMonth() === date.getMonth() &&
+        eventDateObj.getDate() === date.getDate();
+    });
   
+    return highlightDate ? 'highlight-event' : '';
+  }
 }
 
 

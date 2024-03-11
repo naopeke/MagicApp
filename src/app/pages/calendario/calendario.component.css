@@ -69,6 +69,12 @@ span.mat-calendar-body-cell-content.mat-focus-indicator.mat-calendar-body-select
     background-color: var(--verde);
     color: var(--blanco);
 }
+
+.highlight-event{
+    background-color: var(--amarillo);
+    color: var(--verde);
+}
+
 .cuadroDcha{
     height: 1100px;
     width: 32%;
