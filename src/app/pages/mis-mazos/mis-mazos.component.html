@@ -44,11 +44,16 @@
 
             </section>
 
-
-
             <section class="deckcards-wrapper">
                     <div class="deckname-wrapper">
-                        <h2 class="deckname"><span>Mis Mazos:&nbsp;&nbsp;</span>{{mazo?.nameDeck}}</h2>
+                        <h2 class="deckname">
+                            <span *ngIf="!isEditing">{{mazo?.nameDeck}}</span>
+                            <input *ngIf="isEditing" type="text" [(ngModel)]="editedName" class="editDeckNameInput">
+                            <button *ngIf="!isEditing" (click)="startEdit()">edit</button>
+                            <button *ngIf="isEditing" (click)="saveEdit()">save</button>
+                        </h2>
+
+
                     </div>
                     <div class="filter">
                         <div class="filter-list"><p class="filter-name" (click)="onFilterClick('all')">Todas las cartas</p></div>

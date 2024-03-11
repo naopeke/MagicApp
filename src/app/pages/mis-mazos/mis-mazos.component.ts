@@ -15,7 +15,16 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
   public datosVotados: Deck[];
   public card: Card;
   public cards: Card[];
-  public filteredCards: Card[] = [];
+  
+  public filteredCards: Card[] = []; // para filtrar con tipos de cartas
+
+  public isEditing: boolean = false; // edit mode
+  public editedName: string = '';  // para guardar el nombre modificando
+
+  // public getFirstPlanesWalkerOrLegendaryCreatureImage(deck: Deck):string{
+  //   const card = deck.cards.find(c => c.type_line.includes('Planeswalker') || c.type_line.includes('Legendary Creature'));
+  //   return card ? card.image_url : 
+  // }
 
   public darkenOverlay:boolean = false; // modal de xisca
   public show_cardinfo:boolean = false; // modal de xisca
@@ -38,8 +47,9 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
         new Card('2', 1,"https://cards.scryfall.io/large/front/d/5/d5806e68-1054-458e-866d-1f2470f682b2.jpg?1696020224","The One ring", "Lengendary Artifact", "description", ["P", "W"],{ "standard": "not_legal",  "commander": "legal"}, 0.99, "Load of the rings", "booster"
          ),
         new Card('3', 1,"https://cards.scryfall.io/large/front/1/7/175b3d28-5c74-4972-9b5c-5e39762c78f4.jpg?1686964447", "Relic of Sauron", "Artifact", "description", ["B"],{ "standard": "not_legal", "commander": "not_legal"}, 5.10, "Load of the rings", "booster" ),
-        new Card('4', 1,"https://cards.scryfall.io/large/front/e/5/e57815d4-b21f-4ceb-a3f1-73cff5f0e612.jpg?1686968563", "March from the Black Gate", "Enchantment", "description", ["B"], { "standard": "not_legal", "commander": "not_legal"}, 3.01, "Load of the rings", "commander")], 
-        ), 
+        new Card('4', 1,"https://cards.scryfall.io/large/front/e/5/e57815d4-b21f-4ceb-a3f1-73cff5f0e612.jpg?1686968563", "March from the Black Gate", "Enchantment", "description", ["B"], { "standard": "not_legal", "commander": "not_legal"}, 3.01, "Load of the rings", "commander"), 
+        new Card('7', 1, "https://cards.scryfall.io/large/front/9/0/905f0dd4-0197-45f8-8e7f-396d6dcef600.jpg?1675956901", "The Eternal Wanderer", "Legendary Planeswalker", "description", ["B"], { "standard": "not_legal", "commander": "not_legal"}, 0.10, "SetName1", "SetType1" ),
+      ]), 
       new Deck(2, 'onFire', 'Kaoser', 3, [ 
         new Card('1', 1,"https://cards.scryfall.io/normal/front/2/c/2c5a7550-fe1a-4797-9583-70ab56cfac0d.jpg?1707739807","Tomik, Wielder of Law","Legendary Creature","description", ["W", "B"], { "standard": "not_legal",  "commander": "legal"}, 1.05, "Load of the rings", "commander"),
         new Card('2', 1,"https://cards.scryfall.io/large/front/d/5/d5806e68-1054-458e-866d-1f2470f682b2.jpg?1696020224","The One ring", "Lengendary Artifact", "description", ["P", "W"],{ "standard": "not_legal",  "commander": "legal"}, 0.99, "Load of the rings", "booster"),
@@ -56,6 +66,8 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
         new Card('2', 1,"https://cards.scryfall.io/large/front/d/5/d5806e68-1054-458e-866d-1f2470f682b2.jpg?1696020224","The One ring", "Lengendary Artifact", "description", ["P", "W"],{ "standard": "not_legal",  "commander": "legal"}, 0.99, "Load of the rings", "booster"
          ),
         new Card('3', 1,"https://cards.scryfall.io/large/front/1/7/175b3d28-5c74-4972-9b5c-5e39762c78f4.jpg?1686964447", "Relic of Sauron", "Artifact", "description", ["B"],{ "standard": "not_legal", "commander": "not_legal"}, 5.10, "Load of the rings", "booster" ),
+        new Card('7', 1, "https://cards.scryfall.io/large/front/9/0/905f0dd4-0197-45f8-8e7f-396d6dcef600.jpg?1675956901", "The Eternal Wanderer", "Legendary Planeswalker", "description", ["B"], { "standard": "not_legal", "commander": "not_legal"}, 0.10, "SetName1", "SetType1" ),
+
       ]
         ),
         new Deck(4, 'onPoison', 'Deimos', 2, [ 
@@ -71,19 +83,6 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
     ]
   }
 
-
-  // onCountPlusFromChild(cardId: string){
-  //   this.builderCards = this.builderCards.filter(card => card.id_card !== cardId);
-  //   console.log('After deleting from Deck: ', this.builderCards);
-  // }
-  // onCountPlusFromChild(cardId: string) {
-  //   this.mazo.cards.forEach(card => {
-  //     if (card.id_card === cardId) {
-  //       card.quantity += 1;
-  //       console.log(`Quantity ${cardId}: `, card.quantity);
-  //     }
-  //   });
-  // }
 
   public onIncreaseCardQuantityFromChild(cardId: string) {
     const card = this.mazo.cards.find(c => c.id_card === cardId);
@@ -125,7 +124,15 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
   }
 
 
-  
+  public startEdit(){
+    this.isEditing = true; // edit mode on
+    this.editedName = this.mazo.nameDeck; // meter el nombre modificando temporalmente
+  }
+
+  public saveEdit(){
+    this.isEditing = false; // edit mode off
+    this.mazo.nameDeck = this.editedName; // guardar como mazo.nameDeck
+  }
 
 
 

@@ -81,6 +81,11 @@
 
 .deckname span {
     color: var(--morado);
+    width: 500px;
+}
+
+.editDeckNameInput{
+    max-width:500px; 
 }
 
 .filter{
