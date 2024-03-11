@@ -116,8 +116,12 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
 
   public onFilterClick(typeLine:string){
     console.log('filtered creatures');
-      this.filteredCards = this.mazo.cards.filter(c => c.type_line.toLowerCase().includes(typeLine.toLowerCase()));
-    console.log('filtered card', this.filteredCards);
+      if (typeLine === 'all'){
+        this.filteredCards = [...this.mazo.cards];
+      } else {
+        this.filteredCards = this.mazo.cards.filter(c => c.type_line.toLowerCase().includes(typeLine.toLowerCase()));
+      }
+      console.log('filtered card', this.filteredCards);
   }
 
 
@@ -157,20 +161,23 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
   // }
 
   ngAfterViewInit(): void {
-    // Swiperが完全に初期化されたことを確認
+    // make sure if swiper is default 
     if (this.mySwiper && this.mySwiper.nativeElement.swiper) {
       const swiper = this.mySwiper.nativeElement.swiper;
       
       swiper.slideTo(0, 0); //  indice por la primera vez, tiempo
       // con indice por la primera vez y primer mazo
       console.log('Initial deck: ', this.datos[0]);
-      this.mazo = this.datos[0];
+      this.mazo = this.datos[0]; 
+      this.filteredCards = [ ...this.mazo.cards]; // mostrar todas las cartas
   
       // con slideChange, 
       swiper.on('slideChange', () => {
         const activeIndex = swiper.activeIndex;
           console.log('This is inside of the deck: ', this.datos[activeIndex]);
           this.mazo = this.datos[activeIndex]; // asociado con indice de mazo
+          this.filteredCards = [...this.mazo.cards]; // clear cartas filtrado y mostrar todas las cartas
+
         
       });
     }

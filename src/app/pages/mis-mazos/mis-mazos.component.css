@@ -79,6 +79,10 @@
     padding-top:40px;
 }
 
+.deckname span {
+    color: var(--morado);
+}
+
 .filter{
     width: 100%;
     display: flex;
@@ -156,6 +160,10 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+hr {
+    color: var(--blanco);
 }
 
 .message{

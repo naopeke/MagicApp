@@ -48,7 +48,7 @@
 
             <section class="deckcards-wrapper">
                     <div class="deckname-wrapper">
-                        <h2 class="deckname">{{mazo?.nameDeck}}</h2>
+                        <h2 class="deckname"><span>Mis Mazos:&nbsp;&nbsp;</span>{{mazo?.nameDeck}}</h2>
                     </div>
                     <div class="filter">
                         <div class="filter-list"><p class="filter-name" (click)="onFilterClick('all')">Todas las cartas</p></div>
@@ -57,7 +57,7 @@
                         <div class="filter-list"><p class="filter-name" (click)="onFilterClick('enchantment')">Encantamientos</p></div>
                         <div class="filter-list"><p class="filter-name" (click)="onFilterClick('sorcery')">Conjuros</p></div>
                         <div class="filter-list"><p class="filter-name" (click)="onFilterClick('instance')">Instantáneas</p></div>
-                        <div class="filter-list"><p class="filter-name" (click)="onFilterClick('planeswalkers')">Planeswalkers</p></div>
+                        <div class="filter-list"><p class="filter-name" (click)="onFilterClick('planeswalker')">Planeswalkers</p></div>
                         <div class="filter-list"><p class="filter-name" (click)="onFilterClick('battle')">Batallas</p></div>
                         <div class="filter-list"><p class="filter-name" (click)="onFilterClick('land')">Tierras</p></div>
                     </div>
@@ -71,7 +71,7 @@
 
 
 
-                           <!-- <div class="list-cards" *ngIf="filteredCards.length > 0">
+                           <div class="list-cards" *ngIf="filteredCards.length > 0">
                             <div *ngFor="let card of filteredCards; let i = index">
                                 <app-card 
                                     [childCard]="card" 
@@ -80,18 +80,24 @@
                                     (countPlusFromChild)="onIncreaseCardQuantityFromChild($event)"
                                     (deleteAllQuantityFromChild)="onDeleteAllCardsFromChild($event)"
                                     (click)="onCardInfoOpen()"
-            
                                 ></app-card>
                             </div>
                         
+                            <div class="list-cards" *ngIf="filteredCards.length === 0">
+                                <div>
+                                    No tienes nínguna carta de este categoría
+
+                                </div>
+                            </div>
+
                             <div class="results-wrapper" *ngIf="mazo?.cards?.length === 0">
                                 <div class="no-results-message">
                                 <p class="message">No hay ninguna carta en este mazo.</p>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
 
-                        <div class="list-cards" *ngIf="mazo?.cards?.length > 0">
+                        <!-- <div class="list-cards" *ngIf="mazo?.cards?.length > 0">
                             <div *ngFor="let card of mazo.cards; let i = index">
                                 <app-card 
                                     [childCard]="card" 
@@ -108,7 +114,7 @@
                                 <p class="message">No hay ninguna carta en este mazo.</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                     </div>
             </section>
