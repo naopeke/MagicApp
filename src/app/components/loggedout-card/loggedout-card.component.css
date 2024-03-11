@@ -10,7 +10,7 @@
 .title {
     width: 100%;
     /* border: 2px solid pink; */
-    font-size: 57px;
+    font-size: 40px;
     font-family: var(--antiqua);
     color:var(--azul);
     text-align: center;
@@ -42,24 +42,24 @@ input, select, .btn-buscador {
 
 input {
     width: 576px;
-    height: 60px;
+    height: 48px;
     border: 3px solid var(--azul);
     background-color: var(--negro-bg);
     padding-left: 25px;
     color: var(--blanco);
-    font-size: 26px;
+    font-size: 24px;
     border-radius: var(--ancho-borde) 0 0 var(--ancho-borde);
     border-right: none;
 }
 
 input::placeholder {
     color: var(--blanco);
-    font-size:32px;
+    font-size:24px;
 }
 
 select {
     width: 150px;
-    height: 60px;
+    height: 48px;
     background-color: var(--negro-bg);
     color: var(--blanco);
     font-family: var(--inter);
@@ -71,7 +71,7 @@ select {
 
 .btn-buscador {
     width:60px;
-    height:60px;
+    height:48px;
     color:var(--azul);
     background-color: var(--azul);
     background-image: url('/assets/images/iconos/ojo.png');
