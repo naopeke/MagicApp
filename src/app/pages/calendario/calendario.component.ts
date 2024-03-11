@@ -2,6 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { MatCalendar } from '@angular/material/datepicker';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { DateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-calendario',
@@ -26,7 +27,9 @@ export class CalendarioComponent {
   // elegir dia de hoy
   selectedDate: Date = new Date();
 
-  constructor() {}
+  constructor(date: DateAdapter<Date>) {
+    date.getFirstDayOfWeek = () =>1;
+  }
 
   // para header de calendario se puede modificar
   getCurrentMonth(): string {

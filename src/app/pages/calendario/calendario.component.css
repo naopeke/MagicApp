@@ -102,6 +102,7 @@ h1.title_date{
     display: flex;
     justify-content: space-evenly;
     gap: 20px;
+    border-bottom: solid var(--blanco).5px;
 }
 
 .eventoInfo{
@@ -128,6 +129,7 @@ h3.detalle_evento_descripcion{
     display: flex;
     flex-direction: column;
     gap: 40px;
+
 }
 
 .editar{
