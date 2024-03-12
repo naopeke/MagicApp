@@ -55,6 +55,10 @@ import { MazoSelectorModalComponent } from './components/mazo-selector-modal/maz
 import { CdkScrollableModule, CdkVirtualScrollViewport, ScrollingModule } from '@angular/cdk/scrolling';
 import { ModalProfileComponent } from './components/modal-profile/modal-profile.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { DecksComponent } from './components/decks/decks.component';
+import { RatingComponent } from './components/rating/rating.component';
+import { Router, RouterModule } from '@angular/router';
+
 
 
 @NgModule({
@@ -77,7 +81,10 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
     ExploraComponent,
     CalendarioComponent,
     EventoComponent,
-    ModalProfileComponent
+    ModalProfileComponent,
+    RatingComponent,
+    DecksComponent,
+    MazoSelectorModalComponent
   ],
 
   imports: [
@@ -86,6 +93,7 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule,
 
     // angular material
     MatSidenavModule,
@@ -106,8 +114,11 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
     MatDialogModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    
     CdkVirtualScrollViewport,
-    ScrollingModule
+    ScrollingModule, 
+    CdkScrollableModule
+    
     
     //swiper@8
     // SwiperModule

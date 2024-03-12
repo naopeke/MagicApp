@@ -5,6 +5,7 @@
     width: 100%;
     height: 100%;
     background-image: url(src/assets/images/fondos-info-card/flor.jpeg);
+    background-size: cover;
     border-radius: 20px;
     background-position: 68% 15%;
 }
@@ -142,4 +143,5 @@ img{
 
 .container {
     z-index: 10000;
+    height: 700px;
 }
