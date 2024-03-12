@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
 import { Evento } from 'src/app/models/evento';
 import { EventosService } from 'src/app/shared/eventos.service';
 
@@ -9,22 +8,29 @@ import { EventosService } from 'src/app/shared/eventos.service';
   templateUrl: './delete-event.component.html',
   styleUrls: ['./delete-event.component.css']
 })
+
 export class DeleteEventComponent {
 
-  @Input() idEvent: number;
-  public events:Evento[];
+  //Variable con el evento que viene del padre
+  @Input() eventoAEliminar: Evento;
+  //Variable con el estado de la notificación
+  public mostrarNotificacionEvento: boolean;
   
-  constructor(private eventService: EventosService){
-    
-  }
-  //Función elimiar evento
+  constructor(private eventService: EventosService){  }
+
+  //Inicializamos la variable de la notificación a false
+  ngOnInit(): void {this.mostrarNotificacionEvento = false;}
+
+  //Función para eliminar el evento al pulsar en aceptar
   deleteEvent(idEvent:number){
-    console.log(idEvent);
-    console.log(this.eventService.deleteEvent(idEvent));
-    console.log("evento eliminado correctamente");
+    //Llamamos al service para elimine el evento
+    this.eventService.deleteEvent(idEvent);
+    //Cambiamos el estado de la notificación para que se muestre
+    this.mostrarNotificacionEvento = true;
   }
-// funcion cerrar modal
+  //Funcion para cerrar la modal, llamada desde el icono de la X
   public closeModalDelete():void {
     this.eventService.closeModalDeleteEvent();
   }
+
 }
