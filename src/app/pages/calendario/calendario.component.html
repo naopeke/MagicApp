@@ -4,14 +4,27 @@
 <main>
     <div class="cuadroIzq">
         <div class="titulo">Calendario</div>
-        <div id="calendar">
-            <mat-calendar [selected]="selectedDate" (selectedChange)="onDateChange($event)">
-            </mat-calendar>
-            
+            <div id="calendar">
+                <mat-calendar [selected]="selectedDate" (selectedChange)="onDateChange($event)" [dateClass]="dateClass"></mat-calendar> 
+            </div>
+
         </div>
-
-    </div>
-    <div class="cuadroDcha">
-
-    </div>
+        <div class="cuadroDcha">
+            <div class="agenda">
+                <h1 class="title_date">{{dates[0].fecha}}</h1>
+                <img src="/assets/images/calendario/Line 11.png" alt="">
+                    <div class="evento" *ngFor="let info of dates[0].events">
+                        <div class="eventoInfo">
+                        <h2 class="titulo_evento">{{info.titulo}}</h2>
+                        <h3 class="detalle_evento_lugar">{{info.lugar_hora}}</h3>
+                        <h3 class="detalle_evento_descripcion">{{info.descripcion}}</h3>
+                        </div>
+                        <div class="botones">
+                            <button class="editar"></button>
+                            <button class="eliminar"></button>
+                        </div>
+                    </div>
+                </div>
+    
+        </div>
 </main>

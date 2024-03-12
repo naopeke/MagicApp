@@ -3,7 +3,7 @@ main{
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
-    height: 1200px;
+    height: 1400px;
     display: flex;
 }
 
@@ -44,6 +44,7 @@ main{
 span{
     color: var(--blanco);
     font-family: var(--antiqua);
+    font-size: x-large;
 }
 
 polygon {
@@ -53,12 +54,14 @@ polygon {
 td.mat-calendar-body-label {
     font-family: var(--antiqua);
     color: var(--blanco);
+        font-size: x-large;
 }
 
 span.mat-calendar-body-cell-content.mat-focus-indicator {
     color: var(--blanco);
     border-color: var(--blanco);
     border-radius: 0;
+    font-size: x-large;
 }
 
 span.mat-calendar-body-cell-content.mat-focus-indicator.mat-calendar-body-selected.mat-calendar-body-today {
@@ -66,6 +69,12 @@ span.mat-calendar-body-cell-content.mat-focus-indicator.mat-calendar-body-select
     background-color: var(--verde);
     color: var(--blanco);
 }
+
+.highlight-event{
+    background-color: var(--amarillo);
+    color: var(--verde);
+}
+
 .cuadroDcha{
     height: 1100px;
     width: 32%;
@@ -74,7 +83,82 @@ span.mat-calendar-body-cell-content.mat-focus-indicator.mat-calendar-body-select
     background-color: black;
     opacity: 0.85;
     border-radius: 0 20px 20px 0;
+}
+
+.agenda{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 950px;
+    margin-bottom: 15px;
+    margin-top: 50px;
+}
+
+h1.title_date{
+    color: var(--amarillo);
+    font-family: var(--antiqua);
+    text-align: center;
+}
+
+.evento{
+    width: 400px;
+    height: 250px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 20px;
+    border-bottom: solid var(--blanco).5px;
+}
+
+.eventoInfo{
+    display: flex;
+    flex-direction: column;
+}
+
+h2.titulo_evento{
+    color:var(--blanco);
+    font-family: var(--antiqua);
+}
+
+h3.detalle_evento_lugar{
+    color: var(--blanco);
+    font-family: var(--antiqua);
+}
+
+h3.detalle_evento_descripcion{
+    color: var(--blanco);
+    font-family: var(--antiqua);
+}
+
+.botones{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
 
 }
+
+.editar{
+    height: 40px;
+    width: 40px;
+    background-color: black;
+    opacity: 0.85;
+    border: none;
+    background-size: contain;
+    background-image: url('src/assets/images/iconos/plumaEditar.png');
+    background-repeat: no-repeat;
+}
+
+.eliminar{
+    height: 40px;
+    width: 40px;
+    background-color: black;
+    opacity: 0.85;
+    border: none;
+    background-size: contain;
+    background-image: url('src/assets/images/iconos/calaveraEliminar.png');
+    background-repeat: no-repeat;
+}
+
 
 
