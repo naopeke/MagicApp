@@ -60,7 +60,7 @@ export class EventoComponent {
 
   //Calcula numero  paginas
   calculatePagination() {
-    this.events = this.eventService.getAllEvents();
+    //this.events = this.eventService.getAllEvents();
     this.totalPages = Math.ceil(this.events.length / this.itemsPerPage);
     this.paginatedEvents = this.events.slice(this.currentPage * this.itemsPerPage, (this.currentPage + 1) * this.itemsPerPage);
   }
@@ -112,6 +112,9 @@ export class EventoComponent {
     this.events = this.eventService.getAllEvents();
     //this.reload();
     //this.calculatePagination();
+
+    const element = document.getElementById("alertEvent");
+    element.innerHTML += "<p>Evento creado correctamente</p>";
 
   }
 

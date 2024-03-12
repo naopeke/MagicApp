@@ -60,7 +60,7 @@
 
                         <button class="submitEdit" type="submit" (click)="editEvent(item.id,titleEvent.value, descriptionEvent.value, dateEvent.value, hourEvent.value, placeEvent.value, item.creator)">Guardar cambios</button>
                     </form>
-
+                    <div id="alertEvent"></div>
                 </div>
             </div>
         </div>
@@ -72,6 +72,7 @@
                     <p class="modalP">¿Deseas eliminar el evento?</p>
                     <button class="buttonDelete" (click)="deleteEvent(item.id)"><p>Aceptar</p></button>
                 </div>
+                <!-- <div id="alertEvent"></div> -->
             </div>
         </div>
 
