@@ -98,6 +98,8 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
+    background: cover;
+    background-repeat: no-repeat;
 }
 
 .bloqueMorado{
@@ -150,6 +152,8 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
+    background: cover;
+    background-repeat: no-repeat;
 }
 
 .fotoRoja{
@@ -160,6 +164,7 @@ main{
     justify-content: center;
     align-items: center;
     background-repeat: no-repeat;
+    background: cover;
 }
 
 .bloqueRojo{
@@ -211,6 +216,8 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
+    background: cover;
+    background-repeat: no-repeat;
 }
 
 .bloqueVerde{

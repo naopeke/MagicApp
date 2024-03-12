@@ -21,7 +21,7 @@ export class CalendarioComponent {
     {titulo: 'Superpartida2', lugar_hora: 'Palma de Mallorca 19h', descripcion: 'Iniciación al juego'},
     {titulo: 'Superpartida3', lugar_hora: 'Elche 20h', descripcion: 'Invitación a nuevos jugadores'},
   ]},
-  {fecha: '4 de enero 2024',
+  {fecha: '5 de marzo 2024',
   events:[
     {titulo: 'Superpartidita', lugar_hora: 'Madrid 18h', descripcion: 'Partida entre señoras'},
     {titulo: 'Superpartidita2', lugar_hora: 'Palma de Mallorca 19h', descripcion: 'Iniciación al juego'},
