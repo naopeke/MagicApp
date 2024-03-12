@@ -163,7 +163,7 @@
 
 .counter{
     /* border:2px solid blue; */
-    left:calc(50%-80px);
+    left: calc(50% - 80px);
     position: absolute;
     bottom: -70px;
 }
