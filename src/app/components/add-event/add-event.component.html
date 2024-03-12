@@ -1,0 +1,22 @@
+<main>
+    <div class="modal-dialog-add">
+        <div class="divAdd">
+            
+            <p id="closed" (click)="closeModalAddEvent()">X</p>
+            <h1>Añadir evento</h1>
+            <!-- <form class="formAdd" [formGroup]="addForm"></form> -->
+            <form class="formAdd">
+                <input class="inputAdd" type="text" id="tituloEvento" formControlName="tituloEvento" required placeholder="Titulo" #titleEvent>
+                <input class="inputAdd" type="time" id="hora" formControlName="hora" required placeholder="Hora" #hourEvent>
+                <input class="inputAdd" type="date" id="fecha" formControlName="fecha" required placeholder="Fecha" #dateEvent>
+                
+                <input class="inputAdd" type="text" id="lugar" formControlName="lugar" required placeholder="Lugar" #placeEvent>
+                <textarea class="inputAdd"id="descripcion" formControlName="descripcion" required placeholder="Descripcion" #descriptionEvent></textarea>
+
+                <button class="submitEdit" type="submit" (click)="addEvent(titleEvent.value, descriptionEvent.value, dateEvent.value, hourEvent.value, placeEvent.value)">Guardar cambios</button>
+            </form>
+            <div id="alertEvent"></div>
+        </div>
+    </div>
+
+</main>
