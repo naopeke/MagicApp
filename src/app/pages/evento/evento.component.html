@@ -43,7 +43,7 @@
 
         <div id="icono_elim_edit" *ngIf="item.creator.id_user === login1.user.id_user">
             <img data-bs-toggle="modal" data-bs-target="#editEvent" id="img_superior" src="../../../assets/images/iconos/editar_evento.png" width="45px">
-            <img data-bs-toggle="modal" data-bs-target="#deleteEvent" id="img_inferior"src="../../../assets/images/iconos/eliminar_evento.png" width="45px">
+            <img (click)="openModalDeleteEvent()" data-bs-toggle="modal" data-bs-target="#deleteEvent" id="img_inferior"src="../../../assets/images/iconos/eliminar_evento.png" width="45px">
         </div>
         
         <!--MODAL edit-->
@@ -66,16 +66,8 @@
         </div>
 
         <!-- MODAL delete-->
-        <div class="modal fade bd-example-modal-sm " id="deleteEvent" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-sm modal-dialog-general">
-                <div class="modal-content divDelete">
-                    <p class="modalP">¿Deseas eliminar el evento?</p>
-                    <button class="buttonDelete" (click)="deleteEvent(item.id)"><p>Aceptar</p></button>
-                </div>
-                <!-- <div id="alertEvent"></div> -->
-            </div>
-        </div>
-
+        <app-delete-event *ngIf="getModalDeleteEvent()" [idEvent]="i"></app-delete-event>
+   
     </div>
 
     <!-- Pagination -->

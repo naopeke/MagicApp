@@ -1,10 +1,12 @@
-    <!-- MODAL delete-->
-    <!-- <div class="modal fade bd-example-modal-sm " id="deleteEvent" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm modal-dialog-general">
-            <div class="modal-content divDelete">
-                <p class="modalP">¿Deseas eliminar el evento?</p>
-                <button class="buttonDelete" (click)="deleteEvent(item.id)"><p>Aceptar</p></button>
-            </div>
-            <div id="alertEvent"><p>Evento eliminado correctamente</p></div>
+<!-- MODAL delete-->
+
+<main>
+    <div class="modal-dialog-delete">
+        <p id="closed" (click)="closeModalDelete()">X</p>
+        <div class="divDelete">
+            <p class="modalP">¿Deseas eliminar el evento?</p>
+            <button class="buttonDelete" (click)="deleteEvent(idEvent)"><p>Aceptar</p></button>
         </div>
-    </div> -->
+        <div id="alertEvent"></div>
+    </div>
+</main>

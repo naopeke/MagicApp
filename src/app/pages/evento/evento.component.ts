@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
 export class EventoComponent {
 
   public events:Evento[];
-
+  public eventoABorrar:Evento;
   public login1:Logging;
   public login2:Logging;
 
@@ -115,7 +115,7 @@ export class EventoComponent {
 
     const element = document.getElementById("alertEvent");
     element.innerHTML += "<p>Evento creado correctamente</p>";
-
+    this.eventService.getAllEvents();
   }
 
   reload() {
@@ -160,6 +160,14 @@ export class EventoComponent {
 
   getModalCreateEvent(){
     return this.eventService.getModalCreateEvent();
+  }
+
+  openModalDeleteEvent(){
+    this.eventService.openModalDeleteEvent();
+  }
+
+  getModalDeleteEvent(){
+    return this.eventService.getModalDeleteEvent();
   }
 
   findEventsWithName(tituloEvento:string){

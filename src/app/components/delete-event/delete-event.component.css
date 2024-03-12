@@ -1,0 +1,32 @@
+main{
+    position: absolute;
+    width: 20%;
+    height: 300px;
+    background-image: url(../../../assets/images/fondos/Fondo_verde.png); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    left: 40%;
+    top: 300px;
+    display:block
+}
+  
+.modal-dialog-delete{
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+  
+.divDelete{
+    background-color: var(--negro-bg);
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+#closed{
+    color: var(--amarillo);
+    font-weight: bold;
+    text-align: right;
+    padding: 3px;
+}

@@ -19,12 +19,14 @@ export class EventosService {
 
   private events: Evento [];
   public modalCreateEvent:boolean;
+  public modalDeleteEvent:boolean;
 
   constructor() {
 
       this.events = [this.ev1, this.ev2, this.ev3, this.ev4, this.ev5];
 
       this.modalCreateEvent = false;
+      this.modalDeleteEvent = false;
 
    }
 
@@ -93,6 +95,16 @@ export class EventosService {
     console.log("estado de la modal de crear evento = "+this.modalCreateEvent);
   }
 
+  openModalDeleteEvent(){
+    this.modalDeleteEvent = true;
+    console.log("estado de la modal de borrar evento = "+this.modalDeleteEvent);
+  }
+
+  closeModalDeleteEvent(){
+    this.modalDeleteEvent = false;
+    console.log("estado de la modal de crear evento = "+this.modalCreateEvent);
+  }
+
   closeModalCreateEvent(){
     this.modalCreateEvent = false;
     console.log("estado de la modal de crear evento = "+this.modalCreateEvent);
@@ -100,6 +112,10 @@ export class EventosService {
 
   getModalCreateEvent(){
     return this.modalCreateEvent;
+  }
+
+  getModalDeleteEvent(){
+    return this.modalDeleteEvent;
   }
 
 
