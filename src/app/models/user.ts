@@ -5,7 +5,9 @@ export class User {
         public email?: string,
         public password?: string,
         public icon?: string,
-        public avater?: string
+        public avatar?: string
+        // añadir
+        // public description?: string
  
         ) { }
 }

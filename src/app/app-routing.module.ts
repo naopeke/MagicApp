@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, ExtraOptions } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ExploraComponent } from './pages/explora/explora.component';
@@ -25,8 +25,14 @@ const routes: Routes = [
   { path: 'evento', component: EventoComponent},
 ];
 
+const routerOption: ExtraOptions = {
+  scrollPositionRestoration: 'enabled',
+  anchorScrolling: 'enabled'
+
+}
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, routerOption)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

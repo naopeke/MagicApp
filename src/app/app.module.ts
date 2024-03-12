@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'; // swiper@10
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, LOCALE_ID } from '@angular/core'; // swiper@10
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -27,6 +27,10 @@ import { MatDialogModule} from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
+import { registerLocaleData } from '@angular/common';
+import localeES from '@angular/common/locales/es'
+
+registerLocaleData(localeES)
 
 // swiper@8
 // import { SwiperModule } from 'swiper/angular';
@@ -55,6 +59,14 @@ import { MazoSelectorModalComponent } from './components/mazo-selector-modal/maz
 import { CdkScrollableModule, CdkVirtualScrollViewport, ScrollingModule } from '@angular/cdk/scrolling';
 import { ModalProfileComponent } from './components/modal-profile/modal-profile.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { DecksComponent } from './components/decks/decks.component';
+import { RatingComponent } from './components/rating/rating.component';
+import { Router, RouterModule } from '@angular/router';
+import { AddEventComponent } from './components/add-event/add-event.component';
+import { DeleteEventComponent } from './components/delete-event/delete-event.component';
+
+
+
 
 
 @NgModule({
@@ -77,7 +89,12 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
     ExploraComponent,
     CalendarioComponent,
     EventoComponent,
-    ModalProfileComponent
+    ModalProfileComponent,
+    RatingComponent,
+    DecksComponent,
+    MazoSelectorModalComponent,
+    AddEventComponent,
+    DeleteEventComponent,
   ],
 
   imports: [
@@ -86,6 +103,7 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule,
 
     // angular material
     MatSidenavModule,
@@ -106,14 +124,19 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
     MatDialogModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    
     CdkVirtualScrollViewport,
-    ScrollingModule
+    ScrollingModule, 
+    CdkScrollableModule
+    
     
     //swiper@8
     // SwiperModule
 
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'es'}
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA] // swiper@10.3.1
 })
