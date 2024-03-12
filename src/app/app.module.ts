@@ -50,7 +50,7 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { EventoComponent } from './pages/evento/evento.component';
 import { AddEventComponent } from './components/add-event/add-event.component';
 import { DeleteEventComponent } from './components/delete-event/delete-event.component';
-import { EditEventComponent } from './components/edit-event/edit-event.component';
+import { EditEventComponent } from './components/edit-event-2/edit-event.component';
 
 @NgModule({
   declarations: [
