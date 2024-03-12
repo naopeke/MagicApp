@@ -3,6 +3,7 @@ import { MatCalendar, MatCalendarCellCssClasses } from '@angular/material/datepi
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { DateAdapter } from '@angular/material/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-calendario',
@@ -28,11 +29,28 @@ export class CalendarioComponent {
     {titulo: 'Superpartidita3', lugar_hora: 'Elche 20h', descripcion: 'Invitación a nuevos jugadores'},
   ]}
   ]
+
+  //variables para padre-hijo:
+
+  public child_edit:boolean = false;
+  public child_delete: boolean = false; 
+
   // elegir dia de hoy
   selectedDate: Date = new Date();
 
-  constructor(date: DateAdapter<Date>) {
+  constructor(date: DateAdapter<Date>, private router: Router) {
     date.getFirstDayOfWeek = () =>1;
+  }
+
+  //para que salgan componentes editar y borrar:
+
+  public show_child_edit(){
+    this.child_edit = true; 
+
+  }
+
+  public show_child_delete(){
+    this.child_delete=true; 
   }
 
   // para header de calendario se puede modificar

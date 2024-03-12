@@ -2,12 +2,18 @@
 
 
 <main>
+    <div class="container_component" *ngIf="child_delete || child_edit">
+        <ng-container *ngIf="child_edit"><app-add-event></app-add-event></ng-container>
+        <ng-container *ngIf="child_delete"><app-delete-event></app-delete-event></ng-container>
+    </div>
+    <!-- <div class="container_component" *ngIf="child_delete">
+        <app-delete-event></app-delete-event>
+    </div> -->
     <div class="cuadroIzq">
         <div class="titulo">Calendario</div>
             <div id="calendar">
                 <mat-calendar [selected]="selectedDate" (selectedChange)="onDateChange($event)" [dateClass]="dateClass"></mat-calendar> 
             </div>
-
         </div>
         <div class="cuadroDcha">
             <div class="agenda">
@@ -20,8 +26,8 @@
                         <h3 class="detalle_evento_descripcion">{{info.descripcion}}</h3>
                         </div>
                         <div class="botones">
-                            <button class="editar"></button>
-                            <button class="eliminar"></button>
+                            <button class="editar" (click)="show_child_edit()"></button>
+                            <button class="eliminar"(click)="show_child_delete()"></button>
                         </div>
                     </div>
                 </div>
