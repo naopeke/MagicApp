@@ -52,8 +52,17 @@ import { ExploraComponent } from './pages/explora/explora.component';
 import { CalendarioComponent } from './pages/calendario/calendario.component';
 import { EventoComponent } from './pages/evento/evento.component';
 import { MazoSelectorModalComponent } from './components/mazo-selector-modal/mazo-selector-modal.component';
+import { CdkScrollableModule, CdkVirtualScrollViewport, ScrollingModule } from '@angular/cdk/scrolling';
 import { ModalProfileComponent } from './components/modal-profile/modal-profile.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { DecksComponent } from './components/decks/decks.component';
+import { RatingComponent } from './components/rating/rating.component';
+import { Router, RouterModule } from '@angular/router';
+import { AddEventComponent } from './components/add-event/add-event.component';
+import { DeleteEventComponent } from './components/delete-event/delete-event.component';
+
+
+
 
 
 @NgModule({
@@ -77,7 +86,11 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
     CalendarioComponent,
     EventoComponent,
     ModalProfileComponent,
-    MazoSelectorModalComponent
+    RatingComponent,
+    DecksComponent,
+    MazoSelectorModalComponent,
+    AddEventComponent,
+    DeleteEventComponent,
   ],
 
   imports: [
@@ -86,6 +99,7 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule,
 
     // angular material
     MatSidenavModule,
@@ -105,7 +119,12 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
     MatSelectModule,
     MatDialogModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    
+    CdkVirtualScrollViewport,
+    ScrollingModule, 
+    CdkScrollableModule
+    
     
     //swiper@8
     // SwiperModule

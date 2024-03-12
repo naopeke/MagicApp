@@ -1,0 +1,17 @@
+
+<div *ngIf="typeRating == 1" class="cursorPointer">
+    <mat-icon *ngFor="let icon of maxRatingArr let index= index"
+    (mouseenter) = "HandleMouseEnter(index)"
+    (mouseleave) = "HandleMouseLeave()"
+    (click)="rating(index)"
+    [ngClass]="{checked:SelectedStar>index}">
+    star
+    </mat-icon>
+</div>
+
+<div *ngIf="typeRating == 2">
+    <mat-icon *ngFor="let icon of maxRatingArr let index= index"
+    [ngClass]="{checked:SelectedStar>index || index <  roundMediaScore()}">
+star
+</mat-icon>
+</div>

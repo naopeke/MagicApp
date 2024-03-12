@@ -2,9 +2,10 @@
 .bg_img{
     position:relative;
     margin: 5vh;
-    width: 1028px;
-    height: 917px;
+    width: 100%;
+    height: 100%;
     background-image: url(src/assets/images/fondos-info-card/flor.jpeg);
+    background-size: cover;
     border-radius: 20px;
     background-position: 68% 15%;
 }
@@ -24,11 +25,15 @@
     align-self: flex-end;
 }
 
-.btn-close{
-    color: #f3f3f3;
-    margin-right: 20px;
-    margin-top: 20px;
-    font-size: 40px;
+.close-btn{
+    color: white;
+    position: relative;
+    top: 20px;
+    right: 20px;
+    font-size: 20px;
+    font-family: 'Inter';
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .title{
@@ -134,4 +139,9 @@ img{
 
 .name_button_type{
     padding-top: 5px;
+}
+
+.container {
+    z-index: 10000;
+    height: 700px;
 }

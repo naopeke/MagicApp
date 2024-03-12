@@ -1,52 +1,62 @@
 <div class="background-wrapper">
-    <div class="title-search">
-        <p class="title">CARTAS</p>
+    <div [ngClass]= "darkenOverlay ? 'bg_dark' : ''">
+        <div class="container_cardinfo" *ngIf="show_cardinfo">
+            <app-card-info (onCardInfoClose)="card_info_close($event)">X</app-card-info>
+        </div>
 
-        <div class="search-container">
-        <form (submit)="searchCards(searchParam.value); $event.preventDefault()">
-            <input type="text" id="buscador" name="buscador" placeholder="Buscar" size="10" #searchParam (focus)="searchParam.value=''"/>
-            <select name="filtrar" id="filtrar" [(ngModel)]="searchType">
-                <option value="nombre">Nombre</option>
-                <option value="colleccion">Colección</option>
-            </select>
-            <button type="submit" class="btn-buscador"></button>
-        </form>
+        <div class="container_cardinfo" *ngIf="!show_cardinfo">
+            <div class="gridarea">
+                <div class="title-search">
+                    <p class="title">CARTAS</p>
+
+                    <div class="search-container">
+                        <form (submit)="searchCards(searchParam.value); $event.preventDefault()">
+                            <input type="text" id="buscador" name="buscador" placeholder="Buscar" size="10" #searchParam (focus)="searchParam.value=''"/>
+                            <select name="filtrar" id="filtrar" [(ngModel)]="searchType">
+                                <option value="nombre">Nombre</option>
+                                <option value="colleccion">Colección</option>
+                            </select>
+                            <button type="submit" class="btn-buscador"></button>
+                        </form>
+                    </div>
+                </div>
+
+
+                <div class="results-container">
+                    <div class="bg-cards">
+                        <div class="list-cards" *ngIf="resultsCards.length > 0">
+                            <div *ngFor="let card of resultsCards; let i = index">
+                                <app-card [childCard]="card" [templateCard]="'type3'" (addCardToBuilder)="onAddCardToBuilder(card)" (click)="onCardInfoOpen()"></app-card>
+                            </div>
+                        </div>
+                        <div class="list-cards" *ngIf="resultsCards.length === 0 && searchPerformed">
+                            <div class="no-results-message">
+                            No hemos podido encontrar. Intenta otra vez.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="builder-container">
+                    <div class="btn-builder1">Construcción de Mazos</div>
+                    <div class="bg-builder">
+                        <div class="list-cards" *ngIf="builderCards.length > 0">
+                            <div *ngFor="let card of builderCards; let i = index">
+                                <app-card [childCard]="card" [templateCard]="'type4'" (deleteFromChild)="onDeleteFromChild($event)"></app-card>
+                            </div>
+                        </div>
+
+                        <div class="list-cards" *ngIf="builderCards.length === 0">
+                            <div class="no-builder-message">
+                            Busca las cartas en el buscador y pulsa el botón "+" para agregarlas a tu mazo.
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn-builder2" (click)="openDeckDialog()">Añadir a tu mazo</button>
+                </div>
+            </div>
 
         </div>
-    </div>
-
-
-    <div class="results-container">
-        <div class="bg-cards">
-            <div class="list-cards" *ngIf="resultsCards.length > 0">
-                <div *ngFor="let card of resultsCards; let i = index">
-                    <app-card [childCard]="card" [templateCard]="'type3'" (addCardToBuilder)="onAddCardToBuilder($event)"></app-card>
-                </div>
-            </div>
-            <div class="list-cards" *ngIf="resultsCards.length === 0 && searchPerformed">
-                <div class="no-results-message">
-                No hemos podido encontrar. Intenta otra vez.
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="builder-container">
-        <button class="btn-builder1">Construcción de Mazos</button>
-         <div class="bg-builder">
-            <div class="list-cards" *ngIf="builderCards.length > 0">
-            <div *ngFor="let card of builderCards; let i = index">
-                <app-card [childCard]="card" [templateCard]="'type4'" (deleteFromChild)="onDeleteFromChild($event)"></app-card>
-            </div>
-            </div>
-
-            <div class="list-cards" *ngIf="builderCards.length === 0">
-                <div class="no-builder-message">
-                Busca las cartas en el buscador y pulsa el botón "+" para agregarlas a tu mazo.
-                </div>
-            </div>
-         </div>
-        <button class="btn-builder2" (click)="openDeckDialog()">Añadir a tu mazo</button>
     </div>
 </div>

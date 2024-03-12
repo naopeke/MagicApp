@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-sm-6 col-md-4 col-lg-2">
                 <mat-card class="card">
-                    <img mat-card-image class="img1-type2" [src]="childCard.image_uris" alt="img"/>
+                    <img mat-card-image class="img1-type2" [src]="childCard.image_uris" alt="img" (click)="idCard(childCard.id_card)">
                     <mat-card-content class="type2-image-container">
                         <img mat-card-image class="img2-type2" src="./assets/images/iconos/card-explorar.png" alt="img"/>
                         <div class="text-type2">10</div>
@@ -39,9 +39,9 @@
                     <mat-card-content class="type3-image-container">
                         <img mat-card-image 
                             class="img2-type3" 
-                            src="./assets/images/iconos/+.png" 
+                            src="./assets/images/iconos/+cuadradoAzul.png" 
                             alt="img" 
-                            (click)="onPlusButtonClick()"
+                            (click)="onPlusButtonClick($event)"
                         />
                     </mat-card-content>
                 </mat-card>
@@ -82,11 +82,11 @@
                 <mat-card class="card">
                     <img mat-card-image class="img1-type5" [src]="childCard.image_uris" alt="img"/>
                     <mat-card-content class="type5-image-container">
-                        <img mat-card-image class="img2-type5" src="./assets/images/iconos/-cuadrado.png" alt="img" (click)="onCountPlusButtonClick()"/>
-                        <img mat-card-image class="img3-type5" src="./assets/images/iconos/card-explorar.png" alt="img"/>
-                        <div class="text-type5">10</div>
-                        <img mat-card-image class="img4-type5" src="./assets/images/iconos/+cuadrado.png" alt="img" (click)="onCountMinusButtonClick()"/>
-                        <img mat-card-image class="img5-type5" src="./assets/images/iconos/calavera-cuadrado.png" alt="img" (click)="onDeleteAllButtonClick()"/>
+                        <img mat-card-image class="img2-type5" src="./assets/images/iconos/-cuadrado.png" alt="img-minus" (click)="onCountMinusButtonClick($event)"/>
+                        <img mat-card-image class="img3-type5" src="./assets/images/iconos/card-explorar.png" alt="img-quantitybox"/>
+                        <div class="text-type5">{{ childCard.quantity }}</div>
+                        <img mat-card-image class="img4-type5" src="./assets/images/iconos/+cuadrado.png" alt="img-plus" (click)="onCountPlusButtonClick($event)"/>
+                        <img mat-card-image class="img5-type5" src="./assets/images/iconos/calavera-cuadrado.png" alt="img-delete" (click)="onDeleteAllButtonClick($event)"/>
                     </mat-card-content>
                 </mat-card>
             </div>

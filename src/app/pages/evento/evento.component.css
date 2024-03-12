@@ -1,0 +1,333 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+#divfondo{
+  width: 100%;
+  padding-bottom: 30px;
+  min-height: 500px;
+  background-image: url("../../../assets/images/fondos/fondo_evento.png");
+}
+
+/* div buscador y boton añadir evento */
+
+.searchContainer{
+  width: 70%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  padding-top: 70px;
+  margin-bottom: 50px;
+}
+
+#formBuscador {
+  display: flex;
+  width: 80%;
+  margin-right: 5%;
+}
+
+#buscador {
+  width: 100%;
+  height: 60px;
+  border-color: var(--verde);
+  background-color: var(--negro-bg);
+  border-radius: 10px 0 0 10px;
+  padding-left: 25px;
+  color: var(--blanco);
+}
+
+#buscador::placeholder {
+  color: var(--verde);
+  font-family: var(--antiqua);
+  font-size: 22px;
+}
+
+.btnBuscador {
+  width: 60px;
+  height: 60px;
+  color: var(--verde);
+  background-color: var(--verde);
+  background-image: url('/assets/images/iconos/ojo.png'); /*nao lo tiene igual */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 0 10% 10% 0;
+  border: none;
+}
+
+.button_lateral {
+  height: 60px;
+  width: 15%;
+  border: var(--verde) solid 2px;
+  background-color: var(--verde);
+  border-radius: var(--borde-boton);
+  color: var(--negro);
+  font-family: var(--antiqua);
+  font-size: 18px;
+}
+
+#cont_buscador{
+  width: 80%;
+  margin: auto;
+}
+
+#buscador2{
+  width: 80%;
+  margin-right: 10%;
+}
+
+#boton_buscador{
+  width: 10%;
+}
+
+/* card perfil */
+#divEvento{
+  background-color: var(--negro-bg);
+  border-radius: var(--borde-input);
+  display: flex;
+  margin: 30px auto;
+  width: 70%;
+  text-align: center;
+}
+
+#divImg{
+  width: 30%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+#img_evento{
+  display: block;
+  margin: 30px auto;
+}
+
+#divImg h2{
+  text-align: center;
+  font-family: var(--antiqua);
+  color: var(--verde);
+}
+
+#div_info_evento h1{
+  width: 85%;
+  font-family: var(--antiqua);
+  color: var(--verde);
+}
+
+#div_info_evento{
+  width: 65%;
+}
+
+#div_info_evento p{
+  text-align: center;
+  font-family: var(--inter);
+}
+
+#div_info_evento h1{
+  margin-top: 10px;
+}
+.parr_img {
+  display: flex;
+  align-items: center;
+  margin: 5px;
+}
+
+.parr_p{
+  color: var(--blanco);
+  font-family: var(--inter);
+  text-align: center;
+  margin-top: 10px;
+}
+
+.icono_evento {
+  display: inline;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+#div_button{
+  width: 50%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+.button_participar{
+  height: 60px;
+  width: 60%;
+  border: var(--verde) solid 2px;
+  background-color: var(--verde);
+  border-radius: var(--borde-boton);
+  color: var(--negro);
+  font-family: var(--antiqua);
+  font-size: 18px;
+}
+
+#icono_elim_edit{
+  width: 5%;
+}
+
+#icono_elim_edit {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#img_superior {
+  margin-top: 25px;
+}
+
+#img_inferior {
+  margin-bottom: 25px;
+}
+
+/* pagination */
+.pagination{
+  width: 20%;
+  margin: 0 auto;
+}
+.buttonPagination{
+  padding-top: 10px;
+  width: 35%;
+  background-color: var(--verde);
+  border-radius: var(--borde-boton);
+}
+.p_pagiantion{
+  font-family: var(--antiqua);
+  font-size: 19px;
+  color: var(--negro);
+}
+.paginationSpan{
+  text-align: center;
+  width: 30%;
+  display: block;
+  color: var(--blanco);
+  font-family: var(--antiqua);
+  padding: 10px;
+  font-size: 19px;
+}
+
+
+/* modals participar y eliminar*/
+
+#deleteEvent, #singUp{ 
+  width: 20%;
+  height: 300px;
+  background-image: url(../../../assets/images/home/mazo2.png); 
+  background-repeat: no-repeat;
+  background-size: cover;
+  left: 40%;
+  top: 300px;
+}
+
+.modal-dialog-general{
+  transform: translate(-50%, -50%); 
+  width: auto;
+  margin: auto;
+  margin-top: 30px;
+
+}
+
+.divDelete, .divSingUp{
+  background-color: var(--negro-bg);
+}
+
+.buttonDelete, .buttonsingUp{
+  padding: 10px;
+  width: 35%;
+  background-color: var(--verde);
+  border-radius: var(--borde-boton);
+  margin: 0 auto;
+  font-size: 19px;
+  margin-bottom: 10%;
+}
+
+.modalP{
+  text-align: center;
+  margin-bottom: 25%;
+  margin-top: 25%;
+  font-size: 19px;
+  color: var(--blanco);
+}
+
+/* Modal editar evento */
+
+#editEvent{
+  width: 30%;
+  height: 550px;
+  background-image: url(../../../assets/images/fondos/Fondo_verde.png); 
+  background-repeat: no-repeat;
+  background-size: cover;
+  left: 35%;
+  top: 100px;
+  /* border: var(--borde-cuadrado) solid black; */
+}
+
+.modal-dialog-edit{
+  transform: translate(-50%, -50%); 
+  width: 90%;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.divEdit{
+  background-color: var(--negro-bg);
+  width: 100%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.divEdit h1{
+  font-family: var(--antiqua);
+  color: var(--amarillo);
+  text-align: center;
+  padding-top: 30px;
+}
+
+.formEdit{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.inputEdit{
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 30px;
+  padding: 5px;
+  border-radius: var(--borde-input);
+  color: var(--blanco);
+  font-family: var(--inter);
+  background-color: rgba(0, 0, 0, 0);
+  font-weight: bold;
+}
+
+.submitEdit{
+  padding: 10px;
+  width: 50%;
+  background-color: var(--verde);
+  border-radius: var(--borde-boton);
+  margin: 0 auto;
+  margin-top: 15px;
+  margin-bottom: 10%;
+  color: #191A1B;
+  font-weight: bold;
+}
+
+
+@media (max-width: 768px) {
+  #img_evento {
+    width: 80%; /* Ajusta el tamaño según tu diseño */
+  }
+  #img_superior, #img_inferior{
+    width:5px
+  }
+}
+@media (max-width: 1200px) {
+  #img_evento {
+    width: 70%; /* Ajusta el tamaño según tu diseño */
+  }
+  #img_superior, #img_inferior{
+    width:30px
+  }
+}

@@ -17,6 +17,10 @@ export class LoggedoutCardComponent implements OnInit {
   public searchType: string = 'nombre' //default searchtype es nombre
   public searchPerformed: boolean = false; // si ha hecho la busqueda o no  default false
 
+  public darkenOverlay:boolean = false; // modal de xisca
+  public show_cardinfo:boolean = false; // modal de xisca
+
+
   constructor(
     public cardsService: CardsService,
     private router: Router,
@@ -50,10 +54,20 @@ export class LoggedoutCardComponent implements OnInit {
   }
 
 
+  public onCardInfoOpen(){
+    this.darkenOverlay=true; 
+    this.show_cardinfo = true; 
+  }
 
+  public onCardInfoClose(show: boolean){
+    this.darkenOverlay = show;
+    this.show_cardinfo = show;
+  }
 
-
-
+  public card_info_close() {
+    this.darkenOverlay = false;
+    this.show_cardinfo = false;
+  }
 
   ngOnInit(): void {
       

@@ -1,0 +1,231 @@
+/*para modal de xisca*/
+.bg_dark{
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.85) ;
+    background-position: center;
+    z-index:0;
+    transition: background 1s ease;
+}
+
+.background-wrapper {
+    min-height: 100vh;
+    /* position: relative; */
+    background-color: var(--negro-bg);
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('/assets/images/fondos/Fondo_morado.png');
+    z-index: -10;
+}
+
+.swiper-wrapper {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('/assets/images/fondos/fondo-mismazos.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding:64px 0 48px 0;
+    height: 100%;
+}
+
+.image-slide {
+    width: 190px;
+    height: 257px;
+    object-fit: cover;
+}
+
+.title {
+    font-family: var(--antiqua);
+    font-size: 58px;
+    color: var(--amarillo);
+    padding: 0 0 32px 0;
+}
+
+.deckcards-wrapper {
+    display: flexs;
+    align-items: center;
+    justify-content: center;
+    height:100%;
+}
+
+.swiper-container {
+    width: 1000px;
+    height: 320px;
+}
+
+.deckcards-wrapper{
+    /* border:2px solid purple; */
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('/assets/images/fondos/Fondo_morado.png');
+    background-repeat: repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding-bottom: 32px;
+}
+
+.deckname-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.deckname {
+    /* border:2px solid red; */
+    width:100%;
+    text-align: center;
+    font-family: var(--antiqua);
+    color: var(--amarillo);
+    font-size: 32px;
+    padding-top:32px;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.deckname span {
+    /* border: 2px solid yellow; */
+    color: var(--amarillo);
+    width: 400px;
+}
+
+.icon-edit{
+    /* border: 2px solid brown; */
+    width: 32px;
+}
+
+.editDeckNameInput{
+    width:400px; 
+    height: 24px;
+    font-family: var(--inter);
+    color: var(--amarillo);
+    font-size: 18px;
+    text-align: center;
+    background-color: #643d6a57;
+    border: none;
+    padding:10px;
+}
+
+.filter{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.filter-list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 30px;
+}
+
+.filter-name{
+    font-size: 15pt;
+    font-family: var(--inter);
+    color: var(--blanco);
+}
+
+.filter-name:hover{
+    color: var(--amarillo);
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.cards-wrapper{
+    /* border:2px solid green; */
+    width: 87%;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    background-color: var(--negro-bg);
+    border-radius: var(--borde-cuadrado);
+    overflow: auto;
+    padding-top: 64px;
+}
+
+.counter-wrapper{
+    /* border:2px solid red; */
+    position:relative;
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.counter{
+    /* border:2px solid blue; */
+    left:calc(50%-80px);
+    position: absolute;
+    bottom: -70px;
+}
+
+.img-counter{
+    position:relative;
+    width: 160px;
+    z-index: 5;
+}
+
+#total-cards{
+    position: absolute;
+    top: 21px;
+    left: 49px;
+    font-family: var(--antiqua);
+    color: var(--amarillo);
+    font-size: 20pt;
+    z-index: 6;
+}
+
+.list-cards{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+hr {
+    color: var(--blanco);
+}
+
+.message{
+    font-family: var(--inter);
+    color: var(--blanco);
+}
+
+@media screen and (1025 < width) {
+    .swiper-container {
+        width: 1000px;
+    }
+  }
+
+@media screen and (1025 <= width <= 1200) {
+    .swiper-container {
+        width: 880px;
+    }
+  }
+  
+@media screen and (769 <= width < 1025) {
+    .swiper-container {
+        width: 640px;
+    }
+}
+
+@media screen and (481 <= width < 769) {
+    .swiper-container {
+        width: 400px;
+    }
+}
+
+@media screen and (320 <= width < 481) {
+    .swiper-container {
+        width: 240px;
+    }
+}
