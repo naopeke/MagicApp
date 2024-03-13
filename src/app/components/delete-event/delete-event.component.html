@@ -1,10 +1,14 @@
-    <!-- MODAL delete-->
-    <!-- <div class="modal fade bd-example-modal-sm " id="deleteEvent" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm modal-dialog-general">
-            <div class="modal-content divDelete">
-                <p class="modalP">¿Deseas eliminar el evento?</p>
-                <button class="buttonDelete" (click)="deleteEvent(item.id)"><p>Aceptar</p></button>
-            </div>
-            <div id="alertEvent"><p>Evento eliminado correctamente</p></div>
+<!--MODAL DE ELIMINAR EVENTO-->
+<main id="deleteMain">
+    <div class="modal-dialog-delete">
+        <!--ICONO DE X PARA PERMITIR CERRAR LA MODAL-->
+        <p id="closed" (click)="closeModalDelete()">X</p>
+        <div class="divDelete">
+            <h3 class="modalP">¿Deseas eliminar el evento?</h3>
+            <!-- BOTÓN AL QUE LE PASAMOS EL ID DEL EVENTO QUE ME LLEGA DEL PADRE PARA INDICAR CUAL ELIMINAR -->
+            <button class="buttonDelete" (click)="deleteEvent(eventoAEliminar.id)"><p>Aceptar</p></button>
+            <!-- NOTIFICACIÓN AL USUARIO DE QUE EL EVENTO SE ELIMINA CORRECTAMENTE -->
+            <div id="alertEvent"><p *ngIf="mostrarNotificacionEvento">Evento eliminado correctamente</p></div>
         </div>
-    </div> -->
+    </div>
+</main>

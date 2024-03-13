@@ -1,7 +1,7 @@
 
 
 
-<main>
+<div class="main">
     <div class="cuadroIzq">
         <div class="titulo">Calendario</div>
             <div id="calendar">
@@ -10,7 +10,9 @@
 
         </div>
         <div class="cuadroDcha">
+
             <div class="agenda">
+
                 <h1 class="title_date">{{dates[0].fecha}}</h1>
                 <img src="/assets/images/calendario/Line 11.png" alt="">
                     <div class="evento" *ngFor="let info of dates[0].events">
@@ -20,11 +22,16 @@
                         <h3 class="detalle_evento_descripcion">{{info.descripcion}}</h3>
                         </div>
                         <div class="botones">
-                            <button class="editar"></button>
+                            <button class="editar" (click)="openModalEdit()"></button>
                             <button class="eliminar"></button>
                         </div>
+
                     </div>
+                </div>
+
+                <div *ngIf="modalEdit == true" class="modalEdit">
+                    <app-edit-event [evento] = "evento" (eventClose) = closeModal($event)></app-edit-event>
                 </div>
     
         </div>
-</main>
+    </div>

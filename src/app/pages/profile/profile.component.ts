@@ -60,11 +60,10 @@ export class ProfileComponent implements OnInit {
 
   // MODIFICAR DATOS PERFIL
   private buildForm(){
-    const minPassLength = 8
 
     this.editForm = this.formBuilder.group({
-      name: [this.user.name, Validators.maxLength(20)],
-      email: [this.user.email, Validators.email],
+      name: [this.user.name, [Validators.maxLength(20), Validators.required]],
+      email: [this.user.email, [Validators.email, Validators.required]],
       description: [this.user.description, Validators.maxLength(200)],
     })
   }

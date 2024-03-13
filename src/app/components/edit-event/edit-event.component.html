@@ -1,0 +1,67 @@
+<main class="modalEdit">
+    <img id="close" src="../../../assets/images/iconos/Close.png" alt="" (click)="close()">
+    <h3 class="titulo">Editar evento</h3>
+
+  
+    <div class="content-form">
+        <form class="form" [formGroup]="editEvent">
+
+            <input type="text" placeholder="Titulo evento" formControlName="title"
+            [ngClass]="{
+                'is-invalid': (editEvent.get('title').dirty || editEvent.get('title').touched) && !editEvent.get('title').valid,
+                'valid': editEvent.get('title').valid
+            }">
+            <div *ngIf="!editEvent.get('title').valid" class="invalid-feedback m-0 text-center">
+                <div *ngIf="editEvent.get('title').errors?.maxlength">Titulo demasiado largo</div>
+                <div *ngIf="editEvent.get('title').errors?.required">Escribe un titulo para el evento</div> 
+            </div>
+                  
+            <input type="date" placeholder="Fecha" formControlName="date"
+            [ngClass]="{
+                'is-invalid': (editEvent.get('date').dirty || editEvent.get('date').touched) && !editEvent.get('date').valid,
+                'valid': editEvent.get('date').valid
+            }" >
+            <div *ngIf="!editEvent.get('date').valid || editEvent.get('date').errors?.required" class="invalid-feedback m-0 text-center">
+                Selecciona una fecha del evento
+            </div>
+
+            <input type="time" placeholder="Hora" formControlName="time"
+            [ngClass]="{
+                'is-invalid': (editEvent.get('time').dirty || editEvent.get('time').touched) && !editEvent.get('time').valid,
+                'valid': editEvent.get('time').valid
+            }">
+            <div *ngIf="!editEvent.get('time').valid || editEvent.get('time').errors?.required" class="invalid-feedback m-0 text-center">
+                Selecciona una hora del evento
+            </div>
+
+            <input type="text" placeholder="Nombre del lugar" formControlName="place"
+            [ngClass]="{
+                'is-invalid': (editEvent.get('place').dirty || editEvent.get('place').touched) && !editEvent.get('place').valid,
+                'valid': editEvent.get('place').valid
+            }">
+            <div *ngIf="!editEvent.get('place').valid || editEvent.get('place').errors?.required" class="invalid-feedback m-0 text-center">
+                Escribe el nombre del lugar del evento
+            </div>
+
+            <input type="text" placeholder="Dirección" formControlName="direction"
+            [ngClass]="{
+                'is-invalid': (editEvent.get('direction').dirty || editEvent.get('direction').touched) && !editEvent.get('direction').valid,
+                'valid': editEvent.get('direction').valid
+            }">
+            <div *ngIf="!editEvent.get('direction').valid || editEvent.get('direction').errors?.required" class="invalid-feedback m-0 text-center">
+                Escribe el nombre del lugar del evento
+            </div>
+            
+            <textarea placeholder="Descripcion" formControlName="description"></textarea>
+            <div *ngIf="editar == false; else guardar">
+                <button type="button" class="buttonEditar" (click)="edit()">Editar</button>
+            </div>
+            <ng-template #guardar>
+                <button type="button" [ngClass]="editar == true ? 'saveButton': ''"
+                [disabled]="!editEvent.valid"
+                (click)="edit()">Guardar Cambios</button>
+            </ng-template>
+
+        </form>
+    </div>
+</main>

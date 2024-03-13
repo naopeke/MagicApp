@@ -1,0 +1,83 @@
+.modalEdit{
+    width: 500px;
+    height: 720px;
+    background-image: url(../../../assets/images/fondos/fondo_modal_evento.png);
+    background-size: cover;
+    border-radius: var(--borde-cuadrado);
+    border: solid var(--amarillo) 1px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+
+.titulo{
+    color: var(--amarillo);
+    font-family: var(--antiqua);
+    font-size: 25pt;
+}
+
+#close{
+    width: 30px;
+    position: absolute;
+    top:5px;
+    right: 5px;
+    cursor: pointer;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+input{
+    height: 50px;
+}
+textarea{
+    height: 100px;
+
+}
+
+input, textarea{
+    width: 300px;
+    background-color: transparent;
+    border: solid var(--verde) 2px;
+    border-radius: var(--borde-input);
+    text-align: center;
+    color: var(--blanco);
+    font-family: var(--inter);
+    font-size: 14pt;
+    padding: 10px;
+}
+
+input::placeholder, textarea::placeholder{
+    color: var(--blanco);
+    font-family: var(--inter);
+}
+
+.buttonEditar, .saveButton{
+    height: 50px;
+    width: 200px;
+    margin-top: 10px;
+    border-radius: var(--borde-boton);
+    font-family: var(--antiqua);
+    font-size: 13pt;
+}
+.buttonEditar{
+    background-color: var(--amarillo);
+}
+.saveButton{
+    background-color: var(--verde);
+}
+
+.buttonEditar:hover, .saveButton:hover{
+    background-color: var(--blanco);
+}
+
+
+
