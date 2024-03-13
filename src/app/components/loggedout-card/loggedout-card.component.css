@@ -44,7 +44,7 @@ input {
     width: 576px;
     height: 60px;
     padding: 10px;
-    border: 2px solid var(--azul);
+    border: 3px solid var(--azul);
     background-color: var(--negro-bg);
     border-radius: var(--borde-input) 0 0 var(--borde-input);
     padding-left: 25px;
@@ -76,7 +76,7 @@ select {
     color:var(--azul);
     background-color: var(--azul);
     background-image: url('/assets/images/iconos/ojo.png');
-    background-size: cover;
+    background-size: 3.5em;
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 0 10% 10% 0;
@@ -97,7 +97,7 @@ select {
     width: 90vw;
     height: auto;
     padding: 30px;
-    border-radius: var(--ancho-borde);
+    border-radius: 30px;
     margin-top:180px;
     margin-bottom: 60px;
     display: flex;

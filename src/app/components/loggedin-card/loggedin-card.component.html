@@ -31,8 +31,11 @@
                         </div>
                         <div class="list-cards" *ngIf="resultsCards.length === 0 && searchPerformed">
                             <div class="no-results-message">
-                            No hemos podido encontrar. Intenta otra vez.
+                            Intenta otra vez para buscar tu nueva carta poderosa.
                             </div>
+                        </div>
+                        <div *ngIf="resultsCards.length === 0 && !searchPerformed" class="search-message">
+                            Busca tus cartas poderosas!
                         </div>
                     </div>
                 </div>
@@ -40,6 +43,7 @@
 
                 <div class="builder-container">
                     <div class="btn-builder1">Construcción de Mazos</div>
+                    <button class="btn-builder2" (click)="openDeckDialog()">Añadir a tu mazo</button>
                     <div class="bg-builder">
                         <div class="list-cards" *ngIf="builderCards.length > 0">
                             <div *ngFor="let card of builderCards; let i = index">
@@ -53,7 +57,6 @@
                             </div>
                         </div>
                     </div>
-                    <button class="btn-builder2" (click)="openDeckDialog()">Añadir a tu mazo</button>
                 </div>
             </div>
 
