@@ -6,10 +6,10 @@
             <form class="formEdit">
                 <input value="{{eventoAEditar.title}}" class="inputEdit" type="text" id="tituloEvento" required #titleEvent>
                 <input value="{{eventoAEditar.hour}}" class="inputEdit" type="time" id="hora" required #hourEvent>
-                <input value="{{eventoAEditar.date | date:'dd/MM/yyyy'}}"class="inputEdit" type="date" id="fecha" required #dateEvent>
+                <!-- <input value="{{eventoAEditar.date | date:'dd/MM/yyyy'}}"class="inputEdit" type="date" id="fecha" required #dateEvent> -->
                 <input value="{{eventoAEditar.place}}" class="inputEdit" type="text" id="lugar" required #placeEvent>
                 <textarea value="{{eventoAEditar.description}}" class="inputEdit" id="descripcion" required  #descriptionEvent></textarea>
-                <button class="submitEdit" type="submit" (click)="editEvent(eventoAEditar.id, titleEvent.value, descriptionEvent.value, dateEvent.value, hourEvent.value, placeEvent.value, eventoAEditar.creator)">Guardar cambios</button>
+                <!-- <button class="submitEdit" type="submit" (click)="editEvent(eventoAEditar.id, titleEvent.value, descriptionEvent.value, dateEvent.value, hourEvent.value, placeEvent.value, eventoAEditar.creator)">Guardar cambios</button> -->
             </form>
             <div id="alertEvent"><p *ngIf="mostrarNotificacionEvento">Evento actualizado correctamente</p></div>        
         </div>
