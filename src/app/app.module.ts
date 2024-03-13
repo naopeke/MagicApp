@@ -62,9 +62,9 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { DecksComponent } from './components/decks/decks.component';
 import { RatingComponent } from './components/rating/rating.component';
 import { Router, RouterModule } from '@angular/router';
-import { AddEventComponent } from './components/add-event/add-event.component';
 import { DeleteEventComponent } from './components/delete-event/delete-event.component';
 import { EditEventComponent } from './components/edit-event/edit-event.component';
+import { AddEventComponent } from './components/add-event/add-event.component';
 
 
 
