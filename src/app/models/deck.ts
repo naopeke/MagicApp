@@ -13,4 +13,3 @@ export class Deck {
        ){}
 }
 
-// en realidad deberia ser el id_user, pero pongo name por ahora hasta BBDD
