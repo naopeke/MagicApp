@@ -1,0 +1,121 @@
+.content{
+    height: 750px;
+    width: 700px;
+    background-image: url(../../../assets/images/detalleEvento/fondoDetalle2.png);
+    background-size: cover;
+    border-radius: var(--borde-cuadrado);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bg-cuadrado{
+    height: 650px;
+    width: 600px;
+    padding: 20px;
+    background-color: var(--negro-bg);
+    border-radius: var(--borde-cuadrado);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center ;
+    gap: 25px;
+}
+
+.tituloEvent{
+    color: var(--amarillo);
+    font-family: var(--antiqua);
+    font-size: 24pt;
+}
+
+.infoEvento{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.infoContent, .infoContent2{
+    display: flex;
+
+    align-items: center;
+    width: 350px;
+    gap: 15px;
+    border-bottom: solid var(--verde) 1px;
+    /* border: solid red 2px; */
+}
+.infoContent2{
+    align-items: center;
+}
+.divInfo{
+    width: 100%;
+    padding-top: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: solid green 2px; */
+
+}
+.esp{
+    flex-direction: column;
+}
+.contentIcon{
+    width: 15%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    /* border: solid yellow 2px */
+}
+.information, .infoDescription{
+ 
+    height: 100%;
+    width: 100%;
+    font-family: var(--inter);
+    color: var(--blanco);
+    text-align: left;
+    /* border: solid wheat 2px; */
+}
+.information{
+    font-size: 14pt;
+    text-align: center;
+    justify-content: flex-start;
+}
+
+.iconEvent{
+    height: 35px;
+    
+}
+.description{
+    padding-top: 10px;
+}
+.buttonParticipar{
+    height: 50px;
+    width: 200px;
+    background-color: var(--verde);
+    border-radius: var(--borde-boton);
+    font-family: var(--antiqua);
+    font-size: 14pt;
+
+
+    border: none;
+}
+
+.buttonParticipar:hover{
+    background-color: var(--amarillo);
+}
+
+#closeDetail{
+    width: 35px;
+    position: absolute;
+    right: 7px;
+    top: 7px;
+    cursor: pointer;
+}
+
+#closeDetail:hover{
+    border: solid var(--rojo) 2px;
+    border-radius: var(--borde-boton);
+    
+}

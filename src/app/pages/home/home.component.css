@@ -229,6 +229,10 @@ a{
   border: solid var(--blanco) 2px;
   width: 300px;
 }
+#modalEvent{
+  position: absolute;
+  z-index: 9999;
+}
 
 /* MEDIAQUERY */
 @media screen and (max-width: 1510px)

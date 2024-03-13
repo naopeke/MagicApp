@@ -65,6 +65,7 @@ import { Router, RouterModule } from '@angular/router';
 import { AddEventComponent } from './components/add-event/add-event.component';
 import { DeleteEventComponent } from './components/delete-event/delete-event.component';
 import { EditEventComponent } from './components/edit-event/edit-event.component';
+import { DetailEventComponent } from './components/detail-event/detail-event.component';
 
 
 
@@ -97,6 +98,7 @@ import { EditEventComponent } from './components/edit-event/edit-event.component
     AddEventComponent,
     DeleteEventComponent,
     EditEventComponent,
+    DetailEventComponent,
   ],
 
   imports: [
