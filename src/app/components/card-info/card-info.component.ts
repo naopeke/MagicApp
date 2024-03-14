@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { CardsService } from 'src/app/shared/cards.service';
 import { Card } from 'src/app/models/card';
 
@@ -50,5 +50,15 @@ export class CardInfoComponent implements OnInit{
 
   ngOnInit(): void {
     //TODO: llamar a servicio por id y incializar "card" con los datos reales de BBDD
+    console.log('carta: ', this.carta); 
+
 }
+  ngOnChanges(changes: SimpleChanges): void {
+    // cartaプロパティの変更を検知
+    if (changes.carta) {
+      console.log('Updated carta:', this.carta);
+      // 必要ならばここで更に処理を行う
+    }
+  }
+
 }
