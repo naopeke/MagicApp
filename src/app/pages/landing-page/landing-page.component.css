@@ -312,6 +312,7 @@ swiper-container{
     text-align: center;
     font-weight: bolder;
     border-radius: 20px;
+    cursor: pointer;
 }
 .guerreroAmarillo{
     background-image: url('src/assets/images/landing/guerreroAmarillo.png');

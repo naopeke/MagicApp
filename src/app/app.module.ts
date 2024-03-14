@@ -22,6 +22,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule} from '@angular/material/dialog'; 
+import { MatDialog } from '@angular/material/dialog';
+import { WarningModalComponent } from './components/warning-modal/warning-modal.component';
 
 //calendario
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -97,6 +99,7 @@ import { EditEventComponent } from './components/edit-event/edit-event.component
     AddEventComponent,
     DeleteEventComponent,
     EditEventComponent,
+    WarningModalComponent,
   ],
 
   imports: [
@@ -129,7 +132,7 @@ import { EditEventComponent } from './components/edit-event/edit-event.component
     
     CdkVirtualScrollViewport,
     ScrollingModule, 
-    CdkScrollableModule
+    CdkScrollableModule, 
     
     
     //swiper@8
