@@ -1,6 +1,6 @@
 import { User } from "./user";
 
-export class Events {
+export class Eventos {
 
     constructor(
         public id_event?: number,

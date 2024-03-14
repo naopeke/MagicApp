@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Events } from 'src/app/models/event';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Deck } from 'src/app/models/deck';
+import { Eventos } from 'src/app/models/eventos';
+import { Respuesta } from 'src/app/models/respuesta';
+
 import { EventosService } from 'src/app/shared/eventos.service';
 
 @Component({
@@ -11,14 +14,67 @@ export class HomeComponent implements OnInit {
   public modalDetail: boolean = false
   public modalDetail2: boolean = false
   public modalDetail3: boolean = false
-  
-  public eventos: Events[];
+  // cambiarlo por el del servicio cuando esta logueado
+  public id_user: number = 1
+
+  public eventosProx: Eventos[];
+  public eventoCom: Eventos[]
+  public bestMazos: Deck[]
+
+  @Input () typeRating: number;
+
+@Input () dato: Deck
+
+
+@Output() eventoExplorar = new EventEmitter<number>();
+@Output() eventoPuntuacion = new EventEmitter<{id_deck:number, score:number}>()
 
   constructor(public eventoService: EventosService){}
 
 ngOnInit(): void {
- this.eventos =  this.eventoService.getEventsHome()
+this.eventoService.getMyEvents(this.id_user).subscribe((res:any) =>{
+  if(!res.error){
+    this.eventosProx = res.data
+
+    console.log(this.eventosProx);
+    
+  }
+  else {
+    // poner con toast
+    console.log(res.error);
+    console.log(res.mensaje);
+
+  }
+
+})
+
+this.eventoService.getEventsCommunity(this.id_user).subscribe((res:any) => {
+  if(!res.error){
+    this.eventoCom = res.data
+    console.log(this.eventoCom);
+    
+  }  else {
+    // poner con toast
+    console.log(res.error);
+    console.log(res.mensaje);
+  }
+})
+
+this.eventoService.getBestDecks().subscribe((res:any) => {
+  if(!res.error){
+    this.bestMazos = res.data
+    console.log(this.bestMazos);
+    console.log(this.bestMazos[0].URLphoto);
+    
+    
+  }  else {
+    // poner con toast
+    console.log(res.error);
+    console.log(res.mensaje);
+  }
+})
 }
+
 
   public openModal(){
     this.modalDetail = true
@@ -34,7 +90,5 @@ ngOnInit(): void {
     this.modalDetail = event
     this.modalDetail2 = event
     this.modalDetail3 = event
-    console.log(event);
-    
   }
 }

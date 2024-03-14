@@ -1,16 +1,14 @@
-<main>
+<section class="mainHome">
     <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" navigation="true" space-between="0"
     centered-slides="true" autoplay-delay="15000" autoplay-disable-on-interaction="false" style="--swiper-navigation-color: #B3B3B3; --swiper-pagination-color: #B3B3B3;">
 
         <swiper-slide id="misEventos">
-            <!-- <div id="bgEventos"> -->
-
                 <div>
                     <!-- AÑADIR PIPE PARA SIMBOLOS -->
                     <h3 class="titulo"><img src="../../../assets/images/iconos/eventos.png" alt=""> &nbsp;Mis próximos eventos &nbsp;<img src="../../../assets/images/iconos/eventos2.png" alt=""></h3>
                 </div>
      
-                <div class="card-container">
+                <div class="card-container" >
                     <div class="cardEvento">
                         <div class="img-container">
                             <img class="img-fondo" src="../../../assets/images/personajes/fondo-avatar.png" alt="">
@@ -18,14 +16,14 @@
                         </div>
                         <div class="card-info">
                             <div class="tituloEvento"> 
-                                <p>Festival de Asesinatos en la Mansión Karlov</p>
+                                <p>{{eventosProx[0].nameEvent}}</p>
                             </div>
 
                             <!-- AÑADIR ICONOS DE FECHA HORA Y LUGAR -->
                             <div class="info">
-                                <p>15/03/2024</p>
-                                <p>18:00</p>
-                                <p>Centro Metropolitano</p>
+                                <p>{{eventosProx[0].date}}</p>
+                                <p>{{eventosProx[0].hour}}</p>
+                                <p>{{eventosProx[0].place}}</p>
                             </div>
                            
                             <a routerLink="/calendario"><p class="moreInfo">Ver en mi Calendario</p></a>
@@ -39,14 +37,14 @@
                         <div class="card-info">
 
                             <div class="tituloEvento">
-                                <p>Festival de Asesinatos en la Mansión Karlov </p>
+                                <p>{{eventosProx[1].nameEvent}} </p>
                             </div>
                             
                             <!-- AÑADIR ICONOS DE FECHA HORA Y LUGAR -->
                             <div class="info">
-                                <p>15/03/2024</p>
-                                <p>18:00</p>
-                                <p>Centro Metropolitano</p>
+                                <p>{{eventosProx[1].date}}</p>
+                                <p>{{eventosProx[1].hour}}</p>
+                                <p>{{eventosProx[1].place}}</p>
                             </div>
                 
                             <a routerLink="/calendario"><p class="moreInfo">Ver en mi Calendario</p></a>
@@ -59,27 +57,23 @@
                         </div>
                         <div class="card-info">
                             <div class="tituloEvento">
-                                <p>Festival de Asesinatos en la Mansión Karlov </p>
+                                <p>{{eventosProx[2].nameEvent}}</p>
                             </div>
                             
                             <!-- AÑADIR ICONOS DE FECHA HORA Y LUGAR -->
                             <div class="info">
-                                <p>15/03/2024</p>
-                                <p>18:00</p>
-                                <p>Centro Metropolitano</p>
+                                <p>{{eventosProx[2].date}}</p>
+                                <p>{{eventosProx[2].hour}}</p>
+                                <p>{{eventosProx[2].place}}</p>
                             </div>
                             <!-- AÑADIR ROUTING A MI CALENDARIO -->
                             <a routerLink="/calendario"><p class="moreInfo">Ver en mi Calendario</p></a>
                         </div>
                     </div>
-    
-    
                 </div>
-            <!-- </div> -->
         </swiper-slide>
 
         <swiper-slide id="eventos">
-            <!-- <div id="bgEventos2"> -->
                 <div>
                     <!-- AÑADIR PIPE PARA SIMBOLOS -->
                     <h3  class="titulo-eventos"> <img src="../../../assets/images/iconos/eventoAmarillo.png" alt=""> &nbsp; Últimos eventos de la comunidad &nbsp;<img src="../../../assets/images/iconos/eventoAmarillo2.png" alt=""></h3>
@@ -94,14 +88,14 @@
                         </div>
                         <div class="card-info">
                             <div class="tituloEvento2">
-                                <p>Festival de Asesinatos en la Mansión Karlov </p>
+                                <p>{{eventoCom[0].nameEvent}} </p>
                             </div>
                             
                             <!-- AÑADIR ICONOS DE FECHA HORA Y LUGAR -->
                             <div class="info">
-                                <p>15/03/2024</p>
-                                <p>18:00</p>
-                                <p>Centro Metropolitano</p>
+                                <p>{{eventoCom[0].date}}</p>
+                                <p>{{eventoCom[0].hour}}</p>
+                                <p>{{eventoCom[0].place}}</p>
                             </div>
 
                             <button (click)="openModal()" class="button-participar">Detalle evento</button>
@@ -114,13 +108,13 @@
                         </div>
                         <div class="card-info">
                             <div class="tituloEvento2">
-                                <p>Festival de Asesinatos en la Mansión Karlov </p>
+                                <p>{{eventoCom[1].nameEvent}} </p>
                             </div>
                             <!-- AÑADIR ICONOS DE FECHA HORA Y LUGAR -->
                             <div class="info">
-                                <p>15/03/2024</p>
-                                <p>18:00</p>
-                                <p>Centro Metropolitano</p>
+                                <p>{{eventoCom[1].date}}</p>
+                                <p>{{eventoCom[1].hour}}</p>
+                                <p>{{eventoCom[1].place}}</p>
                             </div>
                         
                             <button (click)="openModal2()"class="button-participar">Detalle evento</button>
@@ -134,14 +128,14 @@
                         </div>
                         <div class="card-info">
                             <div  class="tituloEvento2">
-                                <p>Festival de Asesinatos en la Mansión Karlov </p>
+                                <p>{{eventoCom[2].nameEvent}} </p>
                             </div>
             
                             <!-- AÑADIR ICONOS DE FECHA HORA Y LUGAR -->
                             <div class="info">
-                                <p>15/03/2024</p>
-                                <p>18:00</p>
-                                <p>Centro Metropolitano</p>
+                                <p>{{eventoCom[2].date}}</p>
+                                <p>{{eventoCom[2].hour}}</p>
+                                <p>{{eventoCom[2].place}}</p>
                             </div>
 
                             <button (click)="openModal3()" class="button-participar">Detalle evento</button>
@@ -149,13 +143,13 @@
                     </div>
                 </div>
                 <div  *ngIf="modalDetail == true" id="modalEvent">
-                    <app-detail-event [evento] = "eventos[0]"  (eventCloseDetail) = closeModal($event)></app-detail-event>
+                    <app-detail-event [evento] = "eventoCom[0]"  (eventCloseDetail) = closeModal($event)></app-detail-event>
                 </div>
                 <div  *ngIf="modalDetail2 == true" id="modalEvent">
-                    <app-detail-event [evento] = "eventos[1]"  (eventCloseDetail) = closeModal($event)></app-detail-event>
+                    <app-detail-event [evento] = "eventoCom[1]"  (eventCloseDetail) = closeModal($event)></app-detail-event>
                 </div>
                 <div  *ngIf="modalDetail3 == true" id="modalEvent">
-                    <app-detail-event [evento] = "eventos[2]"  (eventCloseDetail) = closeModal($event)></app-detail-event>
+                    <app-detail-event [evento] = "eventoCom[2]"  (eventCloseDetail) = closeModal($event)></app-detail-event>
                 </div>
              
             <!-- </div> -->
@@ -173,15 +167,11 @@
                 <div class="card-container">
                     <div class="cardMazo">
                         <div>
-                            <img class="img-mazo" src="../../../assets/images/home/mazo1.png" alt="">
+                            <img class="img-mazo" [src]= 'bestMazos[0].URLphoto' alt="">
                         </div>
                         <div>
                             <div class="estrellas">
-                                <img class="img-estrellas" src="../../../assets/images/iconos/estrellita.png" alt="">
-                                <img class="img-estrellas" src="../../../assets/images/iconos/estrellita.png" alt="">
-                                <img class="img-estrellas" src="../../../assets/images/iconos/estrellita.png" alt="">
-                                <img class="img-estrellas" src="../../../assets/images/iconos/estrellita.png" alt="">
-                                <img class="img-estrellas" src="../../../assets/images/iconos/estrellita.png" alt="">
+                                <app-rating [mediaScore] = "bestMazos[0].mediaScore" [typeRating]="2"></app-rating>
                             </div>
                             <div class="line-container">
                                 <hr class="line">
@@ -189,8 +179,8 @@
                     
                             <!-- AÑADIR ICONOS DE FECHA HORA Y LUGAR -->
                             <div class="info2">
-                                <p class="info-mazo">Fuego del Bosque</p>
-                                <p class="info-user">JoseH35</p>
+                                <p class="info-mazo">{{bestMazos[0].nameDeck}}</p>
+                                <p class="info-user">{{bestMazos[0].nameUser}}</p>
                             </div>
                           
                             <button [routerLink]="['/explora']" class="button-explorar">Explorar</button>
@@ -199,15 +189,11 @@
     
                     <div class="cardMazo">
                         <div>
-                            <img class="img-mazo" src="../../../assets/images/home/mazo2.png" alt="">
+                            <img class="img-mazo" [src]= 'bestMazos[1].URLphoto' alt="">
                         </div>
                         <div>
                             <div class="estrellas">
-                                <img class="img-estrellas" src="../../../assets/images/iconos/estrellita.png" alt="">
-                                <img class="img-estrellas"src="../../../assets/images/iconos/estrellita.png" alt="">
-                                <img class="img-estrellas" src="../../../assets/images/iconos/estrellita.png" alt="">
-                                <img class="img-estrellas" src="../../../assets/images/iconos/estrellita.png" alt="">
-                                <img class="img-estrellas" src="../../../assets/images/iconos/estrella2.png" alt="">
+                                <app-rating  [mediaScore] = "bestMazos[1].mediaScore" [typeRating]="2"></app-rating>
                             </div>
                             <div class="line-container">
                                 <hr class="line">
@@ -215,8 +201,8 @@
                     
                             <!-- AÑADIR ICONOS DE FECHA HORA Y LUGAR -->
                             <div class="info2">
-                                <p class="info-mazo">Fuego del Bosque</p>
-                                <p class="info-user">JoseH35</p>
+                                <p class="info-mazo">{{bestMazos[1].nameDeck}}</p>
+                                <p class="info-user">{{bestMazos[1].nameUser}}</p>
                             </div>
                             
                             <button [routerLink]="['/explora']" class="button-explorar">Explorar</button>
@@ -225,15 +211,11 @@
     
                     <div class="cardMazo">
                         <div>
-                            <img class="img-mazo" src="../../../assets/images/home/mazo3.png" alt="">
+                            <img class="img-mazo" [src]= 'bestMazos[2].URLphoto' alt="">
                         </div>
                         <div>
                             <div class="estrellas">
-                                <img class="img-estrellas" src="../../../assets/images/iconos/estrellita.png" alt="">
-                                <img class="img-estrellas" src="../../../assets/images/iconos/estrellita.png" alt="">
-                                <img class="img-estrellas" src="../../../assets/images/iconos/estrellita.png" alt="">
-                                <img class="img-estrellas" src="../../../assets/images/iconos/estrellita.png" alt="">
-                                <img class="img-estrellas" src="../../../assets/images/iconos/estrella2.png" alt="">
+                                <app-rating [mediaScore] = "bestMazos[2].mediaScore" [typeRating]="2"></app-rating>
                             </div>
                             <div class="line-container">
                                 <hr class="line">
@@ -241,8 +223,8 @@
                     
                             <!-- AÑADIR ICONOS DE FECHA HORA Y LUGAR -->
                             <div class="info2">
-                                <p class="info-mazo">Fuego del Bosque</p>
-                                <p class="info-user">JoseH35</p>
+                                <p class="info-mazo">{{bestMazos[2].nameDeck}}</p>
+                                <p class="info-user">{{bestMazos[2].nameUser}}</p>
                             </div>
                            
                             <button [routerLink]="['/explora']" class="button-explorar">Explorar</button>
@@ -253,6 +235,6 @@
         </swiper-slide>
 
     </swiper-container>
-</main>
+</section>
 
 

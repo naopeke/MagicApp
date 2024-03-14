@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Events } from 'src/app/models/event';
+import { Eventos } from 'src/app/models/eventos';
 
 @Component({
   selector: 'app-detail-event',
@@ -7,7 +7,7 @@ import { Events } from 'src/app/models/event';
   styleUrls: ['./detail-event.component.css']
 })
 export class DetailEventComponent {
-  @Input() evento:Events
+  @Input() evento:Eventos
 
   @Output() eventCloseDetail = new EventEmitter<boolean>();
   public openModal:boolean = false

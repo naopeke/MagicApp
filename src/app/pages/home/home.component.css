@@ -1,6 +1,6 @@
 
 
-main{
+.mainHome{
   width: 100%;
   height: 1000px;
   display: flex;
@@ -251,9 +251,7 @@ a{
     width: 250px;
   }
 
-  .img-mazo{
-    width: 200px;
-  }
+
 
   .img-avatar{
     position: relative;
@@ -267,6 +265,10 @@ a{
 
   .tituloEvento, .tituloEvento2{
     font-size: 14pt;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border: solid red 2px;
   }
 
   @media screen and (max-width: 1210px){
