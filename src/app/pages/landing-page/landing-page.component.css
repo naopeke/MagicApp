@@ -2,7 +2,7 @@ body{
     display: block;
 }
 
-main{
+.principal{
     background-image: url('src/assets/images/fondos/fondo_landing2.png');
     background-size: cover;
     background-attachment: fixed;
@@ -272,7 +272,7 @@ swiper-container{
 
 }
 #slideOrco{
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-image: url('src/assets/images/landing/OrcoSliderLanding.png');
@@ -294,6 +294,10 @@ swiper-container{
     background-size: cover;
 }
 
+.no-subrayado {
+    text-decoration: none; /* Esto quitará el subrayado del enlace */
+}
+
 .guerreroAmarillo, .guerreroAzul, .guerreroMorado, .guerreroRojo, .guerreroVerde{
     background-size: cover;
     background-position: center;
@@ -308,6 +312,7 @@ swiper-container{
     text-align: center;
     font-weight: bolder;
     border-radius: 20px;
+    cursor: pointer;
 }
 .guerreroAmarillo{
     background-image: url('src/assets/images/landing/guerreroAmarillo.png');
@@ -444,12 +449,6 @@ a:visited{
 
 }
 
-.textoBuscador-container h4 a{
-    color: var(--azul);
-    font-family: var(--inter);
-    font-size: larger;
-}
-
 .inputBuscador-container{
     display: flex;
     flex-direction: column;
@@ -574,7 +573,7 @@ select {
 
 .creacionMazos{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 img-container{
@@ -609,18 +608,13 @@ img-container{
     color: var(--blanco);
     font-family: var(--inter);
     width: 800px;
+    margin-left: 155px;
 }
 
 .texto-martillo h5 p{
     margin-bottom: 15px;
     text-align: left;
     width: 100%;
-    font-size: 1.3rem;
-}
-
-.texto-martillo h5 a{
-    color: var(--morado);
-    font-family: var(--inter);
     font-size: 1.3rem;
 }
 
@@ -710,13 +704,13 @@ img-container{
     font-family: var(--antiqua);
     text-align: center;
     font-size: 1.5rem;
+    margin-top: 25px;
 }
 
 .vota h5{
     color: var(--blanco);
     font-family: var(--inter);
     text-align: left;
-    margin-top: 35px;
     margin-bottom: 15px;
     width: 100%;
     font-size: 1.3rem;
@@ -774,6 +768,9 @@ img-container{
     width: 450px;
     text-align: center;
     border-radius: 20px;
+    border: solid #ff240f 1px;
+    justify-content: center;
+    padding-top: 5px;
 }
 
 .uneteAnosotros h2{

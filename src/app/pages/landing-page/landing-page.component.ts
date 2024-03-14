@@ -1,4 +1,6 @@
 import { Component, HostListener } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { WarningModalComponent } from 'src/app/components/warning-modal/warning-modal.component';
 
 @Component({
   selector: 'app-landing-page',
@@ -6,6 +8,12 @@ import { Component, HostListener } from '@angular/core';
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent {
+
+  constructor(private dialog: MatDialog){}
+
+  openWarningModal(): void{
+    const dialogRef = this.dialog.open(WarningModalComponent);
+  }
 
   slidesPerView: number = 3;
 
