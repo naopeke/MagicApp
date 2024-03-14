@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { UsersService } from 'src/app/shared/users.service';
 import { Response } from 'src/app/models/respuesta';
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -21,7 +21,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(public myUsersService: UsersService, 
               private formBuilder: FormBuilder, 
-              private router: Router){
+              private router: Router,
+              private toastr: ToastrService){
     this.buildForm(); 
   }
 
@@ -62,16 +63,15 @@ export class RegisterComponent implements OnInit {
       .subscribe((resp: Response)=>{
         if(!resp.err){
           console.log(resp)
-          // this.toastr.error("Usuario insertado con éxito","");  
+          this.toastr.success("Usuario insertado con éxito","");  
           this.registerForm.reset({'nameUser': '', 'emailUser': '', 'passwordUser': '', 'repeatPassword': ''});
           this.myUsersService.user = null; 
           this.myClass=true; 
           this.show_login = true; 
         }else{
           console.error('error');
-          
-          // this.toast.error("El usuario ya existe","", 
-          //   {timeOut: 2000, positionClass: 'toast-top-center'});
+          this.toastr.error("El usuario ya existe","", 
+            {timeOut: 2000, positionClass: 'toast-top-center'});
         }
       }) 
   }
