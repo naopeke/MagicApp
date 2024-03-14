@@ -31,12 +31,26 @@ export class LoggedoutCardComponent implements OnInit {
   // this.parametro = this.rutaActiva.snapshot.params.cardId;
   }
 
+  // searchCards(searchParam: string): void {
+  //   this.searchPerformed = true;
+  //   this.cardsService.fetchCardData(searchParam).subscribe({
+  //     next: (cards) => {
+  //       this.resultsCards = cards;
+  //       console.log('Results:', cards);
+  //     },
+  //     error: (err) => {
+  //       this.resultsCards = [];
+  //       console.log('Error in fetching cards:', err);
+  //     }
+  //   });
+  // }
+
   searchCards(searchParam: string): void {
     this.searchPerformed = true;
     this.cardsService.fetchCardData(searchParam).subscribe({
-      next: (cards) => {
-        this.resultsCards = cards;
-        console.log('Results:', cards);
+      next: (card) => {
+        this.resultsCards = [card]; // como dato desde back(axios) es un object y no es array...
+        console.log('Results:', card);
       },
       error: (err) => {
         this.resultsCards = [];
@@ -44,6 +58,35 @@ export class LoggedoutCardComponent implements OnInit {
       }
     });
   }
+  
+  // searchCards(searchParam: string): void {
+  //   this.searchPerformed = true;
+  
+  //   let searchObservable;
+  //   if (this.searchType === 'nombre') {
+  //     searchObservable = this.cardsService.getByName(searchParam);
+  //   } else if (this.searchType === 'colleccion') {
+  //     searchObservable = this.cardsService.getByCollection(searchParam);
+  //   }
+  
+  //   if (searchObservable) {
+  //     searchObservable.subscribe({
+  //       next: (cards) => {
+  //         si hay más results, meterlas en resultsCards
+  //         this.resultsCards = cards;
+  //         console.log('Results:', cards);
+  //       },
+  //       error: (err) => {
+  //         vaciar resultsCards cuando hay error
+  //         this.resultsCards = [];
+  //         console.log('Error in fetching cards:', err);
+  //       }
+  //     });
+  //   } else {
+  //     console.log('Invalid search type');
+  //   }
+  // }
+  
   
 // // buscar con nombre completa y array
 //   searchCards(searchParam: string): void {

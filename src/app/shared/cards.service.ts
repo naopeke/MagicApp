@@ -19,15 +19,21 @@ export class CardsService {
 
   constructor(private http: HttpClient) { }
 
-  public fetchCardData(cardName: string): Observable<Card[]> {
+  // public fetchCardData(cardName: string): Observable<Card[]> {
+  //   let urlName = `${this.url}/cartas?cardName=${encodeURIComponent(cardName)}`;
+  //   return this.http.get<Card[]>(urlName);
+  // }
+
+
+  public fetchCardData(cardName: string): Observable<Card> {
+    let urlName = `${this.url}/cartas?cardName=${encodeURIComponent(cardName)}`;
+    return this.http.get<Card>(urlName);
+  }
+
+  
+  public getByName(cardName:string):Observable<Card[]>{
     let urlName = `${this.url}/cartas?cardName=${encodeURIComponent(cardName)}`;
     return this.http.get<Card[]>(urlName);
-  }
-  
-
-  public getByName(cardName:string):Observable<Card[]>{
-    return this.http.get<Card[]>(`/api/cards?cardName=${cardName}`);
-
   }
 
 // // array de cartas, parcial, lowercase
@@ -42,17 +48,21 @@ export class CardsService {
 //   }
 // }
 
-
-public getByCollection(name:string): Card[] | null {
-  let lowerCaseName = name.toLowerCase();
-  let cards = this.cards.filter(card => card.set_name.toLowerCase().includes(lowerCaseName));
-  console.log('Obtained info: ', name, cards);
-  if (cards) {
-    return cards; //si se ha encontrado con una carta, devuelve esa carta 
-  } else {
-    return null; // si no, devuelve null
-  }
+public getByCollection(collection:string):Observable<Card[]> {
+  let urlName = `${this.url}/cartas?cardName=${encodeURIComponent(collection)}`;
+    return this.http.get<Card[]>(urlName);
 }
+
+// public getByCollection(name:string): Card[] | null {
+//   let lowerCaseName = name.toLowerCase();
+//   let cards = this.cards.filter(card => card.set_name.toLowerCase().includes(lowerCaseName));
+//   console.log('Obtained info: ', name, cards);
+//   if (cards) {
+//     return cards; //si se ha encontrado con una carta, devuelve esa carta 
+//   } else {
+//     return null; // si no, devuelve null
+//   }
+// }
 
 public addCardsToDeck(deckIndex: number, cardIds: string[]): void {
   console.log('Cards added to the deck: ', cardIds);

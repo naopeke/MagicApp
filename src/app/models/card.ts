@@ -14,6 +14,8 @@ export class Card {
         public set_name?: string,
         public set_type?: string,
         public quantity: number = 1
+
+        // public quantity?: number = 1
  
         ) { }
 }
