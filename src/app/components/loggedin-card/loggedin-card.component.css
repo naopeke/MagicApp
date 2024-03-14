@@ -20,7 +20,12 @@
     width: 100%;
 }
 
-
+.container_cardinfo1{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    width: 100%;
+}
 
 /* base */
 .background-wrapper {

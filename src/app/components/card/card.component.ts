@@ -30,26 +30,26 @@ export class CardComponent {
 
   onDeleteButtonClick(){
     console.log('clicked the x button');
-    this.deleteFromChild.emit(this.childCard.id_card);
+    this.deleteFromChild.emit(this.childCard.id_card_api);
   }
 
   //pagina mis mazos
   onCountPlusButtonClick(event:Event){
     console.log('clicked the count plus button');
     event.stopPropagation(); //para resolver bubbling
-    this.countPlusFromChild.emit(this.childCard.id_card);
+    this.countPlusFromChild.emit(this.childCard.id_card_api);
   }
 
   onCountMinusButtonClick(event:Event){
     console.log('clicked the count minus button');
     event.stopPropagation(); //para resolver bubbling
-    this.countMinusFromChild.emit(this.childCard.id_card);
+    this.countMinusFromChild.emit(this.childCard.id_card_api);
   }
 
   onDeleteAllButtonClick(event:Event){
     console.log('clicked the delete all button');
     event.stopPropagation(); //para resolver bubbling
-    this.deleteAllQuantityFromChild.emit(this.childCard.id_card);
+    this.deleteAllQuantityFromChild.emit(this.childCard.id_card_api);
   }
 
   idCard(id_card:number){

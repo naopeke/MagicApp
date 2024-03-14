@@ -39,25 +39,34 @@ export class LoggedinCardComponent implements OnInit {
   this.parametro = this.rutaActiva.snapshot.params.cardId;
   }
 
-  searchCards(searchParam: string): void {
+  searchCards(searchParam: string): void{
     this.searchPerformed = true;
-    let cards = [];
-    if (this.searchType == 'nombre'){
-      cards = this.cardsService.getByName(searchParam);
-    } else if (this.searchType === 'colleccion'){
-      cards = this.cardsService.getByCollection(searchParam);
-    }
 
-    // si hay 1 o más cartas en array, meter datos en resultsCards
-    if (cards && cards.length > 0) {
+    this.cardsService.getByName(searchParam).subscribe(cards =>{
       this.resultsCards = cards;
-      console.log('Results:', cards);
-      console.log('resultsCards: ', this.resultsCards);
-    } else {
-      this.resultsCards = [];
-      console.log('No hay datos en resultsCards');
-    }
+      console.log('resultsCards:', cards);
+    })
   }
+
+  // searchCards(searchParam: string): void {
+  //   this.searchPerformed = true;
+  //   let cards = [];
+  //   if (this.searchType == 'nombre'){
+  //     cards = this.cardsService.getByName(searchParam);
+  //   } else if (this.searchType === 'colleccion'){
+  //     cards = this.cardsService.getByCollection(searchParam);
+  //   }
+
+  //   // si hay 1 o más cartas en array, meter datos en resultsCards
+  //   if (cards && cards.length > 0) {
+  //     this.resultsCards = cards;
+  //     console.log('Results:', cards);
+  //     console.log('resultsCards: ', this.resultsCards);
+  //   } else {
+  //     this.resultsCards = [];
+  //     console.log('No hay datos en resultsCards');
+  //   }
+  // }
 
   onAddCardToBuilder(card: Card): void {
     this.builderCards.push(card);
@@ -65,7 +74,7 @@ export class LoggedinCardComponent implements OnInit {
   }
 
   onDeleteFromChild(cardId: string){
-    this.builderCards = this.builderCards.filter(card => card.id_card !== cardId);
+    this.builderCards = this.builderCards.filter(card => card.id_card_api !== cardId);
     console.log('After deleting from Builder: ', this.builderCards);
   }
 
@@ -95,7 +104,7 @@ export class LoggedinCardComponent implements OnInit {
     // });
     dialogRef.afterClosed().subscribe(deckIndex => {
       console.log('The dialog was closed');
-        let cardIds = this.builderCards.map(card => card.id_card);
+        let cardIds = this.builderCards.map(card => card.id_card_api);
         console.log('modal: ', cardIds);
         this.cardsService.addCardsToDeck(deckIndex, cardIds);
         this.snackBar.open(`Añadido tu carta al mazo #${deckIndex + 1}`, 'Cerrar', {
@@ -113,6 +122,7 @@ export class LoggedinCardComponent implements OnInit {
 
 
   public onCardInfoOpen(){
+    console.log('card clicked')
     this.darkenOverlay=true; 
     this.show_cardinfo = true; 
   }

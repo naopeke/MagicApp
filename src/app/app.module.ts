@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 // angular material
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -108,6 +109,7 @@ import { DetailEventComponent } from './components/detail-event/detail-event.com
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
+    HttpClientModule,
 
     // angular material
     MatSidenavModule,

@@ -1,7 +1,8 @@
 export class Card {
 
     constructor(
-        public id_card?: string,
+        public id_card?: number,
+        public id_card_api?: string,
         public id_user?: number,
         public image_uris?: string,
         public name?: string,

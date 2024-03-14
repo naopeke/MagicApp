@@ -51,7 +51,7 @@ export class CardInfoComponent implements OnInit{
     //TODO: llamar a servicio por id y incializar "card" con los datos reales de BBDD
 
 
-    this.card = new Card("175b3d28-5c74-4972-9b5c-5e39762c78f4", 
+    this.card = new Card( 1,"175b3d28-5c74-4972-9b5c-5e39762c78f4", 
     1, 
     "https://cards.scryfall.io/png/front/1/7/175b3d28-5c74-4972-9b5c-5e39762c78f4.png?1686964447",
     "Relic of Sauron",
