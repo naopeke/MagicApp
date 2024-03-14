@@ -1,34 +1,43 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user';
+import { UsersService } from 'src/app/shared/users.service';
+import { Response } from 'src/app/models/respuesta';
+import { ToastrModule } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
+
 export class RegisterComponent implements OnInit {
   public registerForm: FormGroup;
   public myClass:boolean = false; 
   public show_login:boolean = false; 
+  public user: User; 
 
-  constructor(private formBuilder: FormBuilder, private router: Router){
+  constructor(public myUsersService: UsersService, 
+              private formBuilder: FormBuilder, 
+              private router: Router){
     this.buildForm(); 
   }
 
   private buildForm(){
     let minLength: number = 8; 
     this.registerForm = this.formBuilder.group({
-      name: [, Validators.required],
-      email: [, [Validators.required, Validators.email]],
-      password: [, [Validators.required, Validators.minLength(minLength)]],
+      nameUser: [, Validators.required],
+      emailUser: [, [Validators.required, Validators.email]],
+      passwordUser: [, [Validators.required, Validators.minLength(minLength)]],
       repeat_password: [, [Validators.required, Validators.minLength(minLength), this.checkPassword]]
     })
   }
 
   private checkPassword(control: AbstractControl){
     let result = {matchPassword: true};
-    if (control.parent?.value.password == control.value)
+    if (control.parent?.value.passwordUser == control.value)
     result = null; 
     return result; 
   }
@@ -44,7 +53,27 @@ export class RegisterComponent implements OnInit {
   }
 
   public register(){
+    let registerData = this.registerForm.value;
 
+    let newUser: User = new User (null, registerData.nameUser, registerData.emailUser,
+      registerData.passwordUser);
+
+      this.myUsersService.register(newUser)
+      .subscribe((resp: Response)=>{
+        if(!resp.err){
+          console.log(resp)
+          // this.toastr.error("Usuario insertado con éxito","");  
+          this.registerForm.reset({'nameUser': '', 'emailUser': '', 'passwordUser': '', 'repeatPassword': ''});
+          this.myUsersService.user = null; 
+          this.myClass=true; 
+          this.show_login = true; 
+        }else{
+          console.error('error');
+          
+          // this.toast.error("El usuario ya existe","", 
+          //   {timeOut: 2000, positionClass: 'toast-top-center'});
+        }
+      }) 
   }
 
 
