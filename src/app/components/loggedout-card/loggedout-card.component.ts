@@ -19,7 +19,7 @@ export class LoggedoutCardComponent implements OnInit {
 
   public darkenOverlay:boolean = false; // modal de xisca
   public show_cardinfo:boolean = false; // modal de xisca
-
+  public selectedCard: Card | null = null; // selectedCard sea Card o null, default null
 
   constructor(
     public cardsService: CardsService,
@@ -100,17 +100,20 @@ export class LoggedoutCardComponent implements OnInit {
 //   }
 
 
-  public onCardInfoOpen(){
+  public onCardInfoOpen(card:Card):void{
+    this.selectedCard = card;
     this.darkenOverlay=true; 
     this.show_cardinfo = true; 
   }
 
-  public onCardInfoClose(show: boolean){
+  public onCardInfoClose(show: boolean):void{
+    this.selectedCard = null; // resetear selectedCard cuendo se cierra
     this.darkenOverlay = show;
     this.show_cardinfo = show;
   }
 
-  public card_info_close() {
+  public card_info_close():void{
+    this.selectedCard = null; // resetear selectedCard
     this.darkenOverlay = false;
     this.show_cardinfo = false;
   }
