@@ -27,30 +27,20 @@ export class LoggedoutCardComponent implements OnInit {
     private rutaActiva: ActivatedRoute
   ){
 
-    //app.routing.module.ts  {path: "cartas/:cardId", component:CartasComponent},
-  // this.parametro = this.rutaActiva.snapshot.params.cardId;
+
   }
 
-  // searchCards(searchParam: string): void {
-  //   this.searchPerformed = true;
-  //   this.cardsService.fetchCardData(searchParam).subscribe({
-  //     next: (cards) => {
-  //       this.resultsCards = cards;
-  //       console.log('Results:', cards);
-  //     },
-  //     error: (err) => {
-  //       this.resultsCards = [];
-  //       console.log('Error in fetching cards:', err);
-  //     }
-  //   });
-  // }
 
-  searchCards(searchParam: string): void {
+  searchCards(cardName: string): void {
     this.searchPerformed = true;
-    this.cardsService.fetchCardData(searchParam).subscribe({
-      next: (card) => {
-        this.resultsCards = [card]; // como dato desde back(axios) es un object y no es array...
-        console.log('Results:', card);
+
+    // const currentUser = this.usersService.getCurrentUser();
+    // if (currentUser && currentUser.id_user){
+
+    this.cardsService.getByName(cardName).subscribe({
+      next: (data:any) => {
+        this.resultsCards = [data]; // como dato desde back(axios) es un object y no es array...
+        console.log('API Response: ', data);
       },
       error: (err) => {
         this.resultsCards = [];
