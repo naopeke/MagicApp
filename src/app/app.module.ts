@@ -27,7 +27,7 @@ import { MatDialogModule} from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
-import { registerLocaleData } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import localeES from '@angular/common/locales/es'
 
 registerLocaleData(localeES)
@@ -103,6 +103,7 @@ import { DetailEventComponent } from './components/detail-event/detail-event.com
 
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,

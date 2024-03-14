@@ -13,7 +13,7 @@ export class Events {
         public direction?: string,
         public participation?: boolean,
         public id_user?: number,
-        public participants?: User[]
+        // public participants?: User[]
 
         ) { }
 
