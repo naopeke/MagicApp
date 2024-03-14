@@ -196,7 +196,7 @@ a{
 .button-participar{
   height: 45px;
   padding: 5px;
-  width: 150px;
+  width: 180px;
   margin-top: 30px;
   background-color: var(--verde);
   border-radius: var(--borde-boton);

@@ -22,12 +22,14 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule} from '@angular/material/dialog'; 
+import { MatDialog } from '@angular/material/dialog';
+import { WarningModalComponent } from './components/warning-modal/warning-modal.component';
 
 //calendario
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
-import { registerLocaleData } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import localeES from '@angular/common/locales/es'
 
 registerLocaleData(localeES)
@@ -100,10 +102,12 @@ import { ToastrModule } from 'ngx-toastr';
     DeleteEventComponent,
     EditEventComponent,
     DetailEventComponent,
+    WarningModalComponent,
   ],
 
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -144,7 +148,7 @@ import { ToastrModule } from 'ngx-toastr';
     
     CdkVirtualScrollViewport,
     ScrollingModule, 
-    CdkScrollableModule
+    CdkScrollableModule, 
     
     
     //swiper@8

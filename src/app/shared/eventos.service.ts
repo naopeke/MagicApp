@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Evento } from '../models/evento';
 import { User } from '../models/user';
+import { Events } from '../models/event';
 
 @Injectable({
   providedIn: 'root'
@@ -21,11 +22,23 @@ export class EventosService {
   public modalDeleteEvent:boolean;
   public modalEditEvent:boolean;
 
+  // Belen: cree otra clase de eventos para la BBDD
+  public eventos: Events[] 
+   // Belen
+
   constructor() {
     this.events = [this.ev1, this.ev2, this.ev3, this.ev4, this.ev5];
     this.modalCreateEvent = false;
     this.modalDeleteEvent = false;
     this.modalEditEvent = false;
+
+    // Belen
+    this.eventos = [
+      new Events(1, 'Partida entre amigos', 'partida informal', new Date(2024, 3, 15), '18:00', 'Centro MetMetropolis', 'C. de Andrés Mellado, 22, Chamberí, 28015 Madrid', false, 1),
+      new Events(1, 'Torneo Estandar', 'Torneo de formato standard, quien gane se llevará como premio una carta misteriosa', new Date(2024, 3, 15), '21:00', 'Centro MetMetropolis', 'C. de Andrés Mellado, 22, Chamberí, 28015 Madrid', false, 1),
+      new Events(1, 'Festival de Asesinatos en la Mansión Karlov', 'partida informal', new Date(2024, 3, 15), '18:00', 'Centro MetMetropolis', 'C. de Andrés Mellado, 22, Chamberí, 28015 Madrid', false, 1)
+    ];
+     // Belen
   }
 
   getAllEvents(){
@@ -99,5 +112,12 @@ export class EventosService {
 
   openModalEditEvent(){
     this.modalEditEvent = true;
+  }
+
+  // Belen home
+
+// cuando el usuario no coincide con el id del logueado
+  getEventsHome(){
+    return this.eventos
   }
 }
