@@ -8,6 +8,7 @@ export class Card {
         public name?: string,
         public type_line?: string,
         public oracle_text?: string,
+        public printed_text?: string,
         public color_identity?: string[],
         public legalities?: any, /* object*/
         public prices?: number,

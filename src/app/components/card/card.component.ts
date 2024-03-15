@@ -17,6 +17,7 @@ export class CardComponent {
   @Output() countPlusFromChild = new EventEmitter<string>();
   @Output() countMinusFromChild = new EventEmitter<string>();
   @Output() deleteAllQuantityFromChild = new EventEmitter<string>();
+  @Output() childCardClicked = new EventEmitter<Card>(); // añadido para modal de xisca
 
   constructor(private cardsService: CardsService){
 
@@ -51,6 +52,10 @@ export class CardComponent {
     console.log('clicked the delete all button');
     event.stopPropagation(); //para resolver bubbling
     this.deleteAllQuantityFromChild.emit(this.childCard.id_card_api);
+  }
+
+  onCardClick():void {
+    this.childCardClicked.emit(this.childCard); // añadido para modal de xisca
   }
 
   idCard(id_card:number){

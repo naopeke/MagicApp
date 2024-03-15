@@ -4,17 +4,19 @@
             <div class="delete_button">
                 <span class="close-btn" (click)="card_info_close()">X</span>
             </div>
-            <div class="title">{{ carta?.name }}</div>
+            <div class="title">{{ carta.name }}</div>
             <div class="row main">
                 <div class="col-5 box_left">
-                    <img src="{{ carta?.image_uris }}" alt="Image">
-                    <div class="pie_photo">precio: {{ card.prices | priceEuro }}</div>
+                    <img src="{{ carta.image_uris }}" alt="Image">
+                    <div class="pie_photo">precio: {{ carta.prices | priceEuro }}</div>
                 </div>
                 <div class="col-7 box_right">
                     <div class="text_box">
-                        <h3 class="subtitle">Tipo: {{carta.type_line}}</h3>
-                        <h4 class="subtitle2">Indestructible</h4>
-                        <h4 class="text">{{carta.oracle_text}}</h4>
+                        <h3 class="subtitle">Tipo: {{ carta.type_line }}</h3>
+                        <!-- <h4 class="subtitle2">Indestructible</h4> -->
+                        
+                        <!-- añadido: si no existe printed_text (español), muestra oracle_text -->
+                        <h4 class="text">{{carta.printed_text ? carta.printed_text : carta.oracle_text }}</h4>
                     </div>  
                     <div class="etiquetas">
                         <div *ngFor="let legality of card.legalities" class="etiqueta">

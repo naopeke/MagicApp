@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-sm-6 col-md-4 col-lg-6">
                 <mat-card class="card">
-                    <img mat-card-image class="img-type1" [src]="childCard.image_uris" alt="img"/>
+                    <img mat-card-image class="img-type1" [src]="childCard.image_uris" (click)="onCardClick()" alt="img"/>
                 </mat-card>
             </div>
         </div>

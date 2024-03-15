@@ -18,6 +18,13 @@ export class CardInfoComponent implements OnInit{
   public show_cardinfo: boolean = false;
 
 
+  convertLegalitiesToArray(legalities:any): any[]{
+    return Object.keys(legalities).map(key => ({
+      format: key,
+      status: legalities[key]
+    }));
+  }
+
   // legalities = [
   //   {text: 'not legal', color: 'grey'},
   //   {text: 'not legal', color: 'red'},
