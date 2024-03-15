@@ -22,15 +22,15 @@
                 <div class="bg-cards">
                     <div class="list-cards" *ngIf="resultsCards.length > 0">
                         <div *ngFor="let card of resultsCards; let i = index">
-                            <!-- <app-card [childCard]="card"  (cardClicked)="onCardInfoOpen($event)"[templateCard]="'type1'" [carta]="selectedCard" (click)="onCardInfoOpen()"></app-card> -->
                             <app-card [childCard]="card" (childCardClicked)="onCardInfoOpen($event)"[templateCard]="'type1'" ></app-card>
-
                         </div>
-                    
-                        <div class="results-wrapper" *ngIf="resultsCards.length === 0 && searchPerformed">
-                            <div class="no-results-message">
-                            <p>No hemos podido encontrar. Intenta otra vez.</p>
-                            </div>
+                    </div>
+
+                    <div class="results-wrapper" *ngIf="resultsCards.length === 0 && searchPerformed && errorMessage">
+                        <div class="no-results-message">
+                        <p>{{ errorMessage.split('.')[0] }}.</p>
+                        <p>{{ errorMessage.split('.')[1] }}.</p>
+
                         </div>
                     </div>
                 </div>

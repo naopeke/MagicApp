@@ -16,6 +16,8 @@ export class LoggedoutCardComponent implements OnInit {
   public resultsCards: Card[] =[]; //para meter datos de resultados
   public searchType: string = 'nombre' //default searchtype es nombre
   public searchPerformed: boolean = false; // si ha hecho la busqueda o no  default false
+  public errorMessage: string | null = null; // si sale error en back, meter aquí. default null
+
 
   public darkenOverlay:boolean = false; // modal de xisca
   public show_cardinfo:boolean = false; // modal de xisca
@@ -33,6 +35,7 @@ export class LoggedoutCardComponent implements OnInit {
 
   searchCards(cardName: string): void {
     this.searchPerformed = true;
+    this.errorMessage = null; // cada vez busca, refresh
 
     // const currentUser = this.usersService.getCurrentUser();
     // if (currentUser && currentUser.id_user){
@@ -41,10 +44,13 @@ export class LoggedoutCardComponent implements OnInit {
       next: (data:any) => {
         this.resultsCards = [data]; // como dato desde back(axios) es un object y no es array...
         console.log('API Response: ', data);
+        this.errorMessage = null; // refresh errorMessage
       },
       error: (err) => {
         this.resultsCards = [];
         console.log('Error in fetching cards:', err);
+        this.errorMessage = 'Hay demasiadas cartas o el título es incorrecto. Por favor, intenta una búsqueda más detallada con un título más específico.';
+        console.log('Error message', this.errorMessage);
       }
     });
   }
