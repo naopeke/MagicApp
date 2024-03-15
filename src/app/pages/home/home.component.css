@@ -143,6 +143,7 @@ swiper-slide {
   font-size: 18pt;
   height: 90px;
   display: flex;
+  justify-content: center;
   align-items: center;
   line-height: 40px;
 }
@@ -265,10 +266,7 @@ a{
 
   .tituloEvento, .tituloEvento2{
     font-size: 14pt;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    border: solid red 2px;
+
   }
 
   @media screen and (max-width: 1210px){

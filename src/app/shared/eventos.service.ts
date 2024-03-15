@@ -24,7 +24,7 @@ export class EventosService {
   ev4:Evento = new Evento(4,"Cuarto evento", "Evento especial 1", new Date(), "18:00", "Zona uno, Madrid", this.user2);
   ev5:Evento = new Evento(5,"Cuarto evento", "Evento especial 1", new Date(), "18:00", "Zona uno, Madrid", this.user2);
 
-  private events: Eventos [];
+  private events: Evento [];
   public modalCreateEvent:boolean;
   public modalDeleteEvent:boolean;
   public modalEditEvent:boolean;
@@ -36,7 +36,8 @@ export class EventosService {
     // Belen Home
       this.urlHome = "http://localhost:3000/home"
     // Belen Home
-    this.events = [this.ev1, this.ev2, this.ev3, this.ev4, this.ev5];
+
+    // this.events = [this.ev1, this.ev2, this.ev3, this.ev4, this.ev5];
     this.modalCreateEvent = false;
     this.modalDeleteEvent = false;
     this.modalEditEvent = false;
@@ -50,7 +51,7 @@ export class EventosService {
 
   createEvent(newEvent:Evento){
     //El objeto viene del ts del componente relleno
-    this.events.push(newEvent);
+    // this.events.push(newEvent);
   }
 
   modifyEvent(newEvent:Evento){
@@ -129,6 +130,17 @@ export class EventosService {
 
   getBestDecks():Observable<object>{
     return this.http.get(this.urlHome + '/' + 'mejores/' + 'mazos')
+  }
+
+  getParticipantes(id_event:number):Observable<object>{
+    return this.http.get(this.urlHome + '/' + 'detalleEvento/' + id_event)
+  }
+  postPartipacion(id_user:number, id_event:number):Observable<object>{
+    const body = {
+      id_user: id_user,
+      id_event: id_event
+    };
+    return this.http.post(this.urlHome, body)
   }
 
   

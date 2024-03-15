@@ -14,6 +14,9 @@ export class HomeComponent implements OnInit {
   public modalDetail: boolean = false
   public modalDetail2: boolean = false
   public modalDetail3: boolean = false
+  public modalDetail4: boolean = false
+  public modalDetail5: boolean = false
+  public modalDetail6: boolean = false
   // cambiarlo por el del servicio cuando esta logueado
   public id_user: number = 1
 
@@ -21,7 +24,7 @@ export class HomeComponent implements OnInit {
   public eventoCom: Eventos[]
   public bestMazos: Deck[]
 
-  @Input () typeRating: number;
+@Input () typeRating: number;
 
 @Input () dato: Deck
 
@@ -86,9 +89,23 @@ this.eventoService.getBestDecks().subscribe((res:any) => {
     this.modalDetail3 = true
   }
 
+  public openModal4(){
+    this.modalDetail4 = true
+    
+  }
+  public openModal5(){
+    this.modalDetail5 = true
+  }
+  public openModal6(){
+    this.modalDetail6 = true
+  }
+
   public closeModal(event:boolean){
     this.modalDetail = event
     this.modalDetail2 = event
     this.modalDetail3 = event
+    this.modalDetail4 = event
+    this.modalDetail5 = event
+    this.modalDetail6 = event
   }
 }

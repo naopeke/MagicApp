@@ -29,7 +29,7 @@ export class EditEventComponent implements OnInit {
       time: [this.evento.hour, Validators.required],
       place: [this.evento.place, Validators.required],
       direction:[this.evento.direction, Validators.required],
-      description: [this.evento.description]
+      description: [this.evento.description, Validators.maxLength(100)]
     })
   }
 

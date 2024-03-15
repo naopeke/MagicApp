@@ -8,7 +8,7 @@
                     <h3 class="titulo"><img src="../../../assets/images/iconos/eventos.png" alt=""> &nbsp;Mis próximos eventos &nbsp;<img src="../../../assets/images/iconos/eventos2.png" alt=""></h3>
                 </div>
      
-                <div class="card-container" >
+                <div class="card-container" *ngIf="eventosProx && eventosProx.length >= 3" >
                     <div class="cardEvento">
                         <div class="img-container">
                             <img class="img-fondo" src="../../../assets/images/personajes/fondo-avatar.png" alt="">
@@ -26,7 +26,7 @@
                                 <p>{{eventosProx[0].place}}</p>
                             </div>
                            
-                            <a routerLink="/calendario"><p class="moreInfo">Ver en mi Calendario</p></a>
+                            <button (click)="openModal()" class="button-participar">Abandonar</button>
                         </div>
                     </div>
                     <div class="cardEvento">
@@ -47,7 +47,7 @@
                                 <p>{{eventosProx[1].place}}</p>
                             </div>
                 
-                            <a routerLink="/calendario"><p class="moreInfo">Ver en mi Calendario</p></a>
+                            <button (click)="openModal2()" class="button-participar">Abandonar</button>
                         </div>
                     </div>
                     <div class="cardEvento">
@@ -67,9 +67,19 @@
                                 <p>{{eventosProx[2].place}}</p>
                             </div>
                             <!-- AÑADIR ROUTING A MI CALENDARIO -->
-                            <a routerLink="/calendario"><p class="moreInfo">Ver en mi Calendario</p></a>
+                            <button (click)="openModal3()" class="button-participar">Abandonar</button>
                         </div>
                     </div>
+                </div>
+
+                <div  *ngIf="modalDetail == true" id="modalEvent">
+                    <app-detail-event [evento] = "eventosProx[0]"  (eventCloseDetail) = closeModal($event) [type] = 1></app-detail-event>
+                </div>
+                <div  *ngIf="modalDetail2 == true" id="modalEvent">
+                    <app-detail-event [evento] = "eventosProx[1]"  (eventCloseDetail) = closeModal($event) [type] = 1></app-detail-event>
+                </div>
+                <div  *ngIf="modalDetail3 == true" id="modalEvent">
+                    <app-detail-event [evento] = "eventosProx[2]"  (eventCloseDetail) = closeModal($event) [type] = 1></app-detail-event>
                 </div>
         </swiper-slide>
 
@@ -79,7 +89,7 @@
                     <h3  class="titulo-eventos"> <img src="../../../assets/images/iconos/eventoAmarillo.png" alt=""> &nbsp; Últimos eventos de la comunidad &nbsp;<img src="../../../assets/images/iconos/eventoAmarillo2.png" alt=""></h3>
                 </div>
      
-                <div class="card-container">
+                <div class="card-container" *ngIf="eventoCom && eventoCom.length >= 3">
                     <div class="cardEvento2">
                         <div class="img-container">
                             <img class="img-fondo" src="../../../assets/images/personajes/fondo-avatar.png" alt="">
@@ -98,7 +108,7 @@
                                 <p>{{eventoCom[0].place}}</p>
                             </div>
 
-                            <button (click)="openModal()" class="button-participar">Detalle evento</button>
+                            <button (click)="openModal4()" class="button-participar">Detalle evento</button>
                         </div>
                     </div>
                     <div class="cardEvento2">
@@ -117,7 +127,7 @@
                                 <p>{{eventoCom[1].place}}</p>
                             </div>
                         
-                            <button (click)="openModal2()"class="button-participar">Detalle evento</button>
+                            <button (click)="openModal5()"class="button-participar">Detalle evento</button>
                         </div>
                     </div>
     
@@ -138,18 +148,19 @@
                                 <p>{{eventoCom[2].place}}</p>
                             </div>
 
-                            <button (click)="openModal3()" class="button-participar">Detalle evento</button>
+                            <button (click)="openModal6()" class="button-participar">Detalle evento</button>
                         </div>
                     </div>
                 </div>
-                <div  *ngIf="modalDetail == true" id="modalEvent">
-                    <app-detail-event [evento] = "eventoCom[0]"  (eventCloseDetail) = closeModal($event)></app-detail-event>
+
+                <div  *ngIf="modalDetail4 == true" id="modalEvent">
+                    <app-detail-event [evento] = "eventoCom[0]"  (eventCloseDetail) = closeModal($event) [type] = 2></app-detail-event>
                 </div>
-                <div  *ngIf="modalDetail2 == true" id="modalEvent">
-                    <app-detail-event [evento] = "eventoCom[1]"  (eventCloseDetail) = closeModal($event)></app-detail-event>
+                <div  *ngIf="modalDetail5 == true" id="modalEvent">
+                    <app-detail-event [evento] = "eventoCom[1]"  (eventCloseDetail) = closeModal($event) [type] = 2></app-detail-event>
                 </div>
-                <div  *ngIf="modalDetail3 == true" id="modalEvent">
-                    <app-detail-event [evento] = "eventoCom[2]"  (eventCloseDetail) = closeModal($event)></app-detail-event>
+                <div  *ngIf="modalDetail6 == true" id="modalEvent">
+                    <app-detail-event [evento] = "eventoCom[2]"  (eventCloseDetail) = closeModal($event) [type] = 2></app-detail-event>
                 </div>
              
             <!-- </div> -->
@@ -164,7 +175,7 @@
                     <h3 class="titulo-mazos"> <img src="../../../assets/images/iconos/estrella.png" alt="">  &nbsp; Mazos más votados  &nbsp; <img src="../../../assets/images/iconos/estrella.png" alt=""></h3>
                 </div>
      
-                <div class="card-container">
+                <div class="card-container" *ngIf="bestMazos && bestMazos.length >= 3">
                     <div class="cardMazo">
                         <div>
                             <img class="img-mazo" [src]= 'bestMazos[0].URLphoto' alt="">

@@ -1,56 +1,63 @@
 <div class="content">
     <img id="closeDetail" src="../../../assets/images/detalleEvento/CloseEvent.png" (click)="closeDetail()">
     <div class="bg-cuadrado">
-
         <h3 class="tituloEvent">{{evento.nameEvent}}</h3>
-        <div class="infoEvento">
-            <div class="infoContent">
-                <!-- <div class="contentIcon"> -->
-                    <img class="iconEvent" src="../../../assets/images/iconos/fecha_evento.png">
-                <!-- </div> -->
-                <div class="divInfo">
-                    <p class="information">{{evento.date}}</p>
-                </div>
-    
-            </div>
-    
-            <div class="infoContent">
-                <div class="contentIcon">
-                    <img class="iconEvent" src="../../../assets/images/detalleEvento/reloj.png">
-                </div>
-                <div class="divInfo">
-                    <p class="information">{{evento.hour}}</p>
-                </div>
-            </div>
-    
-            <div class="infoContent2">
-                <div class="contentIcon">
-                    <img class="iconEvent" src="../../../assets/images/detalleEvento/place.png">
-                </div>
-                <div class="divInfo esp">
-                    <p class="information">{{evento.place}}</p>
-                    <p class="information">{{evento.direction}}</p>
-                </div>
-            </div>
-    
-            <div class="infoContent2">
-                <div class="contentIcon">
-                    <img class="iconEvent" src="../../../assets/images/iconos/casco_evento.png" alt="">
-                </div>
-                <div class="esp">
-                    <div class="description">
-                        <h6 class="information" >Descripción</h6>
+        <div class="eventoInfoPart">
+            <div class="infoEvento">
+                <div class="infoContent">
+                    <div class="contentIcon">
+                        <img class="iconEvent" src="../../../assets/images/detalleEvento/calendario.png">
                     </div>
                     <div class="divInfo">
+                       {{evento.date}}
+                    </div>
+                </div>
+        
+                <div class="infoContent">
+                    <div class="contentIcon">
+                        <img class="iconEvent" src="../../../assets/images/detalleEvento/reloj.png">
+                    </div>
+                    <div class="divInfo">
+                        {{evento.hour}}
+                    </div>
+                </div>
+        
+                <div class="infoContent2">
+                    <div class="contentIcon">
+                        <img class="iconEvent" src="../../../assets/images/detalleEvento/ubi.png">
+                    </div>
+                    <div class="divInfo esp">
+                        <p class="information">{{evento.place}}</p>
+                        <p class="information">{{evento.direction}}</p>
+                    </div>
+                </div>
+
+                <div class="infoContent2">
+                    <div class="contentIcon">
+                        <img class="iconEvent" src="../../../assets/images/detalleEvento/casco.png" alt="">
+                    </div>
+                    <div class="divInfo esp">
                         <p class="infoDescription">{{evento.descriptionEvent}}
                         </p>
                     </div>
+        
                 </div>
-    
             </div>
+            <div class="contentParticipantes">
+                <h4 class="creador">Creador:</h4>
+                <p class="nombreCreador">{{creator}}</p>
+                <div>
+                    <h4 class="participantes">Participantes:</h4>
+                    <ul *ngIf="participantes && participantes.length > 0" class="listaPart">
+                        <li *ngFor="let participante of participantes" class="participante">{{ participante}}</li>
+                    </ul>
+                    <p *ngIf="!participantes || participantes.length === 0">Todavía no hay participantes en este evento. !Apúntate!</p>
+                </div>
+            </div>
+           
         </div>
-
-        <button class="buttonParticipar" (click)="participar()">Participar</button>
+        <button *ngIf="type == 1" class="buttonParticipar" (click)="abandonar()">Abandonar</button>
+        <button *ngIf="type == 2" class="buttonParticipar" (click)="participar()">Participar</button>
     </div>
 
 </div>

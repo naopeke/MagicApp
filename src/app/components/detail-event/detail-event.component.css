@@ -1,6 +1,6 @@
 .content{
-    height: 750px;
-    width: 700px;
+    height: 700px;
+    width: 900px;
     background-image: url(../../../assets/images/detalleEvento/fondoDetalle2.png);
     background-size: cover;
     border-radius: var(--borde-cuadrado);
@@ -12,8 +12,8 @@
 
 .bg-cuadrado{
     height: 650px;
-    width: 600px;
-    padding: 20px;
+    width: 800px;
+    padding: 40px;
     background-color: var(--negro-bg);
     border-radius: var(--borde-cuadrado);
 
@@ -21,7 +21,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center ;
-    gap: 25px;
+    gap: 30px;
 }
 
 .tituloEvent{
@@ -30,71 +30,70 @@
     font-size: 24pt;
 }
 
+.eventoInfoPart{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 10px;
+}
+
 .infoEvento{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    width: 320px;
 }
 .infoContent, .infoContent2{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 350px;
-    gap: 10px;
+    width: 100%;
+    gap: 15px;
+    padding: 15px;
     border-bottom: solid var(--verde) 1px;
-    /* border: solid red 2px; */
 }
 .infoContent2{
     align-items: center;
 }
 .divInfo{
     width: 100%;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* border: solid green 2px; */
+    height: 100%;
 
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: var(--inter);
+    color: var(--blanco);
 }
 .esp{
     flex-direction: column;
 }
 .contentIcon{
-    width: 15%;
-    height: 100%;
     display: flex;
-    justify-content: flex-start;
-    gap: 10px;
+    justify-content: center;
+    height: 100%;
+    width: 15%;
+}
 
-    /* border: solid yellow 2px */
-}
-.iconEvent{
-    height: 35px;
-    /* border: solid red 2px; */
-    
-}
 .information, .infoDescription{
- 
     height: 100%;
     width: 100%;
     font-family: var(--inter);
     color: var(--blanco);
     text-align: left;
-    /* border: solid wheat 2px; */
-}
-.information{
     font-size: 14pt;
-    text-align: center;
-    justify-content: flex-start;
 }
 
 
 .description{
     padding-top: 10px;
+    align-self: center;
 }
 
 .infoDescription{
-    text-align: center;
+    text-align: left
 }
 .buttonParticipar{
     height: 50px;
@@ -103,7 +102,7 @@
     border-radius: var(--borde-boton);
     font-family: var(--antiqua);
     font-size: 14pt;
-
+    align-self: center;
 
     border: none;
 }
@@ -123,5 +122,39 @@
 #closeDetail:hover{
     border: solid var(--rojo) 2px;
     border-radius: var(--borde-boton);
+    
+}
+
+/* participantes */
+
+.contentParticipantes{
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+}
+
+.creador, .participantes{
+    font-family: var(--antiqua);
+    color: var(--amarillo);
+    font-size: 15pt;
+}
+
+.nombreCreador, .participante{
+    font-family: var(--inter);
+    font-size: 14pt;
+    color: var(--blanco);
+}
+
+.listaPart{
+    max-height: 250px;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+}
+
+.listaPart li {
+    margin-bottom: 10px;
     
 }
