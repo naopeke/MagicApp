@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Eventos } from 'src/app/models/eventos';
 import { User } from 'src/app/models/user';
 import { EventosService } from 'src/app/shared/eventos.service';
@@ -20,7 +21,8 @@ export class DetailEventComponent implements OnInit{
   // sacar de servico cuando login
  
 
-  constructor(public eventoService: EventosService){}
+  constructor(public eventoService: EventosService,
+              private toastr: ToastrService){}
 
 
   ngOnInit() {
@@ -52,11 +54,10 @@ export class DetailEventComponent implements OnInit{
   participar(){
     this.eventoService.postPartipacion(this.id_user, this.evento.id_event).subscribe((res:any) =>{
       if(!res.error){
-        console.log(res.mensaje);
-        this.getparticipantes();
+        this.toastr.success(res.mensaje, '¡Bienvenido al evento!')
+        
       } else{
-        console.log(res.error);
-        console.log(res.mensaje);
+        this.toastr.error(res.mensaje, '¡Ups!' )
       }
     })
 
@@ -65,10 +66,9 @@ export class DetailEventComponent implements OnInit{
   abandonar(){
     this.eventoService.deleteParticipacion(this.id_user, this.evento.id_event).subscribe((res:any) =>{
       if(!res.error){
-        console.log(res.mensaje);
+        this.toastr.success(res.mensaje, 'Éxito')
       } else{
-        console.log(res.error);
-        console.log(res.mensaje);
+        this.toastr.error(res.mensaje, '¡Ups!' )
       }
     })
   }

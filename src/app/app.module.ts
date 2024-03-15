@@ -69,6 +69,7 @@ import { DeleteEventComponent } from './components/delete-event/delete-event.com
 import { EditEventComponent } from './components/edit-event/edit-event.component';
 import { DetailEventComponent } from './components/detail-event/detail-event.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -114,6 +115,11 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     RouterModule,
     HttpClientModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-center',
+      closeButton: true,
+      timeOut: 5000
+    }),
 
     // angular material
     MatSidenavModule,

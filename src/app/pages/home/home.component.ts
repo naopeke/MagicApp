@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   public eventosProx: Eventos[];
   public eventoCom: Eventos[]
   public bestMazos: Deck[]
-  public selectEvento: Eventos
+  public selectEvento: Eventos | undefined
 
 @Input () typeRating: number;
 
@@ -97,6 +97,10 @@ ngOnInit(): void {
   public closeModal(event:boolean){
     this.modalDetail = event
     this.modalDetail2 = event
+    if (event) {
+      this.modalDetail2 = false;
+
+    }
 
   }
 }
