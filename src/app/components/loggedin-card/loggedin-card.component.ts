@@ -101,7 +101,8 @@ export class LoggedinCardComponent implements OnInit {
   }
 
   onDeleteFromChild(cardId: string){
-    this.builderCards = this.builderCards.filter(card => card.id_card_api !== cardId);
+    this.builderCards = this.builderCards.filter(card => card.id !== cardId);
+    console.log('Deteleted card', cardId);
     console.log('After deleting from Builder: ', this.builderCards);
   }
 
@@ -131,7 +132,7 @@ export class LoggedinCardComponent implements OnInit {
     // });
     dialogRef.afterClosed().subscribe(deckIndex => {
       console.log('The dialog was closed');
-        let cardIds = this.builderCards.map(card => card.id_card_api);
+        let cardIds = this.builderCards.map(card => card.id);
         console.log('modal: ', cardIds);
         this.cardsService.addCardsToDeck(deckIndex, cardIds);
         this.snackBar.open(`Añadido tu carta al mazo #${deckIndex + 1}`, 'Cerrar', {
@@ -151,22 +152,15 @@ export class LoggedinCardComponent implements OnInit {
   public onCardInfoOpen(card:Card):void{
     console.log('clicked card', card);
     this.selectedCard = card;
-    this.darkenOverlay=true; 
+    this.darkenOverlay = true; 
     this.show_cardinfo = true; 
   }
 
-  public onCardInfoClose(show: boolean):void{
+    public onCardInfoClose(show: boolean):void{
     this.selectedCard = null; // resetear selectedCard cuendo se cierra
-    this.darkenOverlay = show;
-    this.show_cardinfo = show;
-  }
-
-  public card_info_close():void{
-    this.selectedCard = null; // resetear selectedCard
     this.darkenOverlay = false;
     this.show_cardinfo = false;
   }
-
 
   }
 

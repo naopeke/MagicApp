@@ -123,12 +123,14 @@ select {
 .results-container {
     grid-area: results; 
     min-height: 100vh;
+    min-width: 100%;
     padding-top: 40px;
     margin-bottom: 0;
     overflow-y: auto;
 }
 
 .list-cards{
+    border: 2px solid blue;
     display:flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -138,31 +140,43 @@ select {
 }
 
 .builder-container {
+    border: 2px solid red;
     grid-area: builder; 
     background-color: var(--negro-bg);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width:100%;
-    padding-bottom: 40px;
+    min-width: 400px;
+    padding: 48px 0 40px 0;
+}
+
+.list-cards2{
+    border: 2px solid purple;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap:5px;
+    min-height:100%;
+    padding: 16px;
 }
 
 
 .bg-builder {
-    min-height: 80%;
+    border:2px solid orange;
+    min-height: 100%;
 }
 
 .btn-builder1 {
     width:100%;
-    height:82px;
-    padding:8px;
+    /* height:82px;
+    padding:8px; */
     text-align: center;
     font-family: var(--antiqua);
     font-size: 24px;
     color:var(--blanco);
-    border-radius: var(--borde-boton);
     border:none;
+    padding-bottom: 8px;
 }
 
 .btn-builder2{
@@ -195,10 +209,20 @@ select {
             "results"
             "builder";
     }
-    .title-search, .results-container, .builder-container {
-        grid-column: 1 / -1; 
+}
+@media (max-width: 768px) {
+    .gridarea {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "titlesearch"
+            "results"
+            "builder";
+    }
+    .builder-container {
+        min-width: 0;
     }
 }
+
 
 /* @media screen and (1025 <= width <= 1200) {
 } 

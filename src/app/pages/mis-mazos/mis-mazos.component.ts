@@ -80,7 +80,7 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
 
 
   public onIncreaseCardQuantityFromChild(cardId: string) {
-    const card = this.mazo.cards.find(c => c.id_card_api === cardId);
+    const card = this.mazo.cards.find(card => card.id === cardId);
     if (card) {
       card.quantity += 1;
       console.log(`Quantity ${cardId}: `, card.quantity);
@@ -88,7 +88,7 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
   }
 
   public onDecreaseCardQuantityFromChild(cardId: string){
-    const card = this.mazo.cards.find(c => c.id_card_api === cardId);
+    const card = this.mazo.cards.find(card => card.id === cardId);
     if (card && card.quantity > 0) {  //para que la cantidad no sea menor que cero
       card.quantity -= 1;
       console.log(`Quantity ${cardId}: `, card.quantity);
@@ -96,7 +96,7 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
   }
 
   public onDeleteAllCardsFromChild(cardId:string){
-    const card = this.mazo.cards.find(c => c.id_card_api === cardId);
+    const card = this.mazo.cards.find(card => card.id === cardId);
     console.log(card);
     if (card && card.quantity > 0) {  //para que la cantidad no sea menor que cero
       card.quantity = 0;

@@ -30,28 +30,35 @@ export class CardComponent {
     this.addCardToBuilder.emit(this.childCard);
   }
 
-  onDeleteButtonClick(event:Event){
-    console.log('clicked the x button');
-    this.deleteFromChild.emit(this.childCard.id_card_api);
-  }
+  onDeleteButtonClick() {
+    console.log('childCard :', this.childCard);
+    console.log('childCard api :', this.childCard.id);
+    if(this.childCard && this.childCard.id) {
+      console.log(this.childCard.id);
+        this.deleteFromChild.emit(this.childCard.id);
+    } else {
+        console.error('No card ID available for deletion');
+    }
+}
+
 
   //pagina mis mazos
   onCountPlusButtonClick(event:Event){
     console.log('clicked the count plus button');
     event.stopPropagation(); //para resolver bubbling
-    this.countPlusFromChild.emit(this.childCard.id_card_api);
+    this.countPlusFromChild.emit(this.childCard.id);
   }
 
   onCountMinusButtonClick(event:Event){
     console.log('clicked the count minus button');
     event.stopPropagation(); //para resolver bubbling
-    this.countMinusFromChild.emit(this.childCard.id_card_api);
+    this.countMinusFromChild.emit(this.childCard.id);
   }
 
   onDeleteAllButtonClick(event:Event){
     console.log('clicked the delete all button');
     event.stopPropagation(); //para resolver bubbling
-    this.deleteAllQuantityFromChild.emit(this.childCard.id_card_api);
+    this.deleteAllQuantityFromChild.emit(this.childCard.id);
   }
 
   onCardClick():void {
