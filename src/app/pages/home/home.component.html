@@ -4,82 +4,33 @@
 
         <swiper-slide id="misEventos">
                 <div>
-                    <!-- AÑADIR PIPE PARA SIMBOLOS -->
                     <h3 class="titulo"><img src="../../../assets/images/iconos/eventos.png" alt=""> &nbsp;Mis próximos eventos &nbsp;<img src="../../../assets/images/iconos/eventos2.png" alt=""></h3>
                 </div>
      
-                <div class="card-container" *ngIf="eventosProx && eventosProx.length >= 3" >
-                    <div class="cardEvento">
-                        <div class="img-container">
-                            <img class="img-fondo" src="../../../assets/images/personajes/fondo-avatar.png" alt="">
-                            <img class="img-avatar" src="../../../assets/images/personajes/avatar2.png" alt="">
-                        </div>
-                        <div class="card-info">
-                            <div class="tituloEvento"> 
-                                <p>{{eventosProx[0].nameEvent}}</p>
+                <div class="card-container" *ngIf="eventosProx && eventosProx.length >= 3">
+                    <div *ngFor="let evento of eventosProx">
+                        <div class="cardEvento">
+                            <div class="img-container">
+                                <img class="img-fondo" src="../../../assets/images/personajes/fondo-avatar.png" alt="">
+                                <img class="img-avatar" src="../../../assets/images/personajes/avatar2.png" alt="">
                             </div>
-
-                            <!-- AÑADIR ICONOS DE FECHA HORA Y LUGAR -->
-                            <div class="info">
-                                <p>{{eventosProx[0].date}}</p>
-                                <p>{{eventosProx[0].hour}}</p>
-                                <p>{{eventosProx[0].place}}</p>
-                            </div>
-                           
-                            <button (click)="openModal()" class="button-participar">Abandonar</button>
-                        </div>
-                    </div>
-                    <div class="cardEvento">
-                        <div class="img-container">
-                            <img class="img-fondo" src="../../../assets/images/personajes/fondo-avatar.png" alt="">
-                            <img class="img-avatar" src="../../../assets/images/personajes/avatar2.png" alt="">
-                        </div>
-                        <div class="card-info">
-
-                            <div class="tituloEvento">
-                                <p>{{eventosProx[1].nameEvent}} </p>
-                            </div>
+                            <div class="card-info">
+                                <div class="tituloEvento"> 
+                                    <p>{{evento.nameEvent}}</p>
+                                </div>
+                                <div class="info">
+                                    <p>{{evento.date}}</p>
+                                    <p>{{evento.hour}}</p>
+                                    <p>{{evento.place}}</p>
+                                </div>
                             
-                            <!-- AÑADIR ICONOS DE FECHA HORA Y LUGAR -->
-                            <div class="info">
-                                <p>{{eventosProx[1].date}}</p>
-                                <p>{{eventosProx[1].hour}}</p>
-                                <p>{{eventosProx[1].place}}</p>
-                            </div>
-                
-                            <button (click)="openModal2()" class="button-participar">Abandonar</button>
+                                <button (click)="openModal(evento)" class="button-abandonar">Abandonar</button>
+                            </div>>
                         </div>
                     </div>
-                    <div class="cardEvento">
-                        <div class="img-container">
-                            <img class="img-fondo" src="../../../assets/images/personajes/fondo-avatar.png" alt="">
-                            <img class="img-avatar" src="../../../assets/images/personajes/avatar2.png" alt="">
-                        </div>
-                        <div class="card-info">
-                            <div class="tituloEvento">
-                                <p>{{eventosProx[2].nameEvent}}</p>
-                            </div>
-                            
-                            <!-- AÑADIR ICONOS DE FECHA HORA Y LUGAR -->
-                            <div class="info">
-                                <p>{{eventosProx[2].date}}</p>
-                                <p>{{eventosProx[2].hour}}</p>
-                                <p>{{eventosProx[2].place}}</p>
-                            </div>
-                            <!-- AÑADIR ROUTING A MI CALENDARIO -->
-                            <button (click)="openModal3()" class="button-participar">Abandonar</button>
-                        </div>
+                    <div  *ngIf="modalDetail == true" class="modalEvent">
+                        <app-detail-event [evento] = "selectEvento"  (eventCloseDetail) = closeModal($event) [type] = 1 [id_user] = "id_user"></app-detail-event>
                     </div>
-                </div>
-
-                <div  *ngIf="modalDetail == true" id="modalEvent">
-                    <app-detail-event [evento] = "eventosProx[0]"  (eventCloseDetail) = closeModal($event) [type] = 1></app-detail-event>
-                </div>
-                <div  *ngIf="modalDetail2 == true" id="modalEvent">
-                    <app-detail-event [evento] = "eventosProx[1]"  (eventCloseDetail) = closeModal($event) [type] = 1></app-detail-event>
-                </div>
-                <div  *ngIf="modalDetail3 == true" id="modalEvent">
-                    <app-detail-event [evento] = "eventosProx[2]"  (eventCloseDetail) = closeModal($event) [type] = 1></app-detail-event>
                 </div>
         </swiper-slide>
 
@@ -90,159 +41,67 @@
                 </div>
      
                 <div class="card-container" *ngIf="eventoCom && eventoCom.length >= 3">
-                    <div class="cardEvento2">
-                        <div class="img-container">
-                            <img class="img-fondo" src="../../../assets/images/personajes/fondo-avatar.png" alt="">
-                            <!-- seria la foto de quien ha creado el evento -->
-                            <img class="img-avatar" src="../../../assets/images/personajes/avatar2.png" alt="">
-                        </div>
-                        <div class="card-info">
-                            <div class="tituloEvento2">
-                                <p>{{eventoCom[0].nameEvent}} </p>
+                    <div *ngFor="let evento of eventoCom">
+                        <div class="cardEvento2">
+                            <div class="img-container">
+                                <img class="img-fondo" src="../../../assets/images/personajes/fondo-avatar.png" alt="">
+                                <!-- seria la foto de quien ha creado el evento -->
+                                <img class="img-avatar" src="../../../assets/images/personajes/avatar2.png" alt="">
                             </div>
-                            
-                            <!-- AÑADIR ICONOS DE FECHA HORA Y LUGAR -->
-                            <div class="info">
-                                <p>{{eventoCom[0].date}}</p>
-                                <p>{{eventoCom[0].hour}}</p>
-                                <p>{{eventoCom[0].place}}</p>
-                            </div>
+                            <div class="card-info">
+                                <div class="tituloEvento2">
+                                    <p>{{evento.nameEvent}} </p>
+                                </div>
+                                
+                                <div class="info">
+                                    <p>{{evento.date}}</p>
+                                    <p>{{evento.hour}}</p>
+                                    <p>{{evento.place}}</p>
+                                </div>
 
-                            <button (click)="openModal4()" class="button-participar">Detalle evento</button>
-                        </div>
-                    </div>
-                    <div class="cardEvento2">
-                        <div class="img-container">
-                            <img class="img-fondo" src="../../../assets/images/personajes/fondo-avatar.png" alt="">
-                            <img class="img-avatar" src="../../../assets/images/personajes/avatar3.png" alt="">
-                        </div>
-                        <div class="card-info">
-                            <div class="tituloEvento2">
-                                <p>{{eventoCom[1].nameEvent}} </p>
+                                <button (click)="openModal2(evento)" class="button-participar">Detalle evento</button>
                             </div>
-                            <!-- AÑADIR ICONOS DE FECHA HORA Y LUGAR -->
-                            <div class="info">
-                                <p>{{eventoCom[1].date}}</p>
-                                <p>{{eventoCom[1].hour}}</p>
-                                <p>{{eventoCom[1].place}}</p>
-                            </div>
-                        
-                            <button (click)="openModal5()"class="button-participar">Detalle evento</button>
                         </div>
-                    </div>
-    
-                    <div class="cardEvento2">
-                        <div class="img-container">
-                            <img class="img-fondo" src="../../../assets/images/personajes/fondo-avatar.png" alt="">
-                            <img class="img-avatar" src="../../../assets/images/personajes/avatar3.png" alt="">
-                        </div>
-                        <div class="card-info">
-                            <div  class="tituloEvento2">
-                                <p>{{eventoCom[2].nameEvent}} </p>
-                            </div>
-            
-                            <!-- AÑADIR ICONOS DE FECHA HORA Y LUGAR -->
-                            <div class="info">
-                                <p>{{eventoCom[2].date}}</p>
-                                <p>{{eventoCom[2].hour}}</p>
-                                <p>{{eventoCom[2].place}}</p>
-                            </div>
-
-                            <button (click)="openModal6()" class="button-participar">Detalle evento</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div  *ngIf="modalDetail4 == true" id="modalEvent">
-                    <app-detail-event [evento] = "eventoCom[0]"  (eventCloseDetail) = closeModal($event) [type] = 2></app-detail-event>
-                </div>
-                <div  *ngIf="modalDetail5 == true" id="modalEvent">
-                    <app-detail-event [evento] = "eventoCom[1]"  (eventCloseDetail) = closeModal($event) [type] = 2></app-detail-event>
-                </div>
-                <div  *ngIf="modalDetail6 == true" id="modalEvent">
-                    <app-detail-event [evento] = "eventoCom[2]"  (eventCloseDetail) = closeModal($event) [type] = 2></app-detail-event>
-                </div>
-             
-            <!-- </div> -->
-            
  
+                    </div>
+                    <div  *ngIf="modalDetail2 == true" class="modalEvent">
+                        <app-detail-event [evento] = "selectEvento"  (eventCloseDetail) = closeModal($event) [type] = 2 [id_user] = "id_user"></app-detail-event>
+                    </div>
+
+                </div>
         </swiper-slide>
 
         <swiper-slide id="mazos">
-            <!-- <div id="bgMazos"> -->
                 <div >
-                    <!-- AÑADIR PIPE PARA SIMBOLOS -->
                     <h3 class="titulo-mazos"> <img src="../../../assets/images/iconos/estrella.png" alt="">  &nbsp; Mazos más votados  &nbsp; <img src="../../../assets/images/iconos/estrella.png" alt=""></h3>
                 </div>
      
                 <div class="card-container" *ngIf="bestMazos && bestMazos.length >= 3">
-                    <div class="cardMazo">
-                        <div>
-                            <img class="img-mazo" [src]= 'bestMazos[0].URLphoto' alt="">
-                        </div>
-                        <div>
-                            <div class="estrellas">
-                                <app-rating [mediaScore] = "bestMazos[0].mediaScore" [typeRating]="2"></app-rating>
+                    <div *ngFor="let bestMazo of bestMazos">
+                        <div class="cardMazo">
+                            <div>
+                                <img class="img-mazo" [src]= 'bestMazo.URLphoto' alt="">
                             </div>
-                            <div class="line-container">
-                                <hr class="line">
-                            </div>
-                    
-                            <!-- AÑADIR ICONOS DE FECHA HORA Y LUGAR -->
-                            <div class="info2">
-                                <p class="info-mazo">{{bestMazos[0].nameDeck}}</p>
-                                <p class="info-user">{{bestMazos[0].nameUser}}</p>
-                            </div>
-                          
-                            <button [routerLink]="['/explora']" class="button-explorar">Explorar</button>
-                        </div>
-                    </div>
-    
-                    <div class="cardMazo">
-                        <div>
-                            <img class="img-mazo" [src]= 'bestMazos[1].URLphoto' alt="">
-                        </div>
-                        <div>
-                            <div class="estrellas">
-                                <app-rating  [mediaScore] = "bestMazos[1].mediaScore" [typeRating]="2"></app-rating>
-                            </div>
-                            <div class="line-container">
-                                <hr class="line">
-                            </div>
-                    
-                            <!-- AÑADIR ICONOS DE FECHA HORA Y LUGAR -->
-                            <div class="info2">
-                                <p class="info-mazo">{{bestMazos[1].nameDeck}}</p>
-                                <p class="info-user">{{bestMazos[1].nameUser}}</p>
-                            </div>
+                            <div>
+                                <div class="estrellas">
+                                    <app-rating [mediaScore] = "bestMazo.mediaScore" [typeRating]="2"></app-rating>
+                                </div>
+                                <div class="line-container">
+                                    <hr class="line">
+                                </div>
+                        
+                                <!-- AÑADIR ICONOS DE FECHA HORA Y LUGAR -->
+                                <div class="info2">
+                                    <p class="info-mazo">{{bestMazo.nameDeck}}</p>
+                                    <p class="info-user">{{bestMazo.nameUser}}</p>
+                                </div>
                             
-                            <button [routerLink]="['/explora']" class="button-explorar">Explorar</button>
-                        </div>
-                    </div>
-    
-                    <div class="cardMazo">
-                        <div>
-                            <img class="img-mazo" [src]= 'bestMazos[2].URLphoto' alt="">
-                        </div>
-                        <div>
-                            <div class="estrellas">
-                                <app-rating [mediaScore] = "bestMazos[2].mediaScore" [typeRating]="2"></app-rating>
+                                <button [routerLink]="['/explora']" class="button-explorar">Explorar</button>
                             </div>
-                            <div class="line-container">
-                                <hr class="line">
-                            </div>
-                    
-                            <!-- AÑADIR ICONOS DE FECHA HORA Y LUGAR -->
-                            <div class="info2">
-                                <p class="info-mazo">{{bestMazos[2].nameDeck}}</p>
-                                <p class="info-user">{{bestMazos[2].nameUser}}</p>
-                            </div>
-                           
-                            <button [routerLink]="['/explora']" class="button-explorar">Explorar</button>
                         </div>
                     </div>
                 </div>
-            <!-- </div> -->
+
         </swiper-slide>
 
     </swiper-container>

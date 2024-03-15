@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Eventos } from 'src/app/models/eventos';
 import { User } from 'src/app/models/user';
 import { EventosService } from 'src/app/shared/eventos.service';
@@ -11,10 +11,14 @@ import { EventosService } from 'src/app/shared/eventos.service';
 export class DetailEventComponent implements OnInit{
   @Input() evento:Eventos
   @Input() type: number
+  @Input() id_user:number;
   @Output() eventCloseDetail = new EventEmitter<boolean>();
+
   public openModal:boolean = false
   public creator: string
   public participantes: User[] = []
+  // sacar de servico cuando login
+ 
 
   constructor(public eventoService: EventosService){}
 
@@ -46,10 +50,26 @@ export class DetailEventComponent implements OnInit{
   }
 
   participar(){
-    console.log(this.evento);
+    this.eventoService.postPartipacion(this.id_user, this.evento.id_event).subscribe((res:any) =>{
+      if(!res.error){
+        console.log(res.mensaje);
+        this.getparticipantes();
+      } else{
+        console.log(res.error);
+        console.log(res.mensaje);
+      }
+    })
+
   }
 
   abandonar(){
-
+    this.eventoService.deleteParticipacion(this.id_user, this.evento.id_event).subscribe((res:any) =>{
+      if(!res.error){
+        console.log(res.mensaje);
+      } else{
+        console.log(res.error);
+        console.log(res.mensaje);
+      }
+    })
   }
 }

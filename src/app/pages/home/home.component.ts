@@ -13,16 +13,14 @@ import { EventosService } from 'src/app/shared/eventos.service';
 export class HomeComponent implements OnInit {
   public modalDetail: boolean = false
   public modalDetail2: boolean = false
-  public modalDetail3: boolean = false
-  public modalDetail4: boolean = false
-  public modalDetail5: boolean = false
-  public modalDetail6: boolean = false
+
   // cambiarlo por el del servicio cuando esta logueado
   public id_user: number = 1
 
   public eventosProx: Eventos[];
   public eventoCom: Eventos[]
   public bestMazos: Deck[]
+  public selectEvento: Eventos
 
 @Input () typeRating: number;
 
@@ -35,77 +33,70 @@ export class HomeComponent implements OnInit {
   constructor(public eventoService: EventosService){}
 
 ngOnInit(): void {
-this.eventoService.getMyEvents(this.id_user).subscribe((res:any) =>{
-  if(!res.error){
-    this.eventosProx = res.data
-
-    console.log(this.eventosProx);
-    
-  }
-  else {
-    // poner con toast
-    console.log(res.error);
-    console.log(res.mensaje);
-
-  }
-
-})
-
-this.eventoService.getEventsCommunity(this.id_user).subscribe((res:any) => {
-  if(!res.error){
-    this.eventoCom = res.data
-    console.log(this.eventoCom);
-    
-  }  else {
-    // poner con toast
-    console.log(res.error);
-    console.log(res.mensaje);
-  }
-})
-
-this.eventoService.getBestDecks().subscribe((res:any) => {
-  if(!res.error){
-    this.bestMazos = res.data
-    console.log(this.bestMazos);
-    console.log(this.bestMazos[0].URLphoto);
-    
-    
-  }  else {
-    // poner con toast
-    console.log(res.error);
-    console.log(res.mensaje);
-  }
-})
+  this.getMyEvents();
+  this.getEventCom();
+  this.getBestDecks();
 }
 
+  public getMyEvents(){
+    this.eventoService.getMyEvents(this.id_user).subscribe((res:any) =>{
+      if(!res.error){
+        this.eventosProx = res.data
+    
+        console.log(this.eventosProx);
+        
+      }
+      else {
+        // poner con toast
+        console.log(res.error);
+        console.log(res.mensaje);
+      }
+    })
+  }
 
-  public openModal(){
+  public getEventCom(){
+    this.eventoService.getEventsCommunity(this.id_user).subscribe((res:any) => {
+      if(!res.error){
+        this.eventoCom = res.data
+        console.log(this.eventoCom);
+        
+      }  else {
+        // poner con toast
+        console.log(res.error);
+        console.log(res.mensaje);
+      }
+    })
+  }
+
+  public getBestDecks(){
+    this.eventoService.getBestDecks().subscribe((res:any) => {
+      if(!res.error){
+        this.bestMazos = res.data
+        console.log(this.bestMazos);
+        console.log(this.bestMazos[0].URLphoto);
+        
+        
+      }  else {
+        // poner con toast
+        console.log(res.error);
+        console.log(res.mensaje);
+      }
+    })
+  }
+  
+  public openModal(evento:Eventos){
+    this.selectEvento = evento
     this.modalDetail = true
   }
-  public openModal2(){
+  public openModal2(evento:Eventos){
     this.modalDetail2 = true
+    this.selectEvento = evento
   }
-  public openModal3(){
-    this.modalDetail3 = true
-  }
-
-  public openModal4(){
-    this.modalDetail4 = true
-    
-  }
-  public openModal5(){
-    this.modalDetail5 = true
-  }
-  public openModal6(){
-    this.modalDetail6 = true
-  }
+  
 
   public closeModal(event:boolean){
     this.modalDetail = event
     this.modalDetail2 = event
-    this.modalDetail3 = event
-    this.modalDetail4 = event
-    this.modalDetail5 = event
-    this.modalDetail6 = event
+
   }
 }

@@ -26,29 +26,6 @@ swiper-slide {
   color: var(--blanco);
 }
 
-/* #bgEventos , #bgEventos2, #bgMazos{
-  width: 1600px;
-  height: 850px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 60px;
-  background-size: cover;
-} */
-
-/* #bgEventos{
-  background-image: url(../../../assets/images/home/bg-foto-bosque.png);
-}
-
-#bgEventos2{
-  background-image: url(../../../assets/images/home/bg-foto-bosque2.png);
-}
-
-#bgMazos{
-  background-image: url(../../../assets/images/home/bg-foto-montaña.png);
-} */
-
 #misEventos{
   background-image: url(../../../assets/images/home/bg-foto-bosque.png);
 }
@@ -194,17 +171,24 @@ a{
   text-decoration: underline;
 }
 
-.button-participar{
+.button-participar, .button-abandonar{
   height: 45px;
   padding: 5px;
   width: 180px;
   margin-top: 30px;
-  background-color: var(--verde);
   border-radius: var(--borde-boton);
   border: none;
 }
 
-.button-participar:hover{
+.button-abandonar{
+  background-color: var(--amarillo);
+}
+
+.button-participar{
+  background-color: var(--verde);
+}
+
+.button-participar:hover, .button-abandonar:hover{
   background-color: var(--blanco);
 }
 
@@ -230,8 +214,10 @@ a{
   border: solid var(--blanco) 2px;
   width: 300px;
 }
-#modalEvent{
+.modalEvent{
   position: absolute;
+  top: 100px;
+  right: 300px;
   z-index: 9999;
 }
 

@@ -133,14 +133,24 @@ export class EventosService {
   }
 
   getParticipantes(id_event:number):Observable<object>{
-    return this.http.get(this.urlHome + '/' + 'detalleEvento/' + id_event)
+    return this.http.get(this.urlHome + '/detalleEvento/' + id_event)
   }
   postPartipacion(id_user:number, id_event:number):Observable<object>{
     const body = {
       id_user: id_user,
       id_event: id_event
     };
-    return this.http.post(this.urlHome, body)
+    return this.http.post(this.urlHome + '/detalleEvento/', body)
+  }
+
+  deleteParticipacion(id_user:number, id_event:number):Observable<object>{
+    const options = {
+      body: {
+        id_user: id_user,
+        id_event: id_event
+      }
+    };
+    return this.http.delete(this.urlHome +'/abandonar', options)
   }
 
   
