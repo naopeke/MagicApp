@@ -6,6 +6,7 @@ export class Card {
         public id_user?: number,
         public image_uris?: string,
         public name?: string,
+        public printed_name?: string,
         public type_line?: string,
         public oracle_text?: string,
         public printed_text?: string,

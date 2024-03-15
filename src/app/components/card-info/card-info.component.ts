@@ -17,13 +17,30 @@ export class CardInfoComponent implements OnInit{
   public darkenOverlay: boolean = false;
   public show_cardinfo: boolean = false;
 
+  public legalities: any[] = []; // para bucle de legalities
 
-  convertLegalitiesToArray(legalities:any): any[]{
+
+  // recibir el object de legalities y convertir a un array con map function
+  // format : tipo de reglas ex.standard, modern, commander
+  // statud : status de legalities  ex. legal, not legal 
+  changeLegalitiesToArray(legalities:any): any[]{
     return Object.keys(legalities).map(key => ({
       format: key,
       status: legalities[key]
     }));
   }
+
+  // cambio getColor de xisca
+  public getColor(status: string){
+    switch(status){
+      case 'legal': return '#5C724B';
+      case 'not legal': return '#616161';
+      case 'restrict': return '#28669F';
+      case 'banned': return '#B6281A';
+      default: return 'grey';
+    }
+  }
+
 
   // legalities = [
   //   {text: 'not legal', color: 'grey'},
@@ -56,8 +73,8 @@ export class CardInfoComponent implements OnInit{
   constructor(public cardsService: CardsService){}
 
   ngOnInit(): void {
-    //TODO: llamar a servicio por id y incializar "card" con los datos reales de BBDD
     console.log('carta: ', this.carta); 
+    this.legalities = this.changeLegalitiesToArray(this.carta.legalities);
 
 }
   ngOnChanges(changes: SimpleChanges): void {
