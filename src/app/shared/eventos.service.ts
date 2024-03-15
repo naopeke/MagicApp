@@ -101,3 +101,21 @@ export class EventosService {
     this.modalEditEvent = true;
   }
 }
+
+
+// *NOTE - CALENDARIO
+// router.get('/calendario, ) saber eventos tanto true como false en participation 
+// router.post('/calendario, ) añadir evento indicando mi id_user
+  // parametro de la funcion (id_user, Event) por body
+// router.put('/calendario, ) modificar p<rticipacion del evento(pasar participation a false)
+// router.delete('/calendario, ) eliminar evento solo mi id_user de loggin coincide con del creador
+
+// *NOTE - EVENTOS
+
+// router.get('/eventos, ) aparezcan todos los eventos
+// router.get('/eventos/?id_user, ) filtro para que aparezcan solo los eventos del usuario
+// router.get('/eventos/??????, ) filtro para que aparezcan solo los eventos que NO son creados por el usuario
+
+// router.post('/eventos, ) añadir evento con el id_user del logging
+// router.put('/eventos, ) editar evento solo mi id_user de loggin coincide con del creador
+// router.delete('/eventos, ) eliminar evento solo mi id_user de loggin coincide con del creador

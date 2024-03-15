@@ -81,6 +81,30 @@
   width: 10%;
 }
 
+.btn-buscador {
+  width:60px;
+  height:60px;
+  color:var(--azul);
+  background-color: var(--verde);
+  background-image: url('/assets/images/iconos/ojo.png');
+  background-size:contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 0 10% 10% 0;
+  border:none;
+}
+
+select {
+  width: 200px;
+  height: 60px;
+  background-color: var(--negro-bg);
+  color: var(--verde);
+  font-family: var(--inter);
+  font-size: 20px;
+  border: 3px solid var(--verde);
+  text-align: center;
+  border-right: none;
+}
 /* card perfil */
 #divEvento{
   background-color: var(--negro-bg);
@@ -331,3 +355,5 @@
     width:30px
   }
 }
+
+
