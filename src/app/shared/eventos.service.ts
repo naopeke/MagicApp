@@ -11,11 +11,11 @@ export class EventosService {
   user1:User = new User(1, "Kreatimes", "juan@gmail.com", "1234", " ", "");
   user2:User = new User(2, "Maxiglow", "pepito@gmail.com", "1234", " ", "");
 
-  ev1:Evento = new Evento(1,"Primer evento", "Evento especial 1", new Date(), "18:00", "Zona uno, Madrid", this.user1);
-  ev2:Evento = new Evento(2,"Segundo evento", "Evento especial 1", new Date(), "18:00", "Zona uno, Madrid", this.user1);
-  ev3:Evento = new Evento(3,"Tercer evento", "Evento especial 1", new Date(), "18:00", "Zona uno, Madrid", this.user2);
-  ev4:Evento = new Evento(4,"Cuarto evento", "Evento especial 1", new Date(), "18:00", "Zona uno, Madrid", this.user2);
-  ev5:Evento = new Evento(5,"Cuarto evento", "Evento especial 1", new Date(), "18:00", "Zona uno, Madrid", this.user2);
+  ev1:Evento = new Evento(1,"Primer evento", "Evento especial 1", new Date(), "18:00", "Zona uno, Madrid", this.user1, "c/Santiago Bernabeu");
+  ev2:Evento = new Evento(2,"Segundo evento", "Evento especial 1", new Date(), "18:00", "Zona uno, Madrid", this.user1, "c/Santiago Bernabeu" );
+  ev3:Evento = new Evento(3,"Tercer evento", "Evento especial 1", new Date(), "18:00", "Zona uno, Madrid", this.user2, "c/Santiago Bernabeu");
+  ev4:Evento = new Evento(4,"Cuarto evento", "Evento especial 1", new Date(), "18:00", "Zona uno, Madrid", this.user2, "c/Santiago Bernabeu");
+  ev5:Evento = new Evento(5,"Cuarto evento", "Evento especial 1", new Date(), "18:00", "Zona uno, Madrid", this.user2, "c/Santiago Bernabeu");
 
   private events: Evento [];
   public modalCreateEvent:boolean;
@@ -121,3 +121,21 @@ export class EventosService {
     return this.eventos
   }
 }
+
+
+// *NOTE - CALENDARIO
+// router.get('/calendario, ) saber eventos tanto true como false en participation 
+// router.post('/calendario, ) añadir evento indicando mi id_user
+  // parametro de la funcion (id_user, Event) por body
+// router.put('/calendario, ) modificar p<rticipacion del evento(pasar participation a false)
+// router.delete('/calendario, ) eliminar evento solo mi id_user de loggin coincide con del creador
+
+// *NOTE - EVENTOS
+
+// router.get('/eventos, ) aparezcan todos los eventos
+// router.get('/eventos/?id_user, ) filtro para que aparezcan solo los eventos del usuario
+// router.get('/eventos/??????, ) filtro para que aparezcan solo los eventos que NO son creados por el usuario
+
+// router.post('/eventos, ) añadir evento con el id_user del logging
+// router.put('/eventos, ) editar evento solo mi id_user de loggin coincide con del creador
+// router.delete('/eventos, ) eliminar evento solo mi id_user de loggin coincide con del creador

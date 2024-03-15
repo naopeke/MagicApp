@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Evento } from 'src/app/models/evento';
 import { Logging } from 'src/app/models/logging';
 import { User } from 'src/app/models/user';
-import { AddEventComponent } from 'src/app/components/add-event/add-event.component';
 import { EventosService } from 'src/app/shared/eventos.service';
 import { Router } from '@angular/router';
 
@@ -17,9 +16,12 @@ export class EventoComponent {
 
   public events:Evento[];
   public eventoABorrar:Evento;
-  public eventoEditar:Evento;
+  public evento:Evento;
   public login1:Logging;
   public login2:Logging;
+
+  public modalEdit:boolean = false;
+  public modalAdd:boolean = false;
 
   paginatedEvents: any[] = [];
   currentPage: number = 0;
@@ -124,6 +126,23 @@ export class EventoComponent {
   }
   
   setEventoEditar(ev:Evento){
-    this.eventoEditar = ev;
+    this.evento = ev;
+  }
+
+  openModalEdit(ev:Evento){
+    this.setEventoEditar(ev);
+    this.modalEdit = true
+  }
+
+  closeModal(event: boolean){
+    this.modalEdit = event
+  }
+
+  openModalAdd(){
+    this.modalAdd = true
+  }
+
+  closeModalAdd(event: boolean){
+    this.modalAdd = event
   }
 }

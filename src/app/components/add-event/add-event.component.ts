@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Evento } from 'src/app/models/evento';
 import { User } from 'src/app/models/user';
 import { EventosService } from 'src/app/shared/eventos.service';
@@ -8,30 +9,46 @@ import { EventosService } from 'src/app/shared/eventos.service';
   templateUrl: './add-event.component.html',
   styleUrls: ['./add-event.component.css']
 })
-export class AddEventComponent {
-
-  constructor(private eventService: EventosService){
-
+export class AddEventComponent implements OnInit {
+  // @Input() evento: Evento
+  @Output() eventClose = new EventEmitter <Boolean>()
+ 
+  public addEvent: FormGroup
+  public editar: boolean = false
+    
+  constructor(private formBuilder: FormBuilder, private eventService: EventosService){}
+    
+  ngOnInit(): void {
+      this.buildForm();
+      this.addEvent.disable();
+      
   }
 
-  addEvent(title:string, description:string, date:string, hour:string, place:string) {
-    //El creador se tiene que coger del login que este en el service de usuario
-    const event:Evento = new Evento(null, title, description, new Date(date), hour, place, new User(2,"Paco","paco@","","",""));
-    this.eventService.createEvent(event);
-    this.emptyContainer("alertEvent");
-    const element = document.getElementById("alertEvent");
-    element.innerHTML += "<p>Evento creado correctamente</p>";
+  private buildForm(){
+    this.addEvent = this.formBuilder.group({
+      title: ["", [Validators.required, Validators.maxLength(40)]],
+      date: [new Date().toISOString().substring(0, 10), Validators.required],
+      time: ["", Validators.required],
+      place: ["", Validators.required],
+      direction:["", Validators.required],
+    })
+  }
 
-  }
-  //Funcion para cerrar la modal, llamada desde el icono de la X
-  public closeModalAddEvent():void {
-    this.eventService.closeModalCreateEvent();
-  }
-  
-  private emptyContainer(idContainer:string){
-    const element = document.getElementById(idContainer);
-    while (element.firstChild) {
-      element.removeChild(element.firstChild);
+  add(){
+
+    // const event:Evento = new Evento(null, title, description, new Date(date), hour, place, new User(2,"Paco","paco@","","",""));
+    // this.eventService.createEvent(event);
+
+    if(this.editar == false){
+      this.editar = true; 
+      this.addEvent.enable();
+    } else {
+      this.editar = false;
+      this.addEvent.disable();
     }
+  }
+
+  close(){
+    this.eventClose.emit(false)
   }
 }

@@ -35,3 +35,10 @@ export class UsersService {
 
 
 }
+
+// router.post('/register', )
+// router.post('/loginUser', )
+
+// router.get('/profile/:id_user', ) 
+// router.put('/profile/datos', )
+// router.put('/profile/contraseña', )
