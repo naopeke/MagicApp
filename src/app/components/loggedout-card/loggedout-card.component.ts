@@ -55,33 +55,6 @@ export class LoggedoutCardComponent implements OnInit {
     });
   }
   
-  // searchCards(searchParam: string): void {
-  //   this.searchPerformed = true;
-  
-  //   let searchObservable;
-  //   if (this.searchType === 'nombre') {
-  //     searchObservable = this.cardsService.getByName(searchParam);
-  //   } else if (this.searchType === 'colleccion') {
-  //     searchObservable = this.cardsService.getByCollection(searchParam);
-  //   }
-  
-  //   if (searchObservable) {
-  //     searchObservable.subscribe({
-  //       next: (cards) => {
-  //         si hay más results, meterlas en resultsCards
-  //         this.resultsCards = cards;
-  //         console.log('Results:', cards);
-  //       },
-  //       error: (err) => {
-  //         vaciar resultsCards cuando hay error
-  //         this.resultsCards = [];
-  //         console.log('Error in fetching cards:', err);
-  //       }
-  //     });
-  //   } else {
-  //     console.log('Invalid search type');
-  //   }
-  // }
   
   
 // // buscar con nombre completa y array
