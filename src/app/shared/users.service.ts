@@ -21,9 +21,11 @@ export class UsersService {
     return this.http.post(registerUrl, user)
   }
 
-  // public login(){
-  //   this.loggedIn = true;
-  // }
+  public login(user:User): Observable<Object>{
+    let loginUrl = this.url + 'login';
+    return this.http.post(loginUrl, user )
+    // this.loggedIn = true;
+  }
 
   // public logout(){
   //   this.loggedIn = false;
