@@ -36,41 +36,23 @@ export class CardsService {
     return this.http.get<Card[]>(urlName);
   }
 
-// // array de cartas, parcial, lowercase
-// public getByName(name:string): Card[] | null {
-//   let lowerCaseName = name.toLowerCase();
-//   let cards = this.cards.filter(card => card.name.toLowerCase().includes(lowerCaseName));
-//   console.log('Obtained info: ', name, cards);
-//   if (cards) {
-//     return cards; //si se ha encontrado con una carta, devuelve esa carta 
-//   } else {
-//     return null; // si no, devuelve null
-//   }
-// }
+  public getByCollection(collection:string):Observable<Card[]> {
+    let urlName = `${this.url}/cartas?cardName=${encodeURIComponent(collection)}`;
+      return this.http.get<Card[]>(urlName);
+  }
 
-public getByCollection(collection:string):Observable<Card[]> {
-  let urlName = `${this.url}/cartas?cardName=${encodeURIComponent(collection)}`;
-    return this.http.get<Card[]>(urlName);
-}
-
-// public getByCollection(name:string): Card[] | null {
-//   let lowerCaseName = name.toLowerCase();
-//   let cards = this.cards.filter(card => card.set_name.toLowerCase().includes(lowerCaseName));
-//   console.log('Obtained info: ', name, cards);
-//   if (cards) {
-//     return cards; //si se ha encontrado con una carta, devuelve esa carta 
-//   } else {
-//     return null; // si no, devuelve null
-//   }
-// }
-
-public addCardsToDeck(deckIndex: number, cardIds: string[]): void {
-  console.log('Cards added to the deck: ', cardIds);
-    cardIds.forEach(cardId => {
-      this.decks[deckIndex].push(cardId);
-    });
-  console.log('Deck index: ', this.decks[deckIndex]);
-  console.log('Card Ids added: ', cardIds);
-}
+  public addCardsToDeck(deckIndex: number, cardIds: string[]): void {
+    console.log('Cards added to deck: ', cardIds);
+      cardIds.forEach(cardIdApi => {
+        // this.decks[deckIndex].push(cardId);
+        let urlAddToDeck = `${this.url}/cartas`;
+        this.http.post(urlAddToDeck, {id_deck: deckIndex, id: cardIdApi}).subscribe({
+          next: (response) => console.log('Cards added to deck in DB: ', response),
+          error: (err) => console.log('Error adding: ', err)
+        })
+      });
+    // console.log('Deck index: ', this.decks[deckIndex]);
+    // console.log('Card Ids added: ', cardIds);
+  }
 
 }
