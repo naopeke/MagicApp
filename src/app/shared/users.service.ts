@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 export class UsersService {
   public user:User;
   private url = "http://localhost:3000/";
-  public loggedIn: boolean = true; 
+  public loggedIn: boolean = false; 
 
 
   constructor(private http: HttpClient) { }
@@ -23,13 +23,13 @@ export class UsersService {
 
   public login(user:User): Observable<Object>{
     let loginUrl = this.url + 'login';
-    return this.http.post(loginUrl, user )
-    // this.loggedIn = true;
+    return this.http.post(loginUrl, user);
+    
   }
 
-  // public logout(){
-  //   this.loggedIn = false;
-  // }
+  public logout(){
+    this.loggedIn = false;
+  }
 
   public statusLogin(): boolean {
     return this.loggedIn;

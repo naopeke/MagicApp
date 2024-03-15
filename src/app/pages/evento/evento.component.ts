@@ -1,7 +1,6 @@
 import { Component} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Evento } from 'src/app/models/evento';
-import { Logging } from 'src/app/models/logging';
 import { User } from 'src/app/models/user';
 import { AddEventComponent } from 'src/app/components/add-event/add-event.component';
 import { EventosService } from 'src/app/shared/eventos.service';
@@ -18,8 +17,6 @@ export class EventoComponent {
   public events:Evento[];
   public eventoABorrar:Evento;
   public eventoEditar:Evento;
-  public login1:Logging;
-  public login2:Logging;
 
   paginatedEvents: any[] = [];
   currentPage: number = 0;
@@ -37,10 +34,6 @@ export class EventoComponent {
     //Se debe llamar al service para recoger los eventos
 
     this.events = this.eventService.getAllEvents();
-
-    //Recuperar del service o cogerlo del header
-    this.login1 = new Logging(this.user1, true);
-    this.login2 = new Logging(this.user2, false);
 
     this.calculatePagination();
   }

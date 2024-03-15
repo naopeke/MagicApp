@@ -31,15 +31,15 @@ private buildForm(){
   let minPassLength = 8;
 
   this.loginForm = this.formBuilder.group({
-    email: [, [Validators.required, Validators.email]],
-    password:[, [Validators.required, Validators.minLength(minPassLength)]]
+    emailUser: [, [Validators.required, Validators.email]],
+    passwordUser:[, [Validators.required, Validators.minLength(minPassLength)]]
   });
 }
 
 public login(){
   let userFormData = this.loginForm.value; 
 
-  let user: User = new User (null,
+  let user: User = new User(null,
                             null,
                             userFormData.emailUser, 
                             userFormData.passwordUser);
@@ -63,13 +63,7 @@ public loginClose(){
   this.onLoginClose.emit(false);
 }
 
-public navegate_home(){
-  this.router.navigate(['/home'])
-
-}
-
 ngOnInit(): void {
 }
-
 
 }

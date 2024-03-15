@@ -4,7 +4,7 @@
         <form class="form" [formGroup]="loginForm">
             <h3>Inicia Sesión</h3>
             <div class="form-group"> 
-                <input type="text" placeholder="Correo Electrónico" formControlName="emailUser" [ngClass]="{'is-invalid':(loginForm.get('emailUser').dirty ||loginForm.get('emailUser').touched) && !loginForm.get('emailUser').valid}">
+                <input type="email" placeholder="Correo Electrónico" formControlName="emailUser" [ngClass]="{'is-invalid':(loginForm.get('emailUser').dirty || loginForm.get('emailUser').touched) && !loginForm.get('emailUser').valid}">
                 <div *ngIf="!loginForm.get('emailUser').valid" class="invalid-feedback">
                     <div *ngIf="loginForm.get('emailUser').errors.required">El email es necesario.</div>
                     <div *ngIf="loginForm.get('emailUser').errors.email">Dirección email incorrecta.</div>
@@ -17,9 +17,8 @@
                     <div *ngIf="loginForm.get('passwordUser').errors.minLength"> La contraseña tiene que tener almenos 8 carácteres.</div>
                 </div>
             </div>
-            <button class="button" type="submit" (click)="navegate_home()" [disabled]="loginForm.invalid">Inicia Sesión</button>
+            <button class="button" type="submit" (click)="login()" [disabled]="loginForm.invalid">Inicia Sesión</button>
         </form>
     </div>
-    <button class="button" type="submit" (click)="navegate_home()" [disabled]="loginForm.invalid">Inicia Sesión</button>
 
 </div>
