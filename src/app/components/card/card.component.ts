@@ -30,7 +30,7 @@ export class CardComponent {
     this.addCardToBuilder.emit(this.childCard);
   }
 
-  onDeleteButtonClick(){
+  onDeleteButtonClick(event:Event){
     console.log('clicked the x button');
     this.deleteFromChild.emit(this.childCard.id_card_api);
   }
@@ -55,6 +55,7 @@ export class CardComponent {
   }
 
   onCardClick():void {
+    console.log('clicked for cardinfo');
     this.childCardClicked.emit(this.childCard); // añadido para modal de xisca
   }
 

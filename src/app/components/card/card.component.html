@@ -35,7 +35,7 @@
         <div class="row">
             <div class="col-sm-6 col-md-4 col-lg-2">
                 <mat-card class="card3">
-                    <img mat-card-image class="img1-type3" [src]="childCard.image_uris" alt="img"/>
+                    <img mat-card-image class="img1-type3" [src]="childCard.image_uris" (click)="onCardClick()" alt="img"/>
                     <mat-card-content class="type3-image-container">
                         <img mat-card-image 
                             class="img2-type3" 

@@ -25,6 +25,8 @@ export class LoggedinCardComponent implements OnInit {
  
   public darkenOverlay:boolean = false; // modal de xisca
   public show_cardinfo:boolean = false; // modal de xisca
+  public selectedCard: Card | null = null; // selectedCard sea Card o null, default null
+
 
 
   constructor(
@@ -39,14 +41,39 @@ export class LoggedinCardComponent implements OnInit {
   this.parametro = this.rutaActiva.snapshot.params.cardId;
   }
 
-  searchCards(searchParam: string): void{
-    this.searchPerformed = true;
 
-    this.cardsService.getByName(searchParam).subscribe(cards =>{
-      this.resultsCards = cards;
-      console.log('resultsCards:', cards);
-    })
+
+  searchCards(cardName: string): void {
+    this.searchPerformed = true;
+    // this.errorMessage = null; // cada vez busca, refresh
+
+    // const currentUser = this.usersService.getCurrentUser();
+    // if (currentUser && currentUser.id_user){
+
+    this.cardsService.getByName(cardName).subscribe({
+      next: (data:any) => {
+        this.resultsCards = [data]; // como dato desde back(axios) es un object y no es array...
+        console.log('API Response: ', data);
+        // this.errorMessage = null; // refresh errorMessage
+      },
+      error: (err) => {
+        this.resultsCards = [];
+        console.log('Error in fetching cards:', err);
+      //   this.errorMessage = 'Hay demasiadas cartas o el título es incorrecto. Por favor, intenta una búsqueda más detallada con un título más específico.';
+      //   console.log('Error message', this.errorMessage);
+      // }
+    }});
   }
+  
+
+  // searchCards(searchParam: string): void{
+  //   this.searchPerformed = true;
+
+  //   this.cardsService.getByName(searchParam).subscribe(cards =>{
+  //     this.resultsCards = cards;
+  //     console.log('resultsCards:', cards);
+  //   })
+  // }
 
   // searchCards(searchParam: string): void {
   //   this.searchPerformed = true;
@@ -78,7 +105,7 @@ export class LoggedinCardComponent implements OnInit {
     console.log('After deleting from Builder: ', this.builderCards);
   }
 
-  //modal
+  //modal deck
   openDeckDialog(): void {
     const dialogRef = this.dialog.open(MazoSelectorModalComponent, {
       width: '700px',
@@ -121,16 +148,25 @@ export class LoggedinCardComponent implements OnInit {
   }
 
 
-  public onCardInfoOpen(){
-    console.log('card clicked')
+  public onCardInfoOpen(card:Card):void{
+    console.log('clicked card', card);
+    this.selectedCard = card;
     this.darkenOverlay=true; 
     this.show_cardinfo = true; 
   }
 
-  public card_info_close() {
+  public onCardInfoClose(show: boolean):void{
+    this.selectedCard = null; // resetear selectedCard cuendo se cierra
+    this.darkenOverlay = show;
+    this.show_cardinfo = show;
+  }
+
+  public card_info_close():void{
+    this.selectedCard = null; // resetear selectedCard
     this.darkenOverlay = false;
     this.show_cardinfo = false;
   }
+
 
   }
 

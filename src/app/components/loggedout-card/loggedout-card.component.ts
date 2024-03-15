@@ -112,13 +112,7 @@ export class LoggedoutCardComponent implements OnInit {
     this.show_cardinfo = true; 
   }
 
-  public onCardInfoClose(show: boolean):void{
-    this.selectedCard = null; // resetear selectedCard cuendo se cierra
-    this.darkenOverlay = show;
-    this.show_cardinfo = show;
-  }
-
-  public card_info_close():void{
+  public onCardInfoClose():void{
     this.selectedCard = null; // resetear selectedCard
     this.darkenOverlay = false;
     this.show_cardinfo = false;

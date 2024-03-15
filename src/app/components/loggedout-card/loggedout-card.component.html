@@ -2,7 +2,7 @@
     <div [ngClass]= "darkenOverlay ? 'bg_dark' : ''">
 
         <div class="container_cardinfo" *ngIf="show_cardinfo">
-            <app-card-info [carta]="selectedCard" (onCardInfoClose)="card_info_close($event)"></app-card-info>
+            <app-card-info [carta]="selectedCard" (onCardInfoClose)="onCardInfoClose($event)"></app-card-info>
         </div>
 
         <div class="container_cardinfo" *ngIf="!show_cardinfo">
@@ -29,10 +29,11 @@
                     <div class="results-wrapper" *ngIf="resultsCards.length === 0 && searchPerformed && errorMessage">
                         <div class="no-results-message">
                         <p>{{ errorMessage.split('.')[0] }}.</p>
-                        <p>{{ errorMessage.split('.')[1] }}.</p>
-
+                        <p>{{ errorMessage.split('.')[1] }}</p>
                         </div>
                     </div>
+
+
                 </div>
             </div>
         </div>
