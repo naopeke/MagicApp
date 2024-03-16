@@ -89,6 +89,7 @@
                     <div class="cardEvento2">
                         <div class="img-container">
                             <img class="img-fondo" src="../../../assets/images/personajes/fondo-avatar.png" alt="">
+                            <!-- seria la foto de quien ha creado el evento -->
                             <img class="img-avatar" src="../../../assets/images/personajes/avatar2.png" alt="">
                         </div>
                         <div class="card-info">
@@ -103,7 +104,7 @@
                                 <p>Centro Metropolitano</p>
                             </div>
 
-                            <button (click)="openModal()" class="button-participar">Participar</button>
+                            <button (click)="openModal()" class="button-participar">Detalle evento</button>
                         </div>
                     </div>
                     <div class="cardEvento2">
@@ -122,7 +123,7 @@
                                 <p>Centro Metropolitano</p>
                             </div>
                         
-                            <button (click)="openModal()"class="button-participar">Participar</button>
+                            <button (click)="openModal2()"class="button-participar">Detalle evento</button>
                         </div>
                     </div>
     
@@ -143,12 +144,18 @@
                                 <p>Centro Metropolitano</p>
                             </div>
 
-                            <button (click)="openModal()" class="button-participar">Participar</button>
+                            <button (click)="openModal3()" class="button-participar">Detalle evento</button>
                         </div>
                     </div>
                 </div>
                 <div  *ngIf="modalDetail == true" id="modalEvent">
-                    <app-detail-event (eventCloseDetail) = closeModal($event)></app-detail-event>
+                    <app-detail-event [evento] = "eventos[0]"  (eventCloseDetail) = closeModal($event)></app-detail-event>
+                </div>
+                <div  *ngIf="modalDetail2 == true" id="modalEvent">
+                    <app-detail-event [evento] = "eventos[1]"  (eventCloseDetail) = closeModal($event)></app-detail-event>
+                </div>
+                <div  *ngIf="modalDetail3 == true" id="modalEvent">
+                    <app-detail-event [evento] = "eventos[2]"  (eventCloseDetail) = closeModal($event)></app-detail-event>
                 </div>
              
             <!-- </div> -->

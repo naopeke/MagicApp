@@ -10,10 +10,14 @@ main{
     width: 100%;
     height: 920.6px;
     background-image: url('src/assets/images/about/foto1Nieve.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    background-color: black;
 }
 
 .titulo-container{
@@ -27,36 +31,69 @@ main{
     border-radius: 20px;
 }
 
-.bloqueAmarillo{
+.bloqueAmarillo {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('src/assets/images/fondos/Fondo_narajna2.png');
     height: 642px;
     gap: 160px;
-}
-
-
-.iconoAmarillo{
+    background-image: url('/assets/images/fondos/Fondo_narajna2.png');
+    background-size: cover;
+  }
+  
+  .bloqueAmarillo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
-    width: 30%;
-    padding-top: 45px;
-}
-
-.textoAmarillo{
+    background-color: rgba(0, 0, 0, 0.5); /* Color de superposición oscurecida */
+    z-index: 1; /* Asegura que la capa oscura esté detrás de los elementos de texto e icono */
+  }
+  
+  .iconoAmarillo,
+  .textoAmarillo {
+    position: relative;
+    z-index: 2; /* Asegura que los elementos de texto e icono estén por encima de la capa oscura */
+  }
+  
+  
+  .textoAmarillo {
     font-family: var(--antiqua);
     color: var(--blanco);
     font-size: x-large;
-}
+    position: relative; /* Añadir posición relativa para z-index funcione */
+    z-index: 1; /* Asegura que el texto esté por encima de la capa oscura */
+  }
 
-.bloqueAzul{
+  .bloqueAzul {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('src/assets/images/fondos/Fondo_azul2.png');
+    background-image: url('/assets/images/fondos/Fondo_azul2.png'); /* Ruta de la imagen de fondo */
+    background-size: cover; /* Ajusta el tamaño de la imagen de fondo según sea necesario */
     gap: 250px;
+    height: 642px; /* Ajusta la altura según sea necesario */
+}
+
+.bloqueAzul::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Color de superposición oscurecida */
+    z-index: 1; /* Asegura que la capa oscura esté detrás de los elementos de texto e icono */
+}
+
+.iconoAzul,
+.textoAzul {
+    position: relative;
+    z-index: 2; /* Asegura que los elementos de texto e icono estén por encima de la capa oscura */
 }
 
 .iconoAzul{
@@ -102,14 +139,33 @@ main{
     background-repeat: no-repeat;
 }
 
-.bloqueMorado{
+.bloqueMorado {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('src/assets/images/fondos/Fondo_morado2.png');
+    background-image: url('/assets/images/fondos/Fondo_morado2.png');
     height: 642px;
     gap: 250px;
+    background-size: cover;
+    /* Ajusta el tamaño de la imagen de fondo según sea necesario */
+}
+
+.bloqueMorado::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Color de superposición oscurecida */
+    z-index: 1; /* Asegura que la capa oscura esté detrás del contenido */
+}
+
+.iconoMorado,
+.textoMorado {
+    position: relative;
+    z-index: 2; /* Asegura que el contenido esté por encima de la capa oscura */
 }
 
 
@@ -167,14 +223,33 @@ main{
     background: cover;
 }
 
-.bloqueRojo{
+.bloqueRojo {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('src/assets/images/fondos/Fondo_rojo2.png');
+    background-image: url('/assets/images/fondos/Fondo_rojo2.png');
     height: 650px;
     gap: 250px;
+    background-size: cover;
+    /* Ajusta el tamaño de la imagen de fondo según sea necesario */
+}
+
+.bloqueRojo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Color de superposición oscurecida */
+    z-index: 1; /* Asegura que la capa oscura esté detrás del contenido */
+}
+
+.iconoRojo,
+.textoRojo {
+    position: relative;
+    z-index: 2; /* Asegura que el contenido esté por encima de la capa oscura */
 }
 
 
@@ -220,14 +295,33 @@ main{
     background-repeat: no-repeat;
 }
 
-.bloqueVerde{
+.bloqueVerde {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('src/assets/images/fondos/Fondo_verde2.png');
+    background-image: url('/assets/images/fondos/Fondo_verde2.png');
     height: 642px;
     gap: 250px;
+    background-size: cover;
+    /* Ajusta el tamaño de la imagen de fondo según sea necesario */
+}
+
+.bloqueVerde::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Color de superposición oscurecida */
+    z-index: 1; /* Asegura que la capa oscura esté detrás del contenido */
+}
+
+.iconoVerde,
+.textoVerde {
+    position: relative;
+    z-index: 2; /* Asegura que el contenido esté por encima de la capa oscura */
 }
 
 

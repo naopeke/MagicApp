@@ -7,7 +7,7 @@ import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { Router } from '@angular/router';
-import { Respuesta } from 'src/app/models/respuesta';
+import { Response } from 'src/app/models/respuesta';
 import { CardsService } from 'src/app/shared/cards.service';
 import { Card } from 'src/app/models/card';
 import { UsersService } from 'src/app/shared/users.service';

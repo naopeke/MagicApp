@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 
 // angular material
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -23,18 +22,17 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule} from '@angular/material/dialog'; 
+import { MatDialog } from '@angular/material/dialog';
+import { WarningModalComponent } from './components/warning-modal/warning-modal.component';
 
 //calendario
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
-import { registerLocaleData } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import localeES from '@angular/common/locales/es'
 
 registerLocaleData(localeES)
-
-// swiper@8
-// import { SwiperModule } from 'swiper/angular';
 
 //swiper@10.3.1 https://swiperjs.com/element
 // import function to register Swiper custom elements
@@ -63,14 +61,13 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { DecksComponent } from './components/decks/decks.component';
 import { RatingComponent } from './components/rating/rating.component';
 import { Router, RouterModule } from '@angular/router';
-import { AddEventComponent } from './components/add-event/add-event.component';
 import { DeleteEventComponent } from './components/delete-event/delete-event.component';
 import { EditEventComponent } from './components/edit-event/edit-event.component';
 import { DetailEventComponent } from './components/detail-event/detail-event.component';
 import { PriceEuroPipe } from './pipe/price-euro.pipe';
-
-
-
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import { AddEventComponent } from './components/add-event/add-event.component';
 
 
 @NgModule({
@@ -102,16 +99,23 @@ import { PriceEuroPipe } from './pipe/price-euro.pipe';
     EditEventComponent,
     DetailEventComponent,
     PriceEuroPipe,
+    WarningModalComponent,
   ],
 
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
     HttpClientModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-center',
+      closeButton: true,
+      timeOut: 3000
+    }),
 
     // angular material
     MatSidenavModule,
@@ -135,12 +139,7 @@ import { PriceEuroPipe } from './pipe/price-euro.pipe';
     
     CdkVirtualScrollViewport,
     ScrollingModule, 
-    CdkScrollableModule
-    
-    
-    //swiper@8
-    // SwiperModule
-
+    CdkScrollableModule, 
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'es'}

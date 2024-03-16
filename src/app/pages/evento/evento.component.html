@@ -1,12 +1,29 @@
 <div id="divfondo">
+
     <div class="search-container searchContainer">
+        <form id="formBuscador">
+            <input type="text" id="buscador" name="buscador" placeholder="Buscar" size="10" #buscador/>
+            <select name="filtrar" id="filtrar">
+                <option value="nombre">Todos los eventos</option>
+                <option value="colleccion">Mis eventos</option>
+            </select>
+            <button type="submit" class="btn-buscador btnBuscador" (click)="findEventsWithName(buscador.value)"></button>
+        </form>
+        <button class="button_lateral" (click)="openModalAdd()">Añadir evento</button>
+    </div>
+
+    <!-- <div class="search-container searchContainer">
         <form id="formBuscador">
             <input type="text" id="buscador" name="buscador" placeholder="Buscar" #buscador/>
             <button type="submit" class="btn-buscador btnBuscador" (click)="findEventsWithName(buscador.value)"></button>
         </form>
-        <button class="button_lateral" (click)="openModalAddEvent()">Añadir evento</button>
+        <button class="button_lateral" (click)="openModalAdd()">Añadir evento</button>
+        
+    </div> -->
+    <!-- <div *ngIf="getModalCreateEvent()"><app-add-event></app-add-event></div>  -->
+    <div *ngIf="modalAdd == true" class="modalEdit">
+        <app-add-event (eventClose) = closeModalAdd($event)></app-add-event>
     </div>
-    <div *ngIf="getModalCreateEvent()"><app-add-event></app-add-event></div> 
 
     <div id="divEvento" *ngFor="let item of paginatedEvents; let i = index">
         <div id="divImg">
@@ -29,24 +46,28 @@
             </div>
             <div class="parr_img">
                 <img class="icono_evento" src="../../../assets/images/iconos/lugar_evento.png" width="30px">
-                <p class="parr_p">&nbsp;&nbsp;{{ item.place }}</p>
+                <p class="parr_p">&nbsp;&nbsp;{{ item.place }}{{ item.direction }}</p>
             </div>
             <div id="div_button" *ngIf="item.creator.id_user != login1.user.id_user">
                 <button class="button_participar" data-bs-toggle="modal" data-bs-target="#singUp">Participar</button>
             </div>
         </div>
         <div id="icono_elim_edit" *ngIf="item.creator.id_user === login1.user.id_user">
-            <img (click)="openModalEditEvent(item)" data-bs-toggle="modal" data-bs-target="#editEvent" id="img_superior" src="../../../assets/images/iconos/editar_evento.png" width="45px">
+            <img (click)="openModalEdit(item)" id="img_superior" src="../../../assets/images/iconos/editar_evento.png" width="45px">
             <img (click)="openModalDeleteEvent(item)" data-bs-toggle="modal" data-bs-target="#deleteEvent" id="img_inferior"src="../../../assets/images/iconos/eliminar_evento.png" width="45px">
         </div>
 
         <!--MODAL edit-->
-        <app-edit-event *ngIf="getModalEditEvent()" [eventoAEditar]="eventoEditar"></app-edit-event>
+        <!-- <app-edit-event *ngIf="getModalEditEvent()"></app-edit-event> -->
+        <div *ngIf="modalEdit == true" class="modalEdit">
+            <app-edit-event [evento] = "evento" (eventClose) = closeModal($event)></app-edit-event>
+        </div>
 
         <!-- MODAL delete-->
         <app-delete-event *ngIf="getModalDeleteEvent()" [eventoAEliminar]="eventoABorrar" ></app-delete-event>
    
     </div>
+
 
     <!-- Pagination -->
     <div class="pagination" *ngIf="totalPages > 1">
@@ -55,15 +76,20 @@
         <button class="buttonPagination" (click)="nextPage()"><p class="p_pagiantion">Siguiente</p></button>
     </div>
 
+
+
+
+    <!-- Ya no lo necesitamos llamamos al componente detalle evento -->
+
     <!--MODAL singUp event-->
-    <div class="modal fade bd-example-modal-sm" id="singUp" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <!-- <div class="modal fade bd-example-modal-sm" id="singUp" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm modal-dialog-general">
             <div class="modal-content divSingUp">
                 <p class="modalP">¿Deseas participar en el evento?</p>
                 <button class="buttonsingUp" (click)="singUp()"><p>Aceptar</p></button>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 
 

@@ -1,9 +1,9 @@
 export class User {
     constructor(
         public id_user?: number,
-        public name?: string,
-        public email?: string,
-        public password?: string,
+        public nameUser?: string,
+        public emailUser?: string,
+        public passwordUser?: string,
         public icon?: string,
         public avatar?: string
         // añadir

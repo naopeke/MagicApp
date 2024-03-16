@@ -1,17 +1,73 @@
-<main id="mainAdd">
-    <div class="modal-dialog-add">
-        <div class="divAdd">
-            <p id="closed" (click)="closeModalAddEvent()">X</p>
-            <h1>Añadir evento</h1>
-            <form class="formAdd">
-                <input class="inputAdd" type="text" id="tituloEvento" formControlName="tituloEvento" required placeholder="Titulo" #titleEvent>
-                <input class="inputAdd" type="time" id="hora" formControlName="hora" required placeholder="Hora" #hourEvent>
-                <input class="inputAdd" type="date" id="fecha" formControlName="fecha" required placeholder="Fecha" #dateEvent>
-                <input class="inputAdd" type="text" id="lugar" formControlName="lugar" required placeholder="Lugar" #placeEvent>
-                <textarea class="inputAdd"id="descripcion" formControlName="descripcion" required placeholder="Descripcion" #descriptionEvent></textarea>
-                <button class="submitEdit" type="submit" (click)="addEvent(titleEvent.value, descriptionEvent.value, dateEvent.value, hourEvent.value, placeEvent.value)">Guardar cambios</button>
-            </form>
-            <div id="alertEvent"></div>
-        </div>
+<main class="modalEdit">
+    <img id="close" src="../../../assets/images/iconos/Close.png" alt="" (click)="close()">
+    <h3 class="titulo">Añadir evento</h3>
+
+    <div class="content-form">
+        <form class="form" [formGroup]="addEvent">
+
+            <input #titleEvent type="text" placeholder="Titulo evento" formControlName="title"
+            [ngClass]="{
+                'is-invalid': (addEvent.get('title').dirty || addEvent.get('title').touched) && !addEvent.get('title').valid,
+                'valid': addEvent.get('title').valid
+            }">
+            <div *ngIf="!addEvent.get('title').valid" class="invalid-feedback m-0 text-center">
+                <div *ngIf="addEvent.get('title').errors?.maxlength">Titulo demasiado largo</div>
+                <div *ngIf="addEvent.get('title').errors?.required">Escribe un titulo para el evento</div> 
+            </div>
+                  
+            <input #dateEvent type="date" placeholder="Fecha" formControlName="date"
+            [ngClass]="{
+                'is-invalid': (addEvent.get('date').dirty || addEvent.get('date').touched) && !addEvent.get('date').valid,
+                'valid': addEvent.get('date').valid
+            }" >
+            <div *ngIf="!addEvent.get('date').valid || addEvent.get('date').errors?.required" class="invalid-feedback m-0 text-center">
+                Selecciona una fecha del evento
+            </div>
+
+            <input #hourEvent type="time" placeholder="Hora" formControlName="time"
+            [ngClass]="{
+                'is-invalid': (addEvent.get('time').dirty || addEvent.get('time').touched) && !addEvent.get('time').valid,
+                'valid': addEvent.get('time').valid
+            }">
+            <div *ngIf="!addEvent.get('time').valid || addEvent.get('time').errors?.required" class="invalid-feedback m-0 text-center">
+                Selecciona una hora del evento
+            </div>
+
+            <input #placeEvent type="text" placeholder="Nombre del lugar" formControlName="place"
+            [ngClass]="{
+                'is-invalid': (addEvent.get('place').dirty || addEvent.get('place').touched) && !addEvent.get('place').valid,
+                'valid': addEvent.get('place').valid
+            }">
+            <div *ngIf="!addEvent.get('place').valid || addEvent.get('place').errors?.required" class="invalid-feedback m-0 text-center">
+                Escribe el nombre del lugar del evento
+            </div>
+
+            <input type="text" placeholder="Dirección" formControlName="direction"
+            [ngClass]="{
+                'is-invalid': (addEvent.get('direction').dirty || addEvent.get('direction').touched) && !addEvent.get('direction').valid,
+                'valid': addEvent.get('direction').valid
+            }">
+            <div *ngIf="!addEvent.get('direction').valid || addEvent.get('direction').errors?.required" class="invalid-feedback m-0 text-center">
+                Escribe el nombre del lugar del evento
+            </div>
+            
+            <textarea #descriptionEvent placeholder="Descripcion" formControlName="description"></textarea>
+
+            <div *ngIf="editar == false; else guardar">
+                <button type="button" class="buttonEditar" (click)="add()">Editar</button>
+            </div>
+            <ng-template #guardar>
+                <button type="button" [ngClass]="editar == true ? 'saveButton': ''"
+                [disabled]="!addEvent.valid"
+                (click)="add()">Añadir</button>
+            </ng-template>
+            <!-- <div #guardar>
+                <button type="button" class="buttonEditar" [ngClass]="editar == true ? 'saveButton': ''"
+                [disabled]="!addEvent.valid"
+                (click)="add(titleEvent.value, descriptionEvent.value, dateEvent.value, hourEvent.value, placeEvent.value)">añadir</button>
+            </div> -->
+
+
+        </form>
     </div>
 </main>

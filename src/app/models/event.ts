@@ -1,6 +1,6 @@
 import { User } from "./user";
 
-export class Event {
+export class Events {
 
     constructor(
         public id_event?: number,
@@ -13,7 +13,7 @@ export class Event {
         public direction?: string,
         public participation?: boolean,
         public id_user?: number,
-        public participants?: User[]
+        // public participants?: User[]
 
         ) { }
 

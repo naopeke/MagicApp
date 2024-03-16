@@ -1,5 +1,5 @@
 <body>
-    <main>
+    <div class="principal">
         <div class="bloque1-container">
             <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" navigation="true" space-between="0"
             centered-slides="true" autoplay-delay="12000" autoplay-disable-on-interaction="false" style="--swiper-navigation-color: #B3B3B3; --swiper-pagination-color: #B3B3B3;">
@@ -77,19 +77,23 @@
             </swiper-container>
             <div class="secciones-container">
                 <div class="guerrero-container">
-                    <div class="guerreroAmarillo">ABOUT</div>
+                    <a routerLink="/about" class="no-subrayado">
+                        <div class="guerreroAmarillo">ABOUT</div>
+                    </a>
                 </div>
                 <div class="guerrero-container">
-                    <div class="guerreroAzul">CARTAS</div>
+                    <a routerLink="/cartas" class="no-subrayado">
+                        <div class="guerreroAzul">CARTAS</div>
+                    </a>
                 </div>
                 <div class="guerrero-container">
-                    <div class="guerreroMorado">MIS MAZOS</div>
+                        <div class="guerreroMorado" (click)="openWarningModal()">MIS MAZOS</div>
                 </div>
                 <div class="guerrero-container">
-                    <div class="guerreroRojo">EXPLORA</div>
+                        <div class="guerreroRojo" (click)="openWarningModal()">EXPLORA</div>
                 </div>
                 <div class="guerrero-container">
-                    <div class="guerreroVerde">EVENTOS</div>
+                        <div class="guerreroVerde" (click)="openWarningModal()">EVENTOS</div>
                 </div>
             </div>
         </div>
@@ -100,7 +104,7 @@
                 <div class="icono">
                     <div class="icono-container">
                         <img src="/assets/images/iconos/iconoLibroLandingPage.png" id=icono alt="">
-                        <a href="">Regístrate</a>
+                        <a routerLink="/register">Regístrate</a>
                     </div>
                 </div>
             </div>
@@ -118,12 +122,12 @@
                     <p>¡No pierdas más tiempo buscando entre montones de cartas! <br><br>
                         Con nuestro  buscador, tendrás acceso instantáneo a todas las cartas que necesitas.</p>
                 </h5>
-                <h4>¡<a href="">Explora</a> y lleva tu juego al siguiente nivel!</h4>
+                <h4>¡<span style="color: #28669F;">Explora</span> y lleva tu juego al siguiente nivel!</h4>
             </div>
             <div class="inputBuscador-container">
                 <form>
-                    <input type="text" id="buscador" name="buscador" placeholder="Asesinato en la mansión Karlov" size="10" />
-                    <select name="filtrar" id="filtrar">
+                    <input type="text" id="buscador" name="buscador" placeholder="Asesinato en la mansión Karlov" size="10" disabled/>
+                    <select name="filtrar" id="filtrar" disabled>
                         <option value="nombre">Nombre</option>
                         <option value="colleccion">Colección</option>
                     </select>
@@ -154,7 +158,7 @@
                                      <span style="color: #643D6A;">único y poderoso</span></p><br>
                                 <p>Ya sea que estés buscando una estrategia agresiva y directa o <br>
                                     prefieras un enfoque más controlado y táctico, nuestra función de <br>
-                                    <a href="">Creación de mazos</a> te permite personalizar cada detalle para reflejar <br>
+                                    <span style="color: #643D6A;">Creación de mazos</span> te permite personalizar cada detalle para reflejar <br>
                                     tu estilo de juego y tus objetivos estratégicos.
                                 </p>
                             </h5>
@@ -177,8 +181,8 @@
                     </h5>
                 </div>
                 <div class="vota">
-                    <h3>Vota por los Mejores Mazos:</h3>
-                    <h3>Únete a la Comunidad y Decide</h3>
+                    <h3>Vota por los Mejores Mazos: <br>
+                    Únete a la Comunidad y Decide</h3>
                     <h5><p>Nuestra función de <span style="color: #C38A31;">Votación de Mazos</span> te permite expresar tu aprecio por tus mazos favoritos
                         y descubrir cuáles son los más populares entre la comunidad.
                         ¿Cuál será el mazo más votado esta semana?
@@ -195,7 +199,7 @@
                     tu experiencia de juego</p>
                 </h5>
                 <div class="uneteAnosotros">
-                    <h2><a href=""><span style="color: #FF240F; font-size: x-large;">¡Únete a nosotros <br>
+                    <h2><a routerLink="/register"><span style="color: #FF240F; font-size: x-large;">¡Únete a nosotros <br>
                         y descúbrelo!</span></a></h2>
                 </div>
             </div>
@@ -232,6 +236,6 @@
             </div>
             
 
-    </main>
+        </div>
 </body>
 

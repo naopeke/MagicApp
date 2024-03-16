@@ -41,29 +41,6 @@ export class CardInfoComponent implements OnInit{
     }
   }
 
-
-  // legalities = [
-  //   {text: 'not legal', color: 'grey'},
-  //   {text: 'not legal', color: 'red'},
-  //   {text: 'not legal', color: 'blue'},
-  //   {text: 'not legal', color: 'green'},
-  // ];
-
-  // public getColor(value:string){
-  //   if (value === 'not legal'){
-  //     return '#616161'
-  //   }
-  //   else if (value === 'banned'){
-  //     return '#B6281A'
-  //   }
-  //   else if (value === 'restrict'){
-  //     return '#28669F'
-  //   }
-  //   else if (value === 'legal'){
-  //     return '#5C724B'
-  //   }
-  // }
-
   public card_info_close(){
     this.onCardInfoClose.emit(false);
   }
