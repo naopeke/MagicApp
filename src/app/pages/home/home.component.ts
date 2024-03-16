@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Deck } from 'src/app/models/deck';
 import { Eventos } from 'src/app/models/eventos';
-import { Respuesta } from 'src/app/models/respuesta';
-
 import { EventosService } from 'src/app/shared/eventos.service';
 
 @Component({
@@ -11,26 +11,27 @@ import { EventosService } from 'src/app/shared/eventos.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  @Input () typeRating: number;
+  @Input () dato: Deck
+  @Output() eventoExplorar = new EventEmitter<number>();
+  @Output() eventoPuntuacion = new EventEmitter<{id_deck:number, score:number}>()
+ 
   public modalDetail: boolean = false
   public modalDetail2: boolean = false
-
   // cambiarlo por el del servicio cuando esta logueado
   public id_user: number = 1
+  public userName: string = 'Kreatimes'
 
   public eventosProx: Eventos[];
   public eventoCom: Eventos[]
   public bestMazos: Deck[]
   public selectEvento: Eventos | undefined
 
-@Input () typeRating: number;
-
-@Input () dato: Deck
 
 
-@Output() eventoExplorar = new EventEmitter<number>();
-@Output() eventoPuntuacion = new EventEmitter<{id_deck:number, score:number}>()
-
-  constructor(public eventoService: EventosService){}
+  constructor(public eventoService: EventosService,
+              private toastr: ToastrService,
+              private router:Router){}
 
 ngOnInit(): void {
   this.getMyEvents();
@@ -42,14 +43,9 @@ ngOnInit(): void {
     this.eventoService.getMyEvents(this.id_user).subscribe((res:any) =>{
       if(!res.error){
         this.eventosProx = res.data
-    
-        console.log(this.eventosProx);
-        
       }
       else {
-        // poner con toast
-        console.log(res.error);
-        console.log(res.mensaje);
+        this.toastr.info(res.mensaje, '¡Ups!')
       }
     })
   }
@@ -58,12 +54,8 @@ ngOnInit(): void {
     this.eventoService.getEventsCommunity(this.id_user).subscribe((res:any) => {
       if(!res.error){
         this.eventoCom = res.data
-        console.log(this.eventoCom);
-        
       }  else {
-        // poner con toast
-        console.log(res.error);
-        console.log(res.mensaje);
+        this.toastr.info(res.mensaje, '¡Ups!')
       }
     })
   }
@@ -99,8 +91,10 @@ ngOnInit(): void {
     this.modalDetail2 = event
     if (event) {
       this.modalDetail2 = false;
-
     }
+  }
 
+  public goToEvents(){
+    this.router.navigate(['/evento']);
   }
 }

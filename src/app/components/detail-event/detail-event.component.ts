@@ -13,13 +13,10 @@ export class DetailEventComponent implements OnInit{
   @Input() evento:Eventos
   @Input() type: number
   @Input() id_user:number;
+  @Input() userName:string
   @Output() eventCloseDetail = new EventEmitter<boolean>();
 
   public openModal:boolean = false
-  public creator: string
-  public participantes: User[] = []
-  // sacar de servico cuando login
- 
 
   constructor(public eventoService: EventosService,
               private toastr: ToastrService){}
@@ -27,22 +24,23 @@ export class DetailEventComponent implements OnInit{
 
   ngOnInit() {
     this.getparticipantes();
+    console.log(this.evento);
   }
 
   getparticipantes(){
     this.eventoService.getParticipantes(this.evento.id_event).subscribe((res:any) => {
    
       if(!res.error){
+        this.evento.participants = [];
         res.data.forEach(evento => {
           if(evento.creator == 1){
-            this.creator = evento.nameUser
+            this.evento.creator = evento.nameUser
           } else {
-            this.participantes.push(evento.nameUser);
+            this.evento.participants.push(new User(evento.id_user, evento.nameUser));
           }
         });
       } else{
-        console.log(res.error);
-        console.log(res.mensaje);
+        this.toastr.error(res.mensaje, '¡Ups!')
       }
     })
   }
@@ -54,8 +52,9 @@ export class DetailEventComponent implements OnInit{
   participar(){
     this.eventoService.postPartipacion(this.id_user, this.evento.id_event).subscribe((res:any) =>{
       if(!res.error){
-        this.toastr.success(res.mensaje, '¡Bienvenido al evento!')
-        
+        this.toastr.success(res.mensaje, '¡Bienvenido al evento!');
+        this.evento.participants = [];
+        this.getparticipantes(); 
       } else{
         this.toastr.error(res.mensaje, '¡Ups!' )
       }
@@ -67,6 +66,7 @@ export class DetailEventComponent implements OnInit{
     this.eventoService.deleteParticipacion(this.id_user, this.evento.id_event).subscribe((res:any) =>{
       if(!res.error){
         this.toastr.success(res.mensaje, 'Éxito')
+        this.getparticipantes(); 
       } else{
         this.toastr.error(res.mensaje, '¡Ups!' )
       }

@@ -45,11 +45,11 @@
             </div>
             <div class="contentParticipantes">
                 <h4 class="creador">Creador:</h4>
-                <p class="nombreCreador">{{creator}}</p>
+                <p class="nombreCreador">{{evento.creator}}</p>
                 <div>
                     <h4 class="participantes">Participantes:</h4>
-                    <ul *ngIf="participantes && participantes.length > 0; else empty" class="listaPart">
-                        <li *ngFor="let participante of participantes" class="participante">{{ participante}}</li>
+                    <ul *ngIf="evento.participants && evento.participants.length > 0; else empty" class="listaPart">
+                        <li *ngFor="let participante of evento.participants" class="participante">{{ participante.name}}</li>
                     </ul>
                     <ng-template #empty>
                         <p class="participante">Todavía no hay participantes en este evento.</p>

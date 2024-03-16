@@ -7,7 +7,7 @@
                     <h3 class="titulo"><img src="../../../assets/images/iconos/eventos.png" alt=""> &nbsp;Mis próximos eventos &nbsp;<img src="../../../assets/images/iconos/eventos2.png" alt=""></h3>
                 </div>
      
-                <div class="card-container" *ngIf="eventosProx && eventosProx.length >= 3">
+                <div class="card-container" *ngIf="eventosProx && eventosProx.length > 0; else emptyEvent">
                     <div *ngFor="let evento of eventosProx">
                         <div class="cardEvento">
                             <div class="img-container">
@@ -29,9 +29,13 @@
                         </div>
                     </div>
                     <div  *ngIf="modalDetail == true" class="modalEvent">
-                        <app-detail-event [evento] = "selectEvento"  (eventCloseDetail) = closeModal($event) [type] = 1 [id_user] = "id_user"></app-detail-event>
+                        <app-detail-event [evento] = "selectEvento"  (eventCloseDetail) = closeModal($event) [type] = 1 [id_user] = "id_user" [userName] = userName></app-detail-event>
                     </div>
                 </div>
+
+                <ng-template #emptyEvent>
+                    <div class="noEvents myevents">No estás apuntado a ningún evento. Pásate por:  <button (click)="goToEvents()" class="toEvents">Próximos eventos</button> Y anímate a participar y compartir momentos inolvidables con nuestra comunidad</div>
+                </ng-template>
         </swiper-slide>
 
         <swiper-slide id="eventos">
@@ -40,7 +44,7 @@
                     <h3  class="titulo-eventos"> <img src="../../../assets/images/iconos/eventoAmarillo.png" alt=""> &nbsp; Últimos eventos de la comunidad &nbsp;<img src="../../../assets/images/iconos/eventoAmarillo2.png" alt=""></h3>
                 </div>
      
-                <div class="card-container" *ngIf="eventoCom && eventoCom.length >= 3">
+                <div class="card-container" *ngIf="eventoCom && eventoCom.length > 0;else emptyEvent2">
                     <div *ngFor="let evento of eventoCom">
                         <div class="cardEvento2">
                             <div class="img-container">
@@ -69,6 +73,11 @@
                     </div>
 
                 </div>
+
+                <ng-template #emptyEvent2>
+                    <div class="noEvents eventComs">No hay eventos en los que no participas</div>
+                </ng-template>
+                
         </swiper-slide>
 
         <swiper-slide id="mazos">

@@ -10,9 +10,9 @@ export class Eventos {
         public hour?: string,
         public place?: string,
         public direction?: string,
-        public creator?: number,
+        public creator?: string,
         public id_user?: number,
-        // public participants?: User[]
+        public participants?: User[]
 
         ) { }
 
