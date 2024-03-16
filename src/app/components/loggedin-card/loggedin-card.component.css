@@ -130,7 +130,7 @@ select {
 }
 
 .list-cards{
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     display:flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -140,7 +140,7 @@ select {
 }
 
 .builder-container {
-    border: 2px solid red;
+    /* border: 2px solid red; */
     grid-area: builder; 
     background-color: var(--negro-bg);
     display: flex;
@@ -152,7 +152,7 @@ select {
 }
 
 .list-cards2{
-    border: 2px solid purple;
+    /* border: 2px solid purple; */
     display:flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -163,7 +163,7 @@ select {
 
 
 .bg-builder {
-    border:2px solid orange;
+    /* border:2px solid orange; */
     min-height: 100%;
 }
 
