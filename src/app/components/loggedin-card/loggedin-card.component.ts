@@ -37,8 +37,6 @@ export class LoggedinCardComponent implements OnInit {
     private snackBar: MatSnackBar
   ){
 
-    //app.routing.module.ts  {path: "cartas/:cardId", component:CartasComponent},
-  this.parametro = this.rutaActiva.snapshot.params.cardId;
   }
 
 

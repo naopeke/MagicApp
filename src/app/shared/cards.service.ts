@@ -38,21 +38,27 @@ export class CardsService {
 
   public getByCollection(collection:string):Observable<Card[]> {
     let urlName = `${this.url}/cartas?cardName=${encodeURIComponent(collection)}`;
-      return this.http.get<Card[]>(urlName);
+    return this.http.get<Card[]>(urlName);
   }
 
-  public addCardsToDeck(deckIndex: number, cardIds: string[]): void {
-    console.log('Cards added to deck: ', cardIds);
-      cardIds.forEach(cardIdApi => {
-        // this.decks[deckIndex].push(cardId);
-        let urlAddToDeck = `${this.url}/cartas`;
-        this.http.post(urlAddToDeck, {id_deck: deckIndex, id: cardIdApi}).subscribe({
-          next: (response) => console.log('Cards added to deck in DB: ', response),
-          error: (err) => console.log('Error adding: ', err)
-        })
-      });
-    // console.log('Deck index: ', this.decks[deckIndex]);
-    // console.log('Card Ids added: ', cardIds);
+
+  public addCardsToDeck(deckIndex: number, cardIds: string[]): Observable<any> {
+    let urlAddToDeck = `${this.url}/cartas`;
+    return this.http.post(urlAddToDeck, { id_deck: deckIndex, cardIds: cardIds });
   }
+  
+  // public addCardsToDeck(deckIndex: number, cardIds: string[]): void {
+  //   console.log('Cards added to deck: ', cardIds);
+  //     cardIds.forEach(cardIdApi => {
+  //       // this.decks[deckIndex].push(cardId);
+  //       let urlAddToDeck = `${this.url}/cartas`;
+  //       this.http.post(urlAddToDeck, {id_deck: deckIndex, id: cardIdApi}).subscribe({
+  //         next: (response) => console.log('Cards added to deck in DB: ', response),
+  //         error: (err) => console.log('Error adding: ', err)
+  //       })
+  //     });
+  //   // console.log('Deck index: ', this.decks[deckIndex]);
+  //   // console.log('Card Ids added: ', cardIds);
+  // }
 
 }

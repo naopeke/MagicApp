@@ -52,14 +52,21 @@ export class MazoSelectorModalComponent implements OnInit {
     console.log('Selected deck: ', deckNumber);
     this.dialogRef.close(deckNumber);
   }
+  
 
-  insertCardsIntoDeck(){
-    this.cardsService
+  insertCardsIntoDeck(deckIndex: number, cardIds: string[]):void{
+    this.cardsService.addCardsToDeck(deckIndex, cardIds).subscribe({
+      next: (response) => {
+        console.log('Added to deck: ', response);
+      },
+      error: (err) => {
+        console.log('Error adding: ', err);
+      }
+    })
   }
 
   ngOnInit():void{
     // this.currentUser = this.usersService.getCurrentUser();
-  }
 }
 
-
+}
