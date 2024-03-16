@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 export class UsersService {
   public user:User;
   private url = "http://localhost:3000/";
-  public loggedIn: boolean = true; 
+  public loggedIn: boolean = false; 
 
 
   constructor(private http: HttpClient) { }
@@ -21,13 +21,15 @@ export class UsersService {
     return this.http.post(registerUrl, user)
   }
 
-  // public login(){
-  //   this.loggedIn = true;
-  // }
+  public login(user:User): Observable<Object>{
+    let loginUrl = this.url + 'login';
+    return this.http.post(loginUrl, user);
+    
+  }
 
-  // public logout(){
-  //   this.loggedIn = false;
-  // }
+  public logout(){
+    this.loggedIn = false;
+  }
 
   public statusLogin(): boolean {
     return this.loggedIn;
@@ -35,10 +37,3 @@ export class UsersService {
 
 
 }
-
-// router.post('/register', )
-// router.post('/loginUser', )
-
-// router.get('/profile/:id_user', ) 
-// router.put('/profile/datos', )
-// router.put('/profile/contraseña', )

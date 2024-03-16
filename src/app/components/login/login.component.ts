@@ -1,21 +1,29 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { User } from 'src/app/models/user';
+import { ToastrService } from 'ngx-toastr';
+import { Response } from 'src/app/models/respuesta';
 import { Router } from '@angular/router';
+import { UsersService } from 'src/app/shared/users.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
  @Output() onLoginClose = new EventEmitter<boolean>(); 
 
   public loginForm: FormGroup; 
   public myClass:boolean = false; 
   public show_login:boolean = false; 
+  public user: User; 
 
   constructor (private formBuilder: FormBuilder,
-    private router: Router){
+              private router: Router,
+              private toastr: ToastrService,
+              public myUsersService: UsersService){
 this.buildForm(); 
 }
 
@@ -23,26 +31,39 @@ private buildForm(){
   let minPassLength = 8;
 
   this.loginForm = this.formBuilder.group({
-    email: [, [Validators.required, Validators.email]],
-    password:[, [Validators.required, Validators.minLength(minPassLength)]]
+    emailUser: [, [Validators.required, Validators.email]],
+    passwordUser:[, [Validators.required, Validators.minLength(minPassLength)]]
   });
 }
 
 public login(){
-  
+  let userFormData = this.loginForm.value; 
+
+  let user: User = new User(null,
+                            null,
+                            userFormData.emailUser, 
+                            userFormData.passwordUser);
+
+  this.myUsersService.login(user)
+  .subscribe((resp: Response)=>{
+    if(!resp.err){
+      this.toastr.success('Usuario logueado con éxito', "");
+      this.loginForm.reset({'emailUser': '', 'passwordUser': ''});
+      this.myUsersService.loggedIn = true;
+      user = resp.data;
+      this.myUsersService.user = user; 
+      this.router.navigate(['/home']);
+    }else{
+      this.toastr.error('El usuario no se encuentra', "");
+    }
+  })
 }
 
 public loginClose(){
   this.onLoginClose.emit(false);
 }
 
-public navegate_home(){
-  this.router.navigate(['/home'])
-
-}
-
 ngOnInit(): void {
 }
-
 
 }
