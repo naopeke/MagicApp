@@ -16,10 +16,12 @@ export class LoggedoutCardComponent implements OnInit {
   public resultsCards: Card[] =[]; //para meter datos de resultados
   public searchType: string = 'nombre' //default searchtype es nombre
   public searchPerformed: boolean = false; // si ha hecho la busqueda o no  default false
+  public errorMessage: string | null = null; // si sale error en back, meter aquí. default null
+
 
   public darkenOverlay:boolean = false; // modal de xisca
   public show_cardinfo:boolean = false; // modal de xisca
-
+  public selectedCard: Card | null = null; // selectedCard sea Card o null, default null
 
   constructor(
     public cardsService: CardsService,
@@ -27,44 +29,64 @@ export class LoggedoutCardComponent implements OnInit {
     private rutaActiva: ActivatedRoute
   ){
 
-    //app.routing.module.ts  {path: "cartas/:cardId", component:CartasComponent},
-  // this.parametro = this.rutaActiva.snapshot.params.cardId;
+
   }
 
 
-// buscar con nombre completa y array
-  searchCards(searchParam: string): void {
+  searchCards(cardName: string): void {
     this.searchPerformed = true;
-    let cards = [];
-    if (this.searchType == 'nombre'){
-      cards = this.cardsService.getByName(searchParam);
-    } else if (this.searchType === 'colleccion'){
-      cards = this.cardsService.getByCollection(searchParam);
-    }
+    this.errorMessage = null; // cada vez busca, refresh
 
-    // si hay 1 o más cartas en array, meter datos en resultsCards
-    if (cards && cards.length > 0) {
-      this.resultsCards = cards;
-      console.log('Results:', cards);
-      console.log('resultsCards: ', this.resultsCards);
-    } else {
-      this.resultsCards = [];
-      console.log('No hay datos en resultsCards');
-    }
+    // const currentUser = this.usersService.getCurrentUser();
+    // if (currentUser && currentUser.id_user){
+
+    this.cardsService.getByName(cardName).subscribe({
+      next: (data:any) => {
+        this.resultsCards = [data]; // como dato desde back(axios) es un object y no es array...
+        console.log('API Response: ', data);
+        this.errorMessage = null; // refresh errorMessage
+      },
+      error: (err) => {
+        this.resultsCards = [];
+        console.log('Error in fetching cards:', err);
+        this.errorMessage = 'Hay demasiadas cartas o el título es incorrecto. Por favor, intenta una búsqueda más detallada con un título más específico.';
+        console.log('Error message', this.errorMessage);
+      }
+    });
   }
+  
+  
+  
+// // buscar con nombre completa y array
+//   searchCards(searchParam: string): void {
+//     this.searchPerformed = true;
+//     let cards = [];
+//     if (this.searchType == 'nombre'){
+//       cards = this.cardsService.getByName(searchParam);
+//     } else if (this.searchType === 'colleccion'){
+//       cards = this.cardsService.getByCollection(searchParam);
+//     }
+
+//     // si hay 1 o más cartas en array, meter datos en resultsCards
+//     if (cards && cards.length > 0) {
+//       this.resultsCards = cards;
+//       console.log('Results:', cards);
+//       console.log('resultsCards: ', this.resultsCards);
+//     } else {
+//       this.resultsCards = [];
+//       console.log('No hay datos en resultsCards');
+//     }
+//   }
 
 
-  public onCardInfoOpen(){
+  public onCardInfoOpen(card:Card):void{
+    this.selectedCard = card;
     this.darkenOverlay=true; 
     this.show_cardinfo = true; 
   }
 
-  public onCardInfoClose(show: boolean){
-    this.darkenOverlay = show;
-    this.show_cardinfo = show;
-  }
-
-  public card_info_close() {
+  public onCardInfoClose():void{
+    this.selectedCard = null; // resetear selectedCard
     this.darkenOverlay = false;
     this.show_cardinfo = false;
   }

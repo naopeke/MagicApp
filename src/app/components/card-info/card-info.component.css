@@ -1,16 +1,23 @@
+.container {
+    /* border:2px solid orange; */
+    z-index: 10000;
+    height: 900px;
+}
+
 
 .bg_img{
+    /* border:2px solid olive; */
     position:relative;
-    margin: 5vh;
     width: 100%;
     height: 100%;
     background-image: url(src/assets/images/fondos-info-card/flor.jpeg);
     background-size: cover;
     border-radius: 20px;
-    background-position: 68% 15%;
+    background-position: 50% 50%;
 }
 
 .bg_dark{
+    /* border:2px solid pink; */
     position: relative;
     width: 100%;
     height: 100%;
@@ -19,9 +26,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    padding-bottom: 20px;
 }
 
 .delete_button{
+    position:absolute;
+    top: 20px;
+    right: 32px;
     align-self: flex-end;
 }
 
@@ -37,15 +49,17 @@
 }
 
 .title{
+    /* border:2px solid yellow; */
     color: var(--amarillo);
     font-family: var(--antiqua);
     font-size: 40px;
-    margin-top: 20px;
+    margin-top: -160px;
 }
 
 .main{
+    /* border:2px solid green; */
     width: 100%;
-    margin-top: 75px;
+    margin-top: 40px;
     color: #f3f3f3;
     /* display: flex;
     flex-direction: row;
@@ -54,9 +68,10 @@
 }
 
 .box_right{
+    /* border:2px solid red; */
     display: flex;
     flex-direction: column;
-    padding-left: 50px;
+    padding: 0 50px 0 25px;
 }
 
 .box_left{
@@ -65,7 +80,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding-left: 50px;
+    padding-left: 25px;
 
 }
 
@@ -97,20 +112,22 @@ img{
 .text{
     color: var(--blanco);
     font-family: var(--inter);
-    font-size: 18px;
-    
-
+    font-size: 20px;
+    text-align: justify;
 }
 
 .etiquetas{
     margin-top: 40px;
     max-height: 200px;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
+    flex-direction: row;
     flex-wrap: wrap;
+    align-content: flex-start;
     color: var(--blanco);
     font-family: var(--inter);
-    font-size: 18px;
+    font-size: 20px;
+    column-gap: 24px;
 
 }
 
@@ -119,7 +136,7 @@ img{
     width: 245px;
     color: var(--blanco);
     font-family: var(--inter);
-    font-size: 18px;
+    /* font-size: 17px; */
     display: flex;
     flex-direction: row;
     text-align: center;
@@ -129,19 +146,15 @@ img{
 .button_type{
     background-color: grey;
     height: 37px;
-    width: 122px;
+    min-width: 122px;
     border-radius: 10px;
     margin-right: 10px;
     padding-top: 5px;
     color: white;
-
+    font-size: 17px;
 }
 
 .name_button_type{
     padding-top: 5px;
-}
-
-.container {
-    z-index: 10000;
-    height: 700px;
+    font-size: 20px;
 }

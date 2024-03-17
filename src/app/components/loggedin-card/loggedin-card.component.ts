@@ -25,6 +25,8 @@ export class LoggedinCardComponent implements OnInit {
  
   public darkenOverlay:boolean = false; // modal de xisca
   public show_cardinfo:boolean = false; // modal de xisca
+  public selectedCard: Card | null = null; // selectedCard sea Card o null, default null
+
 
 
   constructor(
@@ -39,25 +41,59 @@ export class LoggedinCardComponent implements OnInit {
   this.parametro = this.rutaActiva.snapshot.params.cardId;
   }
 
-  searchCards(searchParam: string): void {
-    this.searchPerformed = true;
-    let cards = [];
-    if (this.searchType == 'nombre'){
-      cards = this.cardsService.getByName(searchParam);
-    } else if (this.searchType === 'colleccion'){
-      cards = this.cardsService.getByCollection(searchParam);
-    }
 
-    // si hay 1 o más cartas en array, meter datos en resultsCards
-    if (cards && cards.length > 0) {
-      this.resultsCards = cards;
-      console.log('Results:', cards);
-      console.log('resultsCards: ', this.resultsCards);
-    } else {
-      this.resultsCards = [];
-      console.log('No hay datos en resultsCards');
-    }
+
+  searchCards(cardName: string): void {
+    this.searchPerformed = true;
+    // this.errorMessage = null; // cada vez busca, refresh
+
+    // const currentUser = this.usersService.getCurrentUser();
+    // if (currentUser && currentUser.id_user){
+
+    this.cardsService.getByName(cardName).subscribe({
+      next: (data:any) => {
+        this.resultsCards = [data]; // como dato desde back(axios) es un object y no es array...
+        console.log('API Response: ', data);
+        // this.errorMessage = null; // refresh errorMessage
+      },
+      error: (err) => {
+        this.resultsCards = [];
+        console.log('Error in fetching cards:', err);
+      //   this.errorMessage = 'Hay demasiadas cartas o el título es incorrecto. Por favor, intenta una búsqueda más detallada con un título más específico.';
+      //   console.log('Error message', this.errorMessage);
+      // }
+    }});
   }
+  
+
+  // searchCards(searchParam: string): void{
+  //   this.searchPerformed = true;
+
+  //   this.cardsService.getByName(searchParam).subscribe(cards =>{
+  //     this.resultsCards = cards;
+  //     console.log('resultsCards:', cards);
+  //   })
+  // }
+
+  // searchCards(searchParam: string): void {
+  //   this.searchPerformed = true;
+  //   let cards = [];
+  //   if (this.searchType == 'nombre'){
+  //     cards = this.cardsService.getByName(searchParam);
+  //   } else if (this.searchType === 'colleccion'){
+  //     cards = this.cardsService.getByCollection(searchParam);
+  //   }
+
+  //   // si hay 1 o más cartas en array, meter datos en resultsCards
+  //   if (cards && cards.length > 0) {
+  //     this.resultsCards = cards;
+  //     console.log('Results:', cards);
+  //     console.log('resultsCards: ', this.resultsCards);
+  //   } else {
+  //     this.resultsCards = [];
+  //     console.log('No hay datos en resultsCards');
+  //   }
+  // }
 
   onAddCardToBuilder(card: Card): void {
     this.builderCards.push(card);
@@ -65,11 +101,12 @@ export class LoggedinCardComponent implements OnInit {
   }
 
   onDeleteFromChild(cardId: string){
-    this.builderCards = this.builderCards.filter(card => card.id_card !== cardId);
+    this.builderCards = this.builderCards.filter(card => card.id !== cardId);
+    console.log('Deteleted card', cardId);
     console.log('After deleting from Builder: ', this.builderCards);
   }
 
-  //modal
+  //modal deck
   openDeckDialog(): void {
     const dialogRef = this.dialog.open(MazoSelectorModalComponent, {
       width: '700px',
@@ -95,7 +132,7 @@ export class LoggedinCardComponent implements OnInit {
     // });
     dialogRef.afterClosed().subscribe(deckIndex => {
       console.log('The dialog was closed');
-        let cardIds = this.builderCards.map(card => card.id_card);
+        let cardIds = this.builderCards.map(card => card.id);
         console.log('modal: ', cardIds);
         this.cardsService.addCardsToDeck(deckIndex, cardIds);
         this.snackBar.open(`Añadido tu carta al mazo #${deckIndex + 1}`, 'Cerrar', {
@@ -112,12 +149,15 @@ export class LoggedinCardComponent implements OnInit {
   }
 
 
-  public onCardInfoOpen(){
-    this.darkenOverlay=true; 
+  public onCardInfoOpen(card:Card):void{
+    console.log('clicked card', card);
+    this.selectedCard = card;
+    this.darkenOverlay = true; 
     this.show_cardinfo = true; 
   }
 
-  public card_info_close() {
+    public onCardInfoClose(show: boolean):void{
+    this.selectedCard = null; // resetear selectedCard cuendo se cierra
     this.darkenOverlay = false;
     this.show_cardinfo = false;
   }

@@ -34,9 +34,6 @@ import localeES from '@angular/common/locales/es'
 
 registerLocaleData(localeES)
 
-// swiper@8
-// import { SwiperModule } from 'swiper/angular';
-
 //swiper@10.3.1 https://swiperjs.com/element
 // import function to register Swiper custom elements
 import { register } from 'swiper/element/bundle';
@@ -64,14 +61,13 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { DecksComponent } from './components/decks/decks.component';
 import { RatingComponent } from './components/rating/rating.component';
 import { Router, RouterModule } from '@angular/router';
-import { AddEventComponent } from './components/add-event/add-event.component';
 import { DeleteEventComponent } from './components/delete-event/delete-event.component';
 import { EditEventComponent } from './components/edit-event/edit-event.component';
 import { DetailEventComponent } from './components/detail-event/detail-event.component';
+import { PriceEuroPipe } from './pipe/price-euro.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
-
-
+import { AddEventComponent } from './components/add-event/add-event.component';
 
 
 @NgModule({
@@ -102,6 +98,7 @@ import { ToastrModule } from 'ngx-toastr';
     DeleteEventComponent,
     EditEventComponent,
     DetailEventComponent,
+    PriceEuroPipe,
     WarningModalComponent,
   ],
 
@@ -119,12 +116,6 @@ import { ToastrModule } from 'ngx-toastr';
       closeButton: true,
       timeOut: 3000
     }),
-
-
-    
-    
-
-
 
     // angular material
     MatSidenavModule,
@@ -149,11 +140,6 @@ import { ToastrModule } from 'ngx-toastr';
     CdkVirtualScrollViewport,
     ScrollingModule, 
     CdkScrollableModule, 
-    
-    
-    //swiper@8
-    // SwiperModule
-
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'es'}

@@ -1,6 +1,6 @@
 
 
-main{
+.mainHome{
   width: 100%;
   height: 1000px;
   display: flex;
@@ -25,29 +25,6 @@ swiper-slide {
 .myswipper.swiper-button-next , .swiper-button-prev{
   color: var(--blanco);
 }
-
-/* #bgEventos , #bgEventos2, #bgMazos{
-  width: 1600px;
-  height: 850px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 60px;
-  background-size: cover;
-} */
-
-/* #bgEventos{
-  background-image: url(../../../assets/images/home/bg-foto-bosque.png);
-}
-
-#bgEventos2{
-  background-image: url(../../../assets/images/home/bg-foto-bosque2.png);
-}
-
-#bgMazos{
-  background-image: url(../../../assets/images/home/bg-foto-montaña.png);
-} */
 
 #misEventos{
   background-image: url(../../../assets/images/home/bg-foto-bosque.png);
@@ -98,7 +75,7 @@ swiper-slide {
 
 .card-container{
   display: flex;
-  gap: 50px;
+  gap: 30px;
 }
 .cardEvento, .cardEvento2, .cardMazo {
   width: 400px;
@@ -141,8 +118,8 @@ swiper-slide {
 
 .tituloEvento, .tituloEvento2{
   font-size: 18pt;
-  height: 90px;
   display: flex;
+  justify-content: center;
   align-items: center;
   line-height: 40px;
 }
@@ -193,17 +170,24 @@ a{
   text-decoration: underline;
 }
 
-.button-participar{
+.button-participar, .button-abandonar{
   height: 45px;
   padding: 5px;
   width: 180px;
   margin-top: 30px;
-  background-color: var(--verde);
   border-radius: var(--borde-boton);
   border: none;
 }
 
-.button-participar:hover{
+.button-abandonar{
+  background-color: var(--amarillo);
+}
+
+.button-participar{
+  background-color: var(--verde);
+}
+
+.button-participar:hover, .button-abandonar:hover{
   background-color: var(--blanco);
 }
 
@@ -229,11 +213,48 @@ a{
   border: solid var(--blanco) 2px;
   width: 300px;
 }
-#modalEvent{
+.modalEvent{
   position: absolute;
+  top: 0;
+  right: 300px;
   z-index: 9999;
 }
 
+.noEvents{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: var(--negro-bg);
+  border-radius: var(--borde-cuadrado);
+  border: solid var(--amarillo) 2px;
+  color: var(--blanco);
+  font-family: var(--inter);
+  width: 400px;
+  gap: 15px;
+}
+
+.myevents{
+  height: 250px;
+}
+.eventComs{
+  height: 100px;
+}
+.toEvents{
+  border: none;
+  background-color: var(--amarillo);
+  border-radius: var(--borde-boton);
+  color: black;
+  font-family: var(--antiqua);
+  height: 50px;
+  width: 200px;
+  font-size: 13pt;
+}
+
+.toEvents:hover{
+  background-color: var(--verde);
+}
 /* MEDIAQUERY */
 @media screen and (max-width: 1510px)
 {
@@ -251,9 +272,7 @@ a{
     width: 250px;
   }
 
-  .img-mazo{
-    width: 200px;
-  }
+
 
   .img-avatar{
     position: relative;
@@ -267,6 +286,7 @@ a{
 
   .tituloEvento, .tituloEvento2{
     font-size: 14pt;
+
   }
 
   @media screen and (max-width: 1210px){

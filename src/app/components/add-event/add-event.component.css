@@ -1,67 +1,85 @@
-#mainAdd{
+main{
     position: absolute;
-    width: 30%;
-    height: 550px;
-    background-image: url(../../../assets/images/fondos/Fondo_verde.png); 
-    background-repeat: no-repeat;
+    top: 300px;
+    left: 700px;
+}
+.modalEdit{
+    width: 500px;
+    height: 720px;
+    background-image: url(../../../assets/images/fondos/fondo_modal_evento.png);
     background-size: cover;
-    left: 35%;
-    top: 210px;
-    display:block
-}
-  
-.modal-dialog-add{
-    width: 90%;
-    margin: 0 auto;
-    margin-top: 30px;
-}
-  
-.divAdd{
-    background-color: var(--negro-bg);
-    width: 100%;
-    height: 500px;
+    border-radius: var(--borde-cuadrado);
+    border: solid var(--amarillo) 1px;
+
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
 }
 
-.divAdd h1{
-    font-family: var(--antiqua);
+
+.titulo{
     color: var(--amarillo);
-    text-align: center;
+    font-family: var(--antiqua);
+    font-size: 25pt;
 }
-  
-.formAdd{
+
+#close{
+    width: 30px;
+    position: absolute;
+    top:5px;
+    right: 5px;
+    cursor: pointer;
+}
+
+.form{
     display: flex;
     flex-direction: column;
-    width: 100%;
+    align-items: center;
+    gap: 10px;
 }
-  
-.inputAdd{
-    width: 90%;
-    margin: 0 auto;
-    margin-top: 30px;
-    padding: 5px;
+
+input{
+    height: 50px;
+}
+textarea{
+    height: 100px;
+
+}
+
+input, textarea{
+    width: 300px;
+    background-color: transparent;
+    border: solid var(--verde) 2px;
     border-radius: var(--borde-input);
+    text-align: center;
     color: var(--blanco);
     font-family: var(--inter);
-    background-color: rgba(0, 0, 0, 0);
-    font-weight: bold;
-}
-  
-.submitEdit{
+    font-size: 14pt;
     padding: 10px;
-    width: 50%;
-    background-color: var(--verde);
-    border-radius: var(--borde-boton);
-    margin: 0 auto;
-    margin-top: 15px;
-    margin-bottom: 10%;
-    color: #191A1B;
-    font-weight: bold;
 }
-#closed{
-    color: var(--amarillo);
-    font-weight: bold;
-    text-align: right;
-    padding: 3px;
+
+input::placeholder, textarea::placeholder{
+    color: var(--blanco);
+    font-family: var(--inter);
+}
+
+.buttonEditar, .saveButton{
+    height: 50px;
+    width: 200px;
+    margin-top: 10px;
+    border-radius: var(--borde-boton);
+    font-family: var(--antiqua);
+    font-size: 13pt;
+}
+.buttonEditar{
+    background-color: var(--amarillo);
+}
+.saveButton{
+    background-color: var(--verde);
+}
+
+.buttonEditar:hover, .saveButton:hover{
+    background-color: var(--blanco);
 }
