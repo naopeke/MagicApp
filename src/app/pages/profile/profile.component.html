@@ -4,12 +4,12 @@
             <div class="cardPerfil">
 
                 <div class="nameContainer">
-                    <p id="nameUser">{{user.name}}</p>
+                    <p id="nameUser">{{user.nameUser}}</p>
                 </div>
 
-                <img class="imgCard" [src]="user.marco" alt="">
+                <img class="imgCard" [src]="user.icon" alt="">
                 <img class="imgFondo" src="../../../assets/images/profile/fondoCarta.png" alt="">
-                <img class="imgAvatar" [src]="user.photo" alt="">
+                <img class="imgAvatar" [src]="user.avatar" alt="">
                 
                 <div class="sobreMiContainer">
                     <p class="sobreMi">Criatura - humano</p>
@@ -19,7 +19,7 @@
                 <div class="infoUser">
                     <div class="email">
                         <p id="emailTitle">Correo Electrónico</p>
-                        <p id="emailUser">{{user.email}}</p>
+                        <p id="emailUser">{{user.emailUser}}</p>
                     </div>
                     <hr class="line">
                     <div class="description">
@@ -33,7 +33,7 @@
                 <button class="buttonEditFoto" (click)="editPhoto()">Editar Avatar/Tierra</button>
             </div>
             <ng-template #cambiar>
-                <button type="button" class="buttonSaveFoto" (click)="editPhoto()">Guardar cambios </button>
+                <button type="button" class="buttonSaveFoto" (click)="savePhoto()">Guardar cambios </button>
             </ng-template>
         </div>
 
@@ -55,10 +55,10 @@
                    
                     <input type="text" name="user" id="user" placeholder="Nombre de usuario" 
                     formControlName="name"
-                    [style.borderColor]="user.marco == this.marcos[1] ? '#28669F' :
-                                user.marco == this.marcos[2] ? '#643D6A':
-                                user.marco == this.marcos[3] ? '#B6281A':
-                                user.marco == this.marcos[4] ? '#5C724B':''"
+                    [style.borderColor]="user.icon == this.marcos[1] ? '#28669F' :
+                                user.icon == this.marcos[2] ? '#643D6A':
+                                user.icon == this.marcos[3] ? '#B6281A':
+                                user.icon == this.marcos[4] ? '#5C724B':''"
                     [ngClass]="{
                         'is-invalid': (editForm.get('name').dirty || editForm.get('name').touched) && !editForm.get('name').valid,
                         'valid': editForm.get('name').valid
@@ -70,10 +70,10 @@
                     
                     <input type="email" name="email" id="email" placeholder="Correo electrónico" 
                     formControlName="email"
-                    [style.borderColor]="user.marco == this.marcos[1] ? '#28669F' :
-                    user.marco == this.marcos[2] ? '#643D6A':
-                    user.marco == this.marcos[3] ? '#B6281A':
-                    user.marco == this.marcos[4] ? '#5C724B':''"
+                    [style.borderColor]="user.icon == this.marcos[1] ? '#28669F' :
+                    user.icon == this.marcos[2] ? '#643D6A':
+                    user.icon == this.marcos[3] ? '#B6281A':
+                    user.icon == this.marcos[4] ? '#5C724B':''"
                     [ngClass]="{
                         'is-invalid': (editForm.get('email').dirty || editForm.get('email').touched) && !editForm.get('email').valid,
                         'valid': editForm.get('email').valid
@@ -85,10 +85,10 @@
                  
                     <textarea name="description" id="description" cols="1" rows="4" placeholder="Añade aquí tu descripción" 
                     formControlName="description"
-                    [style.borderColor]="user.marco == this.marcos[1] ? '#28669F' :
-                    user.marco == this.marcos[2] ? '#643D6A':
-                    user.marco == this.marcos[3] ? '#B6281A':
-                    user.marco == this.marcos[4] ? '#5C724B':''"
+                    [style.borderColor]="user.icon == this.marcos[1] ? '#28669F' :
+                    user.icon== this.marcos[2] ? '#643D6A':
+                    user.icon== this.marcos[3] ? '#B6281A':
+                    user.icon== this.marcos[4] ? '#5C724B':''"
                     [ngClass]="{
                         'is-invalid': (editForm.get('description').dirty || editForm.get('description').touched) && !editForm.get('description').valid,
                         'valid': editForm.get('description').valid
@@ -103,7 +103,7 @@
                     </div>
     
                     <ng-template #guardar>
-                        <button type="button" [ngClass]="editar == true ? 'saveButton': ''" [disabled]="!editForm.valid" (click)="edit()">Guardar Cambios</button>
+                        <button type="button" [ngClass]="editar == true ? 'saveButton': ''" [disabled]="!editForm.valid" (click)="save()">Guardar Cambios</button>
                     </ng-template>
                 </form>
 
@@ -117,10 +117,10 @@
 
                     <input type="password" name="password" id="password" placeholder="Nueva Contraseña" 
                     formControlName="password"
-                    [style.borderColor]="user.marco == this.marcos[1] ? '#28669F' :
-                    user.marco == this.marcos[2] ? '#643D6A':
-                    user.marco == this.marcos[3] ? '#B6281A':
-                    user.marco == this.marcos[4] ? '#5C724B':''"
+                    [style.borderColor]="user.icon == this.marcos[1] ? '#28669F' :
+                    user.icon == this.marcos[2] ? '#643D6A':
+                    user.icon == this.marcos[3] ? '#B6281A':
+                    user.icon == this.marcos[4] ? '#5C724B':''"
                     [ngClass]="{
                     'is-invalid': (editPassword.get('password').dirty || editPassword.get('password').touched) && !editPassword.get('password').valid,
                     'valid': editPassword.get('password').valid
@@ -132,10 +132,10 @@
           
                     <input type="password" name="password2" id="password2" placeholder="Repite Contraseña" 
                     formControlName="password2"
-                    [style.borderColor]="user.marco == this.marcos[1] ? '#28669F' :
-                    user.marco == this.marcos[2] ? '#643D6A':
-                    user.marco == this.marcos[3] ? '#B6281A':
-                    user.marco == this.marcos[4] ? '#5C724B':''"
+                    [style.borderColor]="user.icon == this.marcos[1] ? '#28669F' :
+                    user.icon == this.marcos[2] ? '#643D6A':
+                    user.icon == this.marcos[3] ? '#B6281A':
+                    user.icon == this.marcos[4] ? '#5C724B':''"
                     [ngClass]="{
                         'is-invalid': (editPassword.get('password2').dirty || editPassword.get('password2').touched) && !editPassword.get('password2').valid,
                         'valid': editPassword.get('password2').valid
@@ -151,7 +151,7 @@
                     </div>
     
                     <ng-template #guardar2>
-                        <button type="button" [ngClass]="editarPass == true ? 'saveButton': ''" [disabled]="!editPassword.valid" (click)="editPass()">Guardar Cambios</button>
+                        <button type="button" [ngClass]="editarPass == true ? 'saveButton': ''" [disabled]="!editPassword.valid" (click)="savePass()">Guardar Cambios</button>
                     </ng-template>
     
                 </form>

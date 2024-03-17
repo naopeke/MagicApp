@@ -12,10 +12,10 @@ export class ModalProfileComponent {
 
 
 public avatares: string[] = [
-  '../../../assets/images/personajes/avatar1.png',
-  '../../../assets/images/personajes/avatar2.png',
-  '../../../assets/images/personajes/avatar3.png',
-  '../../../assets/images/personajes/avatar4.png'
+  'https://i.imgur.com/DfPRe0j.png',
+  'https://i.imgur.com/7Hot9pr.png',
+  'https://i.imgur.com/C5EqkRh.png',
+  'https://i.imgur.com/pY8Vdwo.png'
 ]
 
 public tierras: string[] = [
