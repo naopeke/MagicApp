@@ -38,8 +38,7 @@ export class EventoComponent {
   constructor(private eventService: EventosService, private router: Router){
     //Se debe llamar al service para recoger los eventos
 
-    this.events = this.eventService.getAllEvents();
-
+    this.events = this.eventService.getAllEvents()
     //Recuperar del service o cogerlo del header
     this.login1 = new Logging(this.user1, true);
     this.login2 = new Logging(this.user2, false);

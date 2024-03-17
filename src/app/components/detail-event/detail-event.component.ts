@@ -1,25 +1,78 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Events } from 'src/app/models/event';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { Eventos } from 'src/app/models/eventos';
+import { User } from 'src/app/models/user';
+import { EventosService } from 'src/app/shared/eventos.service';
 
 @Component({
   selector: 'app-detail-event',
   templateUrl: './detail-event.component.html',
   styleUrls: ['./detail-event.component.css']
 })
-export class DetailEventComponent {
-  @Input() evento:Events
-
+export class DetailEventComponent implements OnInit{
+  @Input() evento:Eventos
+  @Input() type: number
+  @Input() id_user:number;
+  @Input() userName:string
   @Output() eventCloseDetail = new EventEmitter<boolean>();
+
   public openModal:boolean = false
-  constructor(){}
-  
+
+  constructor(public eventoService: EventosService,
+              private toastr: ToastrService){}
+
+
+  ngOnInit() {
+    this.getparticipantes();
+    console.log(this.evento);
+  }
+
+  getparticipantes(){
+    this.eventoService.getParticipantes(this.evento.id_event).subscribe((res:any) => {
+     console.log(this.evento);
+     
+      if(!res.error){
+        this.evento.participants = [];
+        res.data.forEach(evento => {
+          if(evento.creator == 1){
+            this.evento.creator = evento.nameUser
+          } else {
+            this.evento.participants.push(new User(evento.id_user, evento.nameUser));
+            console.log(this.evento.participants);
+            
+          }
+        });
+      } else{
+        this.toastr.error(res.mensaje, '¡Ups!')
+      }
+    })
+  }
+
   closeDetail(){
     this.eventCloseDetail.emit(false)
   }
 
   participar(){
-    console.log(this.evento);
-    // añadir el id user de la persona que está logueada, traermelo desde el servicio
-    // this.evento.participants.push(user.id_user)
+    this.eventoService.postPartipacion(this.id_user, this.evento.id_event).subscribe((res:any) =>{
+      if(!res.error){
+        this.toastr.success(res.mensaje, '¡Bienvenido al evento!');
+        this.evento.participants = [];
+        this.getparticipantes(); 
+      } else{
+        this.toastr.error(res.mensaje, '¡Ups!' )
+      }
+    })
+
+  }
+
+  abandonar(){
+    this.eventoService.deleteParticipacion(this.id_user, this.evento.id_event).subscribe((res:any) =>{
+      if(!res.error){
+        this.toastr.success(res.mensaje, 'Éxito')
+        this.getparticipantes(); 
+      } else{
+        this.toastr.error(res.mensaje, '¡Ups!' )
+      }
+    })
   }
 }

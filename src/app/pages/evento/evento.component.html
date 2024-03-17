@@ -12,15 +12,15 @@
         <button class="button_lateral" (click)="openModalAdd()">Añadir evento</button>
     </div>
 
-    <!-- <div class="search-container searchContainer">
+    <div class="search-container searchContainer">
         <form id="formBuscador">
             <input type="text" id="buscador" name="buscador" placeholder="Buscar" #buscador/>
             <button type="submit" class="btn-buscador btnBuscador" (click)="findEventsWithName(buscador.value)"></button>
         </form>
         <button class="button_lateral" (click)="openModalAdd()">Añadir evento</button>
         
-    </div> -->
-    <!-- <div *ngIf="getModalCreateEvent()"><app-add-event></app-add-event></div>  -->
+    </div>
+    <div *ngIf="getModalCreateEvent()"><app-add-event></app-add-event></div> 
     <div *ngIf="modalAdd == true" class="modalEdit">
         <app-add-event (eventClose) = closeModalAdd($event)></app-add-event>
     </div>
@@ -58,7 +58,7 @@
         </div>
 
         <!--MODAL edit-->
-        <!-- <app-edit-event *ngIf="getModalEditEvent()"></app-edit-event> -->
+        <app-edit-event *ngIf="getModalEditEvent()"></app-edit-event>
         <div *ngIf="modalEdit == true" class="modalEdit">
             <app-edit-event [evento] = "evento" (eventClose) = closeModal($event)></app-edit-event>
         </div>
@@ -70,11 +70,11 @@
 
 
     <!-- Pagination -->
-    <div class="pagination" *ngIf="totalPages > 1">
+    <!-- <div class="pagination" *ngIf="totalPages > 1">
         <button class="buttonPagination" (click)="prevPage()"><p class="p_pagiantion">Anterior</p></button>
         <span class="paginationSpan">{{ currentPage + 1 }} / {{ totalPages }}</span>
         <button class="buttonPagination" (click)="nextPage()"><p class="p_pagiantion">Siguiente</p></button>
-    </div>
+    </div> -->
 
 
 
@@ -82,14 +82,14 @@
     <!-- Ya no lo necesitamos llamamos al componente detalle evento -->
 
     <!--MODAL singUp event-->
-    <!-- <div class="modal fade bd-example-modal-sm" id="singUp" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal fade bd-example-modal-sm" id="singUp" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm modal-dialog-general">
             <div class="modal-content divSingUp">
                 <p class="modalP">¿Deseas participar en el evento?</p>
                 <button class="buttonsingUp" (click)="singUp()"><p>Aceptar</p></button>
             </div>
         </div>
-    </div> -->
+    </div>
 </div>
 
 
