@@ -45,9 +45,7 @@ main{
     height: 100%;
 }
 
-.infoPerfil{
 
-}
 
 /* Titulo */
 .tituloPerfil{
@@ -201,7 +199,7 @@ main{
     background-color: var(--verde);
 }
 .buttonEditFoto:hover, .buttonSaveFoto:hover{
-    background-color: var(--blanco);
+    background-color: var(--azul);
 }
 
 /* Modificar perfil */
@@ -291,7 +289,7 @@ input::placeholder{
     background-color: var(--verde);
 }
 .editButton:hover, .saveButton:hover{
-    background-color: var(--blanco);
+    background-color: var(--azul);
 }
 
 

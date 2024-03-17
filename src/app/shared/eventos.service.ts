@@ -37,7 +37,7 @@ export class EventosService {
       this.urlHome = "http://localhost:3000/home"
     // Belen Home
 
-    // this.events = [this.ev1, this.ev2, this.ev3, this.ev4, this.ev5];
+    this.events = [this.ev1, this.ev2, this.ev3, this.ev4, this.ev5];
     this.modalCreateEvent = false;
     this.modalDeleteEvent = false;
     this.modalEditEvent = false;
@@ -47,39 +47,40 @@ export class EventosService {
 
   getAllEvents(){
     return this.events;
+    
   }
 
   createEvent(newEvent:Evento){
     //El objeto viene del ts del componente relleno
-    // this.events.push(newEvent);
+    this.events.push(newEvent);
   }
 
   modifyEvent(newEvent:Evento){
     //Buscamos el indice del array donde se encuentra el evento a modificar,
     //modificamos ese elemento del array por el nuevo
     //devolvemos true si se ha modificado correctamente, false en caso de no encontrarlo.
-    // let cambiar = this.events.findIndex(val => val.id == newEvent.id);
+    let cambiar = this.events.findIndex(val => val.id == newEvent.id);
 
-    // if(cambiar !== -1){
-    //   this.events[cambiar] = newEvent;
-    //   return true;
-    // }else{
-    //   return false;
-    // }
+    if(cambiar !== -1){
+      this.events[cambiar] = newEvent;
+      return true;
+    }else{
+      return false;
+    }
   }
 
   deleteEvent(id:number){    
     //Buscamos el indice del array donde se encuentra el evento a eliminar,
     //creamos de nuevo el array sin ese elemento
     //devolvemos true si se ha borrado correctamente, false en caso de no encontrarlo.
-    // let borrar = this.events.findIndex(val => val.id == id);
+    let borrar = this.events.findIndex(val => val.id == id);
 
-    // if(borrar !== -1){
-    //   this.events = this.events.filter(val => val.id != id);
-    //   return true;
-    // }else{
-    //   return false;
-    // }
+    if(borrar !== -1){
+      this.events = this.events.filter(val => val.id != id);
+      return true;
+    }else{
+      return false;
+    }
   }
 
   openModalCreateEvent(){
