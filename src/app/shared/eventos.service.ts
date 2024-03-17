@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class EventosService {
 
-  // Belen Home
+  // Belen Home intenta arreglar
   private urlHome: string
    // Belen Home
 
