@@ -20,7 +20,7 @@ export class HeaderComponent {
 
   logOut() {
     this.modal_visible = false;
-    this.usersService.loggedIn = false;
+    this.usersService.logout(); // usar logout de usersService
     this.usersService.user = null;
     this.router.navigate(['landing-page']);
   }

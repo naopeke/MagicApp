@@ -49,7 +49,8 @@ public login(){
     if(!resp.err){
       this.toastr.success('Usuario logueado con éxito', "");
       this.loginForm.reset({'emailUser': '', 'passwordUser': ''});
-      this.myUsersService.loggedIn = true;
+      // this.myUsersService.loggedIn = true;
+      this.myUsersService.isLoginSubject.next(true);
       user = resp.data;
       this.myUsersService.user = user; 
       this.router.navigate(['/home']);

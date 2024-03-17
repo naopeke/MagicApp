@@ -1,6 +1,6 @@
 <!-- Si el statusLogin es true en usersService -->
-<app-loggedin-card *ngIf="usersService.statusLogin()"></app-loggedin-card>
+<app-loggedin-card *ngIf="usersService.isLoginSubject.value"></app-loggedin-card>
 
 <!-- Si el statusLogin es false en usersService -->
-<app-loggedout-card *ngIf="!usersService.statusLogin()"></app-loggedout-card>
+<app-loggedout-card *ngIf="!usersService.isLoginSubject.value"></app-loggedout-card>
 

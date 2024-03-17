@@ -2,8 +2,8 @@
     <div id="img_header" routerLink="home"><img src="../../../assets/images/Logo.png" alt="MagyDeck"></div>
    
     <div class="dropdown">
-        <button class="button_lateral" routerLink="register"  *ngIf="!usersService.loggedIn">Iniciar sesión</button>
-        <button class="button_lateral dropdown-toggle" (click)="modal_visible = !modal_visible" *ngIf="usersService.loggedIn">{{ usersService.user.nameUser }}</button>
+        <button class="button_lateral" routerLink="register"  *ngIf="!usersService.isLoginSubject.value">Iniciar sesión</button>
+        <button class="button_lateral dropdown-toggle" (click)="modal_visible = !modal_visible" *ngIf="usersService.isLoginSubject.value">{{ usersService.user.nameUser }}</button>
         <div *ngIf="modal_visible" class="dropdown-child">
             <!-- Crar un espacio de ruptura (&nbsp) -->
             <span (click)="modal_visible = !modal_visible" routerLink="profile">Perfil</span>
@@ -25,19 +25,19 @@
                     <p id="pAzul">Cartas</p>
                 </a>
             </li>
-            <li *ngIf="usersService.loggedIn">
+            <li *ngIf="usersService.isLoginSubject.value">
                 <a routerLink="mis-mazos" class="linkActive">
                     <img class="icono" src="../../../assets/images/header/Llamita_morada.png" alt="Magic Pantano">
                     <p id="pMorado">Mis mazos</p>
                 </a>
             </li>
-            <li *ngIf="usersService.loggedIn">
+            <li *ngIf="usersService.isLoginSubject.value">
                 <a routerLink="explora" class="linkActive">
                     <img class="icono" src="../../../assets/images/header/Llamita_roja.png" alt="Magic Montaña">
                 <p id="pRojo">Explora</p>
                 </a>
             </li>
-            <li class="submenu" *ngIf="usersService.loggedIn">
+            <li class="submenu" *ngIf="usersService.isLoginSubject.value">
                 <a class="linkActive">
                     <img class="icono" src="../../../assets/images/header/Llamita_verde.png" alt="Magic Bosque">
                     <p class="pVerde">Eventos</p>
