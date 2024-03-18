@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { UsersService } from 'src/app/shared/users.service';
@@ -10,9 +10,11 @@ import { UsersService } from 'src/app/shared/users.service';
 
 })
 
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   public bandera:boolean;
   public modal_visible:boolean;
+  public currentUser: User | null = null;
+
 
   constructor(public usersService: UsersService, private router: Router){
     this.modal_visible = false;
@@ -24,5 +26,12 @@ export class HeaderComponent {
     this.usersService.user = null;
     this.router.navigate(['landing-page']);
   }
+
+  ngOnInit(): void {
+    this.usersService.currentUserChanges().subscribe(user => {
+      this.currentUser = user;
+    });
+
+}
 
 }

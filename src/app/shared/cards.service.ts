@@ -42,11 +42,16 @@ export class CardsService {
   }
 
 
-  public addCardsToDeck(deckIndex: number, cardIds: string[]): Observable<any> {
+  public addCardsToDeck(deckIndex: number, cardIds: string[], userId: number): Observable<any> {
     let urlAddToDeck = `${this.url}/cartas`;
-    return this.http.post(urlAddToDeck, { id_deck: deckIndex, cardIds: cardIds });
+    return this.http.post(urlAddToDeck, { id_deck: deckIndex, cardIds: cardIds, user_id: userId });
   }
   
+  // public getIdUser(cardId: string): Observable<number> {
+  //   let urlGetUserId = `${this.url}/cards/${cardId}/user`;
+  //   return this.http.get<number>(urlGetUserId);
+  // }
+
   // public addCardsToDeck(deckIndex: number, cardIds: string[]): void {
   //   console.log('Cards added to deck: ', cardIds);
   //     cardIds.forEach(cardIdApi => {

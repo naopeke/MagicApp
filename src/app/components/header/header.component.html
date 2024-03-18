@@ -3,7 +3,7 @@
    
     <div class="dropdown">
         <button class="button_lateral" routerLink="register"  *ngIf="!usersService.isLoginSubject.value">Iniciar sesión</button>
-        <button class="button_lateral dropdown-toggle" (click)="modal_visible = !modal_visible" *ngIf="usersService.isLoginSubject.value">{{ usersService.user.nameUser }}</button>
+        <button class="button_lateral dropdown-toggle" (click)="modal_visible = !modal_visible" *ngIf="usersService.isLoginSubject.value">{{ currentUser?.nameUser }}</button>
         <div *ngIf="modal_visible" class="dropdown-child">
             <!-- Crar un espacio de ruptura (&nbsp) -->
             <span (click)="modal_visible = !modal_visible" routerLink="profile">Perfil</span>

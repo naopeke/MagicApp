@@ -54,8 +54,8 @@ export class MazoSelectorModalComponent implements OnInit {
   }
   
 
-  insertCardsIntoDeck(deckIndex: number, cardIds: string[]):void{
-    this.cardsService.addCardsToDeck(deckIndex, cardIds).subscribe({
+  insertCardsIntoDeck(deckIndex: number, cardIds: string[], userId: number):void{
+    this.cardsService.addCardsToDeck(deckIndex, cardIds, userId).subscribe({
       next: (response) => {
         console.log('Added to deck: ', response);
       },
