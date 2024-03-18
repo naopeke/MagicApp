@@ -58,9 +58,10 @@
             </div>
             <ng-template #guardar>
                 <button type="button" [ngClass]="editar == true ? 'saveButton': ''"
-                [disabled]="!addEvent.valid"
+                [disabled]="!addEvent.valid" 
                 (click)="add()">Añadir</button>
             </ng-template>
+            
             <!-- <div #guardar>
                 <button type="button" class="buttonEditar" [ngClass]="editar == true ? 'saveButton': ''"
                 [disabled]="!addEvent.valid"

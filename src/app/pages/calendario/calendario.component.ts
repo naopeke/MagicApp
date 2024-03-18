@@ -4,6 +4,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { DateAdapter } from '@angular/material/core';
 import { Evento } from 'src/app/models/evento';
+import { EventosService } from 'src/app/shared/eventos.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-calendario',
@@ -21,7 +23,9 @@ export class CalendarioComponent {
   // pero está puesto nameUser, no he querido tocar para no fastidiar los datos de Carlota
   public evento: Evento = new Evento(1, 'Superpartida', 'Partida entre señoras', new Date(2024, 3, 12), '18:00', 'Madrid')
   
-  
+  public modalAdd:boolean = false;
+
+ 
   dates = [
     {fecha: '2 de enero 2024',
   events:[
@@ -39,7 +43,7 @@ export class CalendarioComponent {
   // elegir dia de hoy
   selectedDate: Date = new Date();
 
-  constructor(date: DateAdapter<Date>) {
+  constructor(date: DateAdapter<Date>, private eventService: EventosService, private router: Router) {
     date.getFirstDayOfWeek = () =>1;
   }
 
@@ -78,13 +82,19 @@ export class CalendarioComponent {
   }
 
   
-  openModalEdit(){
-    this.modalEdit = true
+  openModalAddEvent(){
+    this.eventService.openModalCreateEvent();
   }
 
-  closeModal(event: boolean){
-    this.modalEdit = event
+
+openModalAdd(){
+    this.modalAdd = true
+  }
+
+  closeModalAdd(event: boolean){
+    this.modalAdd = event
   }
 }
+
 
 
