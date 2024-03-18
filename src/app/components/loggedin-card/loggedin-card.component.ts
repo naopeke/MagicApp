@@ -196,7 +196,7 @@ export class LoggedinCardComponent implements OnInit {
 
   ngOnInit(): void {
     const currentUser = this.usersService.getCurrentUser(); // PARA GET ULTIMO CURRENT USER
-    console.log('Current user:', currentUser);
+    console.log('Current user loginCarta:', currentUser);
     
     // const userId = this.usersService.getCurrentUserId();
     // console.log('user id :', userId);

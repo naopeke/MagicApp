@@ -59,25 +59,19 @@ export class UsersService {
     this.isLoginSubject.next(false);
   }
 
-  public getCurrentUser(): User | null {
+  public getCurrentUser(): User | null {  // Para meter en otras paginas en ngOnInit 
     return this.currentUserSubject.getValue();
   }
 
-  // public getCurrentUser(): User | null {
-  //   let currentUserValue: User | null = null;
-  //   this.currentUser.subscribe(user => {
-  //     currentUserValue = user;
-  //   });
-  //   return currentUserValue;
-  // }
-  
-
-  public getCurrentUserId(): number | null {
+  // va a devolver numero de id_user o null. si no está logueado, null
+  public getCurrentUserId(): number | null { // Para meter en otras paginas en ngOnInit 
+    // obtener user object usando getCurrentUser
     const currentUser = this.getCurrentUser();
+    // si existe user object, devuelve id_user, si no, devuelve null
     return currentUser && currentUser ? currentUser.id_user : null;
   }
   
-  public currentUserChanges(): Observable<User | null> { //Para meter en otras paginas en ngOnInIt
+  public currentUserChanges(): Observable<User | null> { //Para meter en header en ngOnInIt
     return this.currentUserSubject.asObservable();
   }
   

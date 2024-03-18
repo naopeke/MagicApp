@@ -66,7 +66,8 @@ export class MazoSelectorModalComponent implements OnInit {
   }
 
   ngOnInit():void{
-    // this.currentUser = this.usersService.getCurrentUser();
+    const currentUser = this.usersService.getCurrentUser(); // PARA GET ULTIMO CURRENT USER
+    console.log('Current user deck Modal:', currentUser);
 }
 
 }
