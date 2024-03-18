@@ -55,6 +55,13 @@ main{
     outline: solid var(--amarillo) 2px;
     cursor: pointer;
 }
+
+.seleccion{
+    outline: solid var(--verde) 2px;
+}
+
+
+
 .avatar{
     width: 290px;
 }

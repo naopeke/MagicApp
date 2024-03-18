@@ -63,16 +63,52 @@ export class UsersService {
     return this.currentUserSubject.getValue();
   }
 
-  // va a devolver numero de id_user o null. si no está logueado, null
-  public getCurrentUserId(): number | null { // Para meter en otras paginas en ngOnInit 
-    // obtener user object usando getCurrentUser
-    const currentUser = this.getCurrentUser();
-    // si existe user object, devuelve id_user, si no, devuelve null
-    return currentUser && currentUser ? currentUser.id_user : null;
-  }
+    // Belen perfil
+    public getProfile(id_user:number){
+      return this.http.get(this.url + 'profile/' + id_user)
+    }
   
-  public currentUserChanges(): Observable<User | null> { //Para meter en header en ngOnInIt
-    return this.currentUserSubject.asObservable();
-  }
+    public putProfile(user:User){
+      let body = {
+        nameUser: user.nameUser,
+        emailUser: user.emailUser,
+        description: user.description,
+        id_user: user.id_user
+      }
+      return this.http.put(this.url + 'profile/general', body)
+    }
+  
+    public putPassword(user:User){
+      let body = {
+        passwordUser: user.passwordUser,
+        id_user: user.id_user
+      }
+      return this.http.put(this.url + 'profile/password', body)
+    }
+  
+    public putAvatar(user:User){
+      let body = {
+        avatar: user.avatar,
+        icon:user.icon,
+        id_user: user.id_user
+      }
+      return this.http.put(this.url + 'profile/avatar', body)
+    }
+    // Belen perfil
+  
+  
+  
+    // va a devolver numero de id_user o null. si no está logueado, null
+    public getCurrentUserId(): number | null { // Para meter en otras paginas en ngOnInit 
+      // obtener user object usando getCurrentUser
+      const currentUser = this.getCurrentUser();
+      // si existe user object, devuelve id_user, si no, devuelve null
+      return currentUser && currentUser ? currentUser.id_user : null;
+    }
+    
+    public currentUserChanges(): Observable<User | null> { //Para meter en header en ngOnInIt
+      return this.currentUserSubject.asObservable();
+    }
+    
   
 }

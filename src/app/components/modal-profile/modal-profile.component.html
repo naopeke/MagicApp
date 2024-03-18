@@ -6,7 +6,9 @@
         <div  class="imgPersonajes" >
             <div *ngFor="let avatar of avatares"  >
                 <div  class="img">
-                    <img class="avatar" type="image" [src]="avatar" (click)="enviaAvatar(avatar)" alt="imagen personaje">
+                    <img class="avatar" type="image" [src]="avatar" 
+                    (click)="enviaAvatar(avatar)" alt="imagen personaje"
+                    [ngClass]="{'seleccion': avatarSeleccionado == avatar}">
                 </div>
             </div>
         </div>
@@ -21,7 +23,8 @@
         <div class="imgTierras">
             <div *ngFor="let tierra of tierras">
                 <div class="tierras">
-                    <img type="image" [src]="tierra" (click)="enviarTierra(tierra)" alt="imagen color/tierra">
+                    <img type="image" [src]="tierra" (click)="enviarTierra(tierra)" alt="imagen color/tierra"
+                    [ngClass]="{'seleccion': tierraSeleccionada == tierra}">
                 </div>
             </div>
         </div>
