@@ -17,6 +17,7 @@ public avatares: string[] = [
   'https://i.imgur.com/C5EqkRh.png',
   'https://i.imgur.com/pY8Vdwo.png'
 ]
+public avatarSeleccionado: string;
 
 public tierras: string[] = [
   '../../../assets/images/profile/llanura.png',
@@ -26,11 +27,15 @@ public tierras: string[] = [
   '../../../assets/images/profile/bosque.png'
 ]
 
+public tierraSeleccionada: string;
+
 enviaAvatar(avatar: string){
+  this.avatarSeleccionado = avatar
   this.eventoAvatar.emit(avatar)
 }
 
 enviarTierra(tierra:string){
+  this.tierraSeleccionada = tierra
   this.eventoTierra.emit(tierra)
 }
 

@@ -54,27 +54,24 @@ export class ProfileComponent implements OnInit {
 
   // Obtener datos perfil
   public getProfile(){
-  this.userService.getProfile(this.id_user).subscribe((res:any) =>{
-    if(!res.error){
-      this.user = res.data[0];
-      console.log(this.user);
-      
-      this.editForm.patchValue({
-        name:this.user.nameUser,
-        email: this.user.emailUser,
-        description: this.user.description
-      })
-      this.editForm.disable();
-      this.editPassword.disable();
+    this.userService.getProfile(this.id_user).subscribe((res:any) =>{
 
+      if(!res.error){
+        this.user = res.data[0];
 
-    } else {
-      this.toastr.error(res.mensaje, '¡Ups!')
-    }
+        this.editForm.patchValue({
+          name:this.user.nameUser,
+          email: this.user.emailUser,
+          description: this.user.description
+        })
+        
+        this.editForm.disable();
+        this.editPassword.disable();
 
-    console.log(res.data[0]);
-    
-  })
+      } else {
+        this.toastr.error(res.mensaje, '¡Ups!')
+      }
+    })
   }
   
   // MODIFICAR DATOS PERFIL
@@ -110,6 +107,7 @@ export class ProfileComponent implements OnInit {
     if (this.editar == false){
       this.editar = true;
       this.editForm.enable();
+      this.editForm.markAsUntouched()
       }
   }
 
@@ -130,7 +128,7 @@ export class ProfileComponent implements OnInit {
       console.log('error');
       }
       this.editar = false
-      this.editForm.markAsUntouched()
+      this.editForm.markAsUntouched
       this.editForm.disable();
   }
 
@@ -187,11 +185,24 @@ export class ProfileComponent implements OnInit {
       if(!res.error){
         this.toastr.success(res.mensaje, '¡Éxito!')
       } else {
-        this.toastr.error(res.mensaje, '¡Ups!')
+        this.toastr.info(res.mensaje)
       }
     })
     this.editarFoto = false
     this.modal = false
   }
+
+  // bordes inputs
+
+  public borderColor(){
+    let icon =
+      this.user.icon == this.marcos[1] ? '#28669F' :
+      this.user.icon== this.marcos[2] ? '#643D6A':
+      this.user.icon== this.marcos[3] ? '#B6281A':
+      this.user.icon== this.marcos[4] ? '#5C724B':
+      '';
+    return icon
+  }
+  
 }
 
