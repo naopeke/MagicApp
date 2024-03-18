@@ -3,71 +3,58 @@
     <div class="search-container searchContainer">
         <form id="formBuscador">
             <input type="text" id="buscador" name="buscador" placeholder="Buscar" size="10" #buscador/>
-            <select name="filtrar" id="filtrar">
-                <option value="nombre">Todos los eventos</option>
-                <option value="colleccion">Mis eventos</option>
+            <select name="filtrar" id="filtrar" #filtroEventos>
+                <option value="todos">Todos los eventos</option>
+                <option value="misEventos">Mis eventos</option>
             </select>
-            <button type="submit" class="btn-buscador btnBuscador" (click)="findEventsWithName(buscador.value)"></button>
+            <button type="submit" class="btn-buscador btnBuscador" (click)="filtroEventos.value == 'todos' ? findEventsWithNameAllEvents(buscador.value): findEventsWithNameMyEvents(buscador.value)"></button>
         </form>
         <button class="button_lateral" (click)="openModalAdd()">Añadir evento</button>
     </div>
 
-    <div class="search-container searchContainer">
-        <form id="formBuscador">
-            <input type="text" id="buscador" name="buscador" placeholder="Buscar" #buscador/>
-            <button type="submit" class="btn-buscador btnBuscador" (click)="findEventsWithName(buscador.value)"></button>
-        </form>
-        <button class="button_lateral" (click)="openModalAdd()">Añadir evento</button>
-        
-    </div>
-    <div *ngIf="getModalCreateEvent()"><app-add-event></app-add-event></div> 
     <div *ngIf="modalAdd == true" class="modalEdit">
         <app-add-event (eventClose) = closeModalAdd($event)></app-add-event>
     </div>
 
     <div id="divEvento" *ngFor="let item of paginatedEvents; let i = index">
-        <div id="divImg">
-            <img id="img_evento" src="../../../assets/images/personajes/avatar1.png" width="300px">
-            <h2>{{ item.creator.name }}</h2>
-        </div>
-        <div id="div_info_evento">
-            <h1>{{ item.title }}</h1>
-            <div class="parr_img">
-                <img class="icono_evento" src="../../../assets/images/iconos/casco_evento.png" width="30px">
-                <p class="parr_p">&nbsp;&nbsp;{{ item.description }}</p>
+        <h1>{{ item.title }}</h1>
+        <div id="contenedor_info">
+            <div id="divImg">
+                <img id="img_evento" src="../../../assets/images/personajes/avatar1.png" width="200px">
+                <h2>{{ item.creator.name }}</h2>
             </div>
-            <div class="parr_img">
-                <img class="icono_evento" src="../../../assets/images/iconos/fecha_evento.png" width="30px">
-                <p class="parr_p">&nbsp;&nbsp;{{ item.date | date:'dd/MM/yyyy' }}</p>
+    
+            <div id="div_info_evento">
+                <div class="parr_img">
+                    <img class="icono_evento" src="../../../assets/images/iconos/casco_evento.png" width="30px">
+                    <p>&nbsp;&nbsp;{{ item.description }}</p>
+                </div>
+                <div class="parr_img">
+                    <img class="icono_evento" src="../../../assets/images/iconos/fecha_evento.png" width="30px">
+                    <p>&nbsp;&nbsp;{{ item.date | date:'dd/MM/yyyy' }}</p>
+                    <p>&nbsp;&nbsp;{{ item.hour }}</p>
+                </div>
+                <div class="parr_img">
+                    <img class="icono_evento" src="../../../assets/images/iconos/lugar_evento.png" width="30px">
+                    <p>&nbsp;&nbsp;{{ item.place }}{{ item.direction }}</p>
+                </div> 
+                <div>
+                    <button id="button_sabermas" data-bs-toggle="modal" data-bs-target="#singUp">Saber más</button>
+                </div> 
             </div>
-            <div class="parr_img">
-                <img class="icono_evento" src="../../../assets/images/iconos/hora_evento.png" width="30px">
-                <p class="parr_p">&nbsp;&nbsp;{{ item.hour }}</p>
-            </div>
-            <div class="parr_img">
-                <img class="icono_evento" src="../../../assets/images/iconos/lugar_evento.png" width="30px">
-                <p class="parr_p">&nbsp;&nbsp;{{ item.place }}{{ item.direction }}</p>
-            </div>
-            <div id="div_button" *ngIf="item.creator.id_user != login1.user.id_user">
-                <button class="button_participar" data-bs-toggle="modal" data-bs-target="#singUp">Participar</button>
-            </div>
-        </div>
-        <div id="icono_elim_edit" *ngIf="item.creator.id_user === login1.user.id_user">
-            <img (click)="openModalEdit(item)" id="img_superior" src="../../../assets/images/iconos/editar_evento.png" width="45px">
-            <img (click)="openModalDeleteEvent(item)" data-bs-toggle="modal" data-bs-target="#deleteEvent" id="img_inferior"src="../../../assets/images/iconos/eliminar_evento.png" width="45px">
-        </div>
 
-        <!--MODAL edit-->
-        <app-edit-event *ngIf="getModalEditEvent()"></app-edit-event>
-        <div *ngIf="modalEdit == true" class="modalEdit">
-            <app-edit-event [evento] = "evento" (eventClose) = closeModal($event)></app-edit-event>
+            <!-- <div id="icono_elim_edit" *ngIf="item.creator.id_user === login1.user.id_user"> -->
+            <div id="icono_elim_edit">
+                <img (click)="openModalEdit(item)" id="img_superior" src="../../../assets/images/iconos/editar_evento.png" width="45px">
+                <img (click)="openModalDeleteEvent(item)" data-bs-toggle="modal" data-bs-target="#deleteEvent" id="img_inferior"src="../../../assets/images/iconos/eliminar_evento.png" width="45px">
+            </div>
         </div>
-
-        <!-- MODAL delete-->
-        <app-delete-event *ngIf="getModalDeleteEvent()" [eventoAEliminar]="eventoABorrar" ></app-delete-event>
-   
     </div>
 
+    <div>
+        <!--MODAL edit--><div *ngIf="modalEdit == true" class="modalEdit"><app-edit-event [evento] = "evento" (eventClose) = closeModal($event)></app-edit-event></div>
+        <!-- MODAL delete--> <app-delete-event *ngIf="getModalDeleteEvent()" [eventoAEliminar]="eventoABorrar" ></app-delete-event>
+    </div> 
 
     <!-- Pagination -->
     <!-- <div class="pagination" *ngIf="totalPages > 1">
@@ -82,14 +69,14 @@
     <!-- Ya no lo necesitamos llamamos al componente detalle evento -->
 
     <!--MODAL singUp event-->
-    <div class="modal fade bd-example-modal-sm" id="singUp" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <!-- <div class="modal fade bd-example-modal-sm" id="singUp" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm modal-dialog-general">
             <div class="modal-content divSingUp">
                 <p class="modalP">¿Deseas participar en el evento?</p>
                 <button class="buttonsingUp" (click)="singUp()"><p>Aceptar</p></button>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 
 
