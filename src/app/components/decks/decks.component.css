@@ -13,12 +13,12 @@
     border-radius: var(--borde-input);
     color: var(--blanco);
     font-family: var(--inter);
-    font-size: 18pt;
+    font-size: 16pt;
 
 }
 
 .puntuacion{
-    width: 100px;
+    width: 130px;
     color: var(--amarillo);
 }
 

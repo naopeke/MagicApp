@@ -1,8 +1,10 @@
 
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Router} from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Card } from 'src/app/models/card';
 import { Deck } from 'src/app/models/deck';
+import { DeckService } from 'src/app/shared/deck.service';
 
 
 @Component({
@@ -11,9 +13,11 @@ import { Deck } from 'src/app/models/deck';
   styleUrls: ['./explora.component.css'],
 
 })
-export class ExploraComponent {
+export class ExploraComponent implements OnInit {
   
   public datos: Deck[]
+  public mazos: Deck[]
+  public mejoresMazos: Deck[]
   
   public mazo: Deck
   public explorar: boolean = false
@@ -22,7 +26,9 @@ export class ExploraComponent {
   public animation: boolean = false
  
 
-  constructor(private router:Router){
+  constructor(private router:Router,
+              private toastr:ToastrService,
+              public deckService: DeckService){
     this.datos = [
       new Deck(1, 'Dragonfly', 'Kaoser', [5], 5,[ new Card(25, '1', 0,"../../../assets/images/landing/carta1landing.png"),
         new Card(1, '2', 0,"../../../assets/images/landing/carta1landing.png"),
@@ -57,31 +63,60 @@ export class ExploraComponent {
     ]
 
   }
+
+  ngOnInit(): void {
+    this.getSharedDecks();
+    this.getVotedDeck();
+    
+  }
+
+  public getSharedDecks(){
+    this.deckService.getSharedDecks().subscribe((res:any) => {
+      if(!res.error){
+        this.mazos = res.data
+        console.log(this.mazos);
+        
+      }
+      else {
+        this.toastr.error(res.mensaje, 'Ups')
+      }
+   
+    })
+  }
+
+  public getVotedDeck(){
+    this.deckService.getVotedDeck().subscribe((res:any) =>{
+      if(!res.error){
+        this.mejoresMazos = res.data
+      } else {
+        this.toastr.error(res.mensaje, 'Ups')
+      }
+    })
+  }
   
   public search(input:string, filter:string){
-  // instalar TOASTR PARA ERRORES
-    console.log(this.datos[0].nameUser);
-    
+   
+ 
     if (filter === 'nombreUsuario'){
-      let datosFilter = this.datos.filter((dato) => {
-        return dato.nameUser == input
-      })
-        if(datosFilter.length != 0){
-          this.datos = datosFilter
+      this.deckService.getDeckByUser(input).subscribe((res:any) => {
+        if(!res.error){
+          this.mazos = res.data
         } else {
-          console.log('Usuario no encontrado');
+          this.toastr.error(res.mensaje, '¡Ups!')
+          this.getSharedDecks();
         }
+      })
     }
 
     else if(filter === 'nombreMazo'){
-      let datosFilter = this.datos.filter((dato) => {
-        return dato.nameDeck == input
+      this.deckService.getDeckByDeck(input).subscribe((res:any) =>{
+        if(!res.error){
+          this.mazos = res.data
+        } else {
+          this.toastr.error(res.mensaje, '¡Ups!')
+          this.getSharedDecks();
+        }
       })
-      if(datosFilter.length != 0){
-        this.datos = datosFilter
-      } else {
-        console.log('Mazo no encontrado');
-      }
     }
   
   }
@@ -99,22 +134,40 @@ export class ExploraComponent {
   }
 
   public score(event:{id_deck:number, score:number}){
-      this.datos.find ((deck) => {
-
-      if(deck.id_deck == event.id_deck){
-        deck.scores.push(event.score)
-        deck.mediaScore = this.mediaScore(deck.scores)
-        alert(`Has dado una puntuación de ${event.score}`)
+    console.log(this.mazos);
+    
+      this.mazos.find ((deck) => {
+        if(deck.id_deck == event.id_deck){
+          if (deck.mediaScore === 0) {
+            deck.mediaScore = event.score}
+            else {
+            deck.mediaScore = this.mediaScore(deck.mediaScore, event.score);
+            }
+       
+          this.deckService.putMediaScore(deck).subscribe((res:any) => {
+          if(!res.error){
+            this.getVotedDeck();
+            console.log(res.data);
+          }
+        })
+        // deck.scores.push(event.score)
+        // deck.mediaScore = this.mediaScore(deck.scores)
+       
+        this.toastr.success(`Has dado una puntuación de ${event.score}`, '¡Gracias por votar!')
       }
     })
   }
-
-  public mediaScore(array: number[]){
-    let suma = array.reduce( (accumulator, currentValue) => accumulator + currentValue)
-    let media = (suma/array.length).toFixed(1)
   
-    return parseFloat(media)
+  public mediaScore (media:number, puntuación:number){
+    let newMedia = ((media + puntuación)/2).toFixed(1)
+    return parseFloat(newMedia)
   }
+  // public mediaScore(array: number[]){
+  //   let suma = array.reduce( (accumulator, currentValue) => accumulator + currentValue)
+  //   let media = (suma/array.length).toFixed(1)
+  
+  //   return parseFloat(media)
+  // }
 
   public close(){
    this.explorar = false

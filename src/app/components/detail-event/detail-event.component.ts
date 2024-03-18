@@ -37,8 +37,6 @@ export class DetailEventComponent implements OnInit{
             this.evento.creator = evento.nameUser
           } else {
             this.evento.participants.push(new User(evento.id_user, evento.nameUser))
-            
-            
           }
         });
       } else{

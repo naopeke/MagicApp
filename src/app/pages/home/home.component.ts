@@ -20,14 +20,10 @@ export class HomeComponent implements OnInit {
  
   public modalDetail: boolean = false
   public modalDetail2: boolean = false
-  // cambiarlo por el del servicio cuando esta logueado
+
   public currentUser: User | null;
-
-  public id_user: number = 1
-  public userName: string = 'Kreatimes'
-
   public eventosProx: Eventos[];
-  public eventoCom: Eventos[]
+  public eventoCom: Eventos[];
   public bestMazos: Deck[]
   public selectEvento: Eventos | undefined
 
@@ -41,9 +37,10 @@ export class HomeComponent implements OnInit {
 ngOnInit(): void {
   this.userService.currentUserChanges().subscribe(user =>{
   this.currentUser = user
-  }
-   )
-                // PARA GET ULTIMO CURRENT USER
+  console.log(this.currentUser);
+  
+  })
+
   this.getMyEvents();
   this.getEventCom();
   this.getBestDecks();
