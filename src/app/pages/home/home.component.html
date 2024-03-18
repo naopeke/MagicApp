@@ -29,7 +29,7 @@
                         </div>
                     </div>
                     <div  *ngIf="modalDetail == true" class="modalEvent">
-                        <app-detail-event [evento] = "selectEvento"  (eventCloseDetail) = closeModal($event) [type] = 1 [id_user] = "id_user" [userName] = userName></app-detail-event>
+                        <app-detail-event [evento] = "selectEvento"  (eventCloseDetail) = closeModal($event) [type] = 1 [user] = "currentUser"></app-detail-event>
                     </div>
                 </div>
 
@@ -69,7 +69,7 @@
  
                     </div>
                     <div  *ngIf="modalDetail2 == true" class="modalEvent">
-                        <app-detail-event [evento] = "selectEvento"  (eventCloseDetail) = closeModal($event) [type] = 2 [id_user] = "id_user"></app-detail-event>
+                        <app-detail-event [evento] = "selectEvento"  (eventCloseDetail) = closeModal($event) [type] = 2 [user] = "currentUser"></app-detail-event>
                     </div>
 
                 </div>

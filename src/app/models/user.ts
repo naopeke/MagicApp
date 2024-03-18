@@ -6,7 +6,7 @@ export class User {
         public passwordUser?: string,
         public description?: string,
         public icon?: string,
-        public avatar?: string
-    
+        public avatar?: string,
+        public creator?: boolean
         ) { }
 }

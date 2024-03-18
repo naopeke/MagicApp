@@ -12,8 +12,7 @@ import { EventosService } from 'src/app/shared/eventos.service';
 export class DetailEventComponent implements OnInit{
   @Input() evento:Eventos
   @Input() type: number
-  @Input() id_user:number;
-  @Input() userName:string
+  @Input() user:User;
   @Output() eventCloseDetail = new EventEmitter<boolean>();
 
   public openModal:boolean = false
@@ -25,20 +24,20 @@ export class DetailEventComponent implements OnInit{
   ngOnInit() {
     this.getparticipantes();
     console.log(this.evento);
+    console.log(this.user);
+    
   }
 
   getparticipantes(){
     this.eventoService.getParticipantes(this.evento.id_event).subscribe((res:any) => {
-     console.log(this.evento);
-     
       if(!res.error){
         this.evento.participants = [];
         res.data.forEach(evento => {
           if(evento.creator == 1){
             this.evento.creator = evento.nameUser
           } else {
-            this.evento.participants.push(new User(evento.id_user, evento.nameUser));
-            console.log(this.evento.participants);
+            this.evento.participants.push(new User(evento.id_user, evento.nameUser))
+            
             
           }
         });
@@ -53,7 +52,7 @@ export class DetailEventComponent implements OnInit{
   }
 
   participar(){
-    this.eventoService.postPartipacion(this.id_user, this.evento.id_event).subscribe((res:any) =>{
+    this.eventoService.postPartipacion(this.user.id_user, this.evento.id_event).subscribe((res:any) =>{
       if(!res.error){
         this.toastr.success(res.mensaje, '¡Bienvenido al evento!');
         this.evento.participants = [];
@@ -66,7 +65,7 @@ export class DetailEventComponent implements OnInit{
   }
 
   abandonar(){
-    this.eventoService.deleteParticipacion(this.id_user, this.evento.id_event).subscribe((res:any) =>{
+    this.eventoService.deleteParticipacion(this.user.id_user, this.evento.id_event).subscribe((res:any) =>{
       if(!res.error){
         this.toastr.success(res.mensaje, 'Éxito')
         this.getparticipantes(); 
