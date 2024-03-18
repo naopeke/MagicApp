@@ -65,6 +65,7 @@ import { Router, RouterModule } from '@angular/router';
 import { DeleteEventComponent } from './components/delete-event/delete-event.component';
 import { EditEventComponent } from './components/edit-event/edit-event.component';
 import { AddEventComponent } from './components/add-event/add-event.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -106,6 +107,7 @@ import { AddEventComponent } from './components/add-event/add-event.component';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
+    HttpClientModule,
 
     // angular material
     MatSidenavModule,

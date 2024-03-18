@@ -42,7 +42,7 @@
                 Escribe el nombre del lugar del evento
             </div>
 
-            <input type="text" placeholder="Dirección" formControlName="direction"
+            <input #direction type="text" placeholder="Dirección" formControlName="direction"
             [ngClass]="{
                 'is-invalid': (addEvent.get('direction').dirty || addEvent.get('direction').touched) && !addEvent.get('direction').valid,
                 'valid': addEvent.get('direction').valid
@@ -59,8 +59,9 @@
             <ng-template #guardar>
                 <button type="button" [ngClass]="editar == true ? 'saveButton': ''"
                 [disabled]="!addEvent.valid"
-                (click)="add()">Añadir</button>
+                (click)="add(titleEvent.value, descriptionEvent.value, dateEvent.value, hourEvent.value, placeEvent.value, direction.value)">Añadir</button>
             </ng-template>
+            
             <!-- <div #guardar>
                 <button type="button" class="buttonEditar" [ngClass]="editar == true ? 'saveButton': ''"
                 [disabled]="!addEvent.valid"
