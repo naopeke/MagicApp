@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Card } from 'src/app/models/card';
 import { CardsService } from 'src/app/shared/cards.service';
-import { MazoSelectorModalComponent } from '../mazo-selector-modal/mazo-selector-modal.component';
+import { MazoSelectorModalComponent, DialogData } from '../mazo-selector-modal/mazo-selector-modal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from 'src/app/models/user';
@@ -30,7 +30,8 @@ export class LoggedinCardComponent implements OnInit {
   public darkenOverlay:boolean = false; // modal de xisca
   public show_cardinfo:boolean = false; // modal de xisca
   public selectedCard: Card | null = null; // selectedCard sea Card o null, default null
-  public currentUser: User | null = null; 
+
+  public currentUser: User | null = null; // para sacar currentUser
 
 
   constructor(
@@ -152,40 +153,101 @@ export class LoggedinCardComponent implements OnInit {
   openDeckDialog(): void {
     const dialogRef = this.dialog.open(MazoSelectorModalComponent, {
       width: '700px',
-      height: '500px'
+      height: '500px',
+      data: { selectedDeckIndex : null} // default null, si no, sale error
     });
   
-    dialogRef.afterClosed().subscribe(async (deckIndex) => {
+    dialogRef.afterClosed().subscribe(async(result: DialogData) => {
       console.log('The dialog was closed');
-      let cardIds = this.builderCards.map(card => card.id);
-      console.log('modal: ', cardIds);
+
+      // Obtener deckIndex desde modal
+      const selectedDeckIndex = result.selectedDeckIndex;
+      console.log('Selected Deck Index: ', selectedDeckIndex);
   
-      // ログイン中のユーザーのid_userを取得
-      const currentUser = await this.usersService.getCurrentUser(); // await キーワードで非同期処理の完了を待つ
+      // Obtener current user
+      const currentUser = await this.usersService.getCurrentUser();
       console.log('Current user:', currentUser);
       if (!currentUser) {
-        console.error('No current user found.');
-        return;
+        console.log('No current user found.');
       }
   
+      // Obtener current user Id
       const userId = this.usersService.getCurrentUserId();
-      console.log('user id :', userId);
-  
-      // API にビルダーカードをデッキに追加するリクエストを送信
-      try {
-        await firstValueFrom(this.cardsService.addCardsToDeck(deckIndex, cardIds, userId));
-        console.log('Cards added to deck');
-        // メッセージを表示
-        this.snackBar.open(`Añadido tu carta al mazo #${deckIndex + 1}`, 'Cerrar', {
-          duration: 4000,
-          verticalPosition: 'top',
-        });
-        // ビルダーカードをクリア
-        this.builderCards = [];
-      } catch (error) {
-        console.error('Error adding cards to deck:', error);
-        // エラーメッセージを表示する場合はここに追加します
+      console.log('User id logincard:', userId);
+
+      // Obtener deck_id con id_user e indexDeck 
+      const deckIdResponse = await this.cardsService.getDeckIdByUserAndIndex(userId, selectedDeckIndex);
+      const deckId = deckIdResponse.deckId;
+
+      // array de ids(card api) de builder card
+      let cardIds = this.builderCards.map(card => card.id);
+      console.log('id cards of api in modal: ', cardIds);
+
+      // buscar cartas que ya existe y cambiar la cantidad
+      const cardExistsResponse = await this.cardsService.cardExists()
+
+      // añadir las cartas al deck
+      const addCardsToDeck(deckId: number, cardIds: string[]){
+        for (cardId of cardIds){
+          const cardExists = await checkCardEvists(cardId);
+        }
+
+        if(!cardExists){
+          await addNewCard(cardId);
+        } else {
+          await plusCardQuantity(cardId);
+        }
+
+        await addCardToDeckToDeckCard(deckId, cardId);
       }
+
+
+      this.cardsService.addCardsToDeck(deckIndex, cardIds, userId).subscribe({
+        next: (response: any) => {
+          console.log('Cards added to deck:', response);
+      
+          // id_userとid_deckを取得してデータベースに保存
+          const id_user = userId;
+          const id_deck = response.id_deck;
+      
+          // ここでid_userとid_deckを使ってデータベースに保存する処理を実行します。
+      
+          // メッセージを表示
+          this.snackBar.open(`Añadido tu carta al mazo #${deckIndex + 1}`, 'Cerrar', {
+            duration: 4000,
+            verticalPosition: 'top',
+          });
+          // ビルダーカードをクリア
+          this.builderCards = [];
+        },
+        error: (error: any) => {
+          console.error('Error adding cards to deck:', error);
+          // エラーメッセージを表示する場合はここに追加します
+        }
+      });
+      
+
+
+      // API にビルダーカードをデッキに追加するリクエストを送信
+      // try {
+
+      
+      //   let response = await firstValueFrom(this.cardsService.addCardsToDeck(deckIndex, cardIds, userId));
+      //   console.log('Cards added to deck', response);
+      //   // メッセージを表示
+      //   this.snackBar.open(`Añadido tu carta al mazo #${deckIndex + 1}`, 'Cerrar', {
+      //     duration: 4000,
+      //     verticalPosition: 'top',
+      //   });
+
+      //   const id_user = currentUser.id_user;
+      //   const id_deck = response.id_deck;
+      //   // ビルダーカードをクリア
+      //   this.builderCards = [];
+      // } catch (error) {
+      //   console.error('Error adding cards to deck:', error);
+      //   // エラーメッセージを表示する場合はここに追加します
+      // }
     });
   }
   

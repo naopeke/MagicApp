@@ -13,12 +13,14 @@ import { Card } from 'src/app/models/card';
 import { UsersService } from 'src/app/shared/users.service';
 import { User } from 'src/app/models/user';
 
+//https://material.angular.io/components/dialog/overview
 export interface DialogData {
-  deck1: number;
-  deck2: number;
-  deck3: number;
-  deck4: number;
-  deck5: number;
+  // deck1: number;
+  // deck2: number;
+  // deck3: number;
+  // deck4: number;
+  // deck5: number;
+  selectedDeckIndex: number;
 }
 
 @Component({
@@ -50,7 +52,7 @@ export class MazoSelectorModalComponent implements OnInit {
 
   selectDeck(deckNumber: number):void{
     console.log('Selected deck: ', deckNumber);
-    this.dialogRef.close(deckNumber);
+    this.dialogRef.close({ selectedDeckIndex: deckNumber});
   }
   
 

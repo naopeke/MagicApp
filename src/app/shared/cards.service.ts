@@ -41,6 +41,15 @@ export class CardsService {
     return this.http.get<Card[]>(urlName);
   }
 
+  public getDeckIdByUserAndIndex(userId: number, selectedDeckIndex:number):Observable<any>{
+    let urlDeckId = `${this.url}/cartas?userid=${userId}?deckindex=${selectedDeckIndex}`
+    return this.http.get<any>(urlDeckId);
+  }
+
+  public cardExists (userId: number, deckId: number):Observable<any>{
+    let urlCardExists = `${this.url}/cartas?userid=${userId}?deckindex=${deckId}`
+    return this.http.get<any>(urlCardExists);
+  }
 
   public addCardsToDeck(deckIndex: number, cardIds: string[], userId: number): Observable<any> {
     let urlAddToDeck = `${this.url}/cartas`;
