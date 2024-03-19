@@ -27,12 +27,16 @@ export class DeckService {
     return this.http.get(this.urlExplora + '/deck/' + nameDeck)
   }
 
-  public putMediaScore(deck:Deck){
+  public putMediaScore(score:number, id_deck:number){
     const body = {
-      mediaScore: deck.mediaScore,
-      id_deck: deck.id_deck
+      score: score,
+      id_deck: id_deck
     }
     return this.http.put(this.urlExplora + '/mediaScore', body)
+  }
+
+  public getDeckById(id_deck:number){
+    return this.http.get(this.urlExplora +'/' + id_deck) 
   }
   // belen explora
 }

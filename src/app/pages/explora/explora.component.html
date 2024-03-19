@@ -10,11 +10,10 @@
             <!-- <cdk-virtual-scroll-viewport itemSize="0" class="scroll2"> -->
                 <div class="bucleContainer"> 
                     <div class="leyenda">
-                        <div class="datos puntuacion">Puntuación</div>
                         <div class="datos usuario">Nombre de Usuario</div>
                         <div class="datos mazo">Nombre del Mazo</div>
                         <div class="datos explorar"> Cartas</div>
-                        <div  class="datos estrellas">Estrellas</div>
+                        <div  class="datos estrellas">Puntuación</div>
                     </div>
                     <div *ngFor="let mazo of mejoresMazos" class="bucle">
                         <app-decks [mazo] = "mazo" (eventoExplorar) = 'seleccionMazo($event)'
@@ -85,17 +84,18 @@
                     </div>
                     <cdk-virtual-scroll-viewport itemSize="40" class="bucleContainer">
                         <div class="cartasContainer">
-                            <div *cdkVirtualFor="let cartas of mazo.cards">
-                                <app-card [templateCard] = "'type2'" [childCard] = "cartas" 
+                            <div *cdkVirtualFor="let carta of mazo.cards">
+                                <app-card [templateCard] = "'type2'" [childCard] = "carta" 
                                 (eventoidCard) ="idCard($event)"
-                                (click) = "openCardInfo()"></app-card>
+                                (click) = "openCardInfo(carta.id)"></app-card>
                             </div>
                         </div>
                     </cdk-virtual-scroll-viewport>
-
                     <div class="cardInfo" *ngIf="showCardInfo == true" [ngClass]="animation ? 'visible': ''">
-                        <app-card-info [id_card] = "id_card" (onCardInfoClose) = "closeCardInfo($event)"></app-card-info>
+                        <app-card-info [carta] = "card" (onCardInfoClose) = "closeCardInfo($event)"></app-card-info>
                     </div>
+
+
                 </div>
     </section>
     

@@ -8,6 +8,7 @@
     height: 1100px;
     width: 100%;
     padding: 60px;
+    padding-right: 100px;
     background-size: cover;
 }
 
@@ -23,7 +24,7 @@
 }
 
 .buscador{
-    width: 66%;
+    width: 60%;
     padding: 40px;
     height: 450px;
     display: flex;

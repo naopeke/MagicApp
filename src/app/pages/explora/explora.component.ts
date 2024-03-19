@@ -17,9 +17,11 @@ export class ExploraComponent implements OnInit {
   
   public datos: Deck[]
   public mazos: Deck[]
+  public cards: Card[]
   public mejoresMazos: Deck[]
   
-  public mazo: Deck
+  public mazo: Deck = { nameDeck: '', cards: [] };
+  public card: Card
   public explorar: boolean = false
   public id_card: number
   public showCardInfo: boolean = false
@@ -74,16 +76,12 @@ export class ExploraComponent implements OnInit {
     this.deckService.getSharedDecks().subscribe((res:any) => {
       if(!res.error){
         this.mazos = res.data
-        console.log(this.mazos);
-        
       }
       else {
         this.toastr.error(res.mensaje, 'Ups')
       }
-   
     })
   }
-
   public getVotedDeck(){
     this.deckService.getVotedDeck().subscribe((res:any) =>{
       if(!res.error){
@@ -96,7 +94,6 @@ export class ExploraComponent implements OnInit {
   
   public search(input:string, filter:string){
    
- 
     if (filter === 'nombreUsuario'){
       this.deckService.getDeckByUser(input).subscribe((res:any) => {
         if(!res.error){
@@ -123,52 +120,36 @@ export class ExploraComponent implements OnInit {
   
   public seleccionMazo(id_deck:number){
     this.explorar = true
-    let cartas = this.datos.find ((deck) => {
-      return deck.id_deck == id_deck
-    })
-
-   this.mazo = cartas
-   this.router.navigateByUrl('/explora#exploraSection')
-   
- 
-  }
-
-  public score(event:{id_deck:number, score:number}){
-    console.log(this.mazos);
-    
-      this.mazos.find ((deck) => {
-        if(deck.id_deck == event.id_deck){
-          if (deck.mediaScore === 0) {
-            deck.mediaScore = event.score}
-            else {
-            deck.mediaScore = this.mediaScore(deck.mediaScore, event.score);
-            }
-       
-          this.deckService.putMediaScore(deck).subscribe((res:any) => {
-          if(!res.error){
-            this.getVotedDeck();
-            console.log(res.data);
-          }
-        })
-        // deck.scores.push(event.score)
-        // deck.mediaScore = this.mediaScore(deck.scores)
-       
-        this.toastr.success(`Has dado una puntuación de ${event.score}`, '¡Gracias por votar!')
+    this.deckService.getDeckById(id_deck).subscribe((res:any) => {
+      if(!res.error){
+        this.mazo.nameDeck = res.data.nameDeck
+        this.mazo.cards = res.data.cards
+        this.router.navigateByUrl('/explora#exploraSection')
+      } else {
+        this.explorar = false
+        this.toastr.error(res.mensaje, '¡Ups!')
       }
     })
   }
-  
-  public mediaScore (media:number, puntuación:number){
-    let newMedia = ((media + puntuación)/2).toFixed(1)
-    return parseFloat(newMedia)
-  }
-  // public mediaScore(array: number[]){
-  //   let suma = array.reduce( (accumulator, currentValue) => accumulator + currentValue)
-  //   let media = (suma/array.length).toFixed(1)
-  
-  //   return parseFloat(media)
-  // }
 
+  public score(event:{id_deck:number, score:number}){
+    this.mazos.find ((deck) => {
+      if(deck.id_deck == event.id_deck){
+        this.deckService.putMediaScore(event.score,event.id_deck).subscribe((res:any) => {
+          if(!res.error){
+            this.getVotedDeck();
+            this.getSharedDecks();
+            this.toastr.success(`Has dado una puntuación de ${event.score}`, '¡Gracias por votar!')
+          } else {
+            this.toastr.error(res.me)
+          }
+        })
+      } else {
+        console.log('error');
+        }
+    })
+  }
+  
   public close(){
    this.explorar = false
    this.router.navigateByUrl('/explora')
@@ -179,12 +160,15 @@ export class ExploraComponent implements OnInit {
     this.id_card = id_card
     
   }
-  openCardInfo(){
-    this.showCardInfo = true
-    setTimeout(() => {
-      this.animation = true
-    },100)
-    
+  openCardInfo(cartaId:string){
+    this.card = this.mazo.cards.find(carta => carta.id === cartaId);
+    if (this.card) {
+      this.showCardInfo = true;
+
+      setTimeout(() => {
+        this.animation = true
+      },100)
+    }
   }
 
   closeCardInfo(event:boolean){

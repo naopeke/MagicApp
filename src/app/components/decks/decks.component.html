@@ -1,10 +1,16 @@
 <div  class="mazos">
-    <div class="datos puntuacion">{{ mazo.mediaScore}}</div>
+  
     <div class="datos usuario">{{ mazo.nameUser }}</div>
     <div class="datos mazo">{{ mazo.nameDeck }}</div>
     <div class="datos explorar" (click)="explora(mazo.id_deck)">Explora</div>
     <div  class="datos estrellas">
-    <app-rating (onRating)="Handle(mazo.id_deck, $event)" [mediaScore] = "mazo.mediaScore" [typeRating]="typeRating"></app-rating>
+    <div class="datos puntuacion">
+        <div >{{ mazo.mediaScore}}</div>
+        <div class="estrellas">
+            <app-rating  (onRating)="Handle(mazo.id_deck, $event)" [mediaScore] = "mazo.mediaScore" [typeRating]="typeRating"></app-rating>
+        </div>
+    
+    </div>
 </div>
 
 

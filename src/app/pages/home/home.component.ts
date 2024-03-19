@@ -93,9 +93,8 @@ ngOnInit(): void {
   public closeModal(event:boolean){
     this.modalDetail = event
     this.modalDetail2 = event
-    if (event) {
-      this.modalDetail2 = false;
-    }
+    this.getMyEvents();
+    this.getEventCom();
   }
 
   public goToEvents(){
