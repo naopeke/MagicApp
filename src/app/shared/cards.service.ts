@@ -43,9 +43,9 @@ export class CardsService {
   }
 
  
-  public addCardsToDeck(cardApiIds: string[], userId: number, deckIndex: number): Observable<any> {
+  public addCardsToDeck(cardApiIds: string[], userId: number, indexDeck: number): Observable<any> {
     let urlAddToDeck = `${this.url}/cartas`;
-    return this.http.post(urlAddToDeck, { ids: cardApiIds, id_user: userId, deckIndex: deckIndex });
+    return this.http.post(urlAddToDeck, { ids: cardApiIds, id_user: userId, indexDeck: indexDeck });
   }  
 
 }

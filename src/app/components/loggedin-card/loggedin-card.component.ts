@@ -84,8 +84,10 @@ export class LoggedinCardComponent implements OnInit {
       console.log('The dialog was closed');
   
       // Obtener deckIndex desde modal
-      const selectedDeckIndex = result.selectedDeckIndex;
-      console.log('Selected Deck Index: ', selectedDeckIndex);
+      // Obtener deckIndex desde modal
+      const indexDeck = result.selectedDeckIndex;
+      console.log('Selected Deck Index: ', indexDeck);
+
   
       // Obtener current user
       const currentUser = await this.usersService.getCurrentUser();
@@ -100,21 +102,21 @@ export class LoggedinCardComponent implements OnInit {
 
       // Obtener cardApiIds y deckIndex en front
       const cardApiIds = this.builderCards.map(card => card.id); 
-      const deckIndex = selectedDeckIndex;
+      console.log('Card Api Ids: ',cardApiIds)
 
       // addCardsToDeck con cardApiIds(array de builderCards), userId y deckIndex
-      this.cardsService.addCardsToDeck(cardApiIds, userId, deckIndex).subscribe({
+      this.cardsService.addCardsToDeck(cardApiIds, userId, indexDeck).subscribe({
         next: (response: any) => {
           console.log('Cards added to deck:', response);
   
           // id_userとid_deckを取得してデータベースに保存
-          const id_user = userId;
-          const id_deck = response.id_deck;
+          // const id_user = userId;
+          // const indexDeck = indexDeck;
   
           // ここでid_userとid_deckを使ってデータベースに保存する処理を実行します。
   
           // メッセージを表示
-          this.snackBar.open(`Añadido tu carta al mazo #${deckIndex + 1}`, 'Cerrar', {
+          this.snackBar.open(`Añadido tu carta al mazo #${indexDeck + 1}`, 'Cerrar', {
             duration: 4000,
             verticalPosition: 'top',
           });
