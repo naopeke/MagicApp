@@ -56,17 +56,6 @@ export class MazoSelectorModalComponent implements OnInit {
   }
   
 
-  insertCardsIntoDeck(deckIndex: number, cardIds: string[], userId: number):void{
-    this.cardsService.addCardsToDeck(deckIndex, cardIds, userId).subscribe({
-      next: (response) => {
-        console.log('Added to deck: ', response);
-      },
-      error: (err) => {
-        console.log('Error adding: ', err);
-      }
-    })
-  }
-
   ngOnInit():void{
     const currentUser = this.usersService.getCurrentUser(); // PARA GET ULTIMO CURRENT USER
     console.log('Current user deck Modal:', currentUser);

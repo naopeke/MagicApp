@@ -49,55 +49,17 @@ export class LoggedinCardComponent implements OnInit {
 
   searchCards(cardName: string): void {
     this.searchPerformed = true;
-    // this.errorMessage = null; // cada vez busca, refresh
-
-    // const currentUser = this.usersService.getCurrentUser();
-    // if (currentUser && currentUser.id_user){
 
     this.cardsService.getByName(cardName).subscribe({
       next: (data:any) => {
         this.resultsCards = [data]; // como dato desde back(axios) es un object y no es array...
         console.log('API Response: ', data);
-        // this.errorMessage = null; // refresh errorMessage
       },
       error: (err) => {
         this.resultsCards = [];
         console.log('Error in fetching cards:', err);
-      //   this.errorMessage = 'Hay demasiadas cartas o el título es incorrecto. Por favor, intenta una búsqueda más detallada con un título más específico.';
-      //   console.log('Error message', this.errorMessage);
-      // }
     }});
   }
-  
-
-  // searchCards(searchParam: string): void{
-  //   this.searchPerformed = true;
-
-  //   this.cardsService.getByName(searchParam).subscribe(cards =>{
-  //     this.resultsCards = cards;
-  //     console.log('resultsCards:', cards);
-  //   })
-  // }
-
-  // searchCards(searchParam: string): void {
-  //   this.searchPerformed = true;
-  //   let cards = [];
-  //   if (this.searchType == 'nombre'){
-  //     cards = this.cardsService.getByName(searchParam);
-  //   } else if (this.searchType === 'colleccion'){
-  //     cards = this.cardsService.getByCollection(searchParam);
-  //   }
-
-  //   // si hay 1 o más cartas en array, meter datos en resultsCards
-  //   if (cards && cards.length > 0) {
-  //     this.resultsCards = cards;
-  //     console.log('Results:', cards);
-  //     console.log('resultsCards: ', this.resultsCards);
-  //   } else {
-  //     this.resultsCards = [];
-  //     console.log('No hay datos en resultsCards');
-  //   }
-  // }
 
   onAddCardToBuilder(card: Card): void {
     this.builderCards.push(card);
@@ -110,56 +72,17 @@ export class LoggedinCardComponent implements OnInit {
     console.log('After deleting from Builder: ', this.builderCards);
   }
 
-  //modal deck
-  // openDeckDialog(): void {
-  //   const dialogRef = this.dialog.open(MazoSelectorModalComponent, {
-  //     width: '700px',
-  //     height: '500px'
-  //   });
-
-  //   dialogRef.afterClosed().subscribe(deckIndex => {
-  //     console.log('The dialog was closed');
-  //     let cardIds = this.builderCards.map(card => card.id);
-  //     console.log('modal: ', cardIds);
-  
-  //     // ログイン中のユーザーのid_userを取得
-  //     const currentUser = this.usersService.getCurrentUser();
-  //     console.log('Current user:', currentUser);
-  //     const userId = this.usersService.getCurrentUserId();
-  //     console.log('user id :', userId);
-  
-  //     // API にビルダーカードをデッキに追加するリクエストを送信
-  //     // this.cardsService.addCardsToDeck(deckIndex, this.builderCards.map(card => card.id), userId).subscribe({
-
-  //     this.cardsService.addCardsToDeck(deckIndex, cardIds, userId,).subscribe({
-  //       next: response => {
-  //         console.log('success: ', response);
-  //         // メッセージを表示
-  //         this.snackBar.open(`Añadido tu carta al mazo #${deckIndex + 1}`, 'Cerrar', {
-  //           duration: 4000,
-  //           verticalPosition: 'top',
-  //         });
-  //         // ビルダーカードをクリア
-  //         this.builderCards = [];
-  //       },
-  //       error: err => {
-  //         console.error('error adding cards to deck:', err);
-  //         // エラーメッセージを表示する場合はここに追加します
-  //       }
-  //     });
-  //   });
-  // }
 
   openDeckDialog(): void {
     const dialogRef = this.dialog.open(MazoSelectorModalComponent, {
       width: '700px',
       height: '500px',
-      data: { selectedDeckIndex : null} // default null, si no, sale error
+      data: { selectedDeckIndex: null } // default null, si no, sale error
     });
   
-    dialogRef.afterClosed().subscribe(async(result: DialogData) => {
+    dialogRef.afterClosed().subscribe(async (result: DialogData) => {
       console.log('The dialog was closed');
-
+  
       // Obtener deckIndex desde modal
       const selectedDeckIndex = result.selectedDeckIndex;
       console.log('Selected Deck Index: ', selectedDeckIndex);
@@ -175,43 +98,21 @@ export class LoggedinCardComponent implements OnInit {
       const userId = this.usersService.getCurrentUserId();
       console.log('User id logincard:', userId);
 
-      // Obtener deck_id con id_user e indexDeck 
-      const deckIdResponse = await this.cardsService.getDeckIdByUserAndIndex(userId, selectedDeckIndex);
-      const deckId = deckIdResponse.deckId;
+      // Obtener cardApiIds y deckIndex en front
+      const cardApiIds = this.builderCards.map(card => card.id); 
+      const deckIndex = selectedDeckIndex;
 
-      // array de ids(card api) de builder card
-      let cardIds = this.builderCards.map(card => card.id);
-      console.log('id cards of api in modal: ', cardIds);
-
-      // buscar cartas que ya existe y cambiar la cantidad
-      const cardExistsResponse = await this.cardsService.cardExists()
-
-      // añadir las cartas al deck
-      const addCardsToDeck(deckId: number, cardIds: string[]){
-        for (cardId of cardIds){
-          const cardExists = await checkCardEvists(cardId);
-        }
-
-        if(!cardExists){
-          await addNewCard(cardId);
-        } else {
-          await plusCardQuantity(cardId);
-        }
-
-        await addCardToDeckToDeckCard(deckId, cardId);
-      }
-
-
-      this.cardsService.addCardsToDeck(deckIndex, cardIds, userId).subscribe({
+      // addCardsToDeck con cardApiIds(array de builderCards), userId y deckIndex
+      this.cardsService.addCardsToDeck(cardApiIds, userId, deckIndex).subscribe({
         next: (response: any) => {
           console.log('Cards added to deck:', response);
-      
+  
           // id_userとid_deckを取得してデータベースに保存
           const id_user = userId;
           const id_deck = response.id_deck;
-      
+  
           // ここでid_userとid_deckを使ってデータベースに保存する処理を実行します。
-      
+  
           // メッセージを表示
           this.snackBar.open(`Añadido tu carta al mazo #${deckIndex + 1}`, 'Cerrar', {
             duration: 4000,
@@ -225,29 +126,7 @@ export class LoggedinCardComponent implements OnInit {
           // エラーメッセージを表示する場合はここに追加します
         }
       });
-      
-
-
-      // API にビルダーカードをデッキに追加するリクエストを送信
-      // try {
-
-      
-      //   let response = await firstValueFrom(this.cardsService.addCardsToDeck(deckIndex, cardIds, userId));
-      //   console.log('Cards added to deck', response);
-      //   // メッセージを表示
-      //   this.snackBar.open(`Añadido tu carta al mazo #${deckIndex + 1}`, 'Cerrar', {
-      //     duration: 4000,
-      //     verticalPosition: 'top',
-      //   });
-
-      //   const id_user = currentUser.id_user;
-      //   const id_deck = response.id_deck;
-      //   // ビルダーカードをクリア
-      //   this.builderCards = [];
-      // } catch (error) {
-      //   console.error('Error adding cards to deck:', error);
-      //   // エラーメッセージを表示する場合はここに追加します
-      // }
+  
     });
   }
   
