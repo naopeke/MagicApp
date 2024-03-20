@@ -101,11 +101,12 @@ main{
     font-family: var(--antiqua);
     font-size: 16pt;
     font-weight: bold;
+    z-index: 999;
 }
 
 .imgCard{
     position: relative;
-    z-index: 999;
+    z-index: 99;
 }
 
 .imgFondo{

@@ -40,8 +40,7 @@ export class ProfileComponent implements OnInit {
   public user: User = {}
   public currentUser: User | null;
 
-  // traer de servicio user
-  public id_user:number = 15
+  
 
   constructor(private formBuilder: FormBuilder,
               public userService: UsersService,
