@@ -203,9 +203,11 @@ cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb:hover{
 /* EXPLORA */
 .explora{
     background-image: url(../../../assets/images/explora/fondoExplora2.png);
+    height: 1300px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 60px;
     z-index: 9;
 }
@@ -240,7 +242,7 @@ cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb:hover{
 
 .cartas{
     width: 87%;
-    height: 800px;
+    height: 900px;
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
@@ -257,8 +259,8 @@ cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb:hover{
 
 #numCartas{
     position: absolute;
-    top: 27px;
-    left: 48px;
+    top: 18px;
+    left: 50px;
     font-family: var(--antiqua);
     color: var(--amarillo);
     font-size: 20pt;
@@ -279,7 +281,7 @@ cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb:hover{
 
 .close{
     position: absolute;
-    right: 170px;
+    right: 210px;
 }
 
 #imgClose{
@@ -289,6 +291,7 @@ cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb:hover{
 
 .cardInfo{
     position: absolute;
+    z-index: 999;
     transform: scale(0);
     transition: 1.25s ease;
 }
