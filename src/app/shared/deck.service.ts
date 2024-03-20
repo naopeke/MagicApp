@@ -46,10 +46,10 @@ export class DeckService {
 
   
   // nao mismazos
-  public getMyDecks(): Observable<any> {
-    let urlGetMyDecks = `${this.url}/mis-mazos`;
+  public getMyDecks(userId: number): Observable<any> {
+    let urlGetMyDecks = `${this.url}/mis-mazos/${userId}`;
     return this.http.get(urlGetMyDecks);
-  }
+}
 
   // nao mismazos
 

@@ -15,6 +15,6 @@ export class Card {
         public prices?: number,
         public set_name?: string,
         public set_type?: string,
-        public quantity: number = 0
+        public quantity?: number
         ) { }
 }
