@@ -3,7 +3,9 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Deck } from 'src/app/models/deck';
 import { Eventos } from 'src/app/models/eventos';
+import { User } from 'src/app/models/user';
 import { EventosService } from 'src/app/shared/eventos.service';
+import { UsersService } from 'src/app/shared/users.service';
 
 @Component({
   selector: 'app-home',
@@ -18,31 +20,39 @@ export class HomeComponent implements OnInit {
  
   public modalDetail: boolean = false
   public modalDetail2: boolean = false
-  // cambiarlo por el del servicio cuando esta logueado
-  public id_user: number = 1
-  public userName: string = 'Kreatimes'
 
+  public currentUser: User | null;
   public eventosProx: Eventos[];
-  public eventoCom: Eventos[]
+  public eventoCom: Eventos[];
   public bestMazos: Deck[]
   public selectEvento: Eventos | undefined
 
-
-
   constructor(public eventoService: EventosService,
+              public userService:UsersService,
               private toastr: ToastrService,
-              private router:Router){}
+              private router:Router){
+
+              }
 
 ngOnInit(): void {
+  this.userService.currentUserChanges().subscribe(user =>{
+  this.currentUser = user
+  console.log(this.currentUser);
+  
+  })
+
   this.getMyEvents();
   this.getEventCom();
   this.getBestDecks();
 }
 
   public getMyEvents(){
-    this.eventoService.getMyEvents(this.id_user).subscribe((res:any) =>{
+    this.eventoService.getMyEventsHome(this.currentUser.id_user).subscribe((res:any) =>{
+      
       if(!res.error){
         this.eventosProx = res.data
+        console.log(this.eventosProx);
+        
       }
       else {
         this.toastr.info(res.mensaje, '¡Ups!')
@@ -51,7 +61,7 @@ ngOnInit(): void {
   }
 
   public getEventCom(){
-    this.eventoService.getEventsCommunity(this.id_user).subscribe((res:any) => {
+    this.eventoService.getEventsCommunity(this.currentUser.id_user).subscribe((res:any) => {
       if(!res.error){
         this.eventoCom = res.data
       }  else {
@@ -64,14 +74,9 @@ ngOnInit(): void {
     this.eventoService.getBestDecks().subscribe((res:any) => {
       if(!res.error){
         this.bestMazos = res.data
-        console.log(this.bestMazos);
-        console.log(this.bestMazos[0].URLphoto);
-        
-        
+
       }  else {
-        // poner con toast
-        console.log(res.error);
-        console.log(res.mensaje);
+        this.toastr.info(res.mensaje, '¡Ups!')
       }
     })
   }
@@ -85,13 +90,11 @@ ngOnInit(): void {
     this.selectEvento = evento
   }
   
-
   public closeModal(event:boolean){
     this.modalDetail = event
     this.modalDetail2 = event
-    if (event) {
-      this.modalDetail2 = false;
-    }
+    this.getMyEvents();
+    this.getEventCom();
   }
 
   public goToEvents(){

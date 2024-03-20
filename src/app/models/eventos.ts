@@ -12,7 +12,9 @@ export class Eventos {
         public direction?: string,
         public creator?: string,
         public id_user?: number,
-        public participants?: User[]
+        public participants?: User[],
+        // para tener el avatar del creador:
+        public avatar?: string
 
         ) { }
 

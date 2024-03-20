@@ -13,13 +13,17 @@
     border-radius: var(--borde-input);
     color: var(--blanco);
     font-family: var(--inter);
-    font-size: 18pt;
+    font-size: 16pt;
 
 }
 
 .puntuacion{
-    width: 100px;
-    color: var(--amarillo);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 200px;
+
+
 }
 
 .usuario, .mazo{
@@ -35,8 +39,7 @@
     cursor: pointer;
 }
 .estrellas{
-    width: 200px;
-    gap: 5px;
+    padding-top: 5px;
 }
 
 #estrella{

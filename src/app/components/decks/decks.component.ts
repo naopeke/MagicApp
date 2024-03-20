@@ -11,7 +11,7 @@ public explorar: boolean = false
 public score: number;
 @Input () typeRating: number;
 
-@Input () dato: Deck
+@Input () mazo: Deck
 
 
 @Output() eventoExplorar = new EventEmitter<number>();
@@ -26,6 +26,8 @@ public explora(id_deck:number){
 
 Handle(id_deck:number, score:number){
   this.eventoPuntuacion.emit({id_deck, score})
+  console.log(id_deck);
+  
 
 }
 }

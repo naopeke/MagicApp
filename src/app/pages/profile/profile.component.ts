@@ -38,6 +38,7 @@ export class ProfileComponent implements OnInit {
   ]
 
   public user: User = {}
+  public currentUser: User | null;
 
   // traer de servicio user
   public id_user:number = 15
@@ -49,12 +50,15 @@ export class ProfileComponent implements OnInit {
     this.buildForm2() 
   }
   ngOnInit(): void {
+    this.userService.currentUserChanges().subscribe(user =>{
+      this.currentUser = user
+      })
     this.getProfile();
   }
 
   // Obtener datos perfil
   public getProfile(){
-    this.userService.getProfile(this.id_user).subscribe((res:any) =>{
+    this.userService.getProfile(this.currentUser.id_user).subscribe((res:any) =>{
 
       if(!res.error){
         this.user = res.data[0];

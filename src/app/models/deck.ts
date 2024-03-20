@@ -8,7 +8,8 @@ export class Deck {
         public scores?: number[], 
         public mediaScore?: number,
         public cards?: Card[],
-        public URLphoto?:string
+        public URLphoto?:string,
+        public id_user?: number
        ){}
 }
 

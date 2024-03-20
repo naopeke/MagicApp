@@ -36,7 +36,6 @@ export class RatingComponent {
   rating(index:number){
   this.previoSelection = this.SelectedStar
   this.SelectedStar = index+1;
-  console.log(this.mediaScore);
   this.onRating.emit(this.SelectedStar)
   
   }
