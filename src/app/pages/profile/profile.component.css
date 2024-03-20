@@ -101,6 +101,7 @@ main{
     font-family: var(--antiqua);
     font-size: 16pt;
     font-weight: bold;
+    z-index: 999;
 }
 
 .imgCard{
@@ -110,20 +111,20 @@ main{
 
 .imgFondo{
     position: absolute;
-    top: 100px;
+    top: 106px;
     z-index: 9;
 }
 
 .imgAvatar{
     position: absolute;
     top: 104px;
-    z-index: 999;
+    z-index: 99;
     width: 365px;
 }
 
 .sobreMi, .iconSobreMi{
     position: absolute;
-    z-index: 99;
+    z-index: 999;
 }
 
 .sobreMi{
@@ -131,11 +132,13 @@ main{
     font-family: var(--antiqua);
     left: 90px;
     top: 369px;
+    z-index: 999;
 }
 
 .iconSobreMi{
     left: 320px;
     top: 365px;
+    z-index: 999;
 }
 
 .infoUser{
@@ -208,11 +211,9 @@ main{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 15px;
-    
+    gap: 15px; 
 }
 .editTitle{
-    /* border: solid red 2px;; */
     width: 100%;
 
     display: flex;
@@ -274,6 +275,7 @@ input::placeholder{
 .editButton, .saveButton{
     height: 50px;
     width: 250px;
+    margin-top: 10px;
 
     font-family: var(--antiqua);
     font-size: 14pt;
@@ -291,6 +293,3 @@ input::placeholder{
 .editButton:hover, .saveButton:hover{
     background-color: var(--azul);
 }
-
-
-

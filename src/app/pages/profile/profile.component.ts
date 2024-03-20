@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { User } from 'src/app/models/user';
+import { UsersService } from 'src/app/shared/users.service';
 
 @Component({
   selector: 'app-profile',
@@ -9,10 +12,13 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 export class ProfileComponent implements OnInit {
   
   public editarFoto = false
+
   public editForm: FormGroup
   public editPassword: FormGroup
+
   public editar: boolean = false
   public editarPass: boolean = false
+  
   public modal: boolean = false
 
   public tierras: string[] = [
@@ -24,46 +30,59 @@ export class ProfileComponent implements OnInit {
   ]
 
   public marcos: string[] = [
-    '../../../assets/images/profile/cartaAmarilla.png',
-    '../../../assets/images/profile/cardAzul.png',
-    '../../../assets/images/profile/cardMorada.png',
-    '../../../assets/images/profile/cardRoja.png',
-    '../../../assets/images/profile/cardVerde.png',
+    'https://i.imgur.com/RuuGFZM.png',
+    'https://i.imgur.com/X2WGg5N.png',
+    'https://i.imgur.com/PtUv0jL.png',
+    'https://i.imgur.com/3Z2Dlu2.png',
+    'https://i.imgur.com/5xUN6sU.png',
   ]
+
+  public user: User = {}
+  public currentUser: User | null;
+
   
-  // *NOTE - CREAR CLASE USER
-  public user: any
-  
 
-
-  constructor(private formBuilder: FormBuilder){
-
-    this.user = {
-      name: 'Elara Moonshadow',
-      email: 'elaramoonshadow@gmail.com',
-      password: '123456789',
-      description: 'Con armadura reluciente y mirada decidida, Juana lidera con valentía y  determinación. Su espíritu protector y su coraje infunden esperanza en  los corazones de aquellos que la rodean.',
-      photo: "../../../assets/images/personajes/avatar2.png",
-      marco: "../../../assets/images/profile/cartaAmarilla.png"
-    }
-
+  constructor(private formBuilder: FormBuilder,
+              public userService: UsersService,
+              private toastr: ToastrService){
     this.buildForm();
-    this.buildForm2();
+    this.buildForm2() 
   }
-
   ngOnInit(): void {
-    this.editForm.disable();
-    this.editPassword.disable();
+    this.userService.currentUserChanges().subscribe(user =>{
+      this.currentUser = user
+      })
+    this.getProfile();
+  }
+
+  // Obtener datos perfil
+  public getProfile(){
+    this.userService.getProfile(this.currentUser.id_user).subscribe((res:any) =>{
+
+      if(!res.error){
+        this.user = res.data[0];
+
+        this.editForm.patchValue({
+          name:this.user.nameUser,
+          email: this.user.emailUser,
+          description: this.user.description
+        })
+        
+        this.editForm.disable();
+        this.editPassword.disable();
+
+      } else {
+        this.toastr.error(res.mensaje, '¡Ups!')
+      }
+    })
   }
   
-  
-
   // MODIFICAR DATOS PERFIL
   private buildForm(){
 
     this.editForm = this.formBuilder.group({
-      name: [this.user.name, [Validators.maxLength(20), Validators.required]],
-      email: [this.user.email, [Validators.email, Validators.required]],
+      name: [this.user.nameUser, [Validators.maxLength(20), Validators.required]],
+      email: [this.user.emailUser, [Validators.email, Validators.required]],
       description: [this.user.description, Validators.maxLength(200)],
     })
   }
@@ -72,8 +91,8 @@ export class ProfileComponent implements OnInit {
     const minPassLength = 8
 
     this.editPassword = this.formBuilder.group({
-      password: [,[Validators.required, Validators.minLength(minPassLength)]],
-      password2: [,[Validators.required, this.check]]
+      password: ['',[Validators.required, Validators.minLength(minPassLength)]],
+      password2: ['',[Validators.required, this.check]]
     })
   }
 
@@ -91,71 +110,102 @@ export class ProfileComponent implements OnInit {
     if (this.editar == false){
       this.editar = true;
       this.editForm.enable();
-    
-      } else {
-        this.editar = false
-        this.editForm.disable();
+      this.editForm.markAsUntouched()
       }
+  }
 
-    if(!this.editForm.valid){
-        let editValues = this.editForm.value
-        this.user.name = editValues.name
-        this.user.email = editValues.email
-        this.user.description = editValues.description
-        console.log(this.editForm.value);
-    } else {
-        console.log('error');
+  public save(){
+    if(!this.editForm.invalid){
+      let editValues = this.editForm.value
+      this.user.nameUser = editValues.name
+      this.user.emailUser = editValues.email
+      this.user.description = editValues.description
+      this.userService.putProfile(this.user).subscribe((res:any) =>{
+        if(!res.error){
+          this.toastr.success(res.mensaje, '¡Éxito!')
+        } else {
+          this.toastr.error(res.mensaje, '¡Ups!')
+        }
+      })
+     } else {
+      console.log('error');
       }
-    
+      this.editar = false
+      this.editForm.markAsUntouched
+      this.editForm.disable();
   }
 
   public editPass(){
     if (this.editarPass == false){
       this.editarPass = true;
       this.editPassword.enable();
-    
-      } else {
-        this.editarPass = false
-        this.editPassword.disable();
-      }
+    }
+  }
 
-    if(!this.editPassword.valid){
+  public savePass(){
+    if(!this.editPassword.invalid){
       let editValues = this.editPassword.value
-      this.user.password = editValues.password
-      console.log(editValues);
-      
-      console.log(this.user.password);
-  } else {
+      this.user.passwordUser = editValues.password
+      this.userService.putPassword(this.user).subscribe((res:any) => {
+        if(!res.error){
+          this.toastr.success(res.mensaje, '¡Éxito!')
+        } else {
+          this.toastr.error(res.mensaje, '¡Ups!')
+        }
+      })
+    } else {
       console.log('error');
     }
+    this.editarPass = false
+    this.editPassword.markAsUntouched()
+    this.editPassword.disable();
   }
 
   // MODIFICAR FOTO Y MARCO 
 
-public editPhoto(){
+  public editPhoto(){
   if(!this.editarFoto){
     this.editarFoto = true
     this.modal = true
-  } else {
-    this.editarFoto = false
-    this.modal = false
   }
-  
-}
-
+  }
   public seleccionAvatar(avatar:string){
-    this.user.photo = avatar
+    this.user.avatar = avatar
   }
-  
-  public seleccionTierra(tierra:string){
 
-    this.user.marco = 
+  public seleccionTierra(tierra:string){
+    this.user.icon = 
       tierra === this.tierras[0] ? this.marcos[0] :
       tierra === this.tierras[1] ? this.marcos[1] :
       tierra === this.tierras[2] ? this.marcos[2] :
       tierra === this.tierras[3] ? this.marcos[3] :
       tierra === this.tierras[4] ? this.marcos[4] :
-      console.log('Error');
+      this.marcos[0]
   }
+
+  public savePhoto(){
+    this.userService.putAvatar(this.user).subscribe((res:any) => {
+      if(!res.error){
+        this.toastr.success(res.mensaje, '¡Éxito!')
+      } else {
+        this.toastr.info(res.mensaje)
+      }
+    })
+    this.editarFoto = false
+    this.modal = false
+  }
+
+  // bordes inputs
+
+  public borderColor(){
+    let icon =
+      this.user.icon == this.marcos[1] ? '#28669F' :
+      this.user.icon== this.marcos[2] ? '#643D6A':
+      this.user.icon== this.marcos[3] ? '#B6281A':
+      this.user.icon== this.marcos[4] ? '#5C724B':
+      '';
+    return icon
+  }
+  
 }
 

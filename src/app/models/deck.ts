@@ -3,13 +3,13 @@ import { Card } from "./card";
 export class Deck {
     constructor(
         public id_deck?: number,
-        public id_user?: number,
-        public indexDeck?: number,
         public nameDeck?: string,
-        public id_photoDeck?: number,
-        public share?: number, 
-        public sumScores?: number,
-        public nScores?: number
+        public nameUser?: string,
+        public scores?: number[], 
+        public mediaScore?: number,
+        public cards?: Card[],
+        public URLphoto?:string,
+        public id_user?: number
        ){}
 }
 

@@ -4,10 +4,9 @@ export class User {
         public nameUser?: string,
         public emailUser?: string,
         public passwordUser?: string,
+        public description?: string,
         public icon?: string,
-        public avatar?: string
-        // añadir
-        // public description?: string
- 
+        public avatar?: string,
+        public creator?: boolean
         ) { }
 }

@@ -8,6 +8,7 @@
     height: 1100px;
     width: 100%;
     padding: 60px;
+    padding-right: 100px;
     background-size: cover;
 }
 
@@ -23,16 +24,21 @@
 }
 
 .buscador{
-    width: 66%;
-    height: 470px;
+    width: 60%;
     padding: 40px;
-
+    height: 450px;
     display: flex;
     flex-direction: column;
     gap: 20px;
     align-items: center;
     background-color: var(--negro-bg);
     border-radius: var(--borde-cuadrado);
+}
+.votados{
+    height: 420px;
+}
+.votar{
+    height: 450px;
 }
 
 .titulo{
@@ -121,28 +127,60 @@ select:focus{ outline: none;}
 .scroll, .scroll2{
     display: flex; 
     width: 100%;
+    height: 305px;
     border-radius: var(--borde-cuadrado);
     background-color: rgba(30, 6, 3, 0.5);
 }
 
-.scroll{
-    height: 250px;
-}
-
- .scroll2{
-    height: 320px;
-}
 
 .bucleContainer{
-    padding-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
+    height: 200px;
 }
 .bucle{
     display: flex;
     justify-content: center;
 }
+
+.leyenda{
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+.datos{
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    
+    align-items: center;
+    background-color: #330a05;
+    border-radius: var(--borde-input);
+    color: var(--rojo);
+    font-family: var(--inter);
+    font-size: 16pt;
+
+}
+
+.puntuacion{
+    width: 130px;
+}
+
+.usuario, .mazo{
+    width: 250px;
+}
+
+.explorar, .estrellas{
+    width: 200px;;
+}
+
+.estrellas{
+    gap: 5px;
+}
+
 
 
 cdk-virtual-scroll-viewport::-webkit-scrollbar{
@@ -165,9 +203,11 @@ cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb:hover{
 /* EXPLORA */
 .explora{
     background-image: url(../../../assets/images/explora/fondoExplora2.png);
+    height: 1300px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 60px;
     z-index: 9;
 }
@@ -202,7 +242,7 @@ cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb:hover{
 
 .cartas{
     width: 87%;
-    height: 800px;
+    height: 900px;
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
@@ -219,8 +259,8 @@ cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb:hover{
 
 #numCartas{
     position: absolute;
-    top: 27px;
-    left: 48px;
+    top: 18px;
+    left: 50px;
     font-family: var(--antiqua);
     color: var(--amarillo);
     font-size: 20pt;
@@ -241,7 +281,7 @@ cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb:hover{
 
 .close{
     position: absolute;
-    right: 170px;
+    right: 210px;
 }
 
 #imgClose{
@@ -251,6 +291,7 @@ cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb:hover{
 
 .cardInfo{
     position: absolute;
+    z-index: 999;
     transform: scale(0);
     transition: 1.25s ease;
 }
