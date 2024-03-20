@@ -234,11 +234,13 @@ cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb:hover{
     color: var(--blanco);
 }
 
-.textoFiltro:hover{
+.textoFiltro:hover, .filtro{
     color: var(--amarillo);
     cursor: pointer;
     text-decoration: underline;
 }
+
+
 
 .cartas{
     width: 87%;
@@ -299,6 +301,8 @@ cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb:hover{
 .cardInfo.visible{
     transform: scale(1);
 }
+
+
 
 
 

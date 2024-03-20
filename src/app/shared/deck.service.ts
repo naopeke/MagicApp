@@ -19,8 +19,15 @@ export class DeckService {
     return this.http.get(this.urlExplora + '/votados')
   }
 
-  public getDeckByUser(nameUser:string){
-    return this.http.get(this.urlExplora + '/user/' + nameUser)
+  public getDeck(filter:string, input:string){
+    let route;
+    if(filter == 'nameUser')
+      route = this.http.get(this.urlExplora + '/search/?nameUser=' + input)
+    else if (filter == 'nameDeck')
+      route = this.http.get(this.urlExplora + '/search/?nameDeck=' + input)
+    else 
+    route = this.http.get(this.urlExplora + '/search')
+    return route
   }
 
   public getDeckByDeck(nameDeck:string){
@@ -35,8 +42,13 @@ export class DeckService {
     return this.http.put(this.urlExplora + '/mediaScore', body)
   }
 
-  public getDeckById(id_deck:number){
-    return this.http.get(this.urlExplora +'/' + id_deck) 
-  }
+  public getDeckById(id_deck:number,filter:string){
+    let route;
+    if(filter)
+      route = this.http.get(`${this.urlExplora}/deck?id_deck=${id_deck}&type_line=${filter}`)
+    else 
+      route = this.http.get(`${this.urlExplora}/deck?id_deck=${id_deck}`)
+    return route
+    }
   // belen explora
 }
