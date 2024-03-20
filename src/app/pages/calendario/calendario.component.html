@@ -1,6 +1,4 @@
 
-
-
 <div class="main">
     <div class="cuadroIzq">
         <div class="titulo">Calendario</div>
@@ -22,15 +20,14 @@
                         <h3 class="detalle_evento_descripcion">{{info.descripcion}}</h3>
                         </div>
                         <div class="botones">
-                            <button class="editar" (click)="openModalEdit()"></button>
-                            <button class="eliminar"></button>
+                            <button class="detailEvent" (click)="openModalDetailEvent()"></button>
                         </div>
 
                     </div>
                 </div>
 
-                <div *ngIf="modalEdit == true" class="modalEdit">
-                    <app-edit-event [evento] = "evento" (eventClose) = closeModal($event)></app-edit-event>
+                <div *ngIf="modalDetailEvent == true" class="modalDetailEvent">
+                    <app-detail-event [evento] = "evento" (eventClose) = closeModal($event)></app-detail-event>
                 </div>
     
         </div>

@@ -27,7 +27,7 @@
 }
 
 
- #calendar{
+#calendar{
     height: 965px;
     width: 85%;
     color: var(--blanco);
@@ -135,10 +135,9 @@ h3.detalle_evento_descripcion{
     display: flex;
     flex-direction: column;
     gap: 40px;
-
 }
 
-.editar{
+.detailEvent{
     height: 40px;
     width: 40px;
     background-color: black;
@@ -149,24 +148,11 @@ h3.detalle_evento_descripcion{
     background-repeat: no-repeat;
 }
 
-.eliminar{
-    height: 40px;
-    width: 40px;
-    background-color: black;
-    opacity: 0.85;
-    border: none;
-    background-size: contain;
-    background-image: url('src/assets/images/iconos/calaveraEliminar.png');
-    background-repeat: no-repeat;
-}
-
 /* añadido por belen */
 
-.modalEdit{
+.modalDetailEvent{
     position: absolute;
     right: 75px;
     z-index: 99;
     top: 250px;
-
-
 }

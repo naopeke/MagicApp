@@ -16,7 +16,7 @@ import { Evento } from 'src/app/models/evento';
 })
 export class CalendarioComponent {
 
-  public modalEdit:boolean = false
+  public modalDetailEvent:boolean = false
   // en la clase evento falta direccion por eso no sale en el modal, la he puesto como opcional, 
   // pero está puesto nameUser, no he querido tocar para no fastidiar los datos de Carlota
   public evento: Evento = new Evento(1, 'Superpartida', 'Partida entre señoras', new Date(2024, 3, 12), '18:00', 'Madrid')
@@ -78,12 +78,12 @@ export class CalendarioComponent {
   }
 
   
-  openModalEdit(){
-    this.modalEdit = true
+  openModalDetailEvent(){
+    this.modalDetailEvent = true;
   }
 
   closeModal(event: boolean){
-    this.modalEdit = event
+    this.modalDetailEvent = event; 
   }
 }
 
