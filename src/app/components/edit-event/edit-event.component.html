@@ -59,7 +59,7 @@
             <ng-template #guardar>
                 <button type="button" [ngClass]="editar == true ? 'saveButton': ''"
                 [disabled]="!editEvent.valid"
-                (click)="edit()">Guardar Cambios</button>
+                (click)="saveEdit()">Guardar Cambios</button>
             </ng-template>
 
         </form>

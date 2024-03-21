@@ -6,8 +6,8 @@ import { EventosService } from 'src/app/shared/eventos.service';
 
 @Component({
   selector: 'app-edit-event',
-  templateUrl: './edit-event.component.html',
-  styleUrls: ['./edit-event.component.css']
+  templateUrl: './edit-event-2.component.html',
+  styleUrls: ['./edit-event-2.component.css']
 })
 
 export class EditEventComponent {

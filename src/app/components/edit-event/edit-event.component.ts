@@ -34,16 +34,13 @@ export class EditEventComponent implements OnInit {
   }
 
   edit(){
-    if(this.editar == false){
+    if(!this.editar){
       this.editar = true; 
       this.editEvent.enable();
+  }
+  }
 
-    } else {
-
-      this.editar = false;
-      this.editEvent.markAsUntouched()
-      this.editEvent.disable();
-
+  saveEdit(){
     if(!this.editEvent.invalid){
       let editValues = this.editEvent.value
       this.evento.title = editValues.title
@@ -52,14 +49,20 @@ export class EditEventComponent implements OnInit {
       this.evento.place = editValues.place
       this.evento.direction = editValues.direction
       this.evento.description = editValues.description
-      
+
+      this.editar = false;
+      this.editEvent.markAsUntouched()
+      this.editEvent.disable();
+
       console.log(this.evento);
       }
-    }
-
-
-
   }
+ 
+    
+
+
+
+ 
 
   close(){
     this.eventClose.emit(false)
