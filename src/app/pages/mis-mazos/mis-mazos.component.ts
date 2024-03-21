@@ -103,7 +103,7 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
         const activeIndex = swiper.activeIndex;
         console.log('This is inside of the deck: ', this.datos[activeIndex]);
         this.mazo = this.datos[activeIndex]; 
-        this.filteredCards = this.mazo?.card ? [this.mazo.card] : []; // カードが存在する場合のみ配列に追加
+        this.filteredCards = this.mazo?.card ? [this.mazo.card] : []; //si existe añadir al array
       });
     }
   }
