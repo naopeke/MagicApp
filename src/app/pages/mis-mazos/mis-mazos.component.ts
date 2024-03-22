@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { Card } from 'src/app/models/card';
 import { User } from 'src/app/models/user';
 import { Deck } from 'src/app/models/deck';
@@ -8,6 +8,9 @@ import { DeckService } from 'src/app/shared/deck.service';
 import { UsersService } from 'src/app/shared/users.service';
 import { Response } from 'src/app/models/response';
 import Swiper from 'swiper';
+import { response } from 'express';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 
 @Component({
@@ -45,7 +48,9 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
   constructor(
     private cardsService: CardsService,
     private usersService: UsersService,
-    private decksService: DeckService
+    private decksService: DeckService,
+    private changeDetectorRef: ChangeDetectorRef,
+    private snackBar: MatSnackBar,
   ){}
 
 
@@ -239,6 +244,39 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
 }
 
 
+  public onToggleShare(){
+    const userId = this.usersService.getCurrentUserId();
+      console.log('user id :', userId);
+
+    const indexDeck = this.mySwiper.nativeElement.swiper.activeIndex; // indexDeck es activeIndex de swiper
+      console.log('index swiper: ', indexDeck);
+      
+
+      // buscar id_deck con indexDeck de datos
+    const targetDeck = this.datos[indexDeck];
+    if (targetDeck) {
+      const id_deck = targetDeck.id_deck; // id_deck
+      console.log('id_deck: ', id_deck);
+
+    this.decksService.toggleShare( id_deck ).subscribe({
+      next: (response: any) => {
+        console.log('Updated share status', response);
+        this.snackBar.open(response.message, 'Close', {  //mostrar mensaje desde back
+          duration: 5000,})
+
+        this.datos[indexDeck].share = response.shareStatus; // update share status por response
+        this.changeDetectorRef.detectChanges(); // trigger update
+      },
+      error: (err: any) => {
+      console.log('Error updating share status: ', err);
+      this.snackBar.open('Error updating share status', 'Close', {
+        duration: 5000,
+      })
+      }
+    })
+    }
+  }
+
 
 
   /*modal de xisca*/
@@ -252,56 +290,5 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
     this.show_cardinfo = false;
   }
 
-
-  // https://qiita.com/frtklog/items/df7f1c4d5d870212e779
-  // event.detail[0].activeIndex   saber qual es indice de slide de ahora
-  // ngAfterViewInit(): void {
-  //   this.mySwiper.nativeElement.addEventListener('slidechange', (event: any) => {
-  //     console.log(event);
-  //     console.log('activeIndex: ', event.detail[0].activeIndex); // indice de current slide
-  //     let slideIndex = event.detail[0].activeIndex;
-  //     if (event.detail[0].activeIndex){
-  //       console.log('this is inside of the deck: ', this.datos[slideIndex]);
-  //     } else if (slideIndex === 0){
-  //       console.log('first deck: ', this.datos[0])
-  //     }
-  //   });
-  // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // ngAfterViewInit(): void {
-  //   // make sure if swiper is default 
-  //   if (this.mySwiper && this.mySwiper.nativeElement.swiper) {
-  //     const swiper = this.mySwiper.nativeElement.swiper;
-      
-  //     swiper.slideTo(0, 0); //  indice por la primera vez, tiempo
-  //     // con indice por la primera vez y primer mazo
-  //     console.log('Initial deck: ', this.datos[0]);
-  //     this.mazo = this.datos[0]; 
-  //     this.filteredCards = [ ...this.mazo.cards]; // mostrar todas las cartas
-  
-  //     // con slideChange, 
-  //     swiper.on('slideChange', () => {
-  //       const activeIndex = swiper.activeIndex;
-  //         console.log('This is inside of the deck: ', this.datos[activeIndex]);
-  //         this.mazo = this.datos[activeIndex]; // asociado con indice de mazo
-  //         this.filteredCards = [...this.mazo.cards]; // clear cartas filtrado y mostrar todas las cartas
-
-        
-  //     });
-  //   }
-  // }
-  
 
 }

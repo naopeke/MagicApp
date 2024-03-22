@@ -40,26 +40,6 @@
                   <swiper-slide *ngIf="datos[4]">
                     <img [src]="getFirstPlaneswalkerOrLegendaryCreatureImage(datos[4])" loading="lazy" class="image-slide">
                   </swiper-slide>
-                
-                    <!-- <swiper-slide lazy="true">
-                    <img src="/assets/images/mismazos/amarillo.png" loading="lazy" class="image-slide">
-                    </swiper-slide>
-
-                    <swiper-slide lazy="true">
-                    <img src="/assets/images/mismazos/azul.png" loading="lazy" class="image-slide">
-                    </swiper-slide>
-
-                    <swiper-slide lazy="true">
-                    <img src="/assets/images/mismazos/morado.png" loading="lazy" class="image-slide">
-                    </swiper-slide>
-
-                    <swiper-slide lazy="true">
-                    <img src="/assets/images/mismazos/rojo.png" loading="lazy" class="image-slide">
-                    </swiper-slide>
-
-                    <swiper-slide lazy="true">
-                    <img src="/assets/images/mismazos/verde.png" loading="lazy" class="image-slide">
-                    </swiper-slide> -->
 
                 </swiper-container>
 
@@ -71,14 +51,15 @@
 
             <section class="deckcards-wrapper">
                     <div class="deckname-wrapper">
+                        <img src="/assets/images/iconos/compartir.png" alt="img-share" class="icon-share" style="cursor: pointer;" (click)="onToggleShare()">
                         <div class="deckname">
                             <span *ngIf="!isEditing">{{mazo?.nameDeck}}</span>
-                            <div *ngIf="!isEditing" (click)="startEdit()" style="cursor: pointer;">
-                                <img src="/assets/images/iconos/plumaEditarVerde.png" alt="img-edit" class="icon-edit">
+                            <div *ngIf="!isEditing">
+                                <img src="/assets/images/iconos/plumaEditarVerde.png" alt="img-edit" class="icon-edit" style="cursor: pointer;" (click)="startEdit()">
                             </div>
                             <input *ngIf="isEditing" type="text" [(ngModel)]="editedName" class="editDeckNameInput">
-                            <div *ngIf="isEditing" (click)="saveEdit()" style="cursor: pointer">
-                                <mat-icon>done_outline</mat-icon>
+                            <div *ngIf="isEditing" style="cursor: pointer">
+                                <mat-icon class="done-icon" (click)="saveEdit()" >done_outline</mat-icon>
                             </div>
                         </div>
 
