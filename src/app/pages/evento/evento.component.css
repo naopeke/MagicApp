@@ -58,13 +58,13 @@
     flex-direction: column;
     margin: 30px auto;
     width: 65%;
-    height: 260px;
+    height: 210px;
     text-align: center;
   }
   #divEvento h1{
-    height: 50px;
     text-align: center;
     padding-top: 10px;
+    size: 20px;
   }
   #contenedor_info{
     display: flex;
@@ -73,14 +73,16 @@
   #divImg{
     width: 30%;
     text-align: center;
-    margin: 0 auto;
+    margin: -50px auto;
   }
   #img_evento{
     display: block;
-    margin: 10px auto;
+    margin: 0 auto;
   }
   #divImg h2{
     text-align: center;
+    padding-top: 5px;
+    width: 100%;
   }
   h1, h2{
     font-family: var(--antiqua);
@@ -98,6 +100,7 @@
   .parr_img {
     display: flex; 
     align-items: center; 
+    /* padding: 6px; */
   }
 /* Fin Card Evento */
 
@@ -114,6 +117,7 @@
     height: 40px;
     width: 20%;
     color: var(--negro);
+    margin-top: 10px;
   }
   .btnBuscador {
     width: 60px;
@@ -136,8 +140,7 @@
 /* Iconos */
   #icono_elim_edit{
     width: 5%;
-  }
-  #icono_elim_edit {
+    padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -149,6 +152,7 @@
   }
   #img_inferior{
     margin-bottom: 30px;
+    margin-top: 15px;
   }
   #img_superior{
     margin-top: 15px;

@@ -54,7 +54,7 @@
             <textarea #descriptionEvent placeholder="Descripcion" formControlName="description"></textarea>
 
             <div *ngIf="editar == false; else guardar">
-                <button type="button" class="buttonEditar" (click)="add()">Editar</button>
+                <button type="button" class="buttonEditar" (click)="add(titleEvent.value, descriptionEvent.value, dateEvent.value, hourEvent.value, placeEvent.value, direction.value)">Editar</button>
             </div>
             <ng-template #guardar>
                 <button type="button" [ngClass]="editar == true ? 'saveButton': ''"

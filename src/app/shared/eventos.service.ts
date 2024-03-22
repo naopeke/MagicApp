@@ -62,21 +62,24 @@ export class EventosService {
   createEvent(newEvent:Evento){
     return this.http.post(this.url, newEvent);  
     //El objeto viene del ts del componente relleno
-    this.events.push(newEvent);
+    //this.events.push(newEvent);
   }
 
   modifyEvent(newEvent:Evento){
     //Buscamos el indice del array donde se encuentra el evento a modificar,
     //modificamos ese elemento del array por el nuevo
     //devolvemos true si se ha modificado correctamente, false en caso de no encontrarlo.
-    let cambiar = this.events.findIndex(val => val.id == newEvent.id);
 
-    if(cambiar !== -1){
-      this.events[cambiar] = newEvent;
-      return true;
-    }else{
-      return false;
-    }
+    return this.http.put(this.url, newEvent);  
+
+    // let cambiar = this.events.findIndex(val => val.id == newEvent.id);
+
+    // if(cambiar !== -1){
+    //   this.events[cambiar] = newEvent;
+    //   return true;
+    // }else{
+    //   return false;
+    // }
   }
 
   deleteEvent(id:number){    

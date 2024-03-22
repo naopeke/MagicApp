@@ -5,6 +5,8 @@ import { Logging } from 'src/app/models/logging';
 import { User } from 'src/app/models/user';
 import { EventosService } from 'src/app/shared/eventos.service';
 import { Response } from 'src/app/models/response';
+import { UsersService } from 'src/app/shared/users.service';
+import { Eventos } from 'src/app/models/eventos';
 
 @Component({
   selector: 'app-evento',
@@ -17,37 +19,40 @@ export class EventoComponent {
   public events:Evento[];
   public eventoABorrar:Evento;
   public evento:Evento;
-  public login1:Logging;
-  public login2:Logging;
+  public id_logueado: number;
 
 
   public modalEdit:boolean = false;
   public modalAdd:boolean = false;
-  // public modalSaberMas:boolean = false;
+
+  public selectEvento: Eventos | undefined;
+  public modalDetail: boolean = false;
+
 
   paginatedEvents:any[] = [];
   currentPage:number = 0;
   totalPages:number = 0;
   itemsPerPage:number = 4;
   
-  user1:User = new User(1, "Kreatimes", "juan@gmail.com", "1234", " ", "");
-  user2:User = new User(2, "Maxiglow", "pepito@gmail.com", "1234", " ", "");
 
   nombreEvento = '';
 
   editForm: FormGroup;
 
-  constructor(private eventService: EventosService){
+  constructor(private eventService: EventosService, private usersService: UsersService){
 
-    this.getAllEventsForBBDD();
+    // this.getAllEventsForBBDD();
     
-    //Recuperar del service o cogerlo del header
-    this.login1 = new Logging(this.user1, true);
-    this.login2 = new Logging(this.user2, false);
+  }
+
+  ngOnInit(): void {
+    this.id_logueado = this.usersService.getCurrentUserId();
+    this.getAllEventsForBBDD();
   }
 
   getAllEventsForBBDD(){
 
+    console.log("getAllEventsForBBDD");
     this.eventService.getAllEvents().subscribe((respuesta: Response) => {
       // Recorrer el array "data" y añadir los eventos a "this.events" manualmente
       // Usando un bucle for
@@ -58,14 +63,14 @@ export class EventoComponent {
         const eventoData = respuesta.data[i];
     
         // console.log(eventoData);
-        let nuevoEvento = new Evento(eventoData.id, eventoData.title, eventoData.descriptionEvent, eventoData.date, eventoData.hour, eventoData.place, new User(eventoData.creator.id_user, eventoData.creator.nameUser, null, null, null, null),eventoData.direction);
+        let nuevoEvento = new Evento(eventoData.id, eventoData.title, eventoData.descriptionEvent, eventoData.date, eventoData.hour, eventoData.place, new User(eventoData.creator.id_user, eventoData.creator.nameUser, null, null, null, null, eventoData.creator.avatar),eventoData.direction);
         // console.log(nuevoEvento);
     
         nuevosEventos.push(nuevoEvento);
       }
 
       this.events = nuevosEventos;
-      // console.log(this.events);
+      //console.log(this.events);
       this.calculatePagination();
     })
 
@@ -73,7 +78,8 @@ export class EventoComponent {
 
   getMyEventsForBBDD(){
 
-    this.eventService.getMyEvents(4).subscribe((respuesta: Response) => {
+    console.log("getMyEventsForBBDD");
+    this.eventService.getMyEvents(this.id_logueado).subscribe((respuesta: Response) => {
       // Recorrer el array "data" y añadir los eventos a "this.events" manualmente
       // Usando un bucle for
       //console.log(data);
@@ -82,9 +88,9 @@ export class EventoComponent {
       for (let i = 0; i < respuesta.data.length; i++) {
         const eventoData = respuesta.data[i];
     
-        console.log(eventoData);
-        let nuevoEvento = new Evento(eventoData.id, eventoData.title, eventoData.descriptionEvent, eventoData.date, eventoData.hour, eventoData.place, new User(eventoData.creator.id_user, eventoData.creator.nameUser, null, null, null, null),eventoData.direction);
-        console.log(nuevoEvento);
+        //console.log(eventoData);
+        let nuevoEvento = new Evento(eventoData.id, eventoData.title, eventoData.descriptionEvent, eventoData.date, eventoData.hour, eventoData.place, new User(eventoData.creator.id_user, eventoData.creator.nameUser, null, null, null, null, eventoData.creator.avatar),eventoData.direction);
+        //console.log(nuevoEvento);
     
         nuevosEventos.push(nuevoEvento);
       }
@@ -97,9 +103,9 @@ export class EventoComponent {
   }
 
   //Función elimiar evento
-  deleteEvent(idEvent:number){
+  // deleteEvent(idEvent:number){
     
-  }
+  // }
 
   //Métodos para la paginación
   //Calcula numero  paginas
@@ -121,6 +127,7 @@ export class EventoComponent {
       this.calculatePagination();
     }
   }
+
 
   // llamar al componente add-event
   openModalAddEvent(){
@@ -153,25 +160,26 @@ export class EventoComponent {
 
   findEventsWithNameMyEvents(tituloEvento:string){
 
-    console.log("llamo a mis eventos");
-    this.getMyEventsForBBDD();
+    console.log("llamo a mis eventos filtrado");
     if(tituloEvento == "")
     {
       this.getMyEventsForBBDD();
     }else{
-      this.events = this.events.filter(event => event.title.includes(tituloEvento));
+      this.events = this.events.filter(event => event.title.toLowerCase().includes(tituloEvento.toLowerCase()));
+      console.log(this.events);
     }
     this.calculatePagination();
   }
 
   findEventsWithNameAllEvents(tituloEvento:string){
-    console.log("llamo a todos eventos");
-    this.getAllEventsForBBDD();
+    console.log("llamo a todos eventos filtrado");
     if(tituloEvento == "")
     {
       this.getAllEventsForBBDD();
     }else{
-      this.events = this.events.filter(event => event.title.includes(tituloEvento));
+      console.log(this.events);
+      this.events = this.events.filter(event => event.title.toLowerCase().includes(tituloEvento.toLowerCase()));
+      console.log(this.events);
     }
     this.calculatePagination();
   }
@@ -194,6 +202,14 @@ export class EventoComponent {
   openModalEdit(ev:Evento){
     this.setEventoEditar(ev);
     this.modalEdit = true
+  }
+
+  public openModalDetail(evento:Evento){
+
+    const ev = new Eventos(evento.id,evento.title, evento.description, evento.date, evento.hour, evento.place, evento.direction, evento.creator.nameUser, evento.creator.id_user, null);
+
+    this.selectEvento = ev;
+    this.modalDetail = true;
   }
 
   // Cierrar Modals
