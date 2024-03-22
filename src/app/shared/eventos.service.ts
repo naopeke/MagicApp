@@ -15,6 +15,8 @@ export class EventosService {
   private urlHome: string
    // Belen Home
 
+  private urlCalendar: string; 
+
 
 
   private url = "http://localhost:3000/eventos"
@@ -41,6 +43,10 @@ export class EventosService {
     // Belen Home
       this.urlHome = "http://localhost:3000/home"
     // Belen Home
+
+    //Calendar
+    this.urlCalendar = "http://localhost:3000/calendario"
+    //calendar
 
     // this.events = [this.ev1, this.ev2, this.ev3, this.ev4, this.ev5];
     this.modalCreateEvent = false;
@@ -124,6 +130,12 @@ export class EventosService {
   }
   openModalEditEvent(){
     this.modalEditEvent = true;
+  }
+
+
+  //calendar
+  getMyEventsCalendar(id_user:number, date: Date):Observable<object>{
+    return this.http.get(this.urlCalendar + '/' + id_user)
   }
 
   // Belen home

@@ -5,29 +5,25 @@
             <div id="calendar">
                 <mat-calendar [selected]="selectedDate" (selectedChange)="onDateChange($event)" [dateClass]="dateClass"></mat-calendar> 
             </div>
-
         </div>
         <div class="cuadroDcha">
-
             <div class="agenda">
-
-                <h1 class="title_date">{{dates[0].fecha}}</h1>
+                <h1 class="title_date">{{ selectedDate | date: 'yyyy-MM-dd' }}</h1>
                 <img src="/assets/images/calendario/Line 11.png" alt="">
-                    <div class="evento" *ngFor="let info of dates[0].events">
+                    <div class="evento" *ngFor="let evento of eventos">
                         <div class="eventoInfo">
-                        <h2 class="titulo_evento">{{info.titulo}}</h2>
-                        <h3 class="detalle_evento_lugar">{{info.lugar_hora}}</h3>
-                        <h3 class="detalle_evento_descripcion">{{info.descripcion}}</h3>
+                        <h2 class="titulo_evento">{{evento.nameEvent}}</h2>
+                        <h3 class="detalle_evento_lugar">{{evento.place}}, {{evento.direction}}, {{evento.hour}}h</h3>
+                        <h3 class="detalle_evento_descripcion">{{evento.descriptionEvent}}</h3>
                         </div>
                         <div class="botones">
-                            <button class="detailEvent" (click)="openModalDetailEvent()"></button>
+                            <button class="detailEvent" (click)="openModalDetailEvent()">Más información</button>
                         </div>
-
                     </div>
                 </div>
 
-                <div *ngIf="modalDetailEvent == true" class="modalDetailEvent">
-                    <app-detail-event [evento] = "evento" (eventClose) = closeModal($event)></app-detail-event>
+                <div *ngIf="modalSaberMas == true" class="modalDetailEvent">
+                    <app-detail-event [evento] = "evento" (eventClose) = "closeModal($event)"></app-detail-event>
                 </div>
     
         </div>

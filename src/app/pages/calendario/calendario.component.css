@@ -65,15 +65,15 @@ span.mat-calendar-body-cell-content.mat-focus-indicator {
 }
 
 span.mat-calendar-body-cell-content.mat-focus-indicator.mat-calendar-body-selected.mat-calendar-body-today {
-    border-color: var(--amarillo);
     background-color: var(--verde);
     color: var(--blanco);
 }
 
-.highlight-event{
+.mat-calendar.highlight-event{
     background-color: var(--amarillo);
     color: var(--verde);
 }
+
 
 .cuadroDcha{
     height: 1100px;
@@ -134,18 +134,16 @@ h3.detalle_evento_descripcion{
 .botones{
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    justify-content: flex-end;
 }
 
 .detailEvent{
-    height: 40px;
-    width: 40px;
-    background-color: black;
-    opacity: 0.85;
+    color: var(--amarillo);
     border: none;
-    background-size: contain;
-    background-image: url('src/assets/images/iconos/plumaEditar.png');
-    background-repeat: no-repeat;
+    background-color: transparent;
+    text-decoration: underline;
+    margin-bottom: 50px;
+    margin-left: 50px;
 }
 
 /* añadido por belen */
