@@ -85,7 +85,7 @@ main{
 }
 .nameContainer{
     position: absolute;
-    top: 60px;
+    top: 56px;
     left: 10px;
     z-index: 999;
     height: 30px;
@@ -131,13 +131,13 @@ main{
     font-size: 14pt;
     font-family: var(--antiqua);
     left: 90px;
-    top: 369px;
+    top: 367px;
     z-index: 999;
 }
 
 .iconSobreMi{
     left: 320px;
-    top: 365px;
+    top: 367px;
     z-index: 999;
 }
 
@@ -148,7 +148,7 @@ main{
 
     width: 92%;
     height: 235px;
-    padding: 12px;
+    padding: 15px;
 
     display: flex;
     flex-direction: column;
@@ -157,19 +157,24 @@ main{
 }
 
 .email, .description, .line{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
 }
 
 .email{
-    height: 25%;
+    height: 35%;
+    padding-top: 25px;
 }
 
 .line{
     border: solid var(--amarillo) 2px;
+    height: 5%;
 }
 
 .description{
-    height: 63%;
+    height: 60%;
 }
 #emailTitle, #descriptionTitle{
     font-family: var(--antiqua);
@@ -271,10 +276,13 @@ input::placeholder, textarea::placeholder{
 input::placeholder{
     font-size: 12pt;
 }
-
+.buttons{
+    display: flex;
+    gap: 20px
+}
 .editButton, .saveButton{
     height: 50px;
-    width: 250px;
+    width: 220px;
     margin-top: 10px;
 
     font-family: var(--antiqua);
@@ -283,6 +291,17 @@ input::placeholder{
     border: none;
     border-radius: var(--borde-boton);
 }
+.cancelButton{
+    font-family: var(--antiqua);
+    font-size: 14pt;
+    font-weight: bold;
+    border: none;
+    border-radius: var(--borde-boton);
+    height: 50px;
+    width: 150px;
+    margin-top: 10px;
+    background-color: var(--rojo);
+}
 .editButton{
     background-color: var(--amarillo);
 }
@@ -290,7 +309,7 @@ input::placeholder{
 .saveButton{
     background-color: var(--verde);
 }
-.editButton:hover, .saveButton:hover{
+.editButton:hover, .saveButton:hover, .cancelButton:hover{
     background-color: var(--azul);
 }
 

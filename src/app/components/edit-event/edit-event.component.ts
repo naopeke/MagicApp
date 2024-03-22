@@ -25,7 +25,7 @@ export class EditEventComponent implements OnInit {
   private buildForm(){
     this.editEvent = this.formBuilder.group({
       title: [this.evento.title, [Validators.required, Validators.maxLength(40)]],
-      date: [this.evento.date.toISOString().substring(0, 10), Validators.required],
+      date: [this.evento.date, Validators.required],
       time: [this.evento.hour, Validators.required],
       place: [this.evento.place, Validators.required],
       direction:[this.evento.direction, Validators.required],
@@ -34,36 +34,22 @@ export class EditEventComponent implements OnInit {
   }
 
   edit(){
+    this.editEvent.markAsUntouched();
     if(!this.editar){
       this.editar = true; 
       this.editEvent.enable();
-  }
+    }
   }
 
   saveEdit(){
+    this.editEvent.markAsUntouched();
     if(!this.editEvent.invalid){
-      let editValues = this.editEvent.value
-      this.evento.title = editValues.title
-      this.evento.date = editValues.date
-      this.evento.hour = editValues.time
-      this.evento.place = editValues.place
-      this.evento.direction = editValues.direction
-      this.evento.description = editValues.description
-
+      this.evento = this.editEvent.value
       this.editar = false;
-      this.editEvent.markAsUntouched()
       this.editEvent.disable();
-
-      console.log(this.evento);
       }
   }
  
-    
-
-
-
- 
-
   close(){
     this.eventClose.emit(false)
   }

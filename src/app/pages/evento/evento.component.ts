@@ -5,6 +5,7 @@ import { Logging } from 'src/app/models/logging';
 import { User } from 'src/app/models/user';
 import { EventosService } from 'src/app/shared/eventos.service';
 import { Response } from 'src/app/models/response';
+import { Eventos } from 'src/app/models/eventos';
 
 @Component({
   selector: 'app-evento',
@@ -23,6 +24,8 @@ export class EventoComponent {
 
   public modalEdit:boolean = false;
   public modalAdd:boolean = false;
+  // Belen: te añado para abrir modal detalle evento
+  public modalDetail:boolean = false
   // public modalSaberMas:boolean = false;
 
   paginatedEvents:any[] = [];
@@ -44,6 +47,8 @@ export class EventoComponent {
     //Recuperar del service o cogerlo del header
     this.login1 = new Logging(this.user1, true);
     this.login2 = new Logging(this.user2, false);
+    console.log(this.paginatedEvents);
+    
   }
 
   getAllEventsForBBDD(){
@@ -192,6 +197,8 @@ export class EventoComponent {
   //   this.modalSaberMas = true
   // }
   openModalEdit(ev:Evento){
+    console.log(ev);
+    
     this.setEventoEditar(ev);
     this.modalEdit = true
   }
@@ -206,4 +213,9 @@ export class EventoComponent {
   // closeModalSaberMas(event: boolean){
   //   this.modalSaberMas = event
   // }
+
+  // belen
+  openDetail(){
+    this.modalDetail = true
+  }
 }

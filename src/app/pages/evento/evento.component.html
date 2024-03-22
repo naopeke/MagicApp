@@ -39,7 +39,7 @@
                     <p>&nbsp;&nbsp;{{ item.place }}{{ item.direction }}</p>
                 </div> 
                 <div>
-                    <button id="button_sabermas" data-bs-toggle="modal" data-bs-target="#singUp">Saber más</button>
+                    <button id="button_sabermas" data-bs-toggle="modal" data-bs-target="#singUp" (click)="openDetail()">Saber más</button>
                 </div> 
             </div>
 
@@ -54,6 +54,9 @@
     <div>
         <!--MODAL edit--><div *ngIf="modalEdit == true" class="modalEdit"><app-edit-event [evento] = "evento" (eventClose) = closeModal($event)></app-edit-event></div>
         <!-- MODAL delete--> <app-delete-event *ngIf="getModalDeleteEvent()" [eventoAEliminar]="eventoABorrar" ></app-delete-event>
+        <div *ngIf="modalDetail == true">
+            <app-detail-event [evento] = "item" [tyoe] = 2></app-detail-event>
+        </div>
     </div> 
 
     <!-- Pagination -->

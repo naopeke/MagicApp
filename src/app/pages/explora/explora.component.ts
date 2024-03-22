@@ -22,6 +22,7 @@ export class ExploraComponent implements OnInit {
   
   public mazo: Deck = { nameDeck: '', cards: [] };
   public filter:string
+  public style:number;
   public card: Card
   public explorar: boolean = false
   public id_deck:number
@@ -74,17 +75,22 @@ export class ExploraComponent implements OnInit {
     })
   }
   
-  public filtro(filter:string){
+  public filtro(filter:string, style:number){
     this.filter = filter
+    this.style = style
+    console.log(filter);
     this.seleccionMazo(this.id_deck)
     
   }
+
   public seleccionMazo(id_deck:number){
     this.id_deck = id_deck
     this.explorar = true
     this.deckService.getDeckById(this.id_deck, this.filter).subscribe((res:any) => {
       if(!res.error){
-        this.mazo.nameDeck = res.data
+        this.mazo.nameDeck = res.data.nameDeck
+        console.log(this.mazo);
+        
         this.mazo.cards = res.data.cards
         this.router.navigateByUrl('/explora#exploraSection')
         console.log(this.mazo);
@@ -95,7 +101,10 @@ export class ExploraComponent implements OnInit {
     })
 
   }
-
+  
+  public totalQuantity(deck:Deck){
+    return deck.cards.reduce((ammount, card) => ammount + card.quantity, 0);
+  }
   public score(event:{id_deck:number, score:number}){
     this.mazos.find ((deck) => {
       if(deck.id_deck == event.id_deck){
