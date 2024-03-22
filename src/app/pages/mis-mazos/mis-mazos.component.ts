@@ -7,6 +7,8 @@ import { CardsService } from 'src/app/shared/cards.service';
 import { DeckService } from 'src/app/shared/deck.service';
 import { UsersService } from 'src/app/shared/users.service';
 import { Response } from 'src/app/models/response';
+import Swiper from 'swiper';
+
 
 @Component({
   selector: 'app-mis-mazos',
@@ -36,8 +38,8 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
 
 
 
-  @ViewChild('mySwiper') mySwiper: any = null; // Swiperの要素にアクセスするためのViewChild
-  
+  // @ViewChild('mySwiper') mySwiper: any = null; // Swiperの要素にアクセスするためのViewChild
+  @ViewChild('mySwiper') mySwiper: ElementRef;
 
 
   constructor(
@@ -49,27 +51,37 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit(): void {
-    const currentUser = this.usersService.getCurrentUser(); // PARA GET ULTIMO CURRENT USER
-    console.log('Current user misMazos:', currentUser);
+    // const currentUser = this.usersService.getCurrentUser(); // PARA GET ULTIMO CURRENT USER
+    // console.log('Current user misMazos:', currentUser);
     this.getDecks(); 
   }
 
+  
 
   public ngAfterViewInit(): void {
+    // make sure if swiper is default 
     if (this.mySwiper && this.mySwiper.nativeElement.swiper) {
       const swiper = this.mySwiper.nativeElement.swiper;
-      swiper.slideTo(0, 0);
-      console.log('Initial deck: ', this.datos[0]);
+
+      swiper.slideTo(0, 0);  //  indice por la primera vez, tiempo
+      console.log('Initial deck: ', this.datos[0]);       // con indice por la primera vez y primer mazo
+
       this.mazo = this.datos[0];
-      this.filteredCards = this.mazo?.cards ? [...this.mazo.cards] : []; // mazo.cardsを配列にして追加する
+      this.filteredCards = this.mazo?.cards ? [...this.mazo.cards] : []; // mostrar todas las cartas
+      
+      
       swiper.on('slideChange', () => {
         const activeIndex = swiper.activeIndex;
         console.log('This is inside of the deck: ', this.datos[activeIndex]);
-        this.mazo = this.datos[activeIndex];
-        this.filteredCards = this.mazo?.cards ? [...this.mazo.cards] : []; // mazo.cardsを配列にして追加する
+        this.mazo = this.datos[activeIndex]; // asociado con indice de mazo
+        this.filteredCards = this.mazo?.cards ? [...this.mazo.cards] : []; // clear cartas filtrado y mostrar todas las cartas
+
       });
     }
   }
+
+
+
 
 
   public getDecks():void {
@@ -80,7 +92,8 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
         next: (response: any) => {
                 this.datos = response;
                 console.log('API Response Deck: ', this.datos);
-                this.initializeSwiper(); // Swiperの初期化
+                // solo ngAfterInit no funciona. hay que meter en getDecks por el timing de initialize y obtener dato
+                this.initializeSwiper(); 
         },
         error: (err) => {
             console.log('Error in fetching Deck: ', err);
@@ -92,8 +105,15 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
   private initializeSwiper(): void {
     if (this.mySwiper && this.mySwiper.nativeElement.swiper) {
       const swiper = this.mySwiper.nativeElement.swiper;
-      swiper.slideTo(0, 0);
+      swiper.update();
 
+      swiper.slideTo(0, 0);
+      if (this.datos.length > 0) {
+        console.log('Initial deck: ', this.datos[0]);
+        this.mazo = this.datos[0];
+        this.filteredCards = [...this.mazo.cards];
+      }
+  
       swiper.on('slideChange', () => {
         const activeIndex = swiper.activeIndex;
         console.log('This is inside of the deck: ', this.datos[activeIndex]);
@@ -213,6 +233,7 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
     }
   }
 
+
   public startEdit(){
     if (this.mazo) {
       this.isEditing = true;
@@ -220,11 +241,6 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
     }
   }
 
-
-  // public startEdit(){
-  //   this.isEditing = true; // edit mode on
-  //   this.editedName = this.mazo.nameDeck; // meter el nombre modificando temporalmente
-  // }
 
   public saveEdit(){
     if (this.mazo) {
@@ -264,10 +280,6 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
   }
 }
 
-  // public saveEdit(){
-  //   this.isEditing = false; // edit mode off
-  //   this.mazo.nameDeck = this.editedName; // guardar como mazo.nameDeck
-  // }
 
 
 
