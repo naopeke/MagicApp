@@ -1,3 +1,6 @@
+
+
+
 <main class="modalEdit">
     <img id="close" src="../../../assets/images/iconos/Close.png" alt="" (click)="close()">
     <h3 class="titulo">Añadir evento</h3>
@@ -54,20 +57,15 @@
             <textarea #descriptionEvent placeholder="Descripcion" formControlName="description"></textarea>
 
             <div *ngIf="editar == false; else guardar">
-                <button type="button" class="buttonEditar" (click)="add()">Editar</button>
+                <button type="button" class="buttonEditar" (click)="edit()">Editar</button>
             </div>
             <ng-template #guardar>
                 <button type="button" [ngClass]="editar == true ? 'saveButton': ''"
                 [disabled]="!addEvent.valid"
-                (click)="add(titleEvent.value, descriptionEvent.value, dateEvent.value, hourEvent.value, placeEvent.value, direction.value)">Añadir</button>
+                (click)="add()">Guardar Cambios</button>
             </ng-template>
-            <!-- <div #guardar>
-                <button type="button" class="buttonEditar" [ngClass]="editar == true ? 'saveButton': ''"
-                [disabled]="!addEvent.valid"
-                (click)="add(titleEvent.value, descriptionEvent.value, dateEvent.value, hourEvent.value, placeEvent.value)">añadir</button>
-            </div> -->
-
 
         </form>
     </div>
 </main>
+

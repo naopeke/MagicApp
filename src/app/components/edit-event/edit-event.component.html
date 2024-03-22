@@ -62,12 +62,12 @@
                 <div *ngIf="editEvent.get('description').errors?.maxlength">Descripción demasiado largo</div>
             </div>
             <div *ngIf="editar == false; else guardar">
-                <button type="button" class="buttonEditar" (click)="edit()">Editar</button>
+                <button type="button" class="buttonEditar" (click)="edit(evento.id,titleEvent.value, descriptionEvent.value, dateEvent.value, hourEvent.value, placeEvent.value, direction.value, evento.creator)">Editar</button>
             </div>
             <ng-template #guardar>
                 <button type="button" [ngClass]="editar == true ? 'saveButton': ''"
-                [disabled]="!editEvent.valid"
-                (click)="saveEdit()">Guardar Cambios</button>
+                [disabled]="!addEvent.valid"
+                (click)="edit(evento.id, titleEvent.value, descriptionEvent.value, dateEvent.value, hourEvent.value, placeEvent.value, direction.value, evento.creator)">Añadir</button>
             </ng-template>
 
         </form>
