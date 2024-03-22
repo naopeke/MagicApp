@@ -211,6 +211,16 @@ hr {
     color: var(--blanco);
 }
 
+
+
+.custom-snackbar-mismazos {
+    background-color: var(--amarillo);
+    color: var(--blanco);
+    font-size:20px;
+}
+
+
+
 @media screen and (1025 < width) {
     .swiper-container {
         width: 1000px;

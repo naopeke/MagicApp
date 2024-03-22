@@ -145,7 +145,7 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
   }
   
 
-  public onDeleteAllCardsFromChild(cardId:string){
+  public onDeleteAllCardsFromChild(cardId: string){
     const card = this.mazo?.cards.find(card => card.id === cardId);
     if (card && card.quantity > 0) {  //para que la cantidad no sea menor que cero
       card.quantity = 0;
@@ -153,6 +153,10 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
     }
   }
   
+
+  public updateQuantity(id_deckCard: number){
+    
+  }
 
 
   public getTotalQuantity(cards: Card[]): number {
@@ -260,7 +264,10 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
       next: (response: any) => {
         console.log('Updated share status', response);
         this.snackBar.open(response.message, 'Close', {  //mostrar mensaje desde back
-          duration: 5000,})
+          duration: 7000,
+          panelClass: ['custom-snackbar-mismazos']
+        }
+        )
 
         this.datos[indexDeck].share = response.shareStatus; // update share status por response
         this.changeDetectorRef.detectChanges(); // trigger update
@@ -274,6 +281,8 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
     })
     }
   }
+
+
 
 
 
