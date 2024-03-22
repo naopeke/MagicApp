@@ -51,6 +51,13 @@ export class DeckService {
     return this.http.get(urlGetMyDecks);
 }
 
+
+  public editDeckName(nameDeck: string, id_deck: number): Observable<any> {
+    let urlEditDeckName = `${this.url}/mis-mazos/${id_deck}`;
+    return this.http.put(urlEditDeckName, { nameDeck }); // オブジェクトとして渡す
+  }
+
+
   // nao mismazos
 
 

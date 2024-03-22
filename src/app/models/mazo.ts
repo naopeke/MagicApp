@@ -1,12 +1,11 @@
 import { Card } from "./card";
 
-export class DeckCard {
+export class Mazo {
     constructor(
         public id_deck?: number,
         public indexDeck?: number,
         public nameDeck?: string,
-        public card?: Card,
         public share?: number,
-        public quantity?: number
+        public cards?: Card[]
        ){}
 }

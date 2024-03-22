@@ -2,10 +2,11 @@ import { AfterViewInit, Component, OnInit, ViewChild, ElementRef } from '@angula
 import { Card } from 'src/app/models/card';
 import { User } from 'src/app/models/user';
 import { Deck } from 'src/app/models/deck';
-import { DeckCard } from 'src/app/models/deckCards';
+import { Mazo } from 'src/app/models/mazo';
 import { CardsService } from 'src/app/shared/cards.service';
 import { DeckService } from 'src/app/shared/deck.service';
 import { UsersService } from 'src/app/shared/users.service';
+import { Response } from 'src/app/models/response';
 
 @Component({
   selector: 'app-mis-mazos',
@@ -15,13 +16,9 @@ import { UsersService } from 'src/app/shared/users.service';
 
 export class MisMazosComponent implements OnInit, AfterViewInit {
 
-  // public datos: Deck[];
-  // public mazo: Deck;
-
-  public datos:DeckCard[] = [];
-  public mazo: DeckCard | undefined;
-  //
-  public datosVotados: Deck[];
+  public datos:Mazo[] = [];
+  public mazo: Mazo | undefined;
+  
   public card: Card | undefined;
   public cards: Card[] = [];
   public resultsDecks: any[] = []; //para meter datos de resultados
@@ -64,16 +61,15 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
       swiper.slideTo(0, 0);
       console.log('Initial deck: ', this.datos[0]);
       this.mazo = this.datos[0];
-      this.filteredCards = this.mazo?.card ? [this.mazo.card] : [];
+      this.filteredCards = this.mazo?.cards ? [...this.mazo.cards] : []; // mazo.cardsを配列にして追加する
       swiper.on('slideChange', () => {
         const activeIndex = swiper.activeIndex;
         console.log('This is inside of the deck: ', this.datos[activeIndex]);
         this.mazo = this.datos[activeIndex];
-        this.filteredCards = this.mazo?.card ? [this.mazo.card] : [];
+        this.filteredCards = this.mazo?.cards ? [...this.mazo.cards] : []; // mazo.cardsを配列にして追加する
       });
     }
   }
-
 
 
   public getDecks():void {
@@ -96,26 +92,25 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
   private initializeSwiper(): void {
     if (this.mySwiper && this.mySwiper.nativeElement.swiper) {
       const swiper = this.mySwiper.nativeElement.swiper;
-      
-      swiper.slideTo(0, 0); // mostrar primer deck
+      swiper.slideTo(0, 0);
 
       swiper.on('slideChange', () => {
         const activeIndex = swiper.activeIndex;
         console.log('This is inside of the deck: ', this.datos[activeIndex]);
-        this.mazo = this.datos[activeIndex]; 
-        this.filteredCards = this.mazo?.card ? [this.mazo.card] : []; //si existe añadir al array
+        this.mazo = this.datos[activeIndex];
+        this.filteredCards = this.mazo?.cards ? [...this.mazo.cards] : [];
       });
     }
   }
 
   public onIncreaseCardQuantityFromChild(cardId: string) {
-    const card = this.mazo?.card;
-    if (card && card.id === cardId) {
+    const card = this.mazo?.cards.find(card => card.id === cardId);
+    if (card) {
       card.quantity += 1;
       console.log(`Quantity ${cardId}: `, card.quantity);
     }
   }
-
+  
   // public onIncreaseCardQuantityFromChild(cardId: string) {
   //   const card = this.mazo.cards.find(card => card.id === cardId);
   //   if (card) {
@@ -125,12 +120,13 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
   // }
 
   public onDecreaseCardQuantityFromChild(cardId: string){
-    const card = this.mazo?.card;
-    if (card && card.id === cardId && card.quantity > 0) {
+    const card = this.mazo?.cards.find(card => card.id === cardId);
+    if (card && card.quantity > 0) {
       card.quantity -= 1;
       console.log(`Quantity ${cardId}: `, card.quantity);
     }
   }
+  
 
   // public onDecreaseCardQuantityFromChild(cardId: string){
   //   const card = this.mazo.cards.find(card => card.id === cardId);
@@ -141,12 +137,13 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
   // }
 
   public onDeleteAllCardsFromChild(cardId:string){
-    const card = this.mazo?.card;
-    if (card && card.id === cardId && card.quantity > 0) {
+    const card = this.mazo?.cards.find(card => card.id === cardId);
+    if (card && card.quantity > 0) {
       card.quantity = 0;
       console.log(`Quantity ${cardId}: `, card.quantity);
     }
   }
+  
 
   // public onDeleteAllCardsFromChild(cardId:string){
   //   const card = this.mazo.cards.find(card => card.id === cardId);
@@ -164,12 +161,13 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
   public onFilterClick(typeLine:string){
     console.log('filtered creatures');
     if (typeLine === 'all'){
-      this.filteredCards = this.mazo?.card ? [this.mazo.card] : []; // カードが存在する場合のみ配列に追加
+      this.filteredCards = this.mazo?.cards ? [...this.mazo.cards] : []; // カードが存在する場合のみ配列に追加
     } else {
       this.filteredCards = [];
     }
     console.log('filtered card', this.filteredCards);
   }
+  
 
   // public onFilterClick(typeLine:string){
   //   console.log('filtered creatures');
@@ -193,23 +191,24 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
 
 
   public getFirstPlaneswalkerOrLegendaryCreatureImage(deck: Deck): string {
-    const card = deck.cards?.find(c => c.type_line.includes('Planeswalker') || c.type_line.includes('Legendary Creature'));
+    const card = deck.cards?.find(card => card.type_line.includes('Planeswalker') || card.type_line.includes('Legendary Creature'));
     if (card) {
         return card?.image_uris; 
     } else {
         switch (deck.id_deck) {
             case 1:
-                return "/assets/images/mismazos/amarillo.png";
+                return "https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=166574&type=card";
             case 2:
-                return "/assets/images/mismazos/azul.png";
+                return "https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=166574&type=card";
             case 3:
-                return "/assets/images/mismazos/morado.png";
+                return "https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=166574&type=card";
             case 4:
-                return "/assets/images/mismazos/rojo.png";
+                return "https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=166574&type=card";
             case 5:
-                return "/assets/images/mismazos/verde.png";
+                return "https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=166574&type=card";
+                // return "/assets/images/mismazos/verde.png";
             default:
-                return 'https://cards.scryfall.io/large/front/b/d/bd8fa327-dd41-4737-8f19-2cf5eb1f7cdd.jpg?1614638838';
+                return 'https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=166574&type=card';
         }
     }
   }
@@ -217,7 +216,7 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
   public startEdit(){
     if (this.mazo) {
       this.isEditing = true;
-      this.editedName = this.mazo.nameDeck ?? '';
+      this.editedName = this.mazo.nameDeck ?? ''; // meter el nombre modificando temporalmente
     }
   }
 
@@ -230,9 +229,40 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
   public saveEdit(){
     if (this.mazo) {
       this.isEditing = false;
-      this.mazo.nameDeck = this.editedName;
+      this.mazo.nameDeck = this.editedName; // guardar como mazo.nameDeck
+      console.log('New Deck Name in front: ', this.mazo.nameDeck);
+
+      let userId = this.usersService.getCurrentUserId();
+      console.log('user id :', userId);
+
+      let indexDeck = this.mySwiper.nativeElement.swiper.activeIndex; // indexDeck es activeIndex de swiper
+      console.log('indexDeck: ', indexDeck);
+      
+
+      // buscar id_deck con indexDeck de datos
+    const targetDeck = this.datos[indexDeck];
+    if (targetDeck) {
+      const id_deck = targetDeck.id_deck; // id_deck
+      console.log('id_deck: ', id_deck);
+      const nameDeck = this.mazo.nameDeck; // nuevo nombre de deck
+      console.log('new deck name for back: ', nameDeck);
+
+
+      // llamar editDeckName (http client de angular no deja mandar object asi que hay que cambiar object a JSON. En decksService, data:any)
+      this.decksService.editDeckName( nameDeck, id_deck ).subscribe({
+        next: (response: any) => {
+          console.log('Updated deck name: ', response);
+          // ここに適切な処理を追加する 
+        },
+        error: (err: any) => {
+          console.log('Error updating deck name:', err);
+        }
+      });
+    } else {
+      console.log('Target deck not found.');
     }
   }
+}
 
   // public saveEdit(){
   //   this.isEditing = false; // edit mode off
