@@ -131,48 +131,25 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
     }
   }
   
-  // public onIncreaseCardQuantityFromChild(cardId: string) {
-  //   const card = this.mazo.cards.find(card => card.id === cardId);
-  //   if (card) {
-  //     card.quantity += 1;
-  //     console.log(`Quantity ${cardId}: `, card.quantity);
-  //   }
-  // }
 
   public onDecreaseCardQuantityFromChild(cardId: string){
     const card = this.mazo?.cards.find(card => card.id === cardId);
-    if (card && card.quantity > 0) {
+    if (card && card.quantity > 0) {  //para que la cantidad no sea menor que cero
       card.quantity -= 1;
       console.log(`Quantity ${cardId}: `, card.quantity);
     }
   }
   
 
-  // public onDecreaseCardQuantityFromChild(cardId: string){
-  //   const card = this.mazo.cards.find(card => card.id === cardId);
-  //   if (card && card.quantity > 0) {  //para que la cantidad no sea menor que cero
-  //     card.quantity -= 1;
-  //     console.log(`Quantity ${cardId}: `, card.quantity);
-  //   }
-  // }
-
   public onDeleteAllCardsFromChild(cardId:string){
     const card = this.mazo?.cards.find(card => card.id === cardId);
-    if (card && card.quantity > 0) {
+    if (card && card.quantity > 0) {  //para que la cantidad no sea menor que cero
       card.quantity = 0;
       console.log(`Quantity ${cardId}: `, card.quantity);
     }
   }
   
 
-  // public onDeleteAllCardsFromChild(cardId:string){
-  //   const card = this.mazo.cards.find(card => card.id === cardId);
-  //   console.log(card);
-  //   if (card && card.quantity > 0) {  //para que la cantidad no sea menor que cero
-  //     card.quantity = 0;
-  //     console.log(`Quantity ${cardId}: `, card.quantity);
-  //   }
-  // }
 
   public getTotalQuantity(cards: Card[]): number {
     return cards.reduce((ammount, card) => ammount + card.quantity, 0);
@@ -181,34 +158,15 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
   public onFilterClick(typeLine:string){
     console.log('filtered creatures');
     if (typeLine === 'all'){
-      this.filteredCards = this.mazo?.cards ? [...this.mazo.cards] : []; // カードが存在する場合のみ配列に追加
+      this.filteredCards = [...this.mazo.cards];
     } else {
-      this.filteredCards = [];
+      this.filteredCards = this.mazo.cards.filter(card => 
+        card.type_line.toLowerCase().includes(typeLine.toLowerCase())
+    );
     }
     console.log('filtered card', this.filteredCards);
   }
   
-
-  // public onFilterClick(typeLine:string){
-  //   console.log('filtered creatures');
-  //     if (typeLine === 'all'){
-  //       this.filteredCards = [...this.mazo.cards];
-  //     } else {
-  //       this.filteredCards = this.mazo.cards.filter(c => c.type_line.toLowerCase().includes(typeLine.toLowerCase()));
-  //     }
-  //     console.log('filtered card', this.filteredCards);
-  // }
-
-
-  // public getFirstPlaneswalkerOrLegendaryCreatureImage(deck: DeckCard): string {
-  //   const card = deck.card;
-  //   if (card && (card.type_line.includes('Planeswalker') || card.type_line.includes('Legendary Creature'))) {
-  //     return card.image_uris ?? '';
-  //   } else {
-  //     return 'https://cards.scryfall.io/large/front/b/d/bd8fa327-dd41-4737-8f19-2cf5eb1f7cdd.jpg?1614638838';
-  //   }
-  // }
-
 
   public getFirstPlaneswalkerOrLegendaryCreatureImage(deck: Deck): string {
     const card = deck.cards?.find(card => card.type_line.includes('Planeswalker') || card.type_line.includes('Legendary Creature'));
