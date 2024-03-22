@@ -35,16 +35,13 @@
                     <p>&nbsp;&nbsp;{{ item.place }}   ,   {{ item.direction }}</p>
                 </div> 
                 <div>
-<<<<<<< HEAD
                     <button id="button_sabermas" data-bs-toggle="modal" data-bs-target="#singUp" (click)="openDetail()">Saber más</button>
                 </div> 
-=======
-                    <button id="button_sabermas" (click)="openModalDetail(item)">Saber más</button>
-                </div>
+                    <!-- <button id="button_sabermas" (click)="openModalDetail(item)">Saber más</button>
+                </div> -->
                 <div  *ngIf="modalDetail == true" class="modalEvent">
                     <app-detail-event [evento] = "selectEvento"  (eventCloseDetail) = closeModal($event) [type] = 1 [user] = "currentUser"></app-detail-event>
                 </div>
->>>>>>> eventos2
             </div>
 
             <div id="icono_elim_edit" *ngIf="item.creator.id_user === id_logueado">

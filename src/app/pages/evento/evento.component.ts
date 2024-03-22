@@ -5,10 +5,7 @@ import { Logging } from 'src/app/models/logging';
 import { User } from 'src/app/models/user';
 import { EventosService } from 'src/app/shared/eventos.service';
 import { Response } from 'src/app/models/response';
-<<<<<<< HEAD
-=======
 import { UsersService } from 'src/app/shared/users.service';
->>>>>>> eventos2
 import { Eventos } from 'src/app/models/eventos';
 
 @Component({
@@ -27,16 +24,12 @@ export class EventoComponent {
 
   public modalEdit:boolean = false;
   public modalAdd:boolean = false;
-<<<<<<< HEAD
   // Belen: te añado para abrir modal detalle evento
   public modalDetail:boolean = false
   // public modalSaberMas:boolean = false;
-=======
 
   public selectEvento: Eventos | undefined;
-  public modalDetail: boolean = false;
 
->>>>>>> eventos2
 
   paginatedEvents:any[] = [];
   currentPage:number = 0;
@@ -52,19 +45,11 @@ export class EventoComponent {
 
     // this.getAllEventsForBBDD();
     
-<<<<<<< HEAD
-    //Recuperar del service o cogerlo del header
-    this.login1 = new Logging(this.user1, true);
-    this.login2 = new Logging(this.user2, false);
-    console.log(this.paginatedEvents);
-    
-=======
   }
 
   ngOnInit(): void {
     this.id_logueado = this.usersService.getCurrentUserId();
     this.getAllEventsForBBDD();
->>>>>>> eventos2
   }
 
   getAllEventsForBBDD(){
