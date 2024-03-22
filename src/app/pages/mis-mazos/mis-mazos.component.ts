@@ -7,8 +7,6 @@ import { CardsService } from 'src/app/shared/cards.service';
 import { DeckService } from 'src/app/shared/deck.service';
 import { UsersService } from 'src/app/shared/users.service';
 import { Response } from 'src/app/models/response';
-import Swiper from 'swiper';
-import { response } from 'express';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 
@@ -38,6 +36,7 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
 
   public darkenOverlay:boolean = false; // modal de xisca
   public show_cardinfo:boolean = false; // modal de xisca
+  public selectedCard: Card | null = null; // selectedCard sea Card o null, default null
 
 
 
@@ -231,7 +230,6 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
       this.decksService.editDeckName( nameDeck, id_deck ).subscribe({
         next: (response: any) => {
           console.log('Updated deck name: ', response);
-          // ここに適切な処理を追加する 
         },
         error: (err: any) => {
           console.log('Error updating deck name:', err);
@@ -280,12 +278,15 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
 
 
   /*modal de xisca*/
-  public onCardInfoOpen(){
+  public onCardInfoOpen(card:Card):void{
+    console.log('clicked card', card);
+    this.selectedCard = card;
     this.darkenOverlay=true; 
     this.show_cardinfo = true; 
   }
 
-  public card_info_close() {
+  public onCardInfoClose():void {
+    this.selectedCard = null; // resetear selectedCard cuendo se cierra
     this.darkenOverlay = false;
     this.show_cardinfo = false;
   }
