@@ -36,6 +36,7 @@ export class AddEventComponent implements OnInit {
       time: ["", Validators.required],
       place: ["", Validators.required],
       direction:["", Validators.required],
+      description: ["", Validators.maxLength(100)]
     },{ updateOn: 'blur' });
     this.addEvent.markAllAsTouched();
   }
@@ -49,18 +50,17 @@ export class AddEventComponent implements OnInit {
     //this.close();
     // const event:Evento = new Evento(null, title, description, new Date(date), hour, place, new User(2,"Paco","paco@","","",""));
     // this.eventService.createEvent(event);
-
-    if(this.editar == false){
-      this.toastr.success('Error al insertar el evento', "")
-      this.editar = true; 
-      this.addEvent.enable();
-    } else {
-      this.editar = false;
-      this.addEvent.disable();
-      this.toastr.success('Evento insertado con éxito', "")
-    }
+    this.editar = false;
+    this.addEvent.disable();
   }
 
+  edit(){
+    this.addEvent.markAsUntouched();
+    if(!this.editar){
+      this.editar = true; 
+      this.addEvent.enable();
+    }
+  }
   close(){
     this.eventClose.emit(false)
   }
