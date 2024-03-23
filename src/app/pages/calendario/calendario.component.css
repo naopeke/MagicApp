@@ -69,6 +69,11 @@ span.mat-calendar-body-cell-content.mat-focus-indicator.mat-calendar-body-select
     color: var(--blanco);
 }
 
+.mat-calendar-body-today{
+    background-color: var(--verde);
+    border-color: var(--blanco) !important;
+}
+
 .mat-calendar.highlight-event{
     background-color: var(--amarillo);
     color: var(--verde);
@@ -119,16 +124,19 @@ h1.title_date{
 h2.titulo_evento{
     color:var(--blanco);
     font-family: var(--antiqua);
+    font-size: 20px;
 }
 
 h3.detalle_evento_lugar{
     color: var(--blanco);
     font-family: var(--antiqua);
+    font-size: 20px; 
 }
 
 h3.detalle_evento_descripcion{
     color: var(--blanco);
     font-family: var(--antiqua);
+    font-size: 20px; 
 }
 
 .botones{
@@ -150,7 +158,7 @@ h3.detalle_evento_descripcion{
 
 .modalDetailEvent{
     position: absolute;
-    right: 75px;
-    z-index: 99;
-    top: 250px;
+    right: 5px;
+    z-index: 999;
+    top: 361px;
 }

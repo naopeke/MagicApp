@@ -10,20 +10,20 @@
             <div class="agenda">
                 <h1 class="title_date">{{ selectedDate | date: 'yyyy-MM-dd' }}</h1>
                 <img src="/assets/images/calendario/Line 11.png" alt="">
-                    <div class="evento" *ngFor="let evento of eventos">
+                    <div class="evento" *ngFor="let evento of eventosDia">
                         <div class="eventoInfo">
                         <h2 class="titulo_evento">{{evento.nameEvent}}</h2>
                         <h3 class="detalle_evento_lugar">{{evento.place}}, {{evento.direction}}, {{evento.hour}}h</h3>
                         <h3 class="detalle_evento_descripcion">{{evento.descriptionEvent}}</h3>
                         </div>
                         <div class="botones">
-                            <button class="detailEvent" (click)="openModalDetailEvent()">Más información</button>
+                            <button class="detailEvent" (click)="openModalDetailEvent(evento)">Más información</button>
                         </div>
                     </div>
                 </div>
 
                 <div *ngIf="modalSaberMas == true" class="modalDetailEvent">
-                    <app-detail-event [evento] = "evento" (eventClose) = "closeModal($event)"></app-detail-event>
+                    <app-detail-event [evento]="evento" [type]="modalType" [user]="currentUser" (eventCloseDetail)="closeModal($event)"></app-detail-event>
                 </div>
     
         </div>

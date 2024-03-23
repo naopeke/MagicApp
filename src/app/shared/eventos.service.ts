@@ -134,8 +134,12 @@ export class EventosService {
 
 
   //calendar
-  getMyEventsCalendar(id_user:number, date: Date):Observable<object>{
+  getMyEventsCalendar(id_user:number):Observable<object>{
     return this.http.get(this.urlCalendar + '/' + id_user)
+  }
+
+  getMyEventsCalendarDate(id_user:number, date:String):Observable<object>{
+    return this.http.get(this.urlCalendar + '/' + id_user + '/' + date);
   }
 
   // Belen home

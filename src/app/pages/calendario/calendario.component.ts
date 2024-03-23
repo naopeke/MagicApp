@@ -24,8 +24,10 @@ export class CalendarioComponent implements OnInit {
   public modalSaberMas:boolean = false;
   public user: User = {}; 
   public eventos: Evento[]=[]; 
-  public evento: Evento; 
+  public eventosDia: Evento[]=[]; 
+  public evento: Evento;
   public currentUser: User | null;
+  public modalType: number | null;
 
   // elegir dia de hoy
   selectedDate: Date = new Date();
@@ -33,28 +35,45 @@ export class CalendarioComponent implements OnInit {
   constructor(date: DateAdapter<Date>, 
               public usersService: UsersService,
               public eventsService: EventosService,
-              private toastr: ToastrService,) {
+              private toastr: ToastrService) {
     date.getFirstDayOfWeek = () =>1;
   }
 
 
   //cuando seleccionas un dia del mes, sale la info de los eventos del dia y del user logeado.
-  public getEvents(date: Date){
+  public getEvents(){
     let id_user: number = this.usersService.getCurrentUserId();
     if(id_user) {
-      this.eventsService.getMyEventsCalendar(id_user, date)
+      this.eventsService.getMyEventsCalendar(id_user)
       .subscribe((resp: Response)=> {
         console.log(resp.data);
         if(!resp.err){
-          this.eventos = resp.data.filter((evento: any)=> {
-            return new Date(evento.date).toDateString() === date.toDateString();
-          }); 
-          console.log(resp.data, date);
-          this.toastr.success('Se han encontrado eventos', "",
-                            {timeOut:2000, positionClass: "toast-top-center"});
+          this.eventos = resp.data; 
+          console.log(resp.data);
+          // this.toastr.success('Se han encontrado eventos', "",
+          //                   {timeOut:2000, positionClass: "toast-top-center"});
         }else{
-          this.toastr.error('Evento no encontrado', "", 
-                    {timeOut: 2000, positionClass: 'toast-top-center'});
+          // this.toastr.error('Evento no encontrado', "", 
+          //           {timeOut: 2000, positionClass: 'toast-top-center'});
+        } 
+      });
+    } 
+  }
+
+  public getEventsDate(date: Date){
+    let id_user: number = this.usersService.getCurrentUserId();
+    if(id_user) {
+      this.eventsService.getMyEventsCalendarDate(id_user, this.formatDate(date))
+      .subscribe((resp: Response)=> {
+        console.log(resp.data);
+        if(!resp.err){
+          this.eventosDia = resp.data; 
+          console.log(resp.data, date);
+          // this.toastr.success('Se han encontrado eventos', "",
+          //                   {timeOut:2000, positionClass: "toast-top-center"});
+        }else{
+          // this.toastr.error('Evento no encontrado', "", 
+          //           {timeOut: 2000, positionClass: 'toast-top-center'});
         } 
       });
     } 
@@ -82,7 +101,7 @@ export class CalendarioComponent implements OnInit {
   // si se cambia la fecha....
   onDateChange(event: any) {
     this.selectedDate = event; 
-    this.getEvents(this.selectedDate); 
+    this.getEventsDate(this.selectedDate); 
     console.log('Selected Date: ', event);
   }
 
@@ -108,8 +127,9 @@ export class CalendarioComponent implements OnInit {
   // }
 
   
-  openModalDetailEvent(){
-    // this.modalDetailEvent = true;
+  openModalDetailEvent(evento: Evento){
+    this.evento = evento;
+    evento.creator ? this.modalType = 0 : this.modalType = 1;
     this.modalSaberMas = true;
   }
 
@@ -117,13 +137,26 @@ export class CalendarioComponent implements OnInit {
     this.modalSaberMas = false;
   }
 
+  formatDate(date: Date) {
+    let month = '' + (date.getMonth() + 1),
+    day = '' + date.getDate(),
+    year = date.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
   ngOnInit(): void {
       this.usersService.currentUserChanges()
       .subscribe(user =>{
         if (user){
           const id_user:number = this.usersService.getCurrentUserId();
           console.log(id_user); 
-          this.getEvents(new Date()); 
+          this.getEvents(); 
         }
       })
   }
