@@ -28,6 +28,7 @@ export class CalendarioComponent implements OnInit {
   public evento: Evento;
   public currentUser: User | null;
   public modalType: number | null;
+  public sinEventos: boolean = false; 
 
   // elegir dia de hoy
   selectedDate: Date = new Date();
@@ -69,6 +70,7 @@ export class CalendarioComponent implements OnInit {
         if(!resp.err){
           this.eventosDia = resp.data; 
           console.log(resp.data, date);
+          this.sinEventos = resp.data ? false : true;
           // this.toastr.success('Se han encontrado eventos', "",
           //                   {timeOut:2000, positionClass: "toast-top-center"});
         }else{
@@ -157,6 +159,7 @@ export class CalendarioComponent implements OnInit {
           const id_user:number = this.usersService.getCurrentUserId();
           console.log(id_user); 
           this.getEvents(); 
+          this.getEventsDate(new Date());
         }
       })
   }

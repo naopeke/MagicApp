@@ -20,6 +20,7 @@
                             <button class="detailEvent" (click)="openModalDetailEvent(evento)">Más información</button>
                         </div>
                     </div>
+                    <div *ngIf="sinEventos==true" class="sinEventos">No tienes eventos programados para este día.</div>
                 </div>
 
                 <div *ngIf="modalSaberMas == true" class="modalDetailEvent">
