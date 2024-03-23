@@ -29,6 +29,8 @@ export class CalendarioComponent implements OnInit {
   public currentUser: User | null;
   public modalType: number | null;
   public sinEventos: boolean = false; 
+  public show_addEvent: boolean = false; 
+  public bg_dark: boolean = false; 
 
   // elegir dia de hoy
   selectedDate: Date = new Date();
@@ -71,12 +73,7 @@ export class CalendarioComponent implements OnInit {
           this.eventosDia = resp.data; 
           console.log(resp.data, date);
           this.sinEventos = resp.data ? false : true;
-          // this.toastr.success('Se han encontrado eventos', "",
-          //                   {timeOut:2000, positionClass: "toast-top-center"});
-        }else{
-          // this.toastr.error('Evento no encontrado', "", 
-          //           {timeOut: 2000, positionClass: 'toast-top-center'});
-        } 
+        }
       });
     } 
   }
@@ -133,6 +130,7 @@ export class CalendarioComponent implements OnInit {
     this.evento = evento;
     evento.creator ? this.modalType = 0 : this.modalType = 1;
     this.modalSaberMas = true;
+    this.bg_dark = true; 
   }
 
   closeModal(event: boolean){
@@ -150,6 +148,17 @@ export class CalendarioComponent implements OnInit {
         day = '0' + day;
 
     return [year, month, day].join('-');
+}
+
+public addEvent(){
+  this.show_addEvent = true;
+  this.bg_dark = true; 
+
+}
+
+public addEventClose(){
+  this.show_addEvent = false; 
+  this.bg_dark = false; 
 }
 
   ngOnInit(): void {

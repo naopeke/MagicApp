@@ -1,31 +1,34 @@
 
-<div class="main">
+<div class="main" [ngClass]="{ 'main_dark': bg_dark }">
+    <div class="container_addEvent" *ngIf="show_addEvent">
+            <app-add-event (onLoginClose)="addEventClose($event)" class="modalAddEvent"></app-add-event>
+    </div>
     <div class="cuadroIzq">
+        
         <div class="titulo">Calendario</div>
-            <div id="calendar">
-                <mat-calendar [selected]="selectedDate" (selectedChange)="onDateChange($event)" [dateClass]="dateClass"></mat-calendar> 
-            </div>
-        </div>
-        <div class="cuadroDcha">
-            <div class="agenda">
-                <h1 class="title_date">{{ selectedDate | date: 'yyyy-MM-dd' }}</h1>
-                <img src="/assets/images/calendario/Line 11.png" alt="">
-                    <div class="evento" *ngFor="let evento of eventosDia">
-                        <div class="eventoInfo">
-                        <h2 class="titulo_evento">{{evento.nameEvent}}</h2>
-                        <h3 class="detalle_evento_lugar">{{evento.place}}, {{evento.direction}}, {{evento.hour}}h</h3>
-                        <h3 class="detalle_evento_descripcion">{{evento.descriptionEvent}}</h3>
-                        </div>
-                        <div class="botones">
-                            <button class="detailEvent" (click)="openModalDetailEvent(evento)">Más información</button>
-                        </div>
-                    </div>
-                    <div *ngIf="sinEventos==true" class="sinEventos">No tienes eventos programados para este día.</div>
-                </div>
-
-                <div *ngIf="modalSaberMas == true" class="modalDetailEvent">
-                    <app-detail-event [evento]="evento" [type]="modalType" [user]="currentUser" (eventCloseDetail)="closeModal($event)"></app-detail-event>
-                </div>
-    
+        <div id="calendar">
+            <mat-calendar [selected]="selectedDate" (selectedChange)="onDateChange($event)" [dateClass]="dateClass"></mat-calendar> 
         </div>
     </div>
+    <div class="cuadroDcha">
+        <div class="agenda">
+            <h1 class="title_date">{{ selectedDate | date: 'yyyy-MM-dd' }}</h1>
+            <img src="/assets/images/calendario/Line 11.png" alt="">
+            <div class="evento" *ngFor="let evento of eventosDia">
+                <div class="eventoInfo">
+                <h2 class="titulo_evento">{{evento.nameEvent}}</h2>
+                <h3 class="detalle_evento_lugar"> {{evento.place}}, {{evento.direction}}, {{evento.hour}}h</h3>
+                <h3 class="detalle_evento_descripcion">{{evento.descriptionEvent}}</h3>
+                </div>
+                <div class="botones">
+                    <button class="detailEvent" (click)="openModalDetailEvent(evento)">Más información</button>
+                </div>
+            </div>
+            <div *ngIf="sinEventos==true" class="sinEventos">No tienes eventos programados para este día.</div>
+            <button class="buttonAddEvent" (click)="addEvent()" >Añadir evento</button>
+        </div>
+
+        <div *ngIf="modalSaberMas == true" class="modalDetailEvent">
+            <app-detail-event [evento]="evento" [type]="modalType" [user]="currentUser" (eventCloseDetail)="closeModal($event)"></app-detail-event>
+        </div>
+</div>
