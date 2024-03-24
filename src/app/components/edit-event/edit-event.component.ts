@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { Evento } from 'src/app/models/evento';
 import { User } from 'src/app/models/user';
 import { EventosService } from 'src/app/shared/eventos.service';
@@ -18,9 +19,10 @@ export class EditEventComponent implements OnInit {
   public editar: boolean = false
   public id_logueado: number;
     
-  constructor(private formBuilder: FormBuilder, private eventService: EventosService, private usersService: UsersService){}
+  constructor(private formBuilder: FormBuilder, private eventService: EventosService, private usersService: UsersService, private toastr: ToastrService){}
     
   ngOnInit(): void {
+      console.log(this.evento.date);
       this.buildForm();
       this.editEvent.disable();
       this.id_logueado = this.usersService.getCurrentUserId();
@@ -33,33 +35,47 @@ export class EditEventComponent implements OnInit {
       time: [this.evento.hour, Validators.required],
       place: [this.evento.place, Validators.required],
       direction:[this.evento.direction, Validators.required],
-      description: [this.evento.description]
-    })
+      description: [this.evento.description, Validators.maxLength(100)]
+    },{ updateOn: 'blur' })
   }
 
-  edit(id:number,title:string, description:string, date:string, hour:string, place:string, direction:string, creator:User){
-    console.log(date);
-
-    const event:Evento = new Evento(id, title, description, new Date(date), hour, place, creator, direction);
-    this.eventService.modifyEvent(event);
-
-    if(this.editar == false){
+  edit(){
+    this.editEvent.markAsUntouched();
+    if(!this.editar){
       this.editar = true; 
       this.editEvent.enable();
     }
   }
 
-  saveEdit(){
-    this.editEvent.markAsUntouched();
-    if(!this.editEvent.invalid){
-      this.evento = this.editEvent.value
-    } else {
-      this.editar = false;
-      this.editEvent.disable();
-      }
+  saveEdit(id:number,title:string, description:string, date:string, hour:string, place:string, direction:string, creator:User){
+    console.log(date);
+
+    const event:Evento = new Evento(id, title, description, new Date(date), hour, place, creator, direction);
+    //console.log("saco los datos del evento que mando al back ");
+    //console.log(event);
+    this.eventService.modifyEvent(event).subscribe((respuesta: Response) => {
+      console.log(respuesta);
+      this.toastr.success('Evento editado correctamente', "")
+
+    })
+
+    this.editar = false;
+    this.editEvent.disable();
+    this.close();
   }
+
+  // saveEdit(){
+  //   this.editEvent.markAsUntouched();
+  //   if(!this.editEvent.invalid){
+  //     this.evento = this.editEvent.value
+  //   } else {
+  //     this.editar = false;
+  //     this.editEvent.disable();
+  //     }
+  // }
  
   close(){
     this.eventClose.emit(false)
   }
+
 }

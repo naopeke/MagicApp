@@ -12,7 +12,6 @@ import { UsersService } from 'src/app/shared/users.service';
   styleUrls: ['./add-event.component.css']
 })
 export class AddEventComponent implements OnInit {
-  // @Input() evento: Evento
   @Output() eventClose = new EventEmitter <Boolean>()
  
   public addEvent: FormGroup;
@@ -20,7 +19,6 @@ export class AddEventComponent implements OnInit {
   public id_logueado: number;
     
   constructor(private formBuilder: FormBuilder, private eventService: EventosService, private usersService: UsersService, private toastr: ToastrService){
-
   }
     
   ngOnInit(): void {
@@ -45,13 +43,11 @@ export class AddEventComponent implements OnInit {
     let evento = new Evento(null, titleEvent, descriptionEvent, dateEvent, hourEvent, placeEvent, new User(this.id_logueado, null, null, null, null, null), direction);
     this.eventService.createEvent(evento).subscribe((respuesta: Response) => {
       console.log(respuesta);
-      
+      this.toastr.success('Evento añadido correctamente', "")
     })
-    //this.close();
-    // const event:Evento = new Evento(null, title, description, new Date(date), hour, place, new User(2,"Paco","paco@","","",""));
-    // this.eventService.createEvent(event);
     this.editar = false;
     this.addEvent.disable();
+    this.close();
   }
 
   edit(){
@@ -61,6 +57,7 @@ export class AddEventComponent implements OnInit {
       this.addEvent.enable();
     }
   }
+
   close(){
     this.eventClose.emit(false)
   }
