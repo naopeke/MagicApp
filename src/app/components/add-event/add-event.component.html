@@ -54,7 +54,15 @@
                 Escribe el nombre del lugar del evento
             </div>
             
-            <textarea #descriptionEvent placeholder="Descripcion" formControlName="description"></textarea>
+            <textarea #description placeholder="Descripcion" formControlName="description" 
+            [ngClass]="{
+                'is-invalid': (addEvent.get('description').dirty || addEvent.get('description').touched) && !addEvent.get('description').valid,
+                'valid': addEvent.get('description').valid
+            }">
+            </textarea>
+            <div *ngIf="addEvent.get('description').invalid" class="invalid-feedback m-0 text-center">
+                <div *ngIf="addEvent.get('description').errors?.maxlength">Descripción demasiado largo</div>
+            </div>
 
             <div *ngIf="editar == false; else guardar">
                 <button type="button" class="buttonEditar" (click)="edit()">Editar</button>
@@ -62,7 +70,7 @@
             <ng-template #guardar>
                 <button type="button" [ngClass]="editar == true ? 'saveButton': ''"
                 [disabled]="!addEvent.valid"
-                (click)="add()">Guardar Cambios</button>
+                (click)="add(titleEvent.value, description.value, dateEvent.value, hourEvent.value, placeEvent.value, direction.value)">Guardar Cambios</button>
             </ng-template>
 
         </form>

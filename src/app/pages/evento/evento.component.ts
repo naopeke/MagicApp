@@ -1,7 +1,6 @@
 import { Component} from '@angular/core';
 import { FormGroup} from '@angular/forms';
 import { Evento } from 'src/app/models/evento';
-import { Logging } from 'src/app/models/logging';
 import { User } from 'src/app/models/user';
 import { EventosService } from 'src/app/shared/eventos.service';
 import { Response } from 'src/app/models/response';
@@ -20,31 +19,23 @@ export class EventoComponent {
   public eventoABorrar:Evento;
   public evento:Evento;
   public id_logueado: number;
-
-
   public modalEdit:boolean = false;
   public modalAdd:boolean = false;
   // Belen: te añado para abrir modal detalle evento
   public modalDetail:boolean = false
-  // public modalSaberMas:boolean = false;
-
   public selectEvento: Eventos | undefined;
-
 
   paginatedEvents:any[] = [];
   currentPage:number = 0;
   totalPages:number = 0;
   itemsPerPage:number = 4;
   
-
   nombreEvento = '';
 
   editForm: FormGroup;
 
   constructor(private eventService: EventosService, private usersService: UsersService){
 
-    // this.getAllEventsForBBDD();
-    
   }
 
   ngOnInit(): void {
@@ -98,16 +89,12 @@ export class EventoComponent {
       }
 
       this.events = nuevosEventos;
-      console.log(this.events);
+      // console.log(this.events);
       this.calculatePagination();
     })
 
   }
 
-  //Función elimiar evento
-  // deleteEvent(idEvent:number){
-    
-  // }
 
   //Métodos para la paginación
   //Calcula numero  paginas
@@ -153,9 +140,7 @@ export class EventoComponent {
   getModalDeleteEvent(){
     return this.eventService.getModalDeleteEvent();
   }
-  // getModalSaberMas(){
-  //   return this.eventService.getModalSaberMas();
-  // }
+ 
   getModalEditEvent(){
     return this.eventService.getModalEditEvent();
   }
