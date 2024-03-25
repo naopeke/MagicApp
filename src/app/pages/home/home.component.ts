@@ -37,7 +37,6 @@ export class HomeComponent implements OnInit {
 ngOnInit(): void {
   this.userService.currentUserChanges().subscribe(user =>{
   this.currentUser = user
-  console.log(this.currentUser);
   
   })
 
@@ -51,7 +50,7 @@ ngOnInit(): void {
       
       if(!res.error){
         this.eventosProx = res.data
-        console.log(this.eventosProx);
+        console.log(this.eventosProx[0].avatar);
         
       }
       else {

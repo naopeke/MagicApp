@@ -13,9 +13,7 @@ export class Eventos {
         public creator?: string,
         public id_user?: number,
         public participants?: User[],
-        // para tener el avatar del creador:
         public avatar?: string
-
         ) { }
 
 }
