@@ -62,6 +62,10 @@ export class DeckService {
     return this.http.put(urlToggleShare, {});
   }
 
+  public updateCardQuantity(id_deckCard: number, action: string): Observable<any> {
+    return this.http.put(`${this.url}/mis-mazos/cantidad/${id_deckCard}`, { action });
+  }
+
   // nao mismazos
 
 

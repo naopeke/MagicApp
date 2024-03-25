@@ -77,7 +77,7 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
       swiper.on('slideChange', () => {
         const activeIndex = swiper.activeIndex;
         console.log('This is inside of the deck: ', this.datos[activeIndex]);
-        this.mazo = this.datos[activeIndex]; // asociado con indice de mazo
+        this.mazo = this.datos[activeIndex]; // update deck info, asociado con indice de mazo
         this.filteredCards = this.mazo?.cards ? [...this.mazo.cards] : []; // clear cartas filtrado y mostrar todas las cartas
 
       });
@@ -127,13 +127,39 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
     }
   }
 
+
+  public getDecksInfo():void {
+    const userId = this.usersService.getCurrentUserId();
+    console.log('User id mismazos:', userId);
+    
+    this.decksService.getMyDecks(userId).subscribe({
+        next: (response: any) => {
+                this.datos = response;
+                console.log('API Response Deck: ', this.datos);
+        },
+        error: (err) => {
+            console.log('Error in fetching Deck: ', err);
+        }
+    });
+  }
+
+
+
   public onIncreaseCardQuantityFromChild(cardId: string) {
     const card = this.mazo?.cards.find(card => card.id === cardId);
-    if (card) {
+    if (card && this.mazo) {
       card.quantity += 1;
       console.log(`Quantity ${cardId}: `, card.quantity);
+
+      // pasar id_deckCard y action: increase a updateQuantity
+      this.updateQuantity(card.id_deckCard, 'increase'); 
+      console.log('Result increase: ', 'id_deckCard: ', card.id_deckCard, this.updateQuantity);
     }
   }
+
+
+
+  
   
 
   public onDecreaseCardQuantityFromChild(cardId: string){
@@ -141,6 +167,8 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
     if (card && card.quantity > 0) {  //para que la cantidad no sea menor que cero
       card.quantity -= 1;
       console.log(`Quantity ${cardId}: `, card.quantity);
+
+      // this.updateQuantity(id_deckCard, 'decrease');
     }
   }
   
@@ -150,12 +178,21 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
     if (card && card.quantity > 0) {  //para que la cantidad no sea menor que cero
       card.quantity = 0;
       console.log(`Quantity ${cardId}: `, card.quantity);
+
+      // this.updateQuantity(id_deckCard, 'delete');
     }
   }
   
 
-  public updateQuantity(id_deckCard: number){
-    
+  public updateQuantity(id_deckCard: number, action: string){
+    this.decksService.updateCardQuantity(id_deckCard, action).subscribe({
+      next: (response) => {
+        console.log('Updated quantity: ', response);
+      },
+      error: (err) => {
+        console.log('Error updating quantity: ', err);
+      }
+    })    
   }
 
 
