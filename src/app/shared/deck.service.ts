@@ -66,6 +66,10 @@ export class DeckService {
     return this.http.put(`${this.url}/mis-mazos/cantidad/${id_deckCard}`, { action });
   }
 
+  public deleteCardQuantity(id_deckCard: number): Observable<any> {
+    return this.http.delete(`${this.url}/mis-mazos/cantidad/${id_deckCard}`);
+  }
+
   // nao mismazos
 
 

@@ -16,7 +16,7 @@ export class CardComponent {
   @Output() deleteFromChild = new EventEmitter<string>();
   @Output() countPlusFromChild = new EventEmitter<string>();
   @Output() countMinusFromChild = new EventEmitter<string>();
-  @Output() deleteAllQuantityFromChild = new EventEmitter<string>();
+  @Output() deleteAllQuantityFromChild = new EventEmitter<number>();
   @Output() childCardClicked = new EventEmitter<Card>(); // añadido para modal de xisca
 
   constructor(private cardsService: CardsService){
@@ -37,7 +37,7 @@ export class CardComponent {
       console.log(this.childCard.id);
         this.deleteFromChild.emit(this.childCard.id);
     } else {
-        console.error('No card ID available for deletion');
+        console.log('No card ID for delete');
     }
 }
 
@@ -56,9 +56,16 @@ export class CardComponent {
   }
 
   onDeleteAllButtonClick(event:Event){
-    console.log('clicked the delete all button');
-    event.stopPropagation(); //para resolver bubbling
-    this.deleteAllQuantityFromChild.emit(this.childCard.id);
+    console.log('childCard :', this.childCard);
+    console.log('childCard id_deckCard:', this.childCard.id_deckCard);
+
+    if(this.childCard && this.childCard.id){
+      console.log('clicked the delete all button');
+      // event.stopPropagation(); //para resolver bubbling
+      this.deleteAllQuantityFromChild.emit(this.childCard.id_deckCard);
+    } else {
+      console.log('No card id_deckCard for delete');
+    }
   }
 
   onCardClick():void {

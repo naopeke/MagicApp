@@ -170,19 +170,7 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
       console.log('Result decrease: ', 'id_deckCard: ', card.id_deckCard, this.updateQuantity);
     }
   }
-  
 
-
-  public onDeleteAllCardsFromChild(cardId: string){
-    const card = this.mazo?.cards.find(card => card.id === cardId);
-    if (card && card.quantity > 0) {  //para que la cantidad no sea menor que cero
-      card.quantity = 0;
-      console.log(`Quantity ${cardId}: `, card.quantity);
-
-      // this.updateQuantity(id_deckCard, 'delete');
-    }
-  }
-  
 
 
   public updateQuantity(id_deckCard: number, action: string){
@@ -194,6 +182,41 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
         console.log('Error updating quantity: ', err);
       }
     })    
+  }
+
+
+
+  public onDeleteAllCardsFromChild(id_deckCard: number){
+
+    console.log('onDeleteAllCardsFromChild called with id_deckCard:', id_deckCard); // ここに追加
+
+    const card = this.mazo?.cards.find(card => card.id_deckCard === id_deckCard);
+    if (card && this.mazo && card.quantity > 0) {  //para que la cantidad no sea menor que cero
+
+      console.log('Deleting card with id_deckCard:', card.id_deckCard); // 削除処理前にもログを追加
+
+
+      // pasar id_deckCard y action: delete a updateQuantity
+      this.deleteQuantity(card.id_deckCard); 
+      console.log('Result delete: ', 'id_deckCard: ', card.id_deckCard, this.deleteQuantity);
+    } else {
+      console.log('Card not found or quantity is 0'); 
+    }
+  }
+  
+
+
+  public deleteQuantity(id_deckCard: number){
+  this.decksService.deleteCardQuantity(id_deckCard).subscribe({
+    next: (response) => {
+      console.log('Deleted the card :', response);
+      // cambiar la lista de cards de front
+      this.mazo.cards = this.mazo.cards.filter(card => card.id_deckCard !== id_deckCard);
+    },
+    error: (err) => {
+      console.log('Error deleting: ', err)
+    }
+  })   
   }
 
 
