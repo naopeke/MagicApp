@@ -1,9 +1,17 @@
-body{
-    display: block;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-main{
-    width: 100%;
+section{
+    display: block;
+    min-width: 100%;
+    background-color: black;
+}
+
+.container{
+    min-width: 100%;
 }
 
 .bloqueFoto{
@@ -136,6 +144,7 @@ main{
     justify-content: center;
     align-items: center;
     background: cover;
+    background-position: center;
     background-repeat: no-repeat;
 }
 
@@ -210,6 +219,7 @@ main{
     align-items: center;
     background: cover;
     background-repeat: no-repeat;
+    background-position: center;
 }
 
 .fotoRoja{
@@ -221,6 +231,7 @@ main{
     align-items: center;
     background-repeat: no-repeat;
     background: cover;
+    background-position: center;
 }
 
 .bloqueRojo {
@@ -293,6 +304,7 @@ main{
     align-items: center;
     background: cover;
     background-repeat: no-repeat;
+    background-position: center;
 }
 
 .bloqueVerde {
