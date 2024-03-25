@@ -21,49 +21,21 @@ export class ExploraComponent implements OnInit {
   public mejoresMazos: Deck[]
   
   public mazo: Deck = { nameDeck: '', cards: [] };
+  public filter:string
+  public style:number;
   public card: Card
   public explorar: boolean = false
+  public id_deck:number
+
   public id_card: number
   public showCardInfo: boolean = false
   public animation: boolean = false
+   
  
 
   constructor(private router:Router,
               private toastr:ToastrService,
               public deckService: DeckService){
-    this.datos = [
-      new Deck(1, 'Dragonfly', 'Kaoser', [5], 5,[ new Card(25, '1', 0,"../../../assets/images/landing/carta1landing.png"),
-        new Card(1, '2', 0,"../../../assets/images/landing/carta1landing.png"),
-        new Card(2, '3', 0,"../../../assets/images/landing/carta1landing.png"),
-        new Card(3, '4', 0,"../../../assets/images/landing/carta1landing.png")], 
-     ), 
-      new Deck(2, 'onFire', 'Kaoser', [5], 5, [ 
-        new Card(4, '1', 0,"../../../assets/images/landing/carta1landing.png"),
-        new Card(5, '2', 0,"../../../assets/images/landing/carta1landing.png"),
-        new Card(6, '3', 0,"../../../assets/images/landing/carta1landing.png"),
-        new Card(7, '4', 0,"../../../assets/images/landing/carta1landing.png"),
-        new Card(8,'5', 0,"../../../assets/images/landing/carta1landing.png"),
-        new Card(9, '6', 0,"../../../assets/images/landing/carta1landing.png"),
-        new Card(10, '7', 0,"../../../assets/images/landing/carta1landing.png"),
-        new Card(11, '8', 0,"../../../assets/images/landing/carta1landing.png"),
-        new Card(12, '9', 0,"../../../assets/images/landing/carta1landing.png"),
-        new Card(13, '10', 0,"../../../assets/images/landing/carta1landing.png"),
-        new Card(14, '11', 0,"../../../assets/images/landing/carta1landing.png"),
-        new Card(15, '12', 0,"../../../assets/images/landing/carta1landing.png")], 
-    ),
-      new Deck(3, 'Dragonfly', 'Deimos', [5], 5, [ 
-        new Card(16, '1', 0,"../../../assets/images/landing/carta1landing.png"),
-        new Card(17, '2', 0,"../../../assets/images/landing/carta1landing.png"),
-        new Card(18, '3', 0,"../../../assets/images/landing/carta1landing.png"),
-        new Card(19, '4', 0,"../../../assets/images/landing/carta1landing.png"),
-        new Card(20, '5', 0,"../../../assets/images/landing/carta1landing.png"),
-        new Card(21, '6', 0,"../../../assets/images/landing/carta1landing.png"),
-        new Card(22, '7', 0,"../../../assets/images/landing/carta1landing.png"),
-        new Card(23, '8', 0,"../../../assets/images/landing/carta1landing.png"),
-        new Card(24, '9', 0,"../../../assets/images/landing/carta1landing.png")], 
-   )
-    ]
-
   }
 
   ngOnInit(): void {
@@ -93,45 +65,46 @@ export class ExploraComponent implements OnInit {
   }
   
   public search(input:string, filter:string){
-   
-    if (filter === 'nombreUsuario'){
-      this.deckService.getDeckByUser(input).subscribe((res:any) => {
-        if(!res.error){
-          this.mazos = res.data
-        } else {
-          this.toastr.error(res.mensaje, '¡Ups!')
-          this.getSharedDecks();
-        }
-      })
-    }
-
-    else if(filter === 'nombreMazo'){
-      this.deckService.getDeckByDeck(input).subscribe((res:any) =>{
-        if(!res.error){
-          this.mazos = res.data
-        } else {
-          this.toastr.error(res.mensaje, '¡Ups!')
-          this.getSharedDecks();
-        }
-      })
-    }
-  
+    this.deckService.getDeck(filter, input).subscribe((res:any)=> {
+      if(!res.error)
+      this.mazos = res.data
+      else {
+      this.toastr.error(res.mensaje, '¡Ups!')
+      this.getSharedDecks()
+      }
+    })
   }
   
+  public filtro(filter:string, style:number){
+    this.filter = filter
+    this.style = style
+    console.log(filter);
+    this.seleccionMazo(this.id_deck)
+    
+  }
+
   public seleccionMazo(id_deck:number){
+    this.id_deck = id_deck
     this.explorar = true
-    this.deckService.getDeckById(id_deck).subscribe((res:any) => {
+    this.deckService.getDeckById(this.id_deck, this.filter).subscribe((res:any) => {
       if(!res.error){
         this.mazo.nameDeck = res.data.nameDeck
+        console.log(this.mazo);
+        
         this.mazo.cards = res.data.cards
         this.router.navigateByUrl('/explora#exploraSection')
+        console.log(this.mazo);
       } else {
         this.explorar = false
         this.toastr.error(res.mensaje, '¡Ups!')
       }
     })
-  }
 
+  }
+  
+  public totalQuantity(deck:Deck){
+    return deck.cards.reduce((ammount, card) => ammount + card.quantity, 0);
+  }
   public score(event:{id_deck:number, score:number}){
     this.mazos.find ((deck) => {
       if(deck.id_deck == event.id_deck){
@@ -156,9 +129,7 @@ export class ExploraComponent implements OnInit {
   }
   
   public idCard(id_card:number){
-    console.log(id_card);
     this.id_card = id_card
-    
   }
   openCardInfo(cartaId:string){
     this.card = this.mazo.cards.find(carta => carta.id === cartaId);

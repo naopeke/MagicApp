@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Evento } from 'src/app/models/evento';
 import { EventosService } from 'src/app/shared/eventos.service';
 
@@ -14,7 +15,7 @@ export class DeleteEventComponent {
  
   public mostrarNotificacionEvento: boolean; //Variable con el estado de la notificación
   
-  constructor(private eventService: EventosService){  
+  constructor(private eventService: EventosService, private toastr: ToastrService){  
 
   }
 
@@ -24,7 +25,9 @@ export class DeleteEventComponent {
   //Función para eliminar el evento al pulsar en aceptar
   deleteEvent(idEvent:number){
     this.eventService.deleteEvent(idEvent).subscribe((respuesta: Response) => {
-        console.log(respuesta);
+      console.log(respuesta);
+      this.toastr.success('Evento eliminado correctamente', "")
+      this.closeModalDelete();
     })
 
     this.mostrarNotificacionEvento = true; //Cambiamos el estado de la notificación para que se muestre

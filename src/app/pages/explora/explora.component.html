@@ -34,8 +34,8 @@
                     <!-- Falta modificar estilo -->
                   
                     <select class="input select" name="filter" id="filter" required #filter>
-                        <option value="nombreUsuario">Nombre Usuario</option>
-                        <option value="nombreMazo">Nombre Mazo</option>
+                        <option value="nameUser">Nombre Usuario</option>
+                        <option value="nameDeck">Nombre Mazo</option>
                     </select>
                     <button type="button" class=" input searchButton" (click)="search(input.value, filter.value)">
                         <img id="lupa" src="../../../assets/images/explora/monocle.png" alt="">
@@ -64,15 +64,15 @@
                 <h2 class="tituloh2">{{mazo.nameDeck}}</h2>
             </div>
             <div class="filtros">
-                <div class="nombreFiltro"><p class="textoFiltro">Todas las cartas</p></div>
-                <div class="nombreFiltro"><p class="textoFiltro">Criaturas</p></div>
-                <div class="nombreFiltro"><p class="textoFiltro">Artefactos</p></div>
-                <div class="nombreFiltro"><p class="textoFiltro">Encantamientos</p></div>
-                <div class="nombreFiltro"><p class="textoFiltro">Conjuros</p></div>
-                <div class="nombreFiltro"><p class="textoFiltro">Instantáneas</p></div>
-                <div class="nombreFiltro"><p class="textoFiltro">Planswalkers</p></div>
-                <div class="nombreFiltro"><p class="textoFiltro">Batallas</p></div>
-                <div class="nombreFiltro"><p class="textoFiltro">Tierras</p></div>
+                <div class="nombreFiltro"(click)="filtro('all', 1)" [ngClass]="{'filtro': style == 1}"><p class="textoFiltro" >Todas las cartas</p></div>
+                <div class="nombreFiltro" (click)="filtro('creature',2)" [ngClass]="{'filtro': style == 2}"><p class="textoFiltro">Criaturas</p></div>
+                <div class="nombreFiltro"(click)="filtro('artifact', 3)" [ngClass]="{'filtro': style == 3}"><p class="textoFiltro">Artefactos</p></div>
+                <div class="nombreFiltro" (click)="filtro('enchantment', 4)" [ngClass]="{'filtro': style == 4}"><p class="textoFiltro">Encantamientos</p></div>
+                <div class="nombreFiltro" (click)="filtro('sorcery', 5)" [ngClass]="{'filtro': style == 5}"><p class="textoFiltro">Conjuros</p></div>
+                <div class="nombreFiltro" (click)="filtro('instant', 6)" [ngClass]="{'filtro': style == 6}"><p class="textoFiltro">Instantáneas</p></div>
+                <div class="nombreFiltro" (click)="filtro('planeswalker', 7)" [ngClass]="{'filtro': style == 7}"><p class="textoFiltro">Planswalkers</p></div>
+                <!-- <div class="nombreFiltro"><p class="textoFiltro">Batallas</p></div> -->
+                <div class="nombreFiltro" (click)="filtro('land', 8)" [ngClass]="{'filtro': style == 8}"><p class="textoFiltro">Tierras</p></div>
             </div>
             <div class="cartas" >
                     <div class="close">
@@ -80,7 +80,7 @@
                     </div>
                     <div class="contador">
                         <img src="../../../assets/images/explora/contador.png" alt="">
-                        <p id="numCartas">{{mazo.cards.length || 0}}/60</p>
+                        <p id="numCartas">{{totalQuantity(this.mazo) || 0}}/60</p>
                     </div>
                     <cdk-virtual-scroll-viewport itemSize="40" class="bucleContainer">
                         <div class="cartasContainer">

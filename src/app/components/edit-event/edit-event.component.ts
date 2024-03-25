@@ -1,6 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { Evento } from 'src/app/models/evento';
+import { User } from 'src/app/models/user';
+import { EventosService } from 'src/app/shared/eventos.service';
+import { UsersService } from 'src/app/shared/users.service';
 
 @Component({
   selector: 'app-edit-event',
@@ -13,55 +17,65 @@ export class EditEventComponent implements OnInit {
  
   public editEvent: FormGroup
   public editar: boolean = false
+  public id_logueado: number;
     
-  constructor(private formBuilder: FormBuilder){}
+  constructor(private formBuilder: FormBuilder, private eventService: EventosService, private usersService: UsersService, private toastr: ToastrService){}
     
   ngOnInit(): void {
+      console.log(this.evento.date);
       this.buildForm();
       this.editEvent.disable();
-      
+      this.id_logueado = this.usersService.getCurrentUserId();
   }
 
   private buildForm(){
     this.editEvent = this.formBuilder.group({
       title: [this.evento.title, [Validators.required, Validators.maxLength(40)]],
-      date: [this.evento.date.toISOString().substring(0, 10), Validators.required],
+      date: [this.evento.date, Validators.required],
       time: [this.evento.hour, Validators.required],
       place: [this.evento.place, Validators.required],
       direction:[this.evento.direction, Validators.required],
       description: [this.evento.description, Validators.maxLength(100)]
-    })
+    },{ updateOn: 'blur' })
   }
 
   edit(){
-    if(this.editar == false){
+    this.editEvent.markAsUntouched();
+    if(!this.editar){
       this.editar = true; 
       this.editEvent.enable();
-
-    } else {
-
-      this.editar = false;
-      this.editEvent.markAsUntouched()
-      this.editEvent.disable();
-
-    if(!this.editEvent.invalid){
-      let editValues = this.editEvent.value
-      this.evento.title = editValues.title
-      this.evento.date = editValues.date
-      this.evento.hour = editValues.time
-      this.evento.place = editValues.place
-      this.evento.direction = editValues.direction
-      this.evento.description = editValues.description
-      
-      console.log(this.evento);
-      }
     }
-
-
-
   }
 
+  saveEdit(id:number,title:string, description:string, date:string, hour:string, place:string, direction:string, creator:User){
+    console.log(date);
+
+    const event:Evento = new Evento(id, title, description, new Date(date), hour, place, creator, direction);
+    //console.log("saco los datos del evento que mando al back ");
+    //console.log(event);
+    this.eventService.modifyEvent(event).subscribe((respuesta: Response) => {
+      console.log(respuesta);
+      this.toastr.success('Evento editado correctamente', "")
+
+    })
+
+    this.editar = false;
+    this.editEvent.disable();
+    this.close();
+  }
+
+  // saveEdit(){
+  //   this.editEvent.markAsUntouched();
+  //   if(!this.editEvent.invalid){
+  //     this.evento = this.editEvent.value
+  //   } else {
+  //     this.editar = false;
+  //     this.editEvent.disable();
+  //     }
+  // }
+ 
   close(){
     this.eventClose.emit(false)
   }
+
 }

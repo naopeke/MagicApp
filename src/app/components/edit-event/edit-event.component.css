@@ -44,7 +44,9 @@ input{
     height: 50px;
 }
 textarea{
-    height: 100px;
+    height: 150px;
+    overflow: hidden;
+    resize: none;
 
 }
 

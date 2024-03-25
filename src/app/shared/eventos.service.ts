@@ -15,18 +15,11 @@ export class EventosService {
   private urlHome: string
    // Belen Home
 
+  private urlCalendar: string; 
+
 
 
   private url = "http://localhost:3000/eventos"
-
-  // user1:User = new User(1, "Kreatimes", "juan@gmail.com", "1234", " ", "");
-  // user2:User = new User(2, "Maxiglow", "pepito@gmail.com", "1234", " ", "");
-
-  // ev1:Evento = new Evento(1,"Primer evento", "Evento especial 1", new Date(), "18:00", "Zona uno, Madrid", this.user1, "c/Santiago Bernabeu");
-  // ev2:Evento = new Evento(2,"Segundo evento", "Evento especial 1", new Date(), "18:00", "Zona uno, Madrid", this.user1, "c/Santiago Bernabeu" );
-  // ev3:Evento = new Evento(3,"Tercer evento", "Evento especial 1", new Date(), "18:00", "Zona uno, Madrid", this.user2, "c/Santiago Bernabeu");
-  // ev4:Evento = new Evento(4,"Cuarto evento", "Evento especial 1", new Date(), "18:00", "Zona uno, Madrid", this.user2, "c/Santiago Bernabeu");
-  // ev5:Evento = new Evento(5,"Cuarto evento", "Evento especial 1", new Date(), "18:00", "Zona uno, Madrid", this.user2, "c/Santiago Bernabeu");
 
   private events: Evento [];
   public modalCreateEvent:boolean;
@@ -42,6 +35,10 @@ export class EventosService {
       this.urlHome = "http://localhost:3000/home"
     // Belen Home
 
+    //Calendar
+    this.urlCalendar = "http://localhost:3000/calendario"
+    //calendar
+
     // this.events = [this.ev1, this.ev2, this.ev3, this.ev4, this.ev5];
     this.modalCreateEvent = false;
     this.modalDeleteEvent = false;
@@ -50,8 +47,6 @@ export class EventosService {
   }
 
   getAllEvents(){
-    //return this.events;
-    //console.log(this.http.get(this.url));
     return this.http.get(this.url);
   }
 
@@ -61,22 +56,27 @@ export class EventosService {
 
   createEvent(newEvent:Evento){
     return this.http.post(this.url, newEvent);  
-    //El objeto viene del ts del componente relleno
-    this.events.push(newEvent);
   }
 
   modifyEvent(newEvent:Evento){
     //Buscamos el indice del array donde se encuentra el evento a modificar,
     //modificamos ese elemento del array por el nuevo
     //devolvemos true si se ha modificado correctamente, false en caso de no encontrarlo.
-    let cambiar = this.events.findIndex(val => val.id == newEvent.id);
 
-    if(cambiar !== -1){
-      this.events[cambiar] = newEvent;
-      return true;
-    }else{
-      return false;
-    }
+    console.log("LLAMO AL SERVICE A EDITAR EVENTO");
+    console.log(newEvent);
+
+    // let body = {
+    //   id: newEvent.id,
+    //   title: newEvent.title,
+    //   date: newEvent.date,
+    //   hour: newEvent.hour,
+    //   place: newEvent.place,
+    //   description: newEvent.description,
+    //   direction: newEvent.direction,
+    // }
+
+    return this.http.put(this.url, newEvent);  
   }
 
   deleteEvent(id:number){    
@@ -124,6 +124,16 @@ export class EventosService {
   }
   openModalEditEvent(){
     this.modalEditEvent = true;
+  }
+
+
+  //calendar
+  getMyEventsCalendar(id_user:number):Observable<object>{
+    return this.http.get(this.urlCalendar + '/' + id_user)
+  }
+
+  getMyEventsCalendarDate(id_user:number, date:String):Observable<object>{
+    return this.http.get(this.urlCalendar + '/' + id_user + '/' + date);
   }
 
   // Belen home

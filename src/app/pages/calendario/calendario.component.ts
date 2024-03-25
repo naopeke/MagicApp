@@ -1,9 +1,14 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { MatCalendar, MatCalendarCellCssClasses } from '@angular/material/datepicker';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { DateAdapter } from '@angular/material/core';
 import { Evento } from 'src/app/models/evento';
+import { User } from 'src/app/models/user';
+import { UsersService } from 'src/app/shared/users.service';
+import { EventosService } from 'src/app/shared/eventos.service';
+import { ToastrService } from 'ngx-toastr';
+import { Response } from 'src/app/models/respuesta';
 
 @Component({
   selector: 'app-calendario',
@@ -14,34 +19,65 @@ import { Evento } from 'src/app/models/evento';
     { provide: MAT_DATE_LOCALE, useValue: 'es' }
   ]
 })
-export class CalendarioComponent {
+export class CalendarioComponent implements OnInit {
 
-  public modalEdit:boolean = false
-  // en la clase evento falta direccion por eso no sale en el modal, la he puesto como opcional, 
-  // pero está puesto nameUser, no he querido tocar para no fastidiar los datos de Carlota
-  public evento: Evento = new Evento(1, 'Superpartida', 'Partida entre señoras', new Date(2024, 3, 12), '18:00', 'Madrid')
-  
-  
-  dates = [
-    {fecha: '2 de enero 2024',
-  events:[
-    {titulo: 'Superpartida', lugar_hora: 'Madrid 18h', descripcion: 'Partida entre señoras'},
-    {titulo: 'Superpartida2', lugar_hora: 'Palma de Mallorca 19h', descripcion: 'Iniciación al juego'},
-    {titulo: 'Superpartida3', lugar_hora: 'Elche 20h', descripcion: 'Invitación a nuevos jugadores'},
-  ]},
-  {fecha: '5 de marzo 2024',
-  events:[
-    {titulo: 'Superpartidita', lugar_hora: 'Madrid 18h', descripcion: 'Partida entre señoras'},
-    {titulo: 'Superpartidita2', lugar_hora: 'Palma de Mallorca 19h', descripcion: 'Iniciación al juego'},
-    {titulo: 'Superpartidita3', lugar_hora: 'Elche 20h', descripcion: 'Invitación a nuevos jugadores'},
-  ]}
-  ]
+  public modalSaberMas:boolean = false;
+  public user: User = {}; 
+  public eventos: Evento[]=[]; 
+  public eventosDia: Evento[]=[]; 
+  public evento: Evento;
+  public currentUser: User | null;
+  public modalType: number | null;
+  public sinEventos: boolean = false; 
+  public show_addEvent: boolean = false; 
+  public bg_dark: boolean = false; 
+
   // elegir dia de hoy
   selectedDate: Date = new Date();
 
-  constructor(date: DateAdapter<Date>) {
+  constructor(date: DateAdapter<Date>, 
+              public usersService: UsersService,
+              public eventsService: EventosService,
+              private toastr: ToastrService) {
     date.getFirstDayOfWeek = () =>1;
   }
+
+
+  //cuando seleccionas un dia del mes, sale la info de los eventos del dia y del user logeado.
+  public getEvents(){
+    let id_user: number = this.usersService.getCurrentUserId();
+    if(id_user) {
+      this.eventsService.getMyEventsCalendar(id_user)
+      .subscribe((resp: Response)=> {
+        console.log(resp.data);
+        if(!resp.err){
+          this.eventos = resp.data; 
+          console.log(resp.data);
+          // this.toastr.success('Se han encontrado eventos', "",
+          //                   {timeOut:2000, positionClass: "toast-top-center"});
+        }else{
+          // this.toastr.error('Evento no encontrado', "", 
+          //           {timeOut: 2000, positionClass: 'toast-top-center'});
+        } 
+      });
+    } 
+  }
+
+  public getEventsDate(date: Date){
+    let id_user: number = this.usersService.getCurrentUserId();
+    if(id_user) {
+      this.eventsService.getMyEventsCalendarDate(id_user, this.formatDate(date))
+      .subscribe((resp: Response)=> {
+        console.log(resp.data);
+        if(!resp.err){
+          this.eventosDia = resp.data; 
+          console.log(resp.data, date);
+          this.sinEventos = resp.data ? false : true;
+        }
+      });
+    } 
+  }
+
 
   // para header de calendario se puede modificar
   getCurrentMonth(): string {
@@ -63,27 +99,78 @@ export class CalendarioComponent {
 
   // si se cambia la fecha....
   onDateChange(event: any) {
+    this.selectedDate = event; 
+    this.getEventsDate(this.selectedDate); 
     console.log('Selected Date: ', event);
   }
 
   dateClass = (date: Date): MatCalendarCellCssClasses => {
-    const highlightDate = this.dates.find(eventDate => {
-      const eventDateObj = new Date(eventDate.fecha);
-      return eventDateObj.getFullYear() === date.getFullYear() &&
-        eventDateObj.getMonth() === date.getMonth() &&
-        eventDateObj.getDate() === date.getDate();
+    const highlightDate = this.eventos.find(evento => {
+      const eventDate = new Date(evento.date);
+      return eventDate.getFullYear() === date.getFullYear() &&
+        eventDate.getMonth() === date.getMonth() &&
+        eventDate.getDate() === date.getDate();
     });
-  
     return highlightDate ? 'highlight-event' : '';
   }
 
+
+  // dateClass = (date: Date): MatCalendarCellCssClasses => {
+  //   const highlightDate = this.dates.find(eventDate => {
+  //     const eventDateObj = new Date(eventDate.fecha);
+  //     return eventDateObj.getFullYear() === date.getFullYear() &&
+  //       eventDateObj.getMonth() === date.getMonth() &&
+  //       eventDateObj.getDate() === date.getDate();
+  //   });
+  //   return highlightDate ? 'highlight-event' : '';
+  // }
+
   
-  openModalEdit(){
-    this.modalEdit = true
+  openModalDetailEvent(evento: Evento){
+    this.evento = evento;
+    evento.creator ? this.modalType = 0 : this.modalType = 1;
+    this.modalSaberMas = true;
+    this.bg_dark = true; 
   }
 
   closeModal(event: boolean){
-    this.modalEdit = event
+    this.modalSaberMas = false;
+  }
+
+  formatDate(date: Date) {
+    let month = '' + (date.getMonth() + 1),
+    day = '' + date.getDate(),
+    year = date.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
+public addEvent(){
+  this.show_addEvent = true;
+  this.bg_dark = true; 
+
+}
+
+public addEventClose(){
+  this.show_addEvent = false; 
+  this.bg_dark = false; 
+}
+
+  ngOnInit(): void {
+      this.usersService.currentUserChanges()
+      .subscribe(user =>{
+        if (user){
+          const id_user:number = this.usersService.getCurrentUserId();
+          console.log(id_user); 
+          this.getEvents(); 
+          this.getEventsDate(new Date());
+        }
+      })
   }
 }
 

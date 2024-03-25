@@ -60,7 +60,7 @@
                         'is-invalid': (editForm.get('name').dirty || editForm.get('name').touched) && !editForm.get('name').valid,
                         'valid': editForm.get('name').valid
                     }">
-                    <div *ngIf="!editForm.get('name').valid" class="invalid-feedback m-0 text-center">
+                    <div *ngIf="editForm.get('name').invalid" class="invalid-feedback m-0 text-center">
                         <div *ngIf="editForm.get('name').errors?.maxlength"> Nombre demasiado largo</div>
                         <div *ngIf="editForm.get('name').errors?.required">Es necesario un nombre de usuario</div>
                     </div>
@@ -72,7 +72,7 @@
                         'is-invalid': (editForm.get('email').dirty || editForm.get('email').touched) && !editForm.get('email').valid,
                         'valid': editForm.get('email').valid
                     }">
-                    <div *ngIf="!editForm.get('email').valid" class="invalid-feedback m-0 text-center">
+                    <div *ngIf="editForm.get('email').invalid" class="invalid-feedback m-0 text-center">
                         <div *ngIf="editForm.get('email').errors?.email"> Correo electrónico incorrecto</div>
                         <div *ngIf="editForm.get('email').errors?.required">Es necesario un correo electrónico</div>
                     </div>
@@ -85,7 +85,7 @@
                         'valid': editForm.get('description').valid
                     }">
                     </textarea>
-                    <div *ngIf="!editForm.get('description').valid && editForm.get('description').errors?.maxlength" class="invalid-feedback m-0 text-center">
+                    <div *ngIf="editForm.get('description').invalid && editForm.get('description').errors?.maxlength" class="invalid-feedback m-0 text-center">
                         Descripción demasiado larga
                     </div>
 
@@ -108,31 +108,25 @@
 
                     <input type="password" name="password" id="password" placeholder="Nueva Contraseña" 
                     formControlName="password"
-                    [style.borderColor]="user.icon == this.marcos[1] ? '#28669F' :
-                    user.icon == this.marcos[2] ? '#643D6A':
-                    user.icon == this.marcos[3] ? '#B6281A':
-                    user.icon == this.marcos[4] ? '#5C724B':''"
+                    [style.borderColor]="borderColor()"
                     [ngClass]="{
                     'is-invalid': (editPassword.get('password').dirty || editPassword.get('password').touched) && !editPassword.get('password').valid,
                     'valid': editPassword.get('password').valid
                 }">
-                    <div *ngIf="!editPassword.get('password').valid" class="invalid-feedback m-0 text-center">
+                    <div *ngIf="editPassword.get('password').invalid" class="invalid-feedback m-0 text-center">
                         <div *ngIf="editPassword.get('password').errors?.required">Escribe la nueva contraseña</div>
                         <div *ngIf="editPassword.get('password').errors?.minlength">Contraseña no valida</div>
                     </div>
           
                     <input type="password" name="password2" id="password2" placeholder="Repite Contraseña" 
                     formControlName="password2"
-                    [style.borderColor]="user.icon == this.marcos[1] ? '#28669F' :
-                    user.icon == this.marcos[2] ? '#643D6A':
-                    user.icon == this.marcos[3] ? '#B6281A':
-                    user.icon == this.marcos[4] ? '#5C724B':''"
+                    [style.borderColor]="borderColor()"
                     [ngClass]="{
                         'is-invalid': (editPassword.get('password2').dirty || editPassword.get('password2').touched) && !editPassword.get('password2').valid,
                         'valid': editPassword.get('password2').valid
                     }">
 
-                    <div *ngIf="!editPassword.get('password2').valid" class="invalid-feedback m-0 text-center">
+                    <div *ngIf="editPassword.get('password2').invalid && editPassword.get('password').valid" class="invalid-feedback m-0 text-center">
                         <div *ngIf="editPassword.get('password2').errors?.required">Repite la Contraseña</div>
                         <div *ngIf="editPassword.get('password2').errors?.noMatch">Contraseñas no coinciden</div>
                     </div>
@@ -142,7 +136,11 @@
                     </div>
     
                     <ng-template #guardar2>
-                        <button type="button" [ngClass]="editarPass == true ? 'saveButton': ''" [disabled]="!editPassword.valid" (click)="savePass()">Guardar Cambios</button>
+                        <div class="buttons">
+                            <button type="button" [ngClass]="editarPass == true ? 'saveButton': ''" [disabled]="!editPassword.valid" (click)="savePass()">Guardar Cambios</button>
+                            <button type="button" [ngClass]="editarPass == true ? 'cancelButton': ''" (click)="cancel()">Cancelar</button>
+                        </div>
+    
                     </ng-template>
     
                 </form>

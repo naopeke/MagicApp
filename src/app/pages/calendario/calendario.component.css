@@ -3,13 +3,30 @@
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
-    height: 1400px;
+    height: 1300px;
     display: flex;
+    position: relative; 
+    z-index: 0;
+    transition: background 1s ease;
+}
+
+.main_dark{
+    background-image: url('src/assets/images/calendario/fondoCastillo.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 1300px;
+    display: flex;
+    background: rgba(0,0,0,0.85) ;
+    background-position: center;
+    position: relative;
+    z-index: 4;
+    transition: background 1s ease;
 }
 
 .cuadroIzq{
     height: 1100px;
-    width: 60%;
+    width: 55%;
     border-radius: 20px 0 0 20px;
     margin-left: 120px;
     margin-top: 160px;
@@ -17,6 +34,8 @@
     flex-direction: column;
     align-items: center;
     gap: 30px;
+    position: relative;
+    z-index: 3;
 }
 
 .titulo{
@@ -27,7 +46,7 @@
 }
 
 
- #calendar{
+#calendar{
     height: 965px;
     width: 85%;
     color: var(--blanco);
@@ -65,15 +84,20 @@ span.mat-calendar-body-cell-content.mat-focus-indicator {
 }
 
 span.mat-calendar-body-cell-content.mat-focus-indicator.mat-calendar-body-selected.mat-calendar-body-today {
-    border-color: var(--amarillo);
     background-color: var(--verde);
     color: var(--blanco);
 }
 
-.highlight-event{
+.mat-calendar-body-today{
+    background-color: var(--verde);
+    border-color: var(--blanco) !important;
+}
+
+.mat-calendar.highlight-event{
     background-color: var(--amarillo);
     color: var(--verde);
 }
+
 
 .cuadroDcha{
     height: 1100px;
@@ -83,6 +107,8 @@ span.mat-calendar-body-cell-content.mat-focus-indicator.mat-calendar-body-select
     background-color: black;
     opacity: 0.85;
     border-radius: 0 20px 20px 0;
+    position: relative;
+    z-index: 3;
 }
 
 .agenda{
@@ -119,54 +145,64 @@ h1.title_date{
 h2.titulo_evento{
     color:var(--blanco);
     font-family: var(--antiqua);
+    font-size: 24px;
 }
 
 h3.detalle_evento_lugar{
     color: var(--blanco);
-    font-family: var(--antiqua);
+    font-family: var(--inter);
+    font-size: 20px; 
+    margin-top: 3px;
 }
 
 h3.detalle_evento_descripcion{
     color: var(--blanco);
-    font-family: var(--antiqua);
+    font-family: var(--inter);
+    font-size: 20px; 
+    margin-top: 3px; 
 }
 
 .botones{
     display: flex;
     flex-direction: column;
-    gap: 40px;
-
+    justify-content: flex-end;
 }
 
-.editar{
-    height: 40px;
-    width: 40px;
-    background-color: black;
-    opacity: 0.85;
+.buttonAddEvent{
+    height: 50px;
+    width: 200px;
+    background-color: var(--verde);
+    border-radius: var(--borde-boton);
+    font-family: var(--antiqua);
+    font-size: 14pt;
+    align-self: center;
     border: none;
-    background-size: contain;
-    background-image: url('src/assets/images/iconos/plumaEditar.png');
-    background-repeat: no-repeat;
+    margin-top: 50px; 
+    
 }
 
-.eliminar{
-    height: 40px;
-    width: 40px;
-    background-color: black;
-    opacity: 0.85;
+.detailEvent{
+    color: var(--amarillo);
     border: none;
-    background-size: contain;
-    background-image: url('src/assets/images/iconos/calaveraEliminar.png');
-    background-repeat: no-repeat;
+    background-color: transparent;
+    text-decoration: underline;
+    margin-bottom: 50px;
+    margin-left: 50px;
 }
 
-/* añadido por belen */
+.sinEventos{
+    font-size: 18px;
+    color: var(--blanco);
+}
 
-.modalEdit{
+.modalDetailEvent{
     position: absolute;
-    right: 75px;
-    z-index: 99;
-    top: 250px;
+    right: 5px;
+    z-index: 999;
+    top: 100px;
+}
 
-
+.modalAddEvent{
+    position: relative;
+    z-index:999; 
 }

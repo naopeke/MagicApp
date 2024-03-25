@@ -12,10 +12,8 @@ import { UsersService } from 'src/app/shared/users.service';
 export class ProfileComponent implements OnInit {
   
   public editarFoto = false
-
   public editForm: FormGroup
   public editPassword: FormGroup
-
   public editar: boolean = false
   public editarPass: boolean = false
   
@@ -37,44 +35,44 @@ export class ProfileComponent implements OnInit {
     'https://i.imgur.com/5xUN6sU.png',
   ]
 
-  public user: User = {}
+  public user: User | null = {}
   public currentUser: User | null;
-
-  
 
   constructor(private formBuilder: FormBuilder,
               public userService: UsersService,
               private toastr: ToastrService){
-    this.buildForm();
-    this.buildForm2() 
   }
   ngOnInit(): void {
     this.userService.currentUserChanges().subscribe(user =>{
-      this.currentUser = user
+      this.user = user
       })
-    this.getProfile();
+      this.buildForm();
+      this.buildForm2() 
+      this.editForm.disable();
+      this.editPassword.disable();
+    // this.getProfile();
   }
 
   // Obtener datos perfil
   public getProfile(){
-    this.userService.getProfile(this.currentUser.id_user).subscribe((res:any) =>{
+    // this.userService.getProfile(this.user.id_user).subscribe((res:any) =>{
 
-      if(!res.error){
-        this.user = res.data[0];
+    //   if(!res.error){
+    //     this.user = res.data[0];
 
-        this.editForm.patchValue({
-          name:this.user.nameUser,
-          email: this.user.emailUser,
-          description: this.user.description
-        })
+    //     this.editForm.patchValue({
+    //       name:this.user.nameUser,
+    //       email: this.user.emailUser,
+    //       description: this.user.description
+    //     })
         
-        this.editForm.disable();
-        this.editPassword.disable();
+    //     this.editForm.disable();
+    //     this.editPassword.disable();
 
-      } else {
-        this.toastr.error(res.mensaje, '¡Ups!')
-      }
-    })
+    //   } else {
+    //     this.toastr.error(res.mensaje, '¡Ups!')
+    //   }
+    // })
   }
   
   // MODIFICAR DATOS PERFIL
@@ -83,7 +81,7 @@ export class ProfileComponent implements OnInit {
     this.editForm = this.formBuilder.group({
       name: [this.user.nameUser, [Validators.maxLength(20), Validators.required]],
       email: [this.user.emailUser, [Validators.email, Validators.required]],
-      description: [this.user.description, Validators.maxLength(200)],
+      description: [this.user.description, Validators.maxLength(150)],
     })
   }
 
@@ -128,10 +126,9 @@ export class ProfileComponent implements OnInit {
         }
       })
      } else {
-      console.log('error');
+      this.toastr.error('Datos no validos', '¡Ups!')
       }
       this.editar = false
-      this.editForm.markAsUntouched
       this.editForm.disable();
   }
 
@@ -154,10 +151,14 @@ export class ProfileComponent implements OnInit {
         }
       })
     } else {
-      console.log('error');
+      this.toastr.error('Datos no validos', '¡Ups!')
     }
     this.editarPass = false
-    this.editPassword.markAsUntouched()
+    this.editPassword.disable();
+  }
+
+  public cancel(){
+    this.editarPass = false
     this.editPassword.disable();
   }
 

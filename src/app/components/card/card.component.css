@@ -62,9 +62,9 @@ mat-card-content {
 .text-type2{
     position: absolute; /* hijo */
     top: 7px;
-    left: 118px;
+    left: 120px;
     color: var(--negro);
-    font-size: 14px;
+    font-size: 15px;
     font-family:var(--antiqua);
     z-index: 99;
 }

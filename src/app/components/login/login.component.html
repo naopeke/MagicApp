@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="form-group"> 
-                <input type="text" placeholder="Contraseña" formControlName="passwordUser" [ngClass]="{'is-invalid':(loginForm.get('passwordUser').dirty || loginForm.get('passwordUser').touched) && !loginForm.get('passwordUser').valid}">
+                <input type="password" placeholder="Contraseña" formControlName="passwordUser" [ngClass]="{'is-invalid':(loginForm.get('passwordUser').dirty || loginForm.get('passwordUser').touched) && !loginForm.get('passwordUser').valid}">
                 <div *ngIf="!loginForm.get('passwordUser').valid" class="invalid-feedback">
                     <div *ngIf="loginForm.get('passwordUser').errors.required"> La contraseña es necesaria.</div>
                     <div *ngIf="loginForm.get('passwordUser').errors.minLength"> La contraseña tiene que tener almenos 8 carácteres.</div>
