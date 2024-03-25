@@ -103,6 +103,11 @@ section{
     position: relative;
     z-index: 2; /* Asegura que los elementos de texto e icono estén por encima de la capa oscura */
 }
+.textoAzul, .textoMorado, .textoRojo, .textoVerde{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
 
 .iconoAzul{
     height: 100%;
@@ -111,15 +116,16 @@ section{
     padding-bottom: 45px;
 }
 
-.textoAzul h1{
+.textoAzul h2{
     font-family: var(--antiqua);
-    color: var(--blanco);
-    font-size: x-large;
+    color: var(--azul);
+    font-size: 26pt;
     text-align: center;
 }
 
-.textoAzul h2{
+.textoAzul p{
     font-family: var(--inter);
+    font-size: 18pt;
     color: var(--blanco);
     text-align: left;
 }
@@ -130,7 +136,7 @@ section{
     text-align: right;
 }
 
-.textoAzul a h1{
+.textoAzul a p{
     font-family: var(--antiqua);
     color: #88C8F2;
     text-align: right;
@@ -184,15 +190,16 @@ section{
     padding-top: 45px;
 }
 
-.textoMorado h1{
+.textoMorado h2{
     font-family: var(--antiqua);
-    color: var(--blanco);
-    font-size: x-large;
+    color: var(--morado);
+    font-size: 26pt;
     text-align: center;
 }
 
-.textoMorado h2{
+.textoMorado p{
     font-family: var(--inter);
+    font-size: 18pt;
     color: var(--blanco);
     text-align: left;
 }
@@ -204,7 +211,7 @@ section{
 }
 
 
-.textoMorado a h1{
+.textoMorado a p{
     font-family: var(--antiqua);
     color: #F4B1FE;
     text-align: right;
@@ -270,15 +277,16 @@ section{
     padding-top: 45px;
 }
 
-.textoRojo h1{
+.textoRojo h2{
     font-family: var(--antiqua);
-    color: var(--blanco);
-    font-size: x-large;
+    color: var(--rojo);
+    font-size: 26pt;
     text-align: center;
 }
 
-.textoRojo h2{
+.textoRojo p{
     font-family: var(--inter);
+    font-size: 18pt;
     color: var(--blanco);
     text-align: left;
 }
@@ -289,7 +297,7 @@ section{
     text-align: right;
 }
 
-.textoRojo a h1{
+.textoRojo a p{
     font-family: var(--antiqua);
     color: #FF0000;
     text-align: right;
@@ -343,15 +351,16 @@ section{
     padding-top: 45px;
 }
 
-.textoVerde h1{
+.textoVerde h2{
     font-family: var(--antiqua);
-    color: var(--blanco);
-    font-size: x-large;
+    color:var(--verde);
+    font-size: 26pt;
     text-align: center;
 }
 
-.textoVerde h2{
+.textoVerde p{
     font-family: var(--inter);
+    font-size: 18pt;
     color: var(--blanco);
     text-align: left;
 }
@@ -362,7 +371,7 @@ section{
     text-align: right;
 }
 
-.textoVerde a h1{
+.textoVerde a p{
     font-family: var(--antiqua);
     color: #8BCB59;
     text-align: right;

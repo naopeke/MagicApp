@@ -18,7 +18,7 @@ export class EventoComponent {
   public events:Evento[];
   public eventoABorrar:Evento;
   public evento:Evento;
-  public id_logueado: number;
+  public id_logueado: User;
   public modalEdit:boolean = false;
   public modalAdd:boolean = false;
   // Belen: te añado para abrir modal detalle evento
@@ -39,7 +39,10 @@ export class EventoComponent {
   }
 
   ngOnInit(): void {
-    this.id_logueado = this.usersService.getCurrentUserId();
+    // this.id_logueado = this.usersService.getCurrentUserId();
+    this.usersService.currentUserChanges().subscribe(user =>{
+      this.id_logueado = user
+      })
     this.getAllEventsForBBDD();
   }
 
@@ -72,7 +75,7 @@ export class EventoComponent {
   getMyEventsForBBDD(){
 
     console.log("getMyEventsForBBDD");
-    this.eventService.getMyEvents(this.id_logueado).subscribe((respuesta: Response) => {
+    this.eventService.getMyEvents(this.id_logueado.id_user).subscribe((respuesta: Response) => {
       // Recorrer el array "data" y añadir los eventos a "this.events" manualmente
       // Usando un bucle for
       //console.log(data);
@@ -198,6 +201,8 @@ export class EventoComponent {
     const ev = new Eventos(evento.id,evento.title, evento.description, evento.date, evento.hour, evento.place, evento.direction, evento.creator.nameUser, evento.creator.id_user, null);
 
     this.selectEvento = ev;
+    console.log(this.selectEvento);
+    
     this.modalDetail = true;
   }
 
@@ -208,12 +213,9 @@ export class EventoComponent {
   closeModal(event: boolean){
     this.modalEdit = event
   }
-  // closeModalSaberMas(event: boolean){
-  //   this.modalSaberMas = event
-  // }
-
-  // belen
-  openDetail(){
-    this.modalDetail = true
+  closeModalSaberMas(event: boolean){
+    this.modalDetail = event
   }
+
+
 }
