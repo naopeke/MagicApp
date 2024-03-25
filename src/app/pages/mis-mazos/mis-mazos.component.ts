@@ -188,12 +188,12 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
 
   public onDeleteAllCardsFromChild(id_deckCard: number){
 
-    console.log('onDeleteAllCardsFromChild called with id_deckCard:', id_deckCard); // ここに追加
+    console.log('id_deckCard:', id_deckCard); 
 
     const card = this.mazo?.cards.find(card => card.id_deckCard === id_deckCard);
     if (card && this.mazo && card.quantity > 0) {  //para que la cantidad no sea menor que cero
 
-      console.log('Deleting card with id_deckCard:', card.id_deckCard); // 削除処理前にもログを追加
+      console.log('Deleting card with id_deckCard:', card.id_deckCard); 
 
 
       // pasar id_deckCard y action: delete a updateQuantity
