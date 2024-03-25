@@ -212,6 +212,9 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
       console.log('Deleted the card :', response);
       // cambiar la lista de cards de front
       this.mazo.cards = this.mazo.cards.filter(card => card.id_deckCard !== id_deckCard);
+      console.log('Deleted card id_deckCard: ', id_deckCard);
+      console.log('After deleting : ', this.mazo.cards);
+      this.filteredCards = this.filteredCards.filter(card => card.id_deckCard !== id_deckCard);
     },
     error: (err) => {
       console.log('Error deleting: ', err)
