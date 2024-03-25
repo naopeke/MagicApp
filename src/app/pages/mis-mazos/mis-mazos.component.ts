@@ -57,7 +57,7 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     // const currentUser = this.usersService.getCurrentUser(); // PARA GET ULTIMO CURRENT USER
     // console.log('Current user misMazos:', currentUser);
-    this.getDecks(); 
+    this.getDecksWithSwiper(); 
   }
 
   
@@ -88,7 +88,7 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
 
 
 
-  public getDecks():void {
+  public getDecksWithSwiper():void {
     const userId = this.usersService.getCurrentUserId();
     console.log('User id mismazos:', userId);
     
@@ -96,7 +96,7 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
         next: (response: any) => {
                 this.datos = response;
                 console.log('API Response Deck: ', this.datos);
-                // solo ngAfterInit no funciona. hay que meter en getDecks por el timing de initialize y obtener dato
+                // solo ngAfterInit no funciona. hay que meter en getDecksWithSwiper por el timing de initialize y obtener dato
                 this.initializeSwiper(); 
         },
         error: (err) => {
