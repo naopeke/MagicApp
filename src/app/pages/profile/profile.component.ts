@@ -45,6 +45,8 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.userService.currentUserChanges().subscribe(user =>{
       this.user = user
+      console.log(user);
+      
       })
       this.buildForm();
       this.buildForm2() 
