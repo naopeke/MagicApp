@@ -10,10 +10,6 @@
             <div class="search-container">
                 <form (submit)="searchCards(searchParam.value); $event.preventDefault()">
                     <input type="text" id="buscador" name="buscador" placeholder="Buscar" size="10" #searchParam (focus)="searchParam.value=''"/>
-                    <select name="filtrar" id="filtrar" [(ngModel)]="searchType">
-                        <option value="nombre">Nombre</option>
-                        <option value="colleccion">Colección</option>
-                    </select>
                     <button type="submit" class="btn-buscador"></button>
                 </form>
             </div>
