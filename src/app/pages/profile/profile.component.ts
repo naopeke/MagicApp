@@ -38,6 +38,14 @@ export class ProfileComponent implements OnInit {
   public user: User | null = {}
   public currentUser: User | null;
 
+  public visible:boolean = true
+  public changetype:boolean = true
+
+  viewPass(){
+    this.visible = !this.visible
+    this.changetype = !this.changetype
+  }
+
   constructor(private formBuilder: FormBuilder,
               public userService: UsersService,
               private toastr: ToastrService){
