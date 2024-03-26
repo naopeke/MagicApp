@@ -12,10 +12,6 @@
                     <div class="search-container">
                         <form (submit)="searchCards(searchParam.value); $event.preventDefault()">
                             <input type="text" id="buscador" name="buscador" placeholder="Buscar" size="10" #searchParam (focus)="searchParam.value=''"/>
-                            <select name="filtrar" id="filtrar" [(ngModel)]="searchType">
-                                <option value="nombre">Nombre</option>
-                                <option value="colleccion">Colección</option>
-                            </select>
                             <button type="submit" class="btn-buscador"></button>
                         </form>
                     </div>
@@ -44,8 +40,10 @@
 
 
                 <div class="builder-container">
-                    <div class="btn-builder1">Construcción de Mazos</div>
-                    <button class="btn-builder2" (click)="openDeckDialog()">Añadir a tu mazo</button>
+                    <div class="top-wrapper">
+                        <div class="btn-builder1">Construcción de Mazos</div>
+                        <button class="btn-builder2" (click)="openDeckDialog()">Añadir a tu mazo</button>
+                    </div>
                     <div class="bg-builder">
                         <div class="list-cards2" *ngIf="builderCards.length > 0">
                             <div *ngFor="let card of builderCards; let i = index">

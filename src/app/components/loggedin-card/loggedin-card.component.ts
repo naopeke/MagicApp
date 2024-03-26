@@ -7,8 +7,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from 'src/app/models/user';
 import { UsersService } from 'src/app/shared/users.service';
-import { firstValueFrom } from 'rxjs';
-
 
 
 
@@ -37,14 +35,19 @@ export class LoggedinCardComponent implements OnInit {
   constructor(
     public cardsService: CardsService,
     public usersService: UsersService,
-    private router: Router,
-    private rutaActiva: ActivatedRoute,
     private dialog: MatDialog,
     private snackBar: MatSnackBar
   ){
 
   }
 
+
+
+  ngOnInit(): void {
+    const currentUser = this.usersService.getCurrentUser(); // PARA GET ULTIMO CURRENT USER
+    console.log('Current user loginCarta:', currentUser);
+    };
+    
 
 
   searchCards(cardName: string): void {
@@ -61,10 +64,14 @@ export class LoggedinCardComponent implements OnInit {
     }});
   }
 
+
+
   onAddCardToBuilder(card: Card): void {
     this.builderCards.push(card);
     console.log('Added to Builder: ', this.builderCards);
   }
+
+
 
   onDeleteFromChild(cardId: string){
     this.builderCards = this.builderCards.filter(card => card.id !== cardId);
@@ -73,6 +80,8 @@ export class LoggedinCardComponent implements OnInit {
   }
 
 
+
+  // modal
   openDeckDialog(): void {
     const dialogRef = this.dialog.open(MazoSelectorModalComponent, {
       width: '700px',
@@ -109,53 +118,23 @@ export class LoggedinCardComponent implements OnInit {
         next: (response: any) => {
           console.log('Cards added to deck:', response);
   
-          // id_userとid_deckを取得してデータベースに保存
-          // const id_user = userId;
-          // const indexDeck = indexDeck;
-  
-          // ここでid_userとid_deckを使ってデータベースに保存する処理を実行します。
-  
           // メッセージを表示
           this.snackBar.open(`Añadido tu carta al mazo #${indexDeck + 1}`, 'Cerrar', {
             duration: 4000,
             verticalPosition: 'top',
           });
-          // ビルダーカードをクリア
+          // vaciar builderCards
           this.builderCards = [];
         },
         error: (error: any) => {
-          console.error('Error adding cards to deck:', error);
-          // エラーメッセージを表示する場合はここに追加します
+          console.log('Error adding cards to deck:', error);
         }
       });
   
     });
   }
-  
-  
-  
-  
-  
-
-  ngOnInit(): void {
-    const currentUser = this.usersService.getCurrentUser(); // PARA GET ULTIMO CURRENT USER
-    console.log('Current user loginCarta:', currentUser);
-    
-    // const userId = this.usersService.getCurrentUserId();
-    // console.log('user id :', userId);
-
-    
-    // this.usersService.currentUser.subscribe(user => {
-    //   console.log('Current user:', user);
-    //   this.currentUser = user;
-    //   // currentUser の値が取得された後に openDeckDialog() を呼び出す
-    //   if (this.currentUser !== null) {
-    //     this.openDeckDialog();
-    //   }
-    };
     
 
-  
 
   public onCardInfoOpen(card:Card):void{
     console.log('clicked card', card);
@@ -164,10 +143,12 @@ export class LoggedinCardComponent implements OnInit {
     this.show_cardinfo = true; 
   }
 
-    public onCardInfoClose(show: boolean):void{
-    this.selectedCard = null; // resetear selectedCard cuendo se cierra
-    this.darkenOverlay = false;
-    this.show_cardinfo = false;
+
+
+  public onCardInfoClose(show: boolean):void{
+  this.selectedCard = null; // resetear selectedCard cuendo se cierra
+  this.darkenOverlay = false;
+  this.show_cardinfo = false;
   }
 
   }

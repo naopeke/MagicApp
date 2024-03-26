@@ -67,9 +67,8 @@
                         <div class="filter-list"><p class="filter-name" (click)="onFilterClick('artifact')">Artefactos</p></div>
                         <div class="filter-list"><p class="filter-name" (click)="onFilterClick('enchantment')">Encantamientos</p></div>
                         <div class="filter-list"><p class="filter-name" (click)="onFilterClick('sorcery')">Conjuros</p></div>
-                        <div class="filter-list"><p class="filter-name" (click)="onFilterClick('instance')">Instantáneas</p></div>
+                        <div class="filter-list"><p class="filter-name" (click)="onFilterClick('instant')">Instantáneas</p></div>
                         <div class="filter-list"><p class="filter-name" (click)="onFilterClick('planeswalker')">Planeswalkers</p></div>
-                        <div class="filter-list"><p class="filter-name" (click)="onFilterClick('battle')">Batallas</p></div>
                         <div class="filter-list"><p class="filter-name" (click)="onFilterClick('land')">Tierras</p></div>
                     </div>
                     <div class="counter-wrapper">
@@ -93,10 +92,9 @@
                             </div>
                         
                             <div class="list-cards" *ngIf="filteredCards.length === 0">
-                                <div>
+                                <span class="no-filtered-card-message">
                                     No tienes nínguna carta de este categoría
-
-                                </div>
+                                </span>
                             </div>
 
                             <div class="results-wrapper" *ngIf="mazo?.cards?.length === 0">
