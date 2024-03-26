@@ -230,12 +230,34 @@ select {
 }
 
 .no-builder-message, .no-results-message, .search-message {
+    border:2px solid red;
     padding: 100px 120px 0 120px;
     font-family: var(--inter);
     font-size: 23px;
     color:var(--blanco);
     line-height: 180%;
     text-align: justify;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 1671px) {
+    .bg-builder {
+        width: 521px;
+    }
+}
+
+@media screen and (max-width: 1470px) {
+    .bg-builder {
+        width: 490px;
+    }
+}
+
+@media screen and (max-width: 1299px) {
+    .bg-builder {
+        width: 433px;
+    }
 }
 
 
@@ -247,6 +269,12 @@ select {
             "results"
             "builder";
     }
+
+    .bg-builder {
+        width: 100%;
+    }
+
+
 }
 @media (max-width: 768px) {
     .gridarea {
@@ -256,20 +284,12 @@ select {
             "results"
             "builder";
     }
+
     .builder-container {
         min-width: 0;
     }
+
+    .bg-builder {
+        width: 100%;
+    }
 }
-
-
-/* @media screen and (1025 <= width <= 1200) {
-} 
-
-@media screen and (769 <= width < 1025) {
-}
-
-@media screen and (481 <= width < 769) {
-}
-
-@media screen and (320 <= width < 481) {
-} */
