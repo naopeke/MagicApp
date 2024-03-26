@@ -156,7 +156,7 @@ public addEvent(){
 
 }
 
-public addEventClose(){
+public addEventClose(event: boolean){
   this.show_addEvent = false; 
   this.bg_dark = false; 
 }
