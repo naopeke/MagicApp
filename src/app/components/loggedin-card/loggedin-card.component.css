@@ -230,7 +230,7 @@ select {
 }
 
 .no-builder-message, .no-results-message, .search-message {
-    border:2px solid red;
+    /* border:2px solid red; */
     padding: 100px 120px 0 120px;
     font-family: var(--inter);
     font-size: 23px;
