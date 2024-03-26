@@ -54,29 +54,6 @@ export class LoggedoutCardComponent implements OnInit {
       }
     });
   }
-  
-  
-  
-// // buscar con nombre completa y array
-//   searchCards(searchParam: string): void {
-//     this.searchPerformed = true;
-//     let cards = [];
-//     if (this.searchType == 'nombre'){
-//       cards = this.cardsService.getByName(searchParam);
-//     } else if (this.searchType === 'colleccion'){
-//       cards = this.cardsService.getByCollection(searchParam);
-//     }
-
-//     // si hay 1 o más cartas en array, meter datos en resultsCards
-//     if (cards && cards.length > 0) {
-//       this.resultsCards = cards;
-//       console.log('Results:', cards);
-//       console.log('resultsCards: ', this.resultsCards);
-//     } else {
-//       this.resultsCards = [];
-//       console.log('No hay datos en resultsCards');
-//     }
-//   }
 
 
   public onCardInfoOpen(card:Card):void{

@@ -4,6 +4,8 @@
     align-items: center;
     justify-content: center;
     background-color: #010101;
+    height: 480px;
+    width: 700px;
 }
 
 .top-wrapper {
@@ -11,7 +13,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin-top: 6em;
+    /* margin-top: 6em; */
 }
 
 .deck-lists{
@@ -30,6 +32,7 @@ ul {
     padding: 0;
     list-style-type: none;
 }
+
 li {
     font-size: 25px;
     width: 8em;
@@ -40,6 +43,7 @@ li {
     margin-top: 0.8em;
     cursor: pointer;
 }
+
 li::before,li::after{
     content: '';
     position: absolute;

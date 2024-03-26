@@ -2,10 +2,10 @@ import { Component, OnInit, ViewEncapsulation, Inject } from '@angular/core';
 import {
   MatDialogModule, MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent,MatDialogActions, MatDialogClose, 
 } from '@angular/material/dialog';
-import {MatButtonModule} from '@angular/material/button';
-import {FormsModule} from '@angular/forms';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { Router } from '@angular/router';
 import { Response } from 'src/app/models/respuesta';
 import { CardsService } from 'src/app/shared/cards.service';
@@ -15,11 +15,6 @@ import { User } from 'src/app/models/user';
 
 //https://material.angular.io/components/dialog/overview
 export interface DialogData {
-  // deck1: number;
-  // deck2: number;
-  // deck3: number;
-  // deck4: number;
-  // deck5: number;
   selectedDeckIndex: number;
 }
 

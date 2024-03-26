@@ -87,7 +87,7 @@ export class LoggedinCardComponent implements OnInit {
   openDeckDialog(): void {
     const dialogRef = this.dialog.open(MazoSelectorModalComponent, {
       width: '700px',
-      height: '500px',
+      height: '480px',
       data: { selectedDeckIndex: null } // default null, si no, sale error
     });
   
@@ -151,7 +151,7 @@ export class LoggedinCardComponent implements OnInit {
 
 
 
-  public onCardInfoClose(show: boolean):void{
+  public onCardInfoClose():void{
   this.selectedCard = null; // resetear selectedCard cuendo se cierra
   this.darkenOverlay = false;
   this.show_cardinfo = false;
