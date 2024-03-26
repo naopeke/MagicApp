@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output} from '@angular/core';
 import { Card } from 'src/app/models/card';
 import { CardsService } from 'src/app/shared/cards.service';
 import { Response } from 'src/app/models/respuesta';
@@ -6,7 +6,7 @@ import { Response } from 'src/app/models/respuesta';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.css']
+  styleUrls: ['./card.component.css'],
 })
 export class CardComponent {
   @Input() childCard: Card;

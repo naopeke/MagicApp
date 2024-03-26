@@ -8,21 +8,30 @@ mat-card {
     background-color: var(--negro);
 }
 
+
 mat-card-content {
     height:331.16px;
 }
 
-/* type1 */
-.img-type1{
-    width: 245px;
-    height:auto;
-    object-fit: cover;
-    border-radius: var(--ancho-borde);
+
+.card .img-type1 {
+    width: 100%;
+    height: auto;
+    border-radius: 13px; /* 画像の角を丸める */
 }
 
-.img-type1:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease-in-out;
+
+/* type1 */
+
+
+.img-type1 {
+    width: 100%; /* 画像の幅 */
+    height: auto; /* 高さを自動調整 */
+    transition:box-shadow 0.3s;
+}
+
+.card:hover {
+    box-shadow:0 0 20px rgb(0, 110, 255, 0.5), 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 /* type2  explorar */
@@ -40,15 +49,15 @@ mat-card-content {
     display: block;
     width: 245px;
     height:auto;
-    border-radius: var(--ancho-borde);
-    border: 1px solid var(--nergro);
+    border-radius: 30px;
+    border: 20px solid var(--nergro);
     cursor: pointer;
 }
 
-.img1-type2:hover {
+/* .img1-type2:hover {
     transform: scale(1.05);
     transition: transform 0.3s ease-in-out;
-}
+} */
 
 .img2-type2{
     position: absolute; /* hijo */
@@ -85,8 +94,11 @@ mat-card-content {
     display: block;
     width: 245px;
     height:auto;
-    border-radius: var(--ancho-borde);
-    border: 1px solid var(--nergro);
+    /* border-radius: 13px;
+    border: 20px solid var(--nergro); */
+    background-color: var(--negro);
+    border-radius: 50px;
+    transition:box-shadow 0.3s;
 }
 
 .img2-type3{
@@ -97,10 +109,10 @@ mat-card-content {
     z-index: 1;
 }
 
-.img1-type3:hover {
+/* .img1-type3:hover {
     transform: scale(1.05);
     transition: transform 0.3s ease-in-out;
-}
+} */
 
 .img2-type3:hover {
     transform: scale(1.20);
@@ -122,8 +134,8 @@ mat-card-content {
     display: block;
     width: 152px;
     height:auto;
-    border-radius: var(--ancho-borde);
-    border: 1px solid var(--nergro);
+    border-radius: 30px;
+    border: 20px solid var(--nergro);
     top: 15px;
     left: 8px;
 }
@@ -138,10 +150,10 @@ mat-card-content {
     z-index: 2;
 }
 
-.img1-type4:hover {
+/* .img1-type4:hover {
     transform: scale(1.05);
     transition: transform 0.3s ease-in-out;
-}
+} */
 
 .img2-type4:hover {
     transform: scale(1.50);
@@ -164,8 +176,8 @@ mat-card-content {
     display: block;
     width: 245px;
     height:auto;
-    border-radius: var(--ancho-borde);
-    border: 1px solid var(--nergro);
+    border-radius: 30px;
+    border: 20px solid var(--nergro);
 }
 
 /* menos cuadrado */
