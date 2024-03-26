@@ -123,6 +123,13 @@ export class LoggedinCardComponent implements OnInit {
           this.toastr.info(`Añadido tu carta al mazo #${indexDeck + 1}`, 'Enhorabuena!', {
             timeOut: 6000,
             positionClass: 'toast-top-center'
+
+          
+          //* versión snackBar
+          // this.snackBar.open(`Añadido tu carta al mazo #${indexDeck + 1}`, 'Cerrar', {
+          //   duration: 6000,
+          //   verticalPosition: 'top',
+          //   });
           });
           
           // vaciar builderCards
@@ -134,6 +141,12 @@ export class LoggedinCardComponent implements OnInit {
             timeOut: 4000,
             positionClass: 'toast-top-center'
           });
+
+          //* versión snackBar
+          // this.snackBar.open('Ha habido un error', 'Cerrar', {
+          //   duration: 4000,
+          //   verticalPosition: 'top',
+          //   });
         }
       });
   

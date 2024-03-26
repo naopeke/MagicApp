@@ -346,13 +346,25 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
           positionClass: 'toast-top-center'
         });
 
+        //* versión snackBar
+        // this.snackBar.open(response.message, '', {
+        //   duration: 6000,
+        //   verticalPosition: 'top',
+        //   });
+        
         this.datos[indexDeck].share = response.shareStatus; // update share status por response
         this.changeDetectorRef.detectChanges(); // trigger update
       },
       error: (err: any) => {
       console.log('Error updating share status: ', err);
-      this.snackBar.open('Error updating share status', 'Close', {
+      this.snackBar.open('Ha habido un error', 'Cerrar', {
         duration: 5000,
+
+      //* versión snackBar
+      // this.snackBar.open('Ha habido un error', 'Cerrar', {
+      //   duration: 5000,
+      //   verticalPosition: 'top',
+      //   });
       })
       }
     })
