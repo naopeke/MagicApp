@@ -8,6 +8,7 @@ import { DeckService } from 'src/app/shared/deck.service';
 import { UsersService } from 'src/app/shared/users.service';
 import { Response } from 'src/app/models/response';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -50,6 +51,7 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
     private decksService: DeckService,
     private changeDetectorRef: ChangeDetectorRef,
     private snackBar: MatSnackBar,
+    private toastr: ToastrService,
   ){}
 
 
@@ -301,9 +303,17 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
       this.decksService.editDeckName( nameDeck, id_deck ).subscribe({
         next: (response: any) => {
           console.log('Updated deck name: ', response);
+          this.toastr.success(`"${nameDeck}" es el nombre del nuevo mazo`, '', {
+            timeOut: 6000,
+            positionClass: 'toast-top-center'
+          });
         },
         error: (err: any) => {
           console.log('Error updating deck name:', err);
+          this.toastr.error('Ha habido un error', 'Error', {
+            timeOut: 4000,
+            positionClass: 'toast-top-center'
+          });
         }
       });
     } else {
@@ -331,11 +341,10 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
     this.decksService.toggleShare( id_deck ).subscribe({
       next: (response: any) => {
         console.log('Updated share status', response);
-        this.snackBar.open(response.message, 'Close', {  //mostrar mensaje desde back
-          duration: 7000,
-          panelClass: ['custom-snackbar-mismazos']
-        }
-        )
+        this.toastr.info(response.message, '', {
+          timeOut: 6000,
+          positionClass: 'toast-top-center'
+        });
 
         this.datos[indexDeck].share = response.shareStatus; // update share status por response
         this.changeDetectorRef.detectChanges(); // trigger update
