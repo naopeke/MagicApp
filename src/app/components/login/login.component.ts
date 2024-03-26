@@ -20,6 +20,11 @@ export class LoginComponent implements OnInit {
   public show_login:boolean = false; 
   public user: User; 
 
+  public visible:boolean = true
+  public changetype:boolean = true
+
+
+
   constructor (private formBuilder: FormBuilder,
               private router: Router,
               private toastr: ToastrService,
@@ -65,6 +70,11 @@ public loginClose(){
 }
 
 ngOnInit(): void {
+}
+
+viewPass(){
+  this.visible = !this.visible
+  this.changetype = !this.changetype
 }
 
 }

@@ -107,14 +107,16 @@
                 <form [formGroup]="editPassword" class="editForm">
 
                     <div class="form-group">
-                        <input [type]="changetype?'password': 'text' " name="password" id="password" placeholder="Nueva Contraseña" 
+                        <input [type]="changetype1?'password': 'text' " name="password" id="password" placeholder="Nueva Contraseña" 
                         formControlName="password"
                         [style.borderColor]="borderColor()"
                         [ngClass]="{
                         'is-invalid': (editPassword.get('password').dirty || editPassword.get('password').touched) && !editPassword.get('password').valid,
                         'valid': editPassword.get('password').valid
                         }">
-                        <span class="eyeicon" (click)="viewPass()"> <i [ngClass]= "visible? 'fa-regular fa-eye': 'fa-regular fa-eye-slash'"></i></span>
+                        <span class="eyeicon" (click)="viewPass(1)"> 
+                            <mat-icon>{{ visible1 ? 'visibility' : 'visibility_off' }}</mat-icon>
+                        </span>
                         <div *ngIf="editPassword.get('password').invalid" class="invalid-feedback m-0 text-center">
                             <div *ngIf="editPassword.get('password').errors?.required">Escribe la nueva contraseña</div>
                             <div *ngIf="editPassword.get('password').errors?.minlength">Contraseña no valida</div>
@@ -122,14 +124,16 @@
                     </div>
 
                     <div class="form-group">
-                        <input [type]="changetype?'password': 'text' " name="password2" id="password2" placeholder="Repite Contraseña" 
+                        <input [type]="changetype2?'password': 'text' " name="password2" id="password2" placeholder="Repite Contraseña" 
                         formControlName="password2"
                         [style.borderColor]="borderColor()"
                         [ngClass]="{
                             'is-invalid': (editPassword.get('password2').dirty || editPassword.get('password2').touched) && !editPassword.get('password2').valid,
                             'valid': editPassword.get('password2').valid
                         }">
-                       <span class="eyeicon" (click)="viewPass()"> <i [ngClass]= "visible? 'fa-regular fa-eye': 'fa-regular fa-eye-slash'"></i></span>
+                        <span class="eyeicon" (click)="viewPass(2)"> 
+                            <mat-icon>{{ visible2 ? 'visibility' : 'visibility_off' }}</mat-icon>
+                        </span>
                         <div *ngIf="editPassword.get('password2').invalid && editPassword.get('password').valid" class="invalid-feedback m-0 text-center">
                             <div *ngIf="editPassword.get('password2').errors?.required">Repite la Contraseña</div>
                             <div *ngIf="editPassword.get('password2').errors?.noMatch">Contraseñas no coinciden</div>
