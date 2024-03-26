@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from 'src/app/models/user';
 import { UsersService } from 'src/app/shared/users.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -36,7 +37,8 @@ export class LoggedinCardComponent implements OnInit {
     public cardsService: CardsService,
     public usersService: UsersService,
     private dialog: MatDialog,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private toastr: ToastrService,
   ){
 
   }
@@ -47,7 +49,7 @@ export class LoggedinCardComponent implements OnInit {
     const currentUser = this.usersService.getCurrentUser(); // PARA GET ULTIMO CURRENT USER
     console.log('Current user loginCarta:', currentUser);
     };
-    
+
 
 
   searchCards(cardName: string): void {
@@ -117,17 +119,21 @@ export class LoggedinCardComponent implements OnInit {
       this.cardsService.addCardsToDeck(cardApiIds, userId, indexDeck).subscribe({
         next: (response: any) => {
           console.log('Cards added to deck:', response);
-  
-          // メッセージを表示
-          this.snackBar.open(`Añadido tu carta al mazo #${indexDeck + 1}`, 'Cerrar', {
-            duration: 4000,
-            verticalPosition: 'top',
+
+          this.toastr.info(`Añadido tu carta al mazo #${indexDeck + 1}`, 'Enhorabuena!', {
+            timeOut: 6000,
+            positionClass: 'toast-top-center'
           });
+          
           // vaciar builderCards
           this.builderCards = [];
         },
         error: (error: any) => {
           console.log('Error adding cards to deck:', error);
+          this.toastr.error('Ha habido un error', 'Error', {
+            timeOut: 4000,
+            positionClass: 'toast-top-center'
+          });
         }
       });
   
