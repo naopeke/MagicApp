@@ -206,3 +206,8 @@ h3.detalle_evento_descripcion{
     position: relative;
     z-index:999; 
 }
+
+.mat-calendar.highlight-event{
+    background-color: var(--amarillo);
+    color: var(--blanco);
+}

@@ -111,6 +111,8 @@ export class CalendarioComponent implements OnInit {
         eventDate.getMonth() === date.getMonth() &&
         eventDate.getDate() === date.getDate();
     });
+    console.log("datos de eventos:", this.eventos);
+    
     return highlightDate ? 'highlight-event' : '';
   }
 
