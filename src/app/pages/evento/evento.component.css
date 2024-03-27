@@ -75,27 +75,27 @@
     width: 30%;
     text-align: center;
     margin: -50px auto;
-    position: relative;  /*padre*/
+    position: relative;  /*!padre*/
   }
   #img_evento{
     display: block;
     margin: 0 auto;
-    position: absolute; /*hijo*/
+    position: absolute; /*!hijo*/
     width: 160px;
     top: 25px;
     left: 16px;
     z-index: 4;
   }
   .marco {
-    position: absolute; /*hijo*/
+    position: absolute; /*!hijo*/
     width: 180px;
     top: 10px;
     left: 10px;
     z-index: 3;
   }
   .nameuser {
-    position: absolute; /*hijo*/
-    bottom:60px;
+    position: absolute; /*!hijo*/
+    bottom: 14px;
     right: 38px;
     font-size: 15px;
     color:var(--negro);
@@ -112,6 +112,7 @@
   }
   #div_info_evento{
     width: 65%;
+    position: relative; /*! padre de sabermas boton*/
   }
   #div_info_evento p{
     color: var(--blanco);
@@ -123,6 +124,11 @@
     display: flex; 
     align-items: center; 
     /* padding: 6px; */
+  }
+  .parr_img p {     /*!añadido para cuando item.place y item.direction es largo, va a ir a siquiente row*/
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 /* Fin Card Evento */
 
@@ -136,10 +142,14 @@
     font-size: 18px;
   }
   #button_sabermas{
+    position: absolute; /*!hijo de #div_info_evento*/
+    bottom: -38px;
+    right: 40px;
     height: 40px;
     width: 20%;
     color: var(--negro);
     margin-top: 10px;
+    z-index: 6;
   }
   .btnBuscador {
     width: 60px;
