@@ -85,14 +85,11 @@ input::placeholder {
 
 .bg-cards {
     background-color: var(--negro-bg);
-    min-height: 500px; /* 最低限の高さを設定 */
-    width: 90vw; /* ウィンドウの幅の90%を使用する */
-    min-width: 300px; /* 最小でも300pxは保持する */
-    height: auto; /* 高さは内容に応じて変わる */
-    overflow: hidden; /* コンテンツがはみ出たら非表示にする */
-    /* min-height: 700px;
+    min-height: 500px;
     width: 90vw;
-    height: auto; */
+    min-width: 300px;
+    height: auto;
+    overflow: hidden;
     padding: 30px;
     border-radius: 30px;
     margin-top:180px;

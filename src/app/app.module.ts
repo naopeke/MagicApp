@@ -68,6 +68,7 @@ import { PriceEuroPipe } from './pipe/price-euro.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { AddEventComponent } from './components/add-event/add-event.component';
+import { CardSymbolsPipe } from './pipe/card-symbols.pipe';
 
 
 @NgModule({
@@ -100,6 +101,7 @@ import { AddEventComponent } from './components/add-event/add-event.component';
     DetailEventComponent,
     PriceEuroPipe,
     WarningModalComponent,
+    CardSymbolsPipe,
   ],
 
   imports: [

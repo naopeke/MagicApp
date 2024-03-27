@@ -48,4 +48,10 @@ export class CardsService {
     return this.http.post(urlAddToDeck, { ids: cardApiIds, id_user: userId, indexDeck: indexDeck });
   }  
 
+
+  public fetchCardSymbols(): Observable<any> {
+    let urlSymbols = `${this.url}/cartas/symbols`;
+    return this.http.get(urlSymbols);
+  }
+
 }

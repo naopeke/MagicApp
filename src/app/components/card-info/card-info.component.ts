@@ -19,6 +19,8 @@ export class CardInfoComponent implements OnInit{
 
   public legalities: any[] = []; // para bucle de legalities
 
+  public cardSymbolsData: any[] = []; // para card symbols
+
 
   // recibir el object de legalities y convertir a un array con map function
   // format : tipo de reglas ex.standard, modern, commander
@@ -47,12 +49,16 @@ export class CardInfoComponent implements OnInit{
 
 
   
-  constructor(public cardsService: CardsService){}
+  constructor(private cardsService: CardsService){}
 
   ngOnInit(): void {
     console.log('carta: ', this.carta); 
     this.legalities = this.changeLegalitiesToArray(this.carta.legalities);
 
+    this.cardsService.fetchCardSymbols().subscribe(data => {
+      this.cardSymbolsData = data;
+      console.log('mana data: ', this.cardSymbolsData);
+    });
 }
 
 }

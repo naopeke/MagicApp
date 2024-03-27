@@ -2,6 +2,7 @@
     /* border:2px solid orange; */
     z-index: 10000;
     height: 900px;
+    width:auto;
 }
 
 
@@ -84,11 +85,37 @@
 
 }
 
-
 img{
     width: 284px;
     height: 363px ;
+    border-radius: 13px;
 }
+
+.oracle-text {
+ color:var(--blanco);
+}
+
+.card-price-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+    background-color:var(--verde);
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  
+  .card-price-label {
+    font-weight: bold;
+    color: #f3f3f3;
+    margin-right: 5px;
+  }
+  
+  .card-price-value {
+    font-size: 20px;
+    color: #f3f3f3;
+    font-weight: bold;
+  }
 
 .pie_photo{
     color: #b3b3b3;
@@ -157,4 +184,29 @@ img{
 .name_button_type{
     padding-top: 5px;
     font-size: 20px;
+}
+
+@media screen and (max-width: 1171px) {
+    .box_right {
+        min-height: 900px;
+        overflow-y: auto;
+    }
+}
+
+
+@media screen and (max-width: 1169px) {
+    .box_right {
+        max-height: 800px;
+        overflow-y: auto;
+    }
+}
+
+
+
+
+@media screen and (max-width: 943px) {
+    .box_right {
+        max-height: 900px;
+        overflow-y: auto;
+    }
 }

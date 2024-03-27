@@ -1,5 +1,7 @@
 <header>
-    <div id="img_header" routerLink="home"><img src="../../../assets/images/Logo.png" alt="MagyDeck"></div>
+    <div id="img_header" [routerLink]="usersService.isLoginSubject.value ? 'home' : 'landing-page'">
+        <img src="../../../assets/images/Logo.png" alt="MagyDeck">
+    </div>
    
     <div class="dropdown">
         <button class="button_lateral" routerLink="register"  *ngIf="!usersService.isLoginSubject.value">Iniciar sesión</button>

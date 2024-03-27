@@ -206,3 +206,9 @@ h3.detalle_evento_descripcion{
     position: relative;
     z-index:999; 
 }
+
+.highlight-event {
+    background-color: #C38A31;
+    color: white;
+  }
+  
