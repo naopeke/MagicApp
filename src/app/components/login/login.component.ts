@@ -54,10 +54,12 @@ public login(){
         user = resp.data;
         this.myUsersService.user = user;
         this.router.navigate(['/home']);
-      } 
+      } else {
+        console.log('error');
+      }
     },
     error: (error) => {
-      this.toastr.error('El usuario no se encuentra', "");
+      this.toastr.error('El usuario no se encuentra', "", {timeOut: 4000, positionClass: 'toast-top-center'});
       console.log('Login error:', error);
     }
   });

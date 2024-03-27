@@ -53,28 +53,31 @@ export class RegisterComponent implements OnInit {
     this.show_login = show;
   }
 
-  public register(){
+  public register() {
     let registerData = this.registerForm.value;
-
-    let newUser: User = new User (null, registerData.nameUser, registerData.emailUser,
-      registerData.passwordUser);
-
-      this.myUsersService.register(newUser)
-      .subscribe((resp: Response)=>{
-        if(!resp.err){
-          console.log(resp)
-          this.toastr.success("Usuario insertado con éxito","");  
+  
+    let newUser: User = new User(null, registerData.nameUser, registerData.emailUser, registerData.passwordUser);
+  
+    this.myUsersService.register(newUser).subscribe({
+      next: (resp: Response) => {
+        if (!resp.err) {
+          console.log(resp);
+          this.toastr.success("Usuario insertado con éxito", "");  
           this.registerForm.reset({'nameUser': '', 'emailUser': '', 'passwordUser': '', 'repeatPassword': ''});
           this.myUsersService.user = null; 
-          this.myClass=true; 
+          this.myClass = true; 
           this.show_login = true; 
-        }else{
+        } else {
           console.error('error');
-          this.toastr.error("El usuario ya existe","", 
-            {timeOut: 2000, positionClass: 'toast-top-center'});
         }
-      }) 
+      },
+      error: (error) => {
+        this.toastr.error("El usuario ya existe", "", {timeOut: 4000, positionClass: 'toast-top-center'});
+        console.error('Registration error:', error);
+      }
+    });
   }
+  
 
 
   ngOnInit(): void {
