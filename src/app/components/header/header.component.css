@@ -67,6 +67,9 @@ img{
 .linkActive:hover {
     opacity: 1;
 }
+.active-link {
+    opacity: 1 !important;
+}
 header nav {
 	z-index:1000;
 	width:100%;
