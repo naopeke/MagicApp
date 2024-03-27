@@ -63,7 +63,8 @@
   }
   #divEvento h1{
     text-align: center;
-    padding-top: 10px;
+    padding-top: 27px;
+    padding-bottom: 10px;
     size: 20px;
   }
   #contenedor_info{
@@ -74,10 +75,31 @@
     width: 30%;
     text-align: center;
     margin: -50px auto;
+    position: relative;  /*padre*/
   }
   #img_evento{
     display: block;
     margin: 0 auto;
+    position: absolute; /*hijo*/
+    width: 160px;
+    top: 25px;
+    left: 16px;
+    z-index: 4;
+  }
+  .marco {
+    position: absolute; /*hijo*/
+    width: 180px;
+    top: 10px;
+    left: 10px;
+    z-index: 3;
+  }
+  .nameuser {
+    position: absolute; /*hijo*/
+    bottom:60px;
+    right: 38px;
+    font-size: 15px;
+    color:var(--negro);
+    z-index: 5;
   }
   #divImg h2{
     text-align: center;

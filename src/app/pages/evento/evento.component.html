@@ -20,8 +20,9 @@
         <h1>{{ item.title }}</h1>
         <div id="contenedor_info">
             <div id="divImg">
+                <img src="./assets/images/detalleEvento/legend.png" class="marco">
                 <img id="img_evento" src="{{item.creator.avatar}}" width="200px">
-                <h2>{{ item.creator.nameUser }}</h2>
+                <h2 class="nameuser">{{ item.creator.nameUser }}</h2>
             </div>
     
             <div id="div_info_evento">
@@ -31,7 +32,7 @@
                     <p>&nbsp;&nbsp;{{ item.hour }}</p>
                 </div>
                 <div class="parr_img">
-                    <img class="icono_evento" src="../../../assets/images/iconos/lugar_evento.png" width="30px">
+                    <img class="icono_evento" src="../../../assets/images/iconos/lugar_evento.png" width="28px">
                     <p>&nbsp;&nbsp;{{ item.place }}   ,   {{ item.direction }}</p>
                 </div> 
                 <div>
