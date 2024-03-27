@@ -186,6 +186,15 @@
   }
 /* fin pagination */
 
+/* modal detalle evento */
+
+.modalEvent{
+  position: absolute;
+  top: 420px;
+  right:500px;
+  z-index: 999;
+}
+
 @media (max-width: 768px) {
   #img_evento {
     width: 80%; /* Ajusta el tamaño según tu diseño */

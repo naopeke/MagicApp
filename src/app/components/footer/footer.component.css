@@ -8,9 +8,7 @@ footer{
     justify-content: center;
     align-items: center;
 }
-p{
-    color:  var(--blanco);
-}
+
 #divpieFooter{
     /* border: var(--morado-2paints) solid 1px; */
     width: 90%;
@@ -26,6 +24,7 @@ img{
     align-items: center;
     justify-content: center;
 }
-p{
+.texto{
     font-family: var(--inter);
+    color:  var(--blanco);
 }

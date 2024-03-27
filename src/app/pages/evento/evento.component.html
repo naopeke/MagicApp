@@ -38,9 +38,6 @@
                     <button id="button_sabermas" (click)="openModalDetail(item)">Saber más</button>
                 </div> 
 
-                <div *ngIf="modalDetail == true" class="modalEvent">
-                    <app-detail-event [evento] = "selectEvento"  (eventCloseDetail) = closeModal($event) [type]=1 [user]="id_logueado"></app-detail-event>
-                </div>
             </div>
 
             <div id="icono_elim_edit" *ngIf="item.creator.id_user === id_logueado">
@@ -53,6 +50,9 @@
     <div>
         <!--MODAL edit--><div *ngIf="modalEdit == true" class="modalEdit"><app-edit-event [evento] = "evento" (eventClose) = closeModal($event)></app-edit-event></div>
         <!-- MODAL delete--> <app-delete-event *ngIf="getModalDeleteEvent()" [eventoAEliminar]="eventoABorrar" ></app-delete-event>
+        <div *ngIf="modalDetail == true" class="modalEvent">
+            <app-detail-event [evento] = "selectEvento"  (eventCloseDetail) = closeModalSaberMas($event) [type]=2 [user]="id_logueado"></app-detail-event>
+        </div>
        
     </div> 
 
