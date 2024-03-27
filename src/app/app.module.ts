@@ -116,7 +116,6 @@ import { AddEventComponent } from './components/add-event/add-event.component';
       closeButton: true,
       timeOut: 3000
     }),
-
     // angular material
     MatSidenavModule,
     MatGridListModule,

@@ -37,10 +37,11 @@ export class DeckService {
     return this.http.get(this.urlExplora + '/deck/' + nameDeck)
   }
 
-  public putMediaScore(score:number, id_deck:number){
+  public putMediaScore(id_user:number,id_deck:number, score:number){
     const body = {
-      score: score,
-      id_deck: id_deck
+      id_user: id_user,
+      id_deck: id_deck,
+      score: score
     }
     return this.http.put(this.urlExplora + '/mediaScore', body)
   }

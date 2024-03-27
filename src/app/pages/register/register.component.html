@@ -18,14 +18,20 @@
                     </div>
                 </div>
                 <div class="form-group"> 
-                    <input type="password" placeholder="Contraseña" formControlName="passwordUser" [ngClass]="{'is-invalid': (registerForm.get('passwordUser').dirty || registerForm.get('passwordUser').touched) && !registerForm.get('passwordUser').valid}">
+                    <input [type]="changetype1?'password': 'text' " placeholder="Contraseña" formControlName="passwordUser" [ngClass]="{'is-invalid': (registerForm.get('passwordUser').dirty || registerForm.get('passwordUser').touched) && !registerForm.get('passwordUser').valid}">
+                    <span class="eyeicon" (click)="viewPass(1)"> 
+                        <mat-icon>{{ visible1 ? 'visibility' : 'visibility_off' }}</mat-icon>
+                    </span>
                     <div *ngIf="!registerForm.get('passwordUser').valid" class="invalid-feedback">
                         <div *ngIf="registerForm.get('passwordUser').errors.required">La contraseña es necesaria.</div>
                         <div *ngIf="registerForm.get('passwordUser').errors.minLength">La contraseña tiene que tener un mínimo de 8 carácteres.</div>
                     </div>
                 </div>
                 <div class="form-group"> 
-                    <input type="password" placeholder="Repite Contraseña" formControlName="repeat_password" [ngClass]="{'is-invalid': (registerForm.get('repeat_password').dirty || registerForm.get('repeat_password').touched) && !registerForm.get('repeat_password').valid}" >
+                    <input [type]="changetype2?'password': 'text' " placeholder="Repite Contraseña" formControlName="repeat_password" [ngClass]="{'is-invalid': (registerForm.get('repeat_password').dirty || registerForm.get('repeat_password').touched) && !registerForm.get('repeat_password').valid}" >
+                    <span class="eyeicon" (click)="viewPass(2)"> 
+                        <mat-icon>{{ visible2 ? 'visibility' : 'visibility_off' }}</mat-icon>
+                    </span>
                     <div *ngIf="!registerForm.get('repeat_password').valid" class="invalid-feedback">
                         <div *ngIf="registerForm.get('repeat_password').errors.required">La contraseña es necesaria.</div>
                         <div *ngIf="registerForm.get('repeat_password').errors.matchPassword">La contraseña tiene que ser la misma.</div>

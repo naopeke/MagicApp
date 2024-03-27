@@ -18,6 +18,12 @@ export class RegisterComponent implements OnInit {
   public myClass:boolean = false; 
   public show_login:boolean = false; 
   public user: User; 
+  public visible1:boolean = true
+  public changetype1:boolean = true
+  public visible2:boolean = true
+  public changetype2:boolean = true
+
+ 
 
   constructor(public myUsersService: UsersService, 
               private formBuilder: FormBuilder, 
@@ -82,6 +88,9 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }  
-
+  viewPass(password: number){
+    password == 1 ? (this.visible1 = !this.visible1, this.changetype1 = !this.changetype1)
+                  : (this.visible2 = !this.visible2, this.changetype2 = !this.changetype2)
+  }
 
 }
