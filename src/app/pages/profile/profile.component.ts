@@ -11,11 +11,12 @@ import { UsersService } from 'src/app/shared/users.service';
 })
 export class ProfileComponent implements OnInit {
   
-  public editarFoto = false
+  
   public editForm: FormGroup
   public editPassword: FormGroup
   public editar: boolean = false
   public editarPass: boolean = false
+  public editarFoto = false
   
   public modal: boolean = false
 
@@ -53,8 +54,6 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.userService.currentUserChanges().subscribe(user =>{
       this.user = user
-      console.log(user);
-      
       })
       this.buildForm();
       this.buildForm2() 
@@ -101,22 +100,33 @@ export class ProfileComponent implements OnInit {
 
   public save(){
     if(!this.editForm.invalid){
+
+      let originalUser = { ...this.user };
+
       let editValues = this.editForm.value
       this.user.nameUser = editValues.name
       this.user.emailUser = editValues.email
       this.user.description = editValues.description
+
       this.userService.putProfile(this.user).subscribe((res:any) =>{
         if(!res.error){
+          this.editForm.patchValue({
+            name: this.user.nameUser,
+            email: this.user.emailUser,
+            description: this.user.description
+          });
           this.toastr.success(res.mensaje, '¡Éxito!')
+          this.editForm.disable();
         } else {
           this.toastr.error(res.mensaje, '¡Ups!')
+          this.user = { ...originalUser };
+          this.buildForm();
+          this.editForm.disable();
         }
       })
-     } else {
-      this.toastr.error('Datos no validos', '¡Ups!')
-      }
+     } 
+     
       this.editar = false
-      this.editForm.disable();
   }
 
   public editPass(){
