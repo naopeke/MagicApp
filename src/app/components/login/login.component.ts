@@ -44,20 +44,23 @@ public login(){
                             userFormData.emailUser, 
                             userFormData.passwordUser);
 
-  this.myUsersService.login(user)
-  .subscribe((resp: Response)=>{
-    if(!resp.err){
-      this.toastr.success('Usuario logueado con éxito', "");
-      this.loginForm.reset({'emailUser': '', 'passwordUser': ''});
-      // this.myUsersService.loggedIn = true;
-      this.myUsersService.isLoginSubject.next(true);
-      user = resp.data;
-      this.myUsersService.user = user; 
-      this.router.navigate(['/home']);
-    }else{
+  this.myUsersService.login(user).subscribe({
+    next: (resp: Response) => {
+      if (!resp.err) {
+        this.toastr.success('Usuario logueado con éxito', "");
+        this.loginForm.reset({'emailUser': '', 'passwordUser': ''});
+        // this.myUsersService.loggedIn = true;
+        this.myUsersService.isLoginSubject.next(true);
+        user = resp.data;
+        this.myUsersService.user = user;
+        this.router.navigate(['/home']);
+      } 
+    },
+    error: (error) => {
       this.toastr.error('El usuario no se encuentra', "");
+      console.log('Login error:', error);
     }
-  })
+  });
 }
 
 public loginClose(){
