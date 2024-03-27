@@ -118,7 +118,6 @@ import { CardSymbolsPipe } from './pipe/card-symbols.pipe';
       closeButton: true,
       timeOut: 3000
     }),
-
     // angular material
     MatSidenavModule,
     MatGridListModule,

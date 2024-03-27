@@ -11,11 +11,12 @@ import { UsersService } from 'src/app/shared/users.service';
 })
 export class ProfileComponent implements OnInit {
   
-  public editarFoto = false
+  
   public editForm: FormGroup
   public editPassword: FormGroup
   public editar: boolean = false
   public editarPass: boolean = false
+  public editarFoto = false
   
   public modal: boolean = false
 
@@ -38,6 +39,14 @@ export class ProfileComponent implements OnInit {
   public user: User | null = {}
   public currentUser: User | null;
 
+  public visible1:boolean = true
+  public changetype1:boolean = true
+
+  public visible2:boolean = true
+  public changetype2:boolean = true
+
+
+
   constructor(private formBuilder: FormBuilder,
               public userService: UsersService,
               private toastr: ToastrService){
@@ -45,38 +54,13 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.userService.currentUserChanges().subscribe(user =>{
       this.user = user
-      console.log(user);
-      
       })
       this.buildForm();
       this.buildForm2() 
       this.editForm.disable();
       this.editPassword.disable();
-    // this.getProfile();
   }
 
-  // Obtener datos perfil
-  public getProfile(){
-    // this.userService.getProfile(this.user.id_user).subscribe((res:any) =>{
-
-    //   if(!res.error){
-    //     this.user = res.data[0];
-
-    //     this.editForm.patchValue({
-    //       name:this.user.nameUser,
-    //       email: this.user.emailUser,
-    //       description: this.user.description
-    //     })
-        
-    //     this.editForm.disable();
-    //     this.editPassword.disable();
-
-    //   } else {
-    //     this.toastr.error(res.mensaje, '¡Ups!')
-    //   }
-    // })
-  }
-  
   // MODIFICAR DATOS PERFIL
   private buildForm(){
 
@@ -116,22 +100,33 @@ export class ProfileComponent implements OnInit {
 
   public save(){
     if(!this.editForm.invalid){
+
+      let originalUser = { ...this.user };
+
       let editValues = this.editForm.value
       this.user.nameUser = editValues.name
       this.user.emailUser = editValues.email
       this.user.description = editValues.description
+
       this.userService.putProfile(this.user).subscribe((res:any) =>{
         if(!res.error){
+          this.editForm.patchValue({
+            name: this.user.nameUser,
+            email: this.user.emailUser,
+            description: this.user.description
+          });
           this.toastr.success(res.mensaje, '¡Éxito!')
+          this.editForm.disable();
         } else {
           this.toastr.error(res.mensaje, '¡Ups!')
+          this.user = { ...originalUser };
+          this.buildForm();
+          this.editForm.disable();
         }
       })
-     } else {
-      this.toastr.error('Datos no validos', '¡Ups!')
-      }
+     } 
+     
       this.editar = false
-      this.editForm.disable();
   }
 
   public editPass(){
@@ -157,6 +152,7 @@ export class ProfileComponent implements OnInit {
     }
     this.editarPass = false
     this.editPassword.disable();
+    this.editPassword.reset()
   }
 
   public cancel(){
@@ -197,7 +193,13 @@ export class ProfileComponent implements OnInit {
     this.editarFoto = false
     this.modal = false
   }
+  
+  // mostrar contraseña
 
+  viewPass(password: number){
+    password == 1 ? (this.visible1 = !this.visible1, this.changetype1 = !this.changetype1)
+                  : (this.visible2 = !this.visible2, this.changetype2 = !this.changetype2)
+  }
   // bordes inputs
 
   public borderColor(){

@@ -4,7 +4,9 @@ import { Router} from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Card } from 'src/app/models/card';
 import { Deck } from 'src/app/models/deck';
+import { User } from 'src/app/models/user';
 import { DeckService } from 'src/app/shared/deck.service';
+import { UsersService } from 'src/app/shared/users.service';
 
 
 @Component({
@@ -15,6 +17,7 @@ import { DeckService } from 'src/app/shared/deck.service';
 })
 export class ExploraComponent implements OnInit {
   
+  public currentUser: User | null;
   public datos: Deck[]
   public mazos: Deck[]
   public cards: Card[]
@@ -35,13 +38,16 @@ export class ExploraComponent implements OnInit {
 
   constructor(private router:Router,
               private toastr:ToastrService,
-              public deckService: DeckService){
+              public deckService: DeckService,
+              public userService: UsersService){
   }
 
   ngOnInit(): void {
+    this.userService.currentUserChanges().subscribe(user =>{
+      this.currentUser = user
+    })
     this.getSharedDecks();
     this.getVotedDeck();
-    
   }
 
   public getSharedDecks(){
@@ -78,9 +84,7 @@ export class ExploraComponent implements OnInit {
   public filtro(filter:string, style:number){
     this.filter = filter
     this.style = style
-    console.log(filter);
     this.seleccionMazo(this.id_deck)
-    
   }
 
   public seleccionMazo(id_deck:number){
@@ -89,32 +93,29 @@ export class ExploraComponent implements OnInit {
     this.deckService.getDeckById(this.id_deck, this.filter).subscribe((res:any) => {
       if(!res.error){
         this.mazo.nameDeck = res.data.nameDeck
-        console.log(this.mazo);
-        
         this.mazo.cards = res.data.cards
         this.router.navigateByUrl('/explora#exploraSection')
-        console.log(this.mazo);
       } else {
         this.explorar = false
         this.toastr.error(res.mensaje, '¡Ups!')
       }
     })
-
   }
   
   public totalQuantity(deck:Deck){
     return deck.cards.reduce((ammount, card) => ammount + card.quantity, 0);
   }
+
   public score(event:{id_deck:number, score:number}){
     this.mazos.find ((deck) => {
       if(deck.id_deck == event.id_deck){
-        this.deckService.putMediaScore(event.score,event.id_deck).subscribe((res:any) => {
+        this.deckService.putMediaScore(this.currentUser.id_user,event.id_deck, event.score).subscribe((res:any) => {
           if(!res.error){
             this.getVotedDeck();
             this.getSharedDecks();
             this.toastr.success(`Has dado una puntuación de ${event.score}`, '¡Gracias por votar!')
           } else {
-            this.toastr.error(res.me)
+            this.toastr.error(res.mensaje, 'Ups')
           }
         })
       } else {
@@ -122,10 +123,10 @@ export class ExploraComponent implements OnInit {
         }
     })
   }
-  
+
   public close(){
-   this.explorar = false
-   this.router.navigateByUrl('/explora')
+    this.explorar = false
+    this.router.navigateByUrl('/explora')
   }
   
   public idCard(id_card:number){
@@ -135,7 +136,6 @@ export class ExploraComponent implements OnInit {
     this.card = this.mazo.cards.find(carta => carta.id === cartaId);
     if (this.card) {
       this.showCardInfo = true;
-
       setTimeout(() => {
         this.animation = true
       },100)
@@ -147,10 +147,6 @@ export class ExploraComponent implements OnInit {
     setTimeout(() => {
       this.showCardInfo = event
     },800)
-
   }
-  
-
-
 
 }

@@ -64,3 +64,15 @@ button.btn-close{
     height: 42px;
     right: -11px;
 }
+
+.form-group{
+    position: relative;
+
+}
+
+.eyeicon{
+    position: absolute;
+    right: 15px;
+    top: 22px;
+    cursor: pointer;
+}

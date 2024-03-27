@@ -341,6 +341,9 @@ swiper-container{
     display: flex;
     justify-content: center;
     align-items: flex-end;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 .registrate{
@@ -621,6 +624,9 @@ img-container{
 .comparte-container{
     height: 675px;
     background-image: url('src/assets/images/landing/islaLandingPage.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .comparte{
@@ -785,6 +791,9 @@ img-container{
 
 .castillo{
     background-image: url('src/assets/images/landing/castillo_landing.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     height: 775px;
 }
 
