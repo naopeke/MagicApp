@@ -27,6 +27,7 @@ export class CardSymbolsPipe implements PipeTransform {
   //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace
   //https://www.w3resource.com/javascript-exercises/fundamental/javascript-fundamental-exercise-239.php
   //https://es.stackoverflow.com/questions/49125/c%C3%B3mo-eliminar-o-reemplazar-todas-las-subcadenas-de-un-string-en-javascript
+  // Esto también vale para  {½}, {∞} etc   "symbol": "{∞}",
   private escapeRegExp(string: string) {
     return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   }

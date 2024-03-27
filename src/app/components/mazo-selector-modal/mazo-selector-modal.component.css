@@ -88,3 +88,22 @@ li span {
 li:hover span {
     transform: translateX(0.15em);
 }
+
+
+@media screen and (max-width: 826px) {
+    img {
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 759px) {
+    .deck-lists ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding:0;
+        margin:0;
+    }
+}
