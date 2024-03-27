@@ -59,7 +59,7 @@ img{
     transition: all 0.3s ease;
 }
 .linkActive{
-    opacity: 0.7;
+    opacity: 0.5;
 }
 .linkActive:active {
     opacity: 1;
