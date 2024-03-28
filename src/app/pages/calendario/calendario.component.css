@@ -7,10 +7,10 @@
     display: flex;
     position: relative; 
     z-index: 0;
-    transition: background 1s ease;
+    /* transition: background 1s ease; */
 }
 
-.main_dark{
+/* .main_dark{
     background-image: url('src/assets/images/calendario/fondoCastillo.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -22,7 +22,7 @@
     position: relative;
     z-index: 4;
     transition: background 1s ease;
-}
+} */
 
 .cuadroIzq{
     height: 1100px;
@@ -89,7 +89,7 @@ span.mat-calendar-body-cell-content.mat-focus-indicator.mat-calendar-body-select
 }
 .mat-calendar-body-selected.mat-calendar-body-selected:not(.mat-calendar-body-today) {
     background-color: var(--morado)
-  }
+}
 
 .mat-calendar-body-today{
     background-color: var(--verde);
@@ -149,20 +149,20 @@ h1.title_date{
 h2.titulo_evento{
     color:var(--blanco);
     font-family: var(--antiqua);
-    font-size: 24px;
+    font-size:18px;
 }
 
 h3.detalle_evento_lugar{
     color: var(--blanco);
     font-family: var(--inter);
-    font-size: 20px; 
+    font-size: 16px; 
     margin-top: 3px;
 }
 
 h3.detalle_evento_descripcion{
     color: var(--blanco);
     font-family: var(--inter);
-    font-size: 20px; 
+    font-size: 16px; 
     margin-top: 3px; 
 }
 
@@ -186,12 +186,15 @@ h3.detalle_evento_descripcion{
 }
 
 .detailEvent{
-    color: var(--amarillo);
+    height: 45px;
+    padding: 5px;
+    width: 180px;
+    margin-top: 30px;
+    border-radius: var(--borde-boton);
     border: none;
-    background-color: transparent;
-    text-decoration: underline;
-    margin-bottom: 50px;
-    margin-left: 50px;
+    background-color: var(--amarillo);
+    font-family: var(--antiqua);
+    margin-bottom: 30px;
 }
 
 .sinEventos{
