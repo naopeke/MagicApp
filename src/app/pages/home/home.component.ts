@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
   public eventoCom: Eventos[];
   public bestMazos: Deck[]
   public selectEvento: Eventos | undefined
+  public type:number;
 
   constructor(public eventoService: EventosService,
               public userService:UsersService,
@@ -47,14 +48,10 @@ ngOnInit(): void {
 
   public getMyEvents(){
     this.eventoService.getMyEventsHome(this.currentUser.id_user).subscribe((res:any) =>{
-      
       if(!res.error){
         this.eventosProx = res.data
-        console.log(this.eventosProx[0].avatar);
+        console.log(this.eventosProx);
         
-      }
-      else {
-        this.toastr.info(res.mensaje, '¡Ups!')
       }
     })
   }
@@ -81,7 +78,12 @@ ngOnInit(): void {
   }
   
   public openModal(evento:Eventos){
-    this.selectEvento = evento
+      this.selectEvento = evento
+      if( this.selectEvento.creatorEvent == 1){
+        this.type = 3
+      } else {
+        this.type = 1
+      }
     this.modalDetail = true
   }
   public openModal2(evento:Eventos){

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Eventos } from 'src/app/models/eventos';
 import { User } from 'src/app/models/user';
@@ -18,14 +19,12 @@ export class DetailEventComponent implements OnInit{
   public openModal:boolean = false
 
   constructor(public eventoService: EventosService,
-              private toastr: ToastrService){}
+              private toastr: ToastrService,
+              private router:Router){}
 
 
   ngOnInit() {
-    this.getparticipantes();
-    console.log(this.evento);
-    console.log(this.user);
-    
+    this.getparticipantes();    
   }
 
   getparticipantes(){
@@ -33,15 +32,15 @@ export class DetailEventComponent implements OnInit{
       if(!res.error){
         this.evento.participants = [];
         res.data.forEach(evento => {
-          if(evento.creator == 1){
+          console.log(res.data);
+          
+          if(evento.creatorEvent == 1){
             this.evento.creator = evento.nameUser
           } else {
             this.evento.participants.push(new User(evento.id_user, evento.nameUser))
           }
         });
-      } else{
-        this.toastr.error(res.mensaje, '¡Ups!')
-      }
+      } 
     })
   }
 
@@ -65,11 +64,13 @@ export class DetailEventComponent implements OnInit{
   abandonar(){
     this.eventoService.deleteParticipacion(this.user.id_user, this.evento.id_event).subscribe((res:any) =>{
       if(!res.error){
-        this.toastr.success(res.mensaje, 'Éxito')
+        this.toastr.error(res.mensaje, 'Éxito')
         this.getparticipantes(); 
-      } else{
-        this.toastr.error(res.mensaje, '¡Ups!' )
       }
     })
+  }
+
+  editar(){
+    this.router.navigate(['/evento']);
   }
 }

@@ -95,10 +95,9 @@
 .infoDescription{
     text-align: left
 }
-.buttonParticipar{
+.buttonParticipar, .buttonEliminar{
     height: 50px;
     width: 200px;
-    background-color: var(--verde);
     border-radius: var(--borde-boton);
     font-family: var(--antiqua);
     font-size: 14pt;
@@ -106,9 +105,18 @@
 
     border: none;
 }
-
-.buttonParticipar:hover{
+.buttonParticipar{
+    background-color: var(--verde);
+}
+.buttonEliminar{
+    background-color: var(--rojo);
+}
+.buttonParticipar:hover, .buttonEliminar:hover{
     background-color: var(--amarillo);
+}
+.botonesEliminarEditar{
+    display: flex;
+    gap:20px
 }
 
 #closeDetail{

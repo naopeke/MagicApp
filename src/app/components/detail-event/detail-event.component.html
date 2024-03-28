@@ -65,9 +65,12 @@
         <!--ESTE no le quereis para el calendario-->
         <button *ngIf="type == 2" class="buttonParticipar" (click)="participar()">Participar</button>
         <!-- si eres el creador -->  <!-- Te elimina el evento -->
-        <button *ngIf="type == 3" class="buttonParticipar" (click)="Eliminar()">Eliminar</button>
-        <!-- Este navega a proximos eventos, con scroll hacia el tuyo(id_event) -->
-        <button *ngIf="type == 3" class="buttonParticipar" (click)="Editar()">Editar evento</button>
+        <div *ngIf="type == 3" class="botonesEliminarEditar">
+            <button  class="buttonEliminar" (click)="abandonar()">Eliminar</button>
+            <!-- Este navega a proximos eventos, con scroll hacia el tuyo(id_event) -->
+            <button class="buttonParticipar" (click)="editar()">Editar evento</button>
+        </div>
+       
 
     </div>
 
