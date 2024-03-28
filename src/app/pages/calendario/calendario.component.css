@@ -79,7 +79,7 @@ td.mat-calendar-body-label {
 span.mat-calendar-body-cell-content.mat-focus-indicator {
     color: var(--blanco);
     border-color: var(--blanco);
-    border-radius: 0;
+    border-radius: 10px;
     font-size: x-large;
 }
 
@@ -87,17 +87,21 @@ span.mat-calendar-body-cell-content.mat-focus-indicator.mat-calendar-body-select
     background-color: var(--verde);
     color: var(--blanco);
 }
+.mat-calendar-body-selected.mat-calendar-body-selected:not(.mat-calendar-body-today) {
+    background-color: var(--morado)
+  }
 
 .mat-calendar-body-today{
     background-color: var(--verde);
     border-color: var(--blanco) !important;
 }
 
-.mat-calendar.highlight-event{
+button.highlight-event::before {
     background-color: var(--amarillo);
-    color: var(--verde);
+    border-radius: 10px;
+    width: 111px;
+    margin-left: 7px;
 }
-
 
 .cuadroDcha{
     height: 1100px;
@@ -207,8 +211,3 @@ h3.detalle_evento_descripcion{
     z-index:999; 
 }
 
-.highlight-event {
-    background-color: #C38A31;
-    color: white;
-  }
-  

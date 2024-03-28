@@ -6,7 +6,7 @@
     <div class="cuadroIzq">
         
         <div class="titulo">Calendario</div>
-        <div id="calendar">
+        <div id="calendar" *ngIf="eventsLoaded">
             <mat-calendar [selected]="selectedDate" (selectedChange)="onDateChange($event)" [dateClass]="dateClass"></mat-calendar> 
         </div>
     </div>
@@ -29,6 +29,6 @@
         </div>
 
         <div *ngIf="modalSaberMas == true" class="modalDetailEvent">
-            <app-detail-event [evento]="evento" [type]="modalType" [user]="currentUser" (eventCloseDetail)="closeModal($event)"></app-detail-event>
+            <app-detail-event [evento]="evento" [type]="modalType" [user]="currentUser" [type] = 1 (eventCloseDetail)="closeModal($event)"></app-detail-event>
         </div>
 </div>
