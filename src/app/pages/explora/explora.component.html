@@ -82,7 +82,7 @@
                         <img src="../../../assets/images/explora/contador.png" alt="">
                         <p id="numCartas">{{totalQuantity(this.mazo) || 0}}/60</p>
                     </div>
-                    <cdk-virtual-scroll-viewport itemSize="40" class="bucleContainer">
+                    <cdk-virtual-scroll-viewport itemSize="40" class="bucleContainer2">
                         <div class="cartasContainer">
                             <div *cdkVirtualFor="let carta of mazo.cards">
                                 <app-card [templateCard] = "'type2'" [childCard] = "carta" 

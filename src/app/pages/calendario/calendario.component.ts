@@ -48,11 +48,10 @@ export class CalendarioComponent implements OnInit {
   ngOnInit(): void {
     this.usersService.currentUserChanges()
     .subscribe(user =>{
+      this.currentUser = user
       if (user){
         const id_user:number = this.usersService.getCurrentUserId();
         this.getEvents(); 
-        this.getEventsDate(new Date());
-        
       }
     })
   }
@@ -64,15 +63,18 @@ export class CalendarioComponent implements OnInit {
     if(id_user) {
       this.eventsService.getMyEventsCalendar(id_user)
       .subscribe((resp: Response)=> {
-        if(!resp.err){
-          this.eventos = resp.data; 
-          this.eventsLoaded = true;
+        this.eventos = resp.data
+        this.eventsLoaded = true
+    
+        // if(!resp.err){
+        //   this.eventos = resp.data; 
+        //   this.eventsLoaded = true;
           // this.toastr.success('Se han encontrado eventos', "",
           //                   {timeOut:2000, positionClass: "toast-top-center"});
-        }else{
+        // }else{
           // this.toastr.error('Evento no encontrado', "", 
           //           {timeOut: 2000, positionClass: 'toast-top-center'});
-        } 
+        // } 
       });
     } 
   }
@@ -184,13 +186,19 @@ export class CalendarioComponent implements OnInit {
 
   openModalDetailEvent(evento: Eventos){
     this.evento = evento;
-    evento.creator ? this.modalType = 0 : this.modalType = 1;
+    console.log(this.evento);
+    
+    this.modalType = this.evento.creatorEvent == 1 ? 3 : 1;
+    console.log(this.modalType);
+    
     this.modalSaberMas = true;
-    this.bg_dark = true; 
+    // this.bg_dark = true; 
+
   }
 
   closeModal(event: boolean){
-    this.modalSaberMas = false;
+    this.modalSaberMas = event;
+    this.getEvents();
   }
 
   formatDate(date: Date) {
