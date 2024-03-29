@@ -75,31 +75,34 @@
     width: 30%;
     text-align: center;
     margin: -50px auto;
-    position: relative;  /*!padre*/
+    position: relative; /*padre de marco-container*/
   }
-  #img_evento{
-    display: block;
+  .marco-container{
+    position:absolute;
+    bottom: 13px;
+    position: relative;
+    width: 192px; /* mismo como marco*/
+    height: auto; 
     margin: 0 auto;
-    position: absolute; /*!hijo*/
-    width: 160px;
-    top: 25px;
-    left: 16px;
-    z-index: 4;
+  }
+  #img_evento {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -56%);
+    width: 168px;
   }
   .marco {
-    position: absolute; /*!hijo*/
-    width: 180px;
-    top: 10px;
-    left: 10px;
-    z-index: 3;
+    width: 100%;
+    height: auto;
   }
   .nameuser {
-    position: absolute; /*!hijo*/
-    bottom: 14px;
-    right: 38px;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--negro);
     font-size: 15px;
-    color:var(--negro);
-    z-index: 5;
   }
   #divImg h2{
     text-align: center;
@@ -243,3 +246,5 @@
     width:30px
   }
 }
+
+

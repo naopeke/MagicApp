@@ -20,9 +20,15 @@
         <h1>{{ item.title }}</h1>
         <div id="contenedor_info">
             <div id="divImg">
-                <img src="./assets/images/detalleEvento/legend.png" class="marco">
+
+                <div class="marco-container"> <!-- nuevo div para usar position relative -->
+                    <img src="../../../assets/images/detalleEvento/legend.png" class="marco">
+                    <img id="img_evento" src="{{item.creator.avatar}}" width="200px">
+                    <h2 class="nameuser">{{ item.creator.nameUser }}</h2>
+                </div>
+                <!-- <img src="../../../assets/images/detalleEvento/legend.png" class="marco">
                 <img id="img_evento" src="{{item.creator.avatar}}" width="200px">
-                <h2 class="nameuser">{{ item.creator.nameUser }}</h2>
+                <h2 class="nameuser">{{ item.creator.nameUser }}</h2> -->
             </div>
     
             <div id="div_info_evento">
