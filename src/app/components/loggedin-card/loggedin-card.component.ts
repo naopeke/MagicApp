@@ -77,8 +77,8 @@ export class LoggedinCardComponent implements OnInit {
       console.log('Added to Builder: ', this.builderCards);
     } else {
       // si existe, toastr
-      this.toastr.info('Esta carta ya ha sido añadida al constructor', 'Información', {
-        timeOut: 7000,
+      this.toastr.info('Esta carta ya ha sido añadida al constructor. Después de añadir a tu mazo, puedes cambiar la cantidad en la pagina de "Mazos"', 'Información', {
+        timeOut: 10000,
         positionClass: 'toast-top-center'
       });
     }
@@ -182,7 +182,3 @@ export class LoggedinCardComponent implements OnInit {
   }
 
   }
-
-
-
-
