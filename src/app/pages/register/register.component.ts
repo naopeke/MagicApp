@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { UsersService } from 'src/app/shared/users.service';
-import { Response } from 'src/app/models/respuesta';
+import { Response } from 'src/app/models/response';
 import { ToastrService } from 'ngx-toastr';
 
 
@@ -67,20 +67,21 @@ export class RegisterComponent implements OnInit {
   
     this.myUsersService.register(newUser).subscribe({
       next: (resp: Response) => {
-        if (!resp.err) {
-          console.log(resp);
-          this.toastr.success("Usuario insertado con éxito", "");  
-          this.registerForm.reset({'nameUser': '', 'emailUser': '', 'passwordUser': '', 'repeatPassword': ''});
-          this.myUsersService.user = null; 
-          this.myClass = true; 
-          this.show_login = true; 
+        if (resp.err === true) {
+          console.error('Registration error:', resp);
+          this.toastr.error("El usuario ya existe", "", {timeOut: 4000, positionClass: 'toast-top-center'});
         } else {
-          console.error('error');
+          console.log(resp);
+          this.toastr.success("Usuario insertado con éxito", "");
+          this.registerForm.reset({'nameUser': '', 'emailUser': '', 'passwordUser': '', 'repeatPassword': ''});
+          this.myUsersService.user = null;
+          this.myClass = true;
+          this.show_login = true;
         }
       },
       error: (error) => {
-        this.toastr.error("El usuario ya existe", "", {timeOut: 4000, positionClass: 'toast-top-center'});
-        console.error('Registration error:', error);
+        this.toastr.error("Ha ocurrido un error durante el registro", "", {timeOut: 4000, positionClass: 'toast-top-center'});
+        console.error('Unexpected registration error:', error);
       }
     });
   }

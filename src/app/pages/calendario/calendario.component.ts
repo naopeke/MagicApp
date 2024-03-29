@@ -8,7 +8,7 @@ import { User } from 'src/app/models/user';
 import { UsersService } from 'src/app/shared/users.service';
 import { EventosService } from 'src/app/shared/eventos.service';
 import { ToastrService } from 'ngx-toastr';
-import { Response } from 'src/app/models/respuesta';
+import { Response } from 'src/app/models/response';
 import { Eventos } from 'src/app/models/eventos';
 
 @Component({
