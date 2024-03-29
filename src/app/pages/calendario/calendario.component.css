@@ -214,3 +214,53 @@ h3.detalle_evento_descripcion{
     z-index:999; 
 }
 
+
+
+
+@media screen and (max-width: 1902px) {
+    button.highlight-event::before {
+        width: 100px;
+    }
+}
+
+@media screen and (max-width: 1718px) {
+    button.highlight-event::before {
+        width: 95px;
+    }
+}
+
+@media screen and (max-width: 1649px) {
+    button.highlight-event::before {
+        width: 90px;
+    }
+}
+
+@media screen and (max-width: 1552px) {
+    button.highlight-event::before {
+        width: 85px;
+    }
+}
+
+@media screen and (max-width: 1505px) {
+    button.highlight-event::before {
+        width: 80px;
+    }
+}
+
+@media screen and (max-width: 1448px) {
+    button.highlight-event::before {
+        width: 75px;
+    }
+}
+
+@media screen and (max-width: 1407px) {
+    button.highlight-event::before {
+        width: 70px;
+    }
+}
+
+@media screen and (max-width: 1352px) {
+    button.highlight-event::before {
+        width: 85%;
+    }
+}

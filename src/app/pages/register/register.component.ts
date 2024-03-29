@@ -34,8 +34,9 @@ export class RegisterComponent implements OnInit {
 
   private buildForm(){
     let minLength: number = 8; 
+    let maxLength: number = 20; // para username
     this.registerForm = this.formBuilder.group({
-      nameUser: [, Validators.required],
+      nameUser: [, [Validators.required, Validators.maxLength(maxLength)]], 
       emailUser: [, [Validators.required, Validators.email]],
       passwordUser: [, [Validators.required, Validators.minLength(minLength)]],
       repeat_password: [, [Validators.required, Validators.minLength(minLength), this.checkPassword]]

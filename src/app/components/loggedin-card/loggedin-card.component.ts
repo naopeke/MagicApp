@@ -66,11 +66,22 @@ export class LoggedinCardComponent implements OnInit {
     }});
   }
 
-
-
-  onAddCardToBuilder(card: Card): void {
-    this.builderCards.push(card);
-    console.log('Added to Builder: ', this.builderCards);
+  public onAddCardToBuilder(card: Card): void {
+    // si existe misma carta de misma id en builderCards. devuelve true o false
+    //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
+    const cardExists = this.builderCards.some(existingCard => existingCard.id === card.id);
+  
+    // si no existe, push para añadir
+    if (!cardExists) {
+      this.builderCards.push(card);
+      console.log('Added to Builder: ', this.builderCards);
+    } else {
+      // si existe, toastr
+      this.toastr.info('Esta carta ya ha sido añadida al constructor', 'Información', {
+        timeOut: 7000,
+        positionClass: 'toast-top-center'
+      });
+    }
   }
 
 
@@ -120,7 +131,7 @@ export class LoggedinCardComponent implements OnInit {
         next: (response: any) => {
           console.log('Cards added to deck:', response);
 
-          this.toastr.info(`Añadido tu carta al mazo #${indexDeck + 1}`, 'Enhorabuena!', {
+          this.toastr.info(`Añadido tu carta al mazo #${indexDeck}`, 'Enhorabuena!', {
             timeOut: 6000,
             positionClass: 'toast-top-center'
 

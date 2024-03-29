@@ -8,7 +8,12 @@
             <form class="form"[formGroup]="registerForm" >
                 <div class="form-group"> 
                     <input type="text" placeholder="Nombre De Usuario" formControlName="nameUser" [ngClass]="{'is-invalid': (registerForm.get('nameUser').dirty || registerForm.get('nameUser').touched) && !registerForm.get('nameUser').valid}">
-                    <div *ngIf="!registerForm.get('nameUser').valid" class="invalid-feedback">El nombre es necesario.</div>
+                    <div *ngIf="registerForm.get('nameUser').errors.required && (registerForm.get('nameUser').dirty || registerForm.get('nameUser').touched)" class="invalid-feedback">
+                        El nombre es necesario.
+                    </div>
+                    <div *ngIf="registerForm.get('nameUser').errors.maxlength && (registerForm.get('nameUser').dirty || registerForm.get('nameUser').touched)" class="invalid-feedback">
+                    El nombre de usuario no puede tener más de 20 caracteres.
+                    </div>
                 </div>
                 <div class="form-group"> 
                     <input type="email" placeholder="Correo Electrónico" formControlName="emailUser" [ngClass]="{'is-invalid': (registerForm.get('emailUser').dirty || registerForm.get('emailUser').touched) && !registerForm.get('emailUser').valid}">
@@ -24,8 +29,8 @@
                     </span>
                     <div *ngIf="!registerForm.get('passwordUser').valid" class="invalid-feedback">
                         <div *ngIf="registerForm.get('passwordUser').errors.required">La contraseña es necesaria.</div>
-                        <div *ngIf="registerForm.get('passwordUser').errors.minLength">La contraseña tiene que tener un mínimo de 8 carácteres.</div>
-                    </div>
+                        <div *ngIf="registerForm.get('passwordUser').errors.minlength">La contraseña debe tener al menos 8 caracteres.</div>
+                      </div>
                 </div>
                 <div class="form-group"> 
                     <input [type]="changetype2?'password': 'text' " placeholder="Repite Contraseña" formControlName="repeat_password" [ngClass]="{'is-invalid': (registerForm.get('repeat_password').dirty || registerForm.get('repeat_password').touched) && !registerForm.get('repeat_password').valid}" >

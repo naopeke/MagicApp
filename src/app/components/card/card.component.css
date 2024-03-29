@@ -6,6 +6,7 @@ mat-card {
     margin-bottom: 50px;
     overflow: hidden;
     background-color: var(--negro);
+    cursor: pointer;
 }
 
 
