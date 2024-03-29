@@ -1,7 +1,8 @@
-main{
+section{
     position: absolute;
     top: 300px;
     left: 700px;
+    z-index: 30;
 }
 .modalEdit{
     width: 500px;
