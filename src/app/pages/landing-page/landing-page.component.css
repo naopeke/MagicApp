@@ -433,6 +433,8 @@ a:visited{
     margin-top: 25px;
     margin-bottom: 15px;
     width: 100%;
+    text-align: justify;
+    text-align-last: left;
 }
 
 .textoBuscador-container h5 p{
