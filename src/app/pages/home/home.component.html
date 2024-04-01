@@ -4,7 +4,7 @@
 
         <swiper-slide id="misEventos">
                 <div>
-                    <h3 class="titulo"><img src="../../../assets/images/iconos/eventos.png" alt=""> &nbsp;Mis próximos eventos &nbsp;<img src="../../../assets/images/iconos/eventos2.png" alt=""></h3>
+                    <h3 class="titulo"><img src="../../../assets/images/iconos/eventos.png" alt=""> &nbsp; Mis próximos eventos &nbsp;<img src="../../../assets/images/iconos/eventos2.png" alt=""></h3>
                 </div>
      
                 <div class="card-container" *ngIf="eventosProx && eventosProx.length > 0; else emptyEvent">
@@ -91,7 +91,7 @@
                             <div>
                                 <img class="img-mazo" [src]= 'bestMazo.URLphoto' alt="">
                             </div>
-                            <div>
+                            <div class="content-votados">
                                 <div class="estrellas">
                                     <app-rating [mediaScore] = "bestMazo.mediaScore" [typeRating]="2"></app-rating>
                                 </div>

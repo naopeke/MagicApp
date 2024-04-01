@@ -91,7 +91,7 @@ swiper-slide {
 
 .cardMazo{
   gap: 20px;
-  padding: 40px;
+  padding: 15px;
 }
 
 .cardEvento:hover{
@@ -130,17 +130,28 @@ swiper-slide {
   color: var(--amarillo);
 }
 
-.estrellas{
+.content-votados{
   margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
+
+
 .card-info{
   position: relative;
   bottom: 230px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
 }
 .info{ 
   padding-top: 15px;
   display: flex;
   flex-direction: column;
+  width: 100%;
   border: solid var(--verde) 0.5px;
   border-radius: var(--borde-cuadrado);
   color: var(--blanco);
@@ -148,10 +159,12 @@ swiper-slide {
 
 .info-mazo{
   color: var(--rojo);
+  font-size: 17pt;
 }
 
 .info-user{
   color: var(--blanco);
+  font-size: 17pt;
 }
 
 
@@ -174,7 +187,7 @@ a{
   height: 45px;
   padding: 5px;
   width: 180px;
-  margin-top: 30px;
+  margin-top: 20px;
   border-radius: var(--borde-boton);
   border: none;
 }
@@ -194,6 +207,8 @@ a{
 .button-explorar{
   height: 45px;
   padding: 5px;
+  margin-top: 12px;
+
   width: 150px;
   background-color: var(--amarillo);
   border-radius: var(--borde-boton);
@@ -207,10 +222,11 @@ a{
 .line-container{
   display: flex;
   justify-content: center;
+  width: 90%;
 }
 .line{
   border: solid var(--blanco) 2px;
-  width: 300px;
+  width: 100%
 }
 .modalEvent{
   position: absolute;
@@ -271,12 +287,14 @@ a{
     width: 250px;
   }
 
-
-
   .img-avatar{
     position: relative;
     bottom: 171px;
   } 
+
+  .img-mazo{
+    width: 170px;
+  }
 
   .card-info{
     position: relative;
@@ -286,6 +304,16 @@ a{
   .tituloEvento, .tituloEvento2{
     font-size: 14pt;
 
+  }
+
+  .info-mazo, .info-user{
+
+    font-size: 15pt;
+  }
+  
+
+  .button-explorar{
+    margin-top: 7px;
   }
 
   @media screen and (max-width: 1210px){
@@ -307,7 +335,7 @@ a{
     }
   
     .img-mazo{
-      width: 150px;
+      width: 130px;
     }
   
     .img-avatar{
@@ -318,32 +346,45 @@ a{
     .img-estrellas{
       width: 25px;
     }
-  
-    .card-info{
-      position: relative;
-      bottom: 110px;
+    .card-evento{
+      gap: 10px
     }
+    .card-info{
+      bottom: 120px;
+    }
+ 
 
     .info{
       font-size: 10pt;
+      position: relative;
+      bottom: 10px;
     }
   
     .tituloEvento, .tituloEvento2{
       font-size: 10pt;
     }
-    .info2{
-      font-size: 12pt;
+    .info-mazo, .info-user{
+      font-size: 11pt;
     }
-    .moreInfo{
-      font-size: 10pt;
-    }
-    .button-participar, .button-explorar{
-      width: 120px;
+ 
+    .button-participar, .button-abandonar{
+      width: 150px;
+      height: 40px;
+      margin-top: 10px;
       font-size: 10pt;
     }
 
+    .button-explorar{
+      width: 150px;
+      height: 40px;
+      font-size: 10pt;
+      margin-top: -2px;
+    }
     .titulo, .titulo-eventos, .titulo-mazos{
       font-size: 18pt;
+    }
+    .cardMazo{
+      gap: 10px;
     }
 
     
