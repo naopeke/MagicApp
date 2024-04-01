@@ -3,42 +3,48 @@ import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Deck } from '../models/deck';
 import { User } from '../models/user';
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class DeckService {
   // private urlExplora :string = 'http://localhost:3000/explora'
-  private urlExplora :string = "https://magy-deck-api.vercel.app/explora"; 
+  // private urlExplora :string = "https://magy-deck-api.vercel.app/explora"; 
 
   // private url:string = 'http://localhost:3000';
-  private url = "https://magy-deck-api.vercel.app/"; 
-
+  // private url = "https://magy-deck-api.vercel.app/"; 
+  private url = environment.url;
 
   constructor(private http: HttpClient) { }
 
   // belen explora
   public getSharedDecks(){
-    return this.http.get(this.urlExplora)
+    return this.http.get(this.url + '/explora')
   }
 
   public getVotedDeck(){
-    return this.http.get(this.urlExplora + '/votados')
+    return this.http.get(this.url + '/explora' + '/votados')
   }
 
   public getDeck(filter:string, input:string){
     let route;
     if(filter == 'nameUser')
-      route = this.http.get(this.urlExplora + '/search/?nameUser=' + input)
+      route = this.http.get(this.url + '/explora' + '/search/?nameUser=' + input)
+    //      route = this.http.get(this.urlExplora + '/search/?nameUser=' + input)
     else if (filter == 'nameDeck')
-      route = this.http.get(this.urlExplora + '/search/?nameDeck=' + input)
+      route = this.http.get(this.url + '/explora' + '/search/?nameDeck=' + input)
+    // route = this.http.get(this.urlExplora + '/search/?nameDeck=' + input)
     else 
-    route = this.http.get(this.urlExplora + '/search')
+    route = this.http.get(this.url + '/explora' + '/search')
+  //    route = this.http.get(this.urlExplora + '/search')
     return route
   }
 
   public getDeckByDeck(nameDeck:string){
-    return this.http.get(this.urlExplora + '/deck/' + nameDeck)
+    return this.http.get(this.url + '/explora' + '/deck/' + nameDeck)
+    //    return this.http.get(this.urlExplora + '/deck/' + nameDeck)
   }
 
   public putMediaScore(id_user:number,id_deck:number, score:number){
@@ -47,16 +53,19 @@ export class DeckService {
       id_deck: id_deck,
       score: score
     }
-    return this.http.put(this.urlExplora + '/mediaScore', body)
+    return this.http.put(this.url + '/explora' + '/mediaScore', body)
+    //    return this.http.put(this.urlExplora + '/mediaScore', body)
   }
 
   public getDeckById(id_deck:number,filter:string){
     let route;
     if(filter)
-      route = this.http.get(`${this.urlExplora}/deck?id_deck=${id_deck}&type_line=${filter}`)
-    else 
-      route = this.http.get(`${this.urlExplora}/deck?id_deck=${id_deck}`)
-    return route
+      route = this.http.get(`${this.url}/explora/deck?id_deck=${id_deck}&type_line=${filter}`)
+      // route = this.http.get(`${this.urlExplora}/deck?id_deck=${id_deck}&type_line=${filter}`)
+      else 
+      route = this.http.get(`${this.url}/explora/deck?id_deck=${id_deck}`)
+      // route = this.http.get(`${this.urlExplora}/deck?id_deck=${id_deck}`)
+      return route
     }
   // belen explora
 

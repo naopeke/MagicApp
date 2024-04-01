@@ -4,6 +4,8 @@ import { User } from '../models/user';
 import { Eventos} from '../models/eventos';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +20,9 @@ export class EventosService {
   private urlCalendar: string; 
 
 
-
+  private url = environment.url;
   // private url = "http://localhost:3000/eventos"
-  private url = "https://magy-deck-api.vercel.app/eventos"; 
+  // private url = "https://magy-deck-api.vercel.app/eventos"; 
 
 
   private events: Evento [];
@@ -33,13 +35,13 @@ export class EventosService {
 
   constructor(private http: HttpClient) {
 
-    // Belen Home
-      this.urlHome = "http://localhost:3000/home"
-    // Belen Home
+    // // Belen Home
+    //   this.urlHome = "http://localhost:3000/home"
+    // // Belen Home
 
-    //Calendar
-    this.urlCalendar = "http://localhost:3000/calendario"
-    //calendar
+    // //Calendar
+    // this.urlCalendar = "http://localhost:3000/calendario"
+    // //calendar
 
     // this.events = [this.ev1, this.ev2, this.ev3, this.ev4, this.ev5];
     this.modalCreateEvent = false;
@@ -131,36 +133,43 @@ export class EventosService {
 
   //calendar
   getMyEventsCalendar(id_user:number):Observable<object>{
-    return this.http.get(this.urlCalendar + '/' + id_user)
+    return this.http.get(this.url + '/calendario' + '/' + id_user)
+    //    return this.http.get(this.urlCalendar + '/' + id_user)
   }
 
   getMyEventsCalendarDate(id_user:number, date:String):Observable<object>{
-    return this.http.get(this.urlCalendar + '/' + id_user + '/' + date);
+    return this.http.get(this.url + '/calendario' + '/' + id_user + '/' + date);
+    //    return this.http.get(this.urlCalendar + '/' + id_user + '/' + date);
   }
 
   // Belen home
 
   getMyEventsHome(id_user:number):Observable<object>{
-    return this.http.get(this.urlHome + '/' + id_user)
+    return this.http.get(this.url + '/home' + '/' + id_user)
+    //    return this.http.get(this.urlHome + '/' + id_user)
   }
 
   getEventsCommunity(id_user:number):Observable<object>{
-    return this.http.get(this.urlHome + '/' + 'eventosComunidad/' + id_user)
+    return this.http.get(this.url + '/home' + '/' + 'eventosComunidad/' + id_user)
+    //    return this.http.get(this.urlHome + '/' + 'eventosComunidad/' + id_user)
   }
 
   getBestDecks():Observable<object>{
-    return this.http.get(this.urlHome + '/' + 'mejores/' + 'mazos')
+    return this.http.get(this.url + '/home' + '/' + 'mejores/' + 'mazos')
+    //    return this.http.get(this.urlHome + '/' + 'mejores/' + 'mazos')
   }
 
   getParticipantes(id_event:number):Observable<object>{
-    return this.http.get(this.urlHome + '/detalleEvento/' + id_event)
+    return this.http.get(this.url + '/home' + '/detalleEvento/' + id_event)
+    //    return this.http.get(this.urlHome + '/detalleEvento/' + id_event)
   }
   postPartipacion(id_user:number, id_event:number):Observable<object>{
     const body = {
       id_user: id_user,
       id_event: id_event
     };
-    return this.http.post(this.urlHome + '/detalleEvento/', body)
+    return this.http.post(this.url + '/home' + '/detalleEvento/', body)
+    //    return this.http.post(this.urlHome + '/detalleEvento/', body)
   }
 
   deleteParticipacion(id_user:number, id_event:number):Observable<object>{
@@ -170,28 +179,11 @@ export class EventosService {
         id_event: id_event
       }
     };
-    return this.http.delete(this.urlHome +'/abandonar', options)
+    return this.http.delete(this.url + '/home' +'/abandonar', options)
+    //    return this.http.delete(this.urlHome +'/abandonar', options)
   }
 
   
 
   // Belen home
 }
-
-
-// *NOTE - CALENDARIO
-// router.get('/calendario, ) saber eventos tanto true como false en participation 
-// router.post('/calendario, ) añadir evento indicando mi id_user
-  // parametro de la funcion (id_user, Event) por body
-// router.put('/calendario, ) modificar p<rticipacion del evento(pasar participation a false)
-// router.delete('/calendario, ) eliminar evento solo mi id_user de loggin coincide con del creador
-
-// *NOTE - EVENTOS
-
-// router.get('/eventos, ) aparezcan todos los eventos
-// router.get('/eventos/?id_user, ) filtro para que aparezcan solo los eventos del usuario
-// router.get('/eventos/??????, ) filtro para que aparezcan solo los eventos que NO son creados por el usuario
-
-// router.post('/eventos, ) añadir evento con el id_user del logging
-// router.put('/eventos, ) editar evento solo mi id_user de loggin coincide con del creador
-// router.delete('/eventos, ) eliminar evento solo mi id_user de loggin coincide con del creador
