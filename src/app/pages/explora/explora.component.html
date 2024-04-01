@@ -16,8 +16,7 @@
                         <div  class="datos estrellas">Puntuación</div>
                     </div>
                     <div *ngFor="let mazo of mejoresMazos" class="bucle">
-                        <app-decks [mazo] = "mazo" (eventoExplorar) = 'seleccionMazo($event)'
-                        [typeRating] = "2"></app-decks>
+                        <app-decks [mazo] = "mazo" (eventoExplorar) = 'seleccionMazo($event)'></app-decks>
                     </div>
                 </div>
             <!-- </cdk-virtual-scroll-viewport> -->
@@ -48,7 +47,7 @@
                 <div class="bucleContainer"> 
                     <div *cdkVirtualFor="let mazo of mazos" class="bucle">
                         <app-decks [mazo] = "mazo" (eventoExplorar) = 'seleccionMazo($event)'
-                        (eventoPuntuacion) = "score($event)" [typeRating] = "1"></app-decks>
+                        (eventoPuntuacion) = "score($event)" [typeRating] = typeRating></app-decks>
                     </div>
                 </div>
             </cdk-virtual-scroll-viewport>

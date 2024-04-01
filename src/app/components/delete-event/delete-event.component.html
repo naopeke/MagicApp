@@ -1,16 +1,18 @@
 <!--MODAL DE ELIMINAR EVENTO-->
 
-<main id="deleteMain">
-    <div class="modal-dialog-delete">
+<div id="deleteMain">
+    <img id="closeDetail" src="../../../assets/images/detalleEvento/CloseEvent.png" (click)="closeDelete()">
+
+    <!-- <div class="modal-dialog-delete"> -->
         
-        <p id="closed" (click)="closeModalDelete()">X</p>
+        <!-- <p id="closed" (click)="closeModalDelete()">X</p> -->
         <div class="divDelete">
-            <h3 class="modalP">¿Deseas eliminar el evento?</h3>
+            <p class="modalP">¿Deseas eliminar el evento?</p>
 
             <!-- BOTÓN AL QUE LE PASAMOS EL ID DEL EVENTO QUE ME LLEGA DEL PADRE PARA INDICAR CUAL ELIMINAR -->
-            <button class="buttonDelete" (click)="deleteEvent(eventoAEliminar.id)"><p>Aceptar</p></button>
+            <button class="buttonDelete" (click)="deleteEvent()">Aceptar</button>
 
             
         </div>
-    </div>
-</main>
+    <!-- </div> -->
+</div>

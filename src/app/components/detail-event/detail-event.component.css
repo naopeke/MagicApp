@@ -165,5 +165,17 @@
 
 .listaPart li {
     margin-bottom: 10px;
-    
 }
+
+.editEvent{
+    position: absolute;
+    /* right: 300px; */
+    
+
+}
+
+.deleteEvent{
+    position: absolute;
+    z-index: 9999;
+}
+

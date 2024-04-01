@@ -186,13 +186,9 @@ export class CalendarioComponent implements OnInit {
 
   openModalDetailEvent(evento: Eventos){
     this.evento = evento;
-    console.log(this.evento);
-    
     this.modalType = this.evento.creatorEvent == 1 ? 3 : 1;
-    console.log(this.modalType);
-    
     this.modalSaberMas = true;
-    // this.bg_dark = true; 
+    this.bg_dark = true; 
 
   }
 

@@ -66,12 +66,21 @@
         <button *ngIf="type == 2" class="buttonParticipar" (click)="participar()">Participar</button>
         <!-- si eres el creador -->  <!-- Te elimina el evento -->
         <div *ngIf="type == 3" class="botonesEliminarEditar">
-            <button  class="buttonEliminar" (click)="abandonar()">Eliminar</button>
+            <button  class="buttonEliminar" (click)="eliminar()">Eliminar</button>
             <!-- Este navega a proximos eventos, con scroll hacia el tuyo(id_event) -->
             <button class="buttonParticipar" (click)="editar()">Editar evento</button>
         </div>
-       
+
+        <div *ngIf="openEdit && typeEdit == 2" class="editEvent">
+            <app-edit-event></app-edit-event>
+        </div>
+        <div *ngIf="openDelete" class="deleteEvent">
+            <app-delete-event (eventClose) = closeDelete($event) [user] = user [evento] = evento ></app-delete-event>
+        </div>
+
 
     </div>
+
+   
 
 </div>
