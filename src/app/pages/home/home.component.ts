@@ -48,11 +48,7 @@ ngOnInit(): void {
 
   public getMyEvents(){
     this.eventoService.getMyEventsHome(this.currentUser.id_user).subscribe((res:any) =>{
-      if(!res.error){
         this.eventosProx = res.data
-        console.log(this.eventosProx);
-        
-      }
     })
   }
 
@@ -70,7 +66,6 @@ ngOnInit(): void {
     this.eventoService.getBestDecks().subscribe((res:any) => {
       if(!res.error){
         this.bestMazos = res.data
-
       }  else {
         this.toastr.info(res.mensaje, '¡Ups!')
       }
@@ -79,6 +74,8 @@ ngOnInit(): void {
   
   public openModal(evento:Eventos){
       this.selectEvento = evento
+      console.log(this.selectEvento);
+      
       if( this.selectEvento.creatorEvent == 1){
         this.type = 3
       } else {
@@ -92,10 +89,13 @@ ngOnInit(): void {
   }
   
   public closeModal(event:boolean){
-    this.modalDetail = event
-    this.modalDetail2 = event
     this.getMyEvents();
     this.getEventCom();
+    console.log(this.eventosProx);
+    
+    this.modalDetail = event
+    this.modalDetail2 = event
+   
   }
 
   public goToEvents(){

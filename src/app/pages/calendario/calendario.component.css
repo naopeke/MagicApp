@@ -99,7 +99,7 @@ span.mat-calendar-body-cell-content.mat-focus-indicator.mat-calendar-body-select
 button.highlight-event::before {
     background-color: var(--amarillo);
     border-radius: 10px;
-    width: 111px;
+    width: 90%;
     margin-left: 7px;
 }
 
