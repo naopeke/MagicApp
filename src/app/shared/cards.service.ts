@@ -13,17 +13,11 @@ export class CardsService {
 
   private decks: string[][] = [[], [], [], [], []]; //5 mazos, 5 arrays en 1 array
 
-
   public card: Card;
   public cards: Card[];
   
 
   constructor(private http: HttpClient) { }
-
-  // public fetchCardData(cardName: string): Observable<Card[]> {
-  //   let urlName = `${this.url}/cartas?cardName=${encodeURIComponent(cardName)}`;
-  //   return this.http.get<Card[]>(urlName);
-  // }
 
 
   public fetchCardData(cardName: string): Observable<Card> {

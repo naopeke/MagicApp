@@ -14,7 +14,7 @@ export class DeckService {
   // private urlExplora :string = "https://magy-deck-api.vercel.app/explora"; 
 
   // private url:string = 'http://localhost:3000';
-  // private url = "https://magy-deck-api.vercel.app/"; 
+  // private url = "https://magy-deck-api.vercel.app"; 
   private url = environment.url;
 
   constructor(private http: HttpClient) { }

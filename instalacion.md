@@ -11,6 +11,11 @@ npm i swiper@10.3.1
 npm i ngx-toastr@18.0.0
 ```
 
+para prod
+```
+ng build --configuration production
+```
+
 
 ## Fork github
 1. pulsar el icono de fork  

@@ -12,8 +12,7 @@ import { environment } from 'src/environments/environment';
 
 export class UsersService {
   public user:User;
-  // private url = "http://localhost:3000/";
-  // private url = "https://magy-deck-api.vercel.app/"; 
+
   private url = environment.url;
 
 // https://netbasal.com/angular-2-persist-your-login-status-with-behaviorsubject-45da9ec43243
@@ -23,8 +22,6 @@ export class UsersService {
   // guarda info de users 
   private currentUserSubject = new BehaviorSubject<User | null>(null);
   public currentUser = this.currentUserSubject.asObservable();
-
-  // public loggedIn: boolean = true; 
 
 
   constructor(private http: HttpClient) { 
