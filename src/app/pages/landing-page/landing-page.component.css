@@ -855,6 +855,99 @@ img-container{
 }
 
 
+@media screen and (max-width: 1744px) {
+    /* textoBuscador-container {
+        width: 100px;
+    } */
+
+    .inputBuscador-container {
+        width:800px;
+    }
+
+    .cartas-container {
+        width: 800px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .carta1, .carta2, .carta3{
+        width: 200px;
+        height: auto;
+        background-size:100%;
+    }
+
+}
 
 
 
+@media screen and (max-width: 1552px) {
+    /* textoBuscador-container {
+        width: 100px;
+    } */
+
+    .inputBuscador-container {
+        width:600px;
+    }
+
+    .cartas-container {
+        width: 600px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .carta1, .carta2, .carta3{
+        width: 150px;
+        height:auto;
+    }
+
+}
+
+@media screen and (max-width: 1353px) {
+    /* textoBuscador-container {
+        width: 100px;
+    } */
+
+    .inputBuscador-container {
+        width:500px;
+    }
+
+    .cartas-container {
+        width: 500px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .carta1, .carta2, .carta3{
+        width: 150px;
+        height:auto;
+    }
+
+}
+
+
+
+@media screen and (max-width: 1225px) {
+
+    .inputBuscador-container {
+        width:500px;
+    }
+
+    .cartas-container {
+        width: 500px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .carta1, .carta2, .carta3{
+        width: 150px;
+        height:auto;
+    }
+
+}
+
+
+@media screen and (max-width: 780px) {
+    .inputBuscador-container {
+        display: none;
+    }
+}

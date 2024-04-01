@@ -24,6 +24,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule} from '@angular/material/dialog'; 
 import { MatDialog } from '@angular/material/dialog';
 import { WarningModalComponent } from './components/warning-modal/warning-modal.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 
 //calendario
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -137,6 +139,7 @@ import { CardSymbolsPipe } from './pipe/card-symbols.pipe';
     MatDialogModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatProgressSpinnerModule,
     
     CdkVirtualScrollViewport,
     ScrollingModule, 

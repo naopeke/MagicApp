@@ -19,7 +19,9 @@ export class EventosService {
 
 
 
-  private url = "http://localhost:3000/eventos"
+  // private url = "http://localhost:3000/eventos"
+  private url = "https://magy-deck-api.vercel.app/eventos"; 
+
 
   private events: Evento [];
   public modalCreateEvent:boolean;

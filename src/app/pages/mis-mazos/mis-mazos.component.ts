@@ -12,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 
 
 
+
 @Component({
   selector: 'app-mis-mazos',
   templateUrl: './mis-mazos.component.html',
@@ -38,6 +39,8 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
   public darkenOverlay:boolean = false; // modal de xisca
   public show_cardinfo:boolean = false; // modal de xisca
   public selectedCard: Card | null = null; // selectedCard sea Card o null, default null
+
+  public isLoading: boolean = true; // loading indicator
 
 
 
@@ -81,7 +84,6 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
         console.log('This is inside of the deck: ', this.datos[activeIndex]);
         this.mazo = this.datos[activeIndex]; // update deck info, asociado con indice de mazo
         this.filteredCards = this.mazo?.cards ? [...this.mazo.cards] : []; // clear cartas filtrado y mostrar todas las cartas
-
       });
     }
   }
@@ -91,6 +93,8 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
   public getDecksWithSwiper():void {
     const userId = this.usersService.getCurrentUserId();
     console.log('User id mismazos:', userId);
+
+    this.isLoading = true; // antes de tener dato, true
     
     this.decksService.getMyDecks(userId).subscribe({
         next: (response: any) => {
@@ -101,7 +105,12 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
         },
         error: (err) => {
             console.log('Error in fetching Deck: ', err);
+            this.isLoading = false; // cuando ocurre error, false
+        },
+        complete: () =>{
+            this.isLoading = false; // cuando termina, false
         }
+        
     });
   }
 

@@ -10,7 +10,9 @@ import { tap } from 'rxjs/operators';
 
 export class UsersService {
   public user:User;
-  private url = "http://localhost:3000/";
+  // private url = "http://localhost:3000/";
+  private url = "https://magy-deck-api.vercel.app/"; 
+
 
 // https://netbasal.com/angular-2-persist-your-login-status-with-behaviorsubject-45da9ec43243
   // si está logueado (true) o no (false) Manejar estado de Login

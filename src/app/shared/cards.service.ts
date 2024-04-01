@@ -8,8 +8,8 @@ import { Card } from  '../models/card';
 })
 export class CardsService {
 
-  private url = "http://localhost:3000";
-  // private url = "https://magy-deck-api.vercel.app/"; 
+  // private url = "http://localhost:3000";
+  private url = "https://magy-deck-api.vercel.app/"; 
   private decks: string[][] = [[], [], [], [], []]; //5 mazos, 5 arrays en 1 array
 
 

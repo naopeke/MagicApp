@@ -1,3 +1,10 @@
+mat-progress-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
 /*para modal de xisca*/
 .bg_dark{
     min-height: 100vh;
@@ -204,6 +211,12 @@
 }
 
 .no-filtered-card-message{
+    color:white;
+    z-index: 100;
+}
+
+
+.no-results-message{
     color: var(--blanco);
 }
 
