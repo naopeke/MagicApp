@@ -29,6 +29,6 @@
         </div>
 
         <div *ngIf="modalSaberMas == true" class="modalDetailEvent">
-            <app-detail-event [evento]="evento" [type]="modalType" [user]="currentUser" [type] = 1 (eventCloseDetail)="closeModal($event)"></app-detail-event>
+            <app-detail-event [evento]="evento" [type]= modalType [user]="currentUser"  (eventCloseDetail)="closeModal($event)"></app-detail-event>
         </div>
 </div>

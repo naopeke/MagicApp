@@ -66,7 +66,7 @@ export class EventoComponent {
       }
 
       this.events = nuevosEventos;
-      //console.log(this.events);
+      console.log(this.events);
       this.calculatePagination();
     })
 

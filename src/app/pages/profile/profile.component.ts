@@ -37,7 +37,7 @@ export class ProfileComponent implements OnInit {
   ]
 
   public user: User | null = {}
-  public currentUser: User | null;
+  public currentUserid: number | null;
 
   public visible1:boolean = true
   public changetype1:boolean = true
@@ -52,13 +52,32 @@ export class ProfileComponent implements OnInit {
               private toastr: ToastrService){
   }
   ngOnInit(): void {
+    
+    this.getUserId()
+    this.getProfile();
+    this.buildForm();
+    this.buildForm2() 
+    this.editForm.disable();
+    this.editPassword.disable();
+  }
+
+  getUserId(){
     this.userService.currentUserChanges().subscribe(user =>{
-      this.user = user
+      this.currentUserid = user.id_user
       })
-      this.buildForm();
-      this.buildForm2() 
-      this.editForm.disable();
-      this.editPassword.disable();
+  }
+
+  getProfile(){
+    this.userService.getProfile(this.currentUserid).subscribe((res:any) =>{
+      if(!res.error){
+        this.user = res.data[0]
+        this.editForm.patchValue({
+          name:this.user.nameUser,
+          email: this.user.emailUser,
+          description: this.user.description
+        })
+      }
+    })
   }
 
   // MODIFICAR DATOS PERFIL
@@ -99,33 +118,33 @@ export class ProfileComponent implements OnInit {
   }
 
   public save(){
+    let editUser = { ...this.user };
     if(!this.editForm.invalid){
-
-      let originalUser = { ...this.user };
-
       let editValues = this.editForm.value
-      this.user.nameUser = editValues.name
-      this.user.emailUser = editValues.email
-      this.user.description = editValues.description
+      editUser.nameUser = editValues.name
+      editUser.emailUser = editValues.email
+      editUser.description = editValues.description
 
-      this.userService.putProfile(this.user).subscribe((res:any) =>{
+      this.userService.putProfile(editUser).subscribe((res:any) =>{
         if(!res.error){
+          this.user = editUser
+          
           this.editForm.patchValue({
             name: this.user.nameUser,
             email: this.user.emailUser,
             description: this.user.description
           });
+
           this.toastr.success(res.mensaje, '¡Éxito!')
           this.editForm.disable();
+
         } else {
           this.toastr.error(res.mensaje, '¡Ups!')
-          this.user = { ...originalUser };
-          this.buildForm();
+          this.buildForm()
           this.editForm.disable();
         }
       })
      } 
-     
       this.editar = false
   }
 
