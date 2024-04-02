@@ -1,7 +1,7 @@
 .container {
     /* border:2px solid orange; */
     z-index: 10000;
-    height: 900px;
+    height: 800px;
     width:auto;
 }
 
@@ -69,10 +69,11 @@
 }
 
 .box_right{
-    /* border:2px solid red; */
+    border:2px solid red;
     display: flex;
     flex-direction: column;
-    padding: 0 50px 0 25px;
+    padding: 0 50px 0 0;
+    height: 650px;
 }
 
 .box_left{
@@ -105,23 +106,16 @@ img{
     margin-top: 10px;
   }
   
-  .card-price-label {
+.card-price-label {
     font-weight: bold;
     color: #f3f3f3;
     margin-right: 5px;
-  }
-  
-  .card-price-value {
+}
+
+.card-price-value {
     font-size: 20px;
     color: #f3f3f3;
     font-weight: bold;
-  }
-
-.pie_photo{
-    color: #b3b3b3;
-    font-size: 26px;
-    font-family: var(--inter);
-    margin-top: 36px;
 }
 
 .subtitle{
@@ -153,8 +147,8 @@ img{
     align-content: flex-start;
     color: var(--blanco);
     font-family: var(--inter);
-    font-size: 20px;
-    column-gap: 24px;
+    font-size: 12px;
+    column-gap: 22px;
 
 }
 
@@ -173,7 +167,7 @@ img{
 .button_type{
     background-color: grey;
     height: 37px;
-    min-width: 122px;
+    min-width: 118px;
     border-radius: 10px;
     margin-right: 10px;
     padding-top: 5px;
