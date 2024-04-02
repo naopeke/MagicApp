@@ -33,6 +33,13 @@
  top: 100px;
 }
 
+.search-message {
+    padding: 50px;
+    color: var(--blanco);
+    font-size: 25px;
+    z-index: 5;
+}
+
 form {
 /* border: 2px solid green; */
 display: flex;

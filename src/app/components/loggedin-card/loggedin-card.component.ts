@@ -96,9 +96,20 @@ export class LoggedinCardComponent implements OnInit {
 
   // modal
   openDeckDialog(): void {
+
+  // revisar si builderCards está vacío 
+  if (this.builderCards.length === 0) {
+    this.toastr.error('No has elegido ninguna carta para tu mazo', 'Información', {
+      timeOut: 6000,
+      positionClass: 'toast-top-center',
+    });
+    return; 
+  }
+
     const dialogRef = this.dialog.open(MazoSelectorModalComponent, {
       width: '700px',
       height: '480px',
+      panelClass: 'material-modal',
       data: { selectedDeckIndex: null } // default null, si no, sale error
     });
   

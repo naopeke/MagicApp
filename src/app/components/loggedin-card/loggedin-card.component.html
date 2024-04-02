@@ -20,12 +20,12 @@
 
                 <div class="results-container">
                     <div class="bg-cards">
-                        <div class="list-cards" *ngIf="resultsCards.length > 0">
+                        <div class="list-cards" *ngIf="resultsCards && resultsCards.length > 0">
                             <div *ngFor="let card of resultsCards; let i = index">
                                 <app-card [childCard]="card" [templateCard]="'type3'" (childCardClicked)="onCardInfoOpen($event)" (addCardToBuilder)="onAddCardToBuilder(card)"></app-card>
                             </div>
                         </div>
-                        <div class="list-cards" *ngIf="resultsCards.length === 0 && searchPerformed">
+                        <div class="list-cards" *ngIf="!resultsCards && searchPerformed">
                             <div class="no-results-message">
                             Intenta otra vez con el nombre más concretopara buscar tu nueva carta poderosa.
                             </div>

@@ -96,6 +96,21 @@ li:hover span {
     }
 }
 
+@media (max-width: 819px) {
+    .modal-wrapper {
+        width: 80vw;
+        height: 73vh;
+        max-width: 100%;
+    }
+
+    .deck-lists {
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
 
 @media screen and (max-width: 759px) {
     .deck-lists ul {

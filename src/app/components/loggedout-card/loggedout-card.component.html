@@ -22,6 +22,12 @@
                         </div>
                     </div>
 
+                    <div class="list-cards" *ngIf="resultsCards.length === 0 && !searchPerformed">
+                        <div class="search-message">
+                            Busca las cartas poderosas!
+                        </div>
+                    </div>
+
                     <div class="results-wrapper" *ngIf="resultsCards.length === 0 && searchPerformed && errorMessage">
                         <div class="no-results-message">
                         <p>{{ errorMessage.split('.')[0] }}.</p>

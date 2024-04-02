@@ -242,6 +242,8 @@ select {
     align-items: center;
 }
 
+
+
 @media screen and (max-width: 1671px) {
     .bg-builder {
         width: 521px;
@@ -273,9 +275,20 @@ select {
     .bg-builder {
         width: 100%;
     }
-
-
 }
+
+@media (max-width: 819px) {
+    .material-modal .mat-dialog-container {
+        width: 80vw;
+        height: 70vh;
+        max-width: 100%;
+    }
+
+    .bg-builder{
+        width: 100%;
+    }
+}
+
 @media (max-width: 768px) {
     .gridarea {
         grid-template-columns: 1fr;
