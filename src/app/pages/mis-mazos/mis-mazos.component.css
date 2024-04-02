@@ -184,7 +184,7 @@ mat-progress-spinner {
     /* border:2px solid blue; */
     left: calc(50% - 80px);
     position: absolute;
-    bottom: -70px;
+    bottom: -30px;
 }
 
 .img-counter{
@@ -195,8 +195,8 @@ mat-progress-spinner {
 
 #total-cards{
     position: absolute;
-    top: 21px;
-    left: 49px;
+    top: 12px;
+    left: 43px;
     font-family: var(--antiqua);
     color: var(--amarillo);
     font-size: 20pt;

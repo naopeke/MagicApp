@@ -3,7 +3,6 @@ import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -14,7 +13,6 @@ export class UsersService {
   public user:User;
   // private url = "http://localhost:3000/";
   private url = "https://magy-deck-api.vercel.app"; 
-  // private url = environment.url;
 
   
 // https://netbasal.com/angular-2-persist-your-login-status-with-behaviorsubject-45da9ec43243

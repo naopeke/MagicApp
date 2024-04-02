@@ -42,6 +42,7 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
 
   public isLoading: boolean = true; // loading indicator
 
+  public isFiltered: boolean = false; // filtered or not
 
 
   // @ViewChild('mySwiper') mySwiper: any = null; // Swiperの要素にアクセスするためのViewChild
@@ -249,9 +250,14 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
       this.filteredCards = this.mazo.cards.filter(card => 
         card.type_line.toLowerCase().includes(typeLine.toLowerCase())
     );
+      this.isFiltered = true;
     }
     console.log('filtered card', this.filteredCards);
+
+    const totalQuantity = this.getTotalQuantity(this.filteredCards);
+    console.log('Total Quantity of Filtered Cards:', totalQuantity);
   }
+  
   
 
   public getFirstPlaneswalkerOrLegendaryCreatureImage(deck: Deck): string {

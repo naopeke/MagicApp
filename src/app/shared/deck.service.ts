@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Deck } from '../models/deck';
 import { User } from '../models/user';
-import { environment } from 'src/environments/environment';
 
 
 @Injectable({

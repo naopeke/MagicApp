@@ -2,14 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Card } from  '../models/card';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CardsService {
 
-  // private url = environment.url;
     // private url:string = 'http://localhost:3000';
   private url = "https://magy-deck-api.vercel.app"; 
 

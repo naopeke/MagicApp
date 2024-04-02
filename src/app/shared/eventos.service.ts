@@ -4,7 +4,6 @@ import { User } from '../models/user';
 import { Eventos} from '../models/eventos';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -20,7 +19,6 @@ export class EventosService {
   private urlCalendar: string; 
 
 
-  // private url = environment.url;
   // private url = "http://localhost:3000/eventos"
   private url = "https://magy-deck-api.vercel.app/eventos"; 
 
