@@ -16,8 +16,12 @@ export class DeckService {
   // private url:string = 'http://localhost:3000';
   private url = "https://magy-deck-api.vercel.app"; 
 
+
+
   constructor(private http: HttpClient) { }
 
+
+  
   // belen explora
   public getSharedDecks(){
     return this.http.get(this.url + '/explora')
