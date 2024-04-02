@@ -12,7 +12,7 @@ export class CardSymbolsPipe implements PipeTransform {
       return value;
     }
 
-    // synbol => svg
+    // symbol => svg
     // recibier {T}, {W} etc desde api, haciendo bucle de array de cardSymbolsData(API),
     // crear un object 'regex' que hace global match('g') para que apriquen a todos los symbols en mismo texto.
     cardSymbolsData.forEach(symbol => {
