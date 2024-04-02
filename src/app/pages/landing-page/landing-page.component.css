@@ -898,6 +898,10 @@ img-container{
         width:600px;
     }
 
+    input::placeholder {
+        font-size:16px;
+    }
+
     .cartas-container {
         width: 600px;
         display: flex;
@@ -915,9 +919,9 @@ img-container{
 }
 
 @media screen and (max-width: 1353px) {
-    /* textoBuscador-container {
-        width: 100px;
-    } */
+    .textoBuscador-container h3 {
+        margin:0;
+    }
 
     .inputBuscador-container {
         width:500px;
@@ -937,7 +941,6 @@ img-container{
     img-container {
         display:none;
     }
-
 }
 
 
