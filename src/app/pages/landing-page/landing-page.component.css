@@ -918,6 +918,12 @@ img-container{
     }
 }
 
+@media screen and (max-width: 1501px) {
+    .senora-container{
+        display: none;
+    }
+}
+
 @media screen and (max-width: 1353px) {
     .textoBuscador-container h3 {
         margin:0;
@@ -933,13 +939,18 @@ img-container{
         justify-content: space-evenly;
     }
 
-    .carta1, .carta2, .carta3{
+    .carta1, .carta2, .carta3 {
         width: 150px;
         height:auto;
     }
 
     img-container {
         display:none;
+    }
+
+    .explora h3 {
+        text-align: center;
+        white-space: normal;
     }
 }
 
@@ -1169,7 +1180,6 @@ img-container{
         padding-bottom:0;
     }
 
-
     .comparte2 {
         width: 50vh;
         height: 100%;
@@ -1199,12 +1209,7 @@ img-container{
         text-align: center;
     }
     
-  
-    
-
     .uneteAnosotros{
-
         width: 300px;
-
     }
 }
