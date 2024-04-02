@@ -20,9 +20,9 @@ export class EventosService {
   private urlCalendar: string; 
 
 
-  private url = environment.url;
+  // private url = environment.url;
   // private url = "http://localhost:3000/eventos"
-  // private url = "https://magy-deck-api.vercel.app/eventos"; 
+  private url = "https://magy-deck-api.vercel.app/eventos"; 
 
 
   private events: Evento [];
@@ -37,10 +37,13 @@ export class EventosService {
 
     // // Belen Home
     //   this.urlHome = "http://localhost:3000/home"
+     this.urlHome = "https://magy-deck-api.vercel.app/eventos/home"; 
+
     // // Belen Home
 
     // //Calendar
     // this.urlCalendar = "http://localhost:3000/calendario"
+    this.urlCalendar = "https://magy-deck-api.vercel.app/eventos/calendario"; 
     // //calendar
 
     // this.events = [this.ev1, this.ev2, this.ev3, this.ev4, this.ev5];
@@ -133,43 +136,43 @@ export class EventosService {
 
   //calendar
   getMyEventsCalendar(id_user:number):Observable<object>{
-    return this.http.get(this.url + '/calendario' + '/' + id_user)
-    //    return this.http.get(this.urlCalendar + '/' + id_user)
+    // return this.http.get(this.url + '/calendario' + '/' + id_user)
+       return this.http.get(this.urlCalendar + '/' + id_user)
   }
 
   getMyEventsCalendarDate(id_user:number, date:String):Observable<object>{
-    return this.http.get(this.url + '/calendario' + '/' + id_user + '/' + date);
-    //    return this.http.get(this.urlCalendar + '/' + id_user + '/' + date);
+    // return this.http.get(this.url + '/calendario' + '/' + id_user + '/' + date);
+       return this.http.get(this.urlCalendar + '/' + id_user + '/' + date);
   }
 
   // Belen home
 
   getMyEventsHome(id_user:number):Observable<object>{
-    return this.http.get(this.url + '/home' + '/' + id_user)
-    //    return this.http.get(this.urlHome + '/' + id_user)
+    // return this.http.get(this.url + '/home' + '/' + id_user)
+       return this.http.get(this.urlHome + '/' + id_user)
   }
 
   getEventsCommunity(id_user:number):Observable<object>{
-    return this.http.get(this.url + '/home' + '/' + 'eventosComunidad/' + id_user)
-    //    return this.http.get(this.urlHome + '/' + 'eventosComunidad/' + id_user)
+    // return this.http.get(this.url + '/home' + '/' + 'eventosComunidad/' + id_user)
+       return this.http.get(this.urlHome + '/' + 'eventosComunidad/' + id_user)
   }
 
   getBestDecks():Observable<object>{
-    return this.http.get(this.url + '/home' + '/' + 'mejores/' + 'mazos')
-    //    return this.http.get(this.urlHome + '/' + 'mejores/' + 'mazos')
+    // return this.http.get(this.url + '/home' + '/' + 'mejores/' + 'mazos')
+       return this.http.get(this.urlHome + '/' + 'mejores/' + 'mazos')
   }
 
   getParticipantes(id_event:number):Observable<object>{
-    return this.http.get(this.url + '/home' + '/detalleEvento/' + id_event)
-    //    return this.http.get(this.urlHome + '/detalleEvento/' + id_event)
+    // return this.http.get(this.url + '/home' + '/detalleEvento/' + id_event)
+       return this.http.get(this.urlHome + '/detalleEvento/' + id_event)
   }
   postPartipacion(id_user:number, id_event:number):Observable<object>{
     const body = {
       id_user: id_user,
       id_event: id_event
     };
-    return this.http.post(this.url + '/home' + '/detalleEvento/', body)
-    //    return this.http.post(this.urlHome + '/detalleEvento/', body)
+    // return this.http.post(this.url + '/home' + '/detalleEvento/', body)
+       return this.http.post(this.urlHome + '/detalleEvento/', body)
   }
 
   deleteParticipacion(id_user:number, id_event:number):Observable<object>{
@@ -179,8 +182,8 @@ export class EventosService {
         id_event: id_event
       }
     };
-    return this.http.delete(this.url + '/home' +'/abandonar', options)
-    //    return this.http.delete(this.urlHome +'/abandonar', options)
+    // return this.http.delete(this.url + '/home' +'/abandonar', options)
+       return this.http.delete(this.urlHome +'/abandonar', options)
   }
 
   

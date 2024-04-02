@@ -9,7 +9,9 @@ import { environment } from 'src/environments/environment';
 })
 export class CardsService {
 
-  private url = environment.url;
+  // private url = environment.url;
+    // private url:string = 'http://localhost:3000';
+  private url = "https://magy-deck-api.vercel.app"; 
 
   private decks: string[][] = [[], [], [], [], []]; //5 mazos, 5 arrays en 1 array
 
