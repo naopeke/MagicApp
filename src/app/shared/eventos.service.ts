@@ -136,7 +136,6 @@ export class EventosService {
 
   //calendar
   getMyEventsCalendar(id_user:number):Observable<object>{
-    // return this.http.get(this.url + '/calendario' + '/' + id_user)
        return this.http.get(this.urlCalendar + '/' + id_user)
   }
 
@@ -163,7 +162,6 @@ export class EventosService {
   }
 
   getParticipantes(id_event:number):Observable<object>{
-    // return this.http.get(this.url + '/home' + '/detalleEvento/' + id_event)
        return this.http.get(this.urlHome + '/detalleEvento/' + id_event)
   }
   postPartipacion(id_user:number, id_event:number):Observable<object>{
@@ -171,7 +169,6 @@ export class EventosService {
       id_user: id_user,
       id_event: id_event
     };
-    // return this.http.post(this.url + '/home' + '/detalleEvento/', body)
        return this.http.post(this.urlHome + '/detalleEvento/', body)
   }
 
@@ -182,7 +179,6 @@ export class EventosService {
         id_event: id_event
       }
     };
-    // return this.http.delete(this.url + '/home' +'/abandonar', options)
        return this.http.delete(this.urlHome +'/abandonar', options)
   }
 

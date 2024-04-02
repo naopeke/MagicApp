@@ -15,7 +15,6 @@ export class DeckService {
 
   // private url:string = 'http://localhost:3000';
   private url = "https://magy-deck-api.vercel.app"; 
-  // private url = environment.url;
 
   constructor(private http: HttpClient) { }
 
@@ -31,19 +30,15 @@ export class DeckService {
   public getDeck(filter:string, input:string){
     let route;
     if(filter == 'nameUser')
-      // route = this.http.get(this.url + '/explora' + '/search/?nameUser=' + input)
          route = this.http.get(this.urlExplora + '/search/?nameUser=' + input)
     else if (filter == 'nameDeck')
-      // route = this.http.get(this.url + '/explora' + '/search/?nameDeck=' + input)
-    route = this.http.get(this.urlExplora + '/search/?nameDeck=' + input)
+     route = this.http.get(this.urlExplora + '/search/?nameDeck=' + input)
     else 
-    // route = this.http.get(this.url + '/explora' + '/search')
      route = this.http.get(this.urlExplora + '/search')
     return route
   }
 
   public getDeckByDeck(nameDeck:string){
-    // return this.http.get(this.url + '/explora' + '/deck/' + nameDeck)
        return this.http.get(this.urlExplora + '/deck/' + nameDeck)
   }
 
@@ -53,17 +48,14 @@ export class DeckService {
       id_deck: id_deck,
       score: score
     }
-    // return this.http.put(this.url + '/explora' + '/mediaScore', body)
        return this.http.put(this.urlExplora + '/mediaScore', body)
   }
 
   public getDeckById(id_deck:number,filter:string){
     let route;
     if(filter)
-      // route = this.http.get(`${this.url}/explora/deck?id_deck=${id_deck}&type_line=${filter}`)
       route = this.http.get(`${this.urlExplora}/deck?id_deck=${id_deck}&type_line=${filter}`)
       else 
-      // route = this.http.get(`${this.url}/explora/deck?id_deck=${id_deck}`)
       route = this.http.get(`${this.urlExplora}/deck?id_deck=${id_deck}`)
       return route
     }
@@ -75,8 +67,7 @@ export class DeckService {
   public getMyDecks(userId: number): Observable<any> {
     let urlGetMyDecks = `${this.url}/mis-mazos/${userId}`;
     return this.http.get(urlGetMyDecks);
-}
-
+  }
 
   public editDeckName(nameDeck: string, id_deck: number): Observable<any> {
     let urlEditDeckName = `${this.url}/mis-mazos/${id_deck}`;
@@ -95,7 +86,6 @@ export class DeckService {
   public deleteCardQuantity(id_deckCard: number): Observable<any> {
     return this.http.delete(`${this.url}/mis-mazos/cantidad/${id_deckCard}`);
   }
-
   // nao mismazos
 
 
