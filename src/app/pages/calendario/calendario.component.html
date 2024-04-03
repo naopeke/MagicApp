@@ -1,7 +1,7 @@
 
 <div class="main" [ngClass]="{ 'main_dark': bg_dark }">
     <div class="container_addEvent" *ngIf="show_addEvent">
-            <app-add-event (eventClose)="addEventClose($event)" class="modalAddEvent"></app-add-event>
+            <app-add-event (eventClose)="addEventClose($event)" [eventos] = eventos [user] = currentUser class="modalAddEvent"></app-add-event>
     </div>
     <div class="cuadroIzq">
         

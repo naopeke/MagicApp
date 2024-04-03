@@ -58,7 +58,7 @@
         <!--MODAL edit--><div *ngIf="modalEdit == true" class="modalEdit"><app-edit-event [evento] = "evento" (eventClose) = closeModal($event)></app-edit-event></div>
         <!-- MODAL delete--> <app-delete-event *ngIf="getModalDeleteEvent()" [eventoAEliminar]="eventoABorrar" ></app-delete-event>
         <div *ngIf="modalDetail == true" class="modalEvent">
-            <app-detail-event [evento] = "selectEvento"  (eventCloseDetail) = closeModalSaberMas($event) [type]=2 [user]="id_logueado"></app-detail-event>
+            <app-detail-event [evento] = "selectEvento"  (eventCloseDetail) = closeModalSaberMas($event) [type]=2 [user]="id_logueado" [typeEdit] = 2></app-detail-event>
         </div>
        
     </div> 

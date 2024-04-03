@@ -18,6 +18,7 @@ import { UsersService } from 'src/app/shared/users.service';
 export class ExploraComponent implements OnInit {
   
   public currentUser: User | null;
+  public userLoaded: boolean = false
   public datos: Deck[]
   public mazos: Deck[]
   public cards: Card[]
@@ -40,20 +41,45 @@ export class ExploraComponent implements OnInit {
               private toastr:ToastrService,
               public deckService: DeckService,
               public userService: UsersService){
+  
   }
 
-  ngOnInit(): void {
-    this.userService.currentUserChanges().subscribe(user =>{
-      this.currentUser = user
-    })
+  async ngOnInit(): Promise<void> {
+    await this.loadCurrentUser();
     this.getSharedDecks();
     this.getVotedDeck();
+  }
+
+  private async loadCurrentUser(): Promise<void> {
+    return new Promise<void>((resolve) => {
+      this.userService.currentUserChanges().subscribe(user => {
+        this.currentUser = user;
+        resolve(); 
+      });
+    });
   }
 
   public getSharedDecks(){
     this.deckService.getSharedDecks().subscribe((res:any) => {
       if(!res.error){
         this.mazos = res.data
+        this.mazos.forEach(mazo =>{
+          if(mazo.id_user == this.currentUser.id_user){
+            mazo.typeRating = 3
+          } else {
+            let currentDate = new Date().toISOString().slice(0, 10);
+            let typeAssigned = false
+            mazo.previousScore.forEach(score => {
+              if(score.date == currentDate && score.userVotes == this.currentUser.id_user){
+                mazo.typeRating = 3;
+                typeAssigned = true
+              } 
+            })
+            if(!typeAssigned){
+              mazo.typeRating = 1
+            }
+          }
+        })
       }
       else {
         this.toastr.error(res.mensaje, 'Ups')
@@ -64,6 +90,9 @@ export class ExploraComponent implements OnInit {
     this.deckService.getVotedDeck().subscribe((res:any) =>{
       if(!res.error){
         this.mejoresMazos = res.data
+        this.mejoresMazos.forEach(mazo => {
+          mazo.typeRating = 2
+        })
       } else {
         this.toastr.error(res.mensaje, 'Ups')
       }
@@ -118,9 +147,7 @@ export class ExploraComponent implements OnInit {
             this.toastr.error(res.mensaje, 'Ups')
           }
         })
-      } else {
-        console.log('error');
-        }
+      } 
     })
   }
 

@@ -13,10 +13,13 @@ import { EventosService } from 'src/app/shared/eventos.service';
 export class DetailEventComponent implements OnInit{
   @Input() evento:Eventos
   @Input() type: number
+  @Input() typeEdit: number
   @Input() user:User;
   @Output() eventCloseDetail = new EventEmitter<boolean>();
 
   public openModal:boolean = false
+  public openEdit: boolean = false
+  public openDelete: boolean = false
 
   constructor(public eventoService: EventosService,
               private toastr: ToastrService,
@@ -64,13 +67,28 @@ export class DetailEventComponent implements OnInit{
   abandonar(){
     this.eventoService.deleteParticipacion(this.user.id_user, this.evento.id_event).subscribe((res:any) =>{
       if(!res.error){
-        this.toastr.error(res.mensaje, 'Éxito')
+        this.toastr.success(res.mensaje, 'Éxito')
         this.getparticipantes(); 
       }
     })
   }
+  eliminar(){
+    this.openDelete = true
+    this.getparticipantes(); 
+  }
 
-  editar(){
+  editar() {
+    if(this.typeEdit == 2) 
+      this.openEdit = true;
+    else 
     this.router.navigate(['/evento']);
+   
+  }
+  closeDelete(close:boolean){
+    this.openDelete = close
+    console.log(close);
+    
+    console.log(this.openDelete);
+    
   }
 }

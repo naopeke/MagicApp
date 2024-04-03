@@ -6,7 +6,7 @@
     <div  class="datos estrellas">
     <div class="datos puntuacion">
         <div class="estrellas">
-            <app-rating  (onRating)="Handle(mazo.id_deck, $event)" [mediaScore] = "mazo.mediaScore" [typeRating]="typeRating"></app-rating>
+            <app-rating  (onRating)="Handle(mazo.id_deck, $event)" [mediaScore] = "mazo.mediaScore" [typeRating]="mazo.typeRating" [mazo] = mazo [selectedStar]="selectedStars[mazo.id_deck]"></app-rating>
         </div>
         <div >{{ mazo.mediaScore}}</div>
 

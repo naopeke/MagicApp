@@ -1,17 +1,20 @@
-<main>
+<div class="modalPerfil">
     <section class="personajes">
         <div class="titulos">
             <h2 class="titulo">Personajes</h2>
         </div>
-        <div  class="imgPersonajes" >
-            <div *ngFor="let avatar of avatares"  >
-                <div  class="img">
-                    <img class="avatar" type="image" [src]="avatar" 
-                    (click)="enviaAvatar(avatar)" alt="imagen personaje"
-                    [ngClass]="{'seleccion': avatarSeleccionado == avatar}">
+
+        <cdk-virtual-scroll-viewport itemSize="0" class="scroll">
+            <div  class="imgPersonajes">
+                <div *cdkVirtualFor="let avatar of avatares">
+                    <div  class="img">
+                        <img class="avatar" type="image" [src]="avatar" 
+                        (click)="enviaAvatar(avatar)" alt="imagen personaje"
+                        [ngClass]="{'seleccion': avatarSeleccionado == avatar}">
+                    </div>
                 </div>
             </div>
-        </div>
+        </cdk-virtual-scroll-viewport>
 
     </section>
     <section class="tierrasContainer">
@@ -23,11 +26,11 @@
         <div class="imgTierras">
             <div *ngFor="let tierra of tierras">
                 <div class="tierras">
-                    <img type="image" [src]="tierra" (click)="enviarTierra(tierra)" alt="imagen color/tierra"
+                    <img id="tierra" type="image" [src]="tierra" (click)="enviarTierra(tierra)" alt="imagen color/tierra"
                     [ngClass]="{'seleccion': tierraSeleccionada == tierra}">
                 </div>
             </div>
         </div>
 
     </section>
-</main>
+</div>

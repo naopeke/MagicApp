@@ -1,17 +1,18 @@
-main{
+.mainPerfil{
     width: 100%;
     height: 1000px;
 
     display: flex;
     align-items: center;
     justify-content: center;
+  
     background-image: url(../../../assets/images/profile/fondo.png);
     background-size: cover
 
 }
 
-.container, .editContainer{
-    min-width: 1350px;
+.containerPerfil, .editContainer{
+    width: 1350px;
     height: 880px;
 
     display: flex;
@@ -22,7 +23,7 @@ main{
     border-radius: var(--borde-cuadrado);
 }
 
-.container{
+.containerPerfil{
     gap: 30px;
     justify-content: center;
 }
@@ -74,6 +75,7 @@ main{
     justify-content: center;
     align-items: center;
     gap: 25px;
+    background-color: none !important;
 }
 .cardPerfil{
     position: relative;
@@ -82,6 +84,7 @@ main{
 
     display: flex;
     justify-content: center;
+    background-color: transparent !important;
 }
 .nameContainer{
     position: absolute;
@@ -107,6 +110,7 @@ main{
 .imgCard{
     position: relative;
     z-index: 99;
+    background-color: transparent !important;
 }
 
 .imgFondo{
@@ -118,7 +122,7 @@ main{
 .imgAvatar{
     position: absolute;
     top: 104px;
-    z-index: 99;
+    z-index: 9;
     width: 365px;
 }
 
@@ -326,4 +330,27 @@ input::placeholder{
     cursor: pointer;
 }
 
+@media screen and (max-width:1400px){
+    .containerPerfil, .editContainer{
+        width: 100%;
 
+    }
+
+    .containerPerfil{
+        gap: 120px;
+    }
+    .container2{
+        flex-direction: column;
+    }
+    .tituloPerfil{
+        display: none;
+    }
+  
+}
+
+@media screen and (max-width: 1000px){
+    .containerPerfil, .editContainer{
+        gap: 60px;
+        width:1000px;
+    }
+}

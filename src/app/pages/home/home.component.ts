@@ -73,16 +73,11 @@ ngOnInit(): void {
   }
   
   public openModal(evento:Eventos){
-      this.selectEvento = evento
-      console.log(this.selectEvento);
-      
-      if( this.selectEvento.creatorEvent == 1){
-        this.type = 3
-      } else {
-        this.type = 1
-      }
+    this.selectEvento = evento
+    this.type = this.selectEvento.creatorEvent == 1 ? 3 : 1;
     this.modalDetail = true
   }
+  
   public openModal2(evento:Eventos){
     this.modalDetail2 = true
     this.selectEvento = evento
