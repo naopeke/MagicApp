@@ -228,38 +228,3 @@ img{
         padding-left: 0;
     }
 }
-
-
-
-
-/* @media screen and (max-width: 1381px) {
-    .box_right {
-        min-height: 900px;
-        overflow-y: auto;
-    }
-}
-
-@media screen and (max-width: 1171px) {
-    .box_right {
-        min-height: 900px;
-        overflow-y: auto;
-    }
-}
-
-
-@media screen and (max-width: 1169px) {
-    .box_right {
-        max-height: 800px;
-        overflow-y: auto;
-    }
-}
-
-
-
-
-@media screen and (max-width: 943px) {
-    .box_right {
-        max-height: 900px;
-        overflow-y: auto;
-    }
-} */

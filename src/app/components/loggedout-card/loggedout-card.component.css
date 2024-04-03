@@ -34,7 +34,7 @@
 }
 
 .search-message {
-    padding: 120px;
+    margin-top: 180px;
     color: var(--blanco);
     font-size: 25px;
     z-index: 5;
@@ -44,6 +44,8 @@
     width: 200px;
     height: auto;
     border-radius: 13px;
+    margin-top: 64px;
+    margin-left: 80px;
 
 }
 
@@ -151,4 +153,10 @@ input::placeholder {
     align-items:center;
     justify-content: center;
     width: 100%;
+}
+
+@media screen and (max-width: 927px) {
+    .img-search-message {
+        display: none;
+    }
 }
