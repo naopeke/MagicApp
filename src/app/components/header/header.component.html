@@ -1,4 +1,4 @@
-<header>
+<header  [ngStyle]="{'min-width': isSpecialRoute ? '699px' : '900px'}">
     <div id="img_header" [routerLink]="usersService.isLoginSubject.value ? 'home' : 'landing-page'">
         <img src="../../../assets/images/Logo.png" alt="MagyDeck">
     </div>

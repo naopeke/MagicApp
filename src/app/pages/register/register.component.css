@@ -1,5 +1,7 @@
 .body{
     min-height: 100vh;
+    width: 100%; /*importante*/
+    min-width: 900px; /*importante*/
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -9,6 +11,7 @@
     background-size: cover;
     z-index: -1;
     transition: background 1s ease;
+    min-width:699px;
 }
 
 .bg_dark{

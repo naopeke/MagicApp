@@ -2,6 +2,7 @@
 
 .mainHome{
   width: 100%;
+  min-width: 900px;
   height: 1000px;
   display: flex;
   align-items: center;

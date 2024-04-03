@@ -40,6 +40,7 @@
     background-size: 100% auto;
     background-position: center;
     width:100%;
+    min-width: 699px;
     background-attachment: fixed; /*fix background*/
     min-height: 100vh;
     display: flex;

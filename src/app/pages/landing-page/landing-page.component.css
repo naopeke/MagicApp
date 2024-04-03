@@ -1,5 +1,6 @@
 section{
     display: block;
+    width: 100%;
     min-width: 699px;
 }
 
@@ -1080,6 +1081,10 @@ img-container{
 
     .texto-dcha {
         padding-left: 15px;
+    }
+
+    form {
+        width: 460px;
     }
 }
 

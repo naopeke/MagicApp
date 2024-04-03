@@ -4,6 +4,7 @@
 }
 #divfondo{
   width: 100%;
+  min-width: 900px; /*super importante*/
   padding-bottom: 30px;
   min-height: 1000px;
   background-image: url("../../../assets/images/fondos/fondo_evento.png");

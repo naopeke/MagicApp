@@ -21,6 +21,8 @@ mat-progress-spinner {
 
 .background-wrapper {
     min-height: 100vh;
+    width: 100%; /*importante*/
+    min-width: 699px; /*importante*/
     /* position: relative; */
     background-color: var(--negro-bg);
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('/assets/images/fondos/Fondo_morado.png');

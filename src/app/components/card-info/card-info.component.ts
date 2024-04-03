@@ -22,7 +22,7 @@ export class CardInfoComponent implements OnInit{
   public cardSymbolsData: any[] = []; // para card symbols
 
 
-  // recibir el object de legalities y convertir a un array con map function
+  // recibir el object de legalities y convertir a un array con map function : nao
   // format : tipo de reglas ex.standard, modern, commander
   // statud : status de legalities  ex. legal, not legal 
   changeLegalitiesToArray(legalities:any): any[]{
@@ -32,7 +32,7 @@ export class CardInfoComponent implements OnInit{
     }));
   }
 
-  // cambio getColor de xisca
+  // cambio getColor de xisca : nao
   public getColor(status: string){
     switch(status){
       case 'legal': return '#5C724B';

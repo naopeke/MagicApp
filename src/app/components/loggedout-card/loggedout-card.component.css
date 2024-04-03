@@ -1,6 +1,7 @@
 .background-wrapper {
     background-image: url('/assets/images/fondos/carta-loggedout.png');
     width:100%;
+    min-width: 699px;
     min-height: 100%;
     object-fit: cover;
     position: relative;
