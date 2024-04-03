@@ -46,7 +46,7 @@
             <div class="contentParticipantes">
                 <h4 class="creador">Creador:</h4>
                 <p class="nombreCreador">{{evento.creator}}</p>
-                <div>
+                <div class="divPart">
                     <h4 class="participantes">Participantes:</h4>
                     <ul *ngIf="evento.participants && evento.participants.length > 0; else empty" class="listaPart">
                         <li *ngFor="let participante of evento.participants" class="participante">{{ participante.nameUser}}</li>

@@ -2,6 +2,10 @@
     color: var(--amarillo);
 }
 
+.show{
+    color: var(--amarillo);
+}
+
 .cursorPointer mat-icon{
     cursor: pointer;
 }

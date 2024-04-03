@@ -42,12 +42,14 @@ export class AddEventComponent implements OnInit {
   add(titleEvent:string, descriptionEvent:string, dateEvent:Date, hourEvent:string, placeEvent:string, direction:string){
     let evento = new Evento(null, titleEvent, descriptionEvent, dateEvent, hourEvent, placeEvent, new User(this.id_logueado, null, null, null, null, null), direction);
     this.eventService.createEvent(evento).subscribe((respuesta: Response) => {
-      console.log(respuesta);
       this.toastr.success('Evento añadido correctamente', "")
     })
     this.editar = false;
     this.addEvent.disable();
-    this.close();
+    setTimeout(() => {
+      this.close();
+    }, 100)
+ 
   }
 
   edit(){

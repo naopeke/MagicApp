@@ -1,5 +1,5 @@
-<main>
-    <section [ngClass]="modal == false ? 'container': 'editContainer'">
+<div class="mainPerfil">
+    <section [ngClass]="modal == false ? 'containerPerfil': 'editContainer'">
         <div class="infoPerfil">
             <div class="cardPerfil">
 
@@ -8,7 +8,7 @@
                 </div>
 
                 <img class="imgCard" [src]="user.icon" alt="">
-                <img class="imgFondo" src="../../../assets/images/profile/fondoCarta.png" alt="">
+                <!-- <img class="imgFondo" src="../../../assets/images/profile/fondoCarta.png" alt=""> -->
                 <img class="imgAvatar" [src]="user.avatar" alt="">
                 
                 <div class="sobreMiContainer">
@@ -40,7 +40,7 @@
         <div *ngIf="modal == false; else viewModal" class="container2">
             <div class="tituloPerfil">
                 <h1 id="titulo">Perfil</h1>
-                <img src="../../../assets/images/iconos/cartas.png" alt="">
+                <img src="../../../assets/images/iconos/cartas.png" id="iconoCarta" alt="">
             </div>
     
             <div class="modificarPerfil">
@@ -159,4 +159,4 @@
             <app-modal-profile (eventoAvatar) = seleccionAvatar($event) (eventoTierra) = seleccionTierra($event)></app-modal-profile>
         </ng-template>
     </section>
-</main>
+</div>

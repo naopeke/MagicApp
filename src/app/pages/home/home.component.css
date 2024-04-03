@@ -92,6 +92,7 @@ swiper-slide {
 .cardMazo{
   gap: 20px;
   padding: 15px;
+  padding-top: 20px;
 }
 
 .cardEvento:hover{
@@ -108,20 +109,28 @@ swiper-slide {
   z-index: 9;
   border-radius: var(--borde-cuadrado);
 }
+.img-container{
+  height: 255px;
+}
+.img-fondo{
+  height: 100%;
+  width: 100%;
+}
 
 .img-avatar{
   position: relative;
-  bottom: 249px;
-
+  bottom: 250px;
   z-index: 99;
 } 
 
 .tituloEvento, .tituloEvento2{
   font-size: 18pt;
+  height: 60px;
+  margin-top: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
-  line-height: 40px;
+  line-height: 30px;
 }
 .tituloEvento{
   color: var(--verde);
@@ -141,7 +150,7 @@ swiper-slide {
 
 .card-info{
   position: relative;
-  bottom: 230px;
+  /* bottom: 230px; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -162,13 +171,17 @@ swiper-slide {
   font-size: 17pt;
 }
 
+.img-mazo{
+  border-radius: 15px;
+}
+
 .info-user{
   color: var(--blanco);
   font-size: 17pt;
 }
 
 
-.moreInfo{
+/* .moreInfo{
   color: var(--amarillo);
   margin-top: 37px;
 }
@@ -181,7 +194,7 @@ a{
   color: var(--blanco);
   cursor: pointer;
   text-decoration: underline;
-}
+} */
 
 .button-participar, .button-abandonar{
   height: 45px;
@@ -283,13 +296,14 @@ a{
     height: 515px;
   }
 
-  .img-fondo, .img-avatar{
-    width: 250px;
+  .img-container{
+    height: 185px;
   }
 
   .img-avatar{
     position: relative;
-    bottom: 171px;
+    bottom: 183px;
+    width: 230px;
   } 
 
   .img-mazo{
@@ -298,11 +312,13 @@ a{
 
   .card-info{
     position: relative;
-    bottom: 160px;
-  }
+    /* bottom: 160px; */
+  } 
 
   .tituloEvento, .tituloEvento2{
     font-size: 14pt;
+    line-height: 20px;
+    margin-bottom: -10px;
 
   }
 
@@ -330,28 +346,27 @@ a{
     .cardMazo{
       padding: 20px;
     }
-    .img-fondo, .img-avatar{
-      width: 180px;
+    .img-container{
+      height: 130px;
     }
-  
+
+    .img-avatar{
+      position: relative;
+      bottom: 132px;
+      width: 165px;
+    } 
     .img-mazo{
       width: 130px;
     }
-  
-    .img-avatar{
-      position: relative;
-      bottom: 124px;
-    } 
-
     .img-estrellas{
       width: 25px;
     }
     .card-evento{
       gap: 10px
     }
-    .card-info{
+    /* .card-info{
       bottom: 120px;
-    }
+    } */
  
 
     .info{
@@ -362,15 +377,17 @@ a{
   
     .tituloEvento, .tituloEvento2{
       font-size: 10pt;
+      margin-top: 5px;
     }
     .info-mazo, .info-user{
       font-size: 11pt;
+      margin-bottom: 10px;
     }
  
     .button-participar, .button-abandonar{
       width: 150px;
       height: 40px;
-      margin-top: 10px;
+      margin-top: 5px;
       font-size: 10pt;
     }
 
@@ -378,7 +395,8 @@ a{
       width: 150px;
       height: 40px;
       font-size: 10pt;
-      margin-top: -2px;
+      margin-top: 0px;
+    
     }
     .titulo, .titulo-eventos, .titulo-mazos{
       font-size: 18pt;

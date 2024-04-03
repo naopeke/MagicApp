@@ -4,7 +4,7 @@
     (mouseenter) = "HandleMouseEnter(index)"
     (mouseleave) = "HandleMouseLeave()"
     (click)="rating(index)"
-    [ngClass]="{checked:selectedStar>index}">
+    [ngClass]="{ 'checked': index < selectedStar, 'show': index < showStar }">
     star
     </mat-icon>
 </div>

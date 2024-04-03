@@ -1,14 +1,18 @@
 .mazos{
     display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    width: 100%;
+    /* border: solid white 2px; */
     gap:5px
 }
 
 .datos{
-    min-height: 50px;
+    height: 50px;
     display: flex;
     justify-content: center;
-    
     align-items: center;
+    flex-wrap: wrap;
     background-color: #330a05;
     border-radius: var(--borde-input);
     color: var(--blanco);
@@ -38,10 +42,21 @@
     border: solid var(--amarillo);
     cursor: pointer;
 }
-.estrellas{
-    padding-top: 5px;
+@media screen and (max-width: 1025px){
+    .datos{
+        font-size: 14pt;
+    }
+    
+    .puntuacion{
+        width: 190px;
+    }
+    
+    .usuario, .mazo{
+        width: 240px;
+    }
+    
+    .explorar{
+        width: 190px;;
+    }
 }
 
-#estrella{
-    width: 30px;
-}

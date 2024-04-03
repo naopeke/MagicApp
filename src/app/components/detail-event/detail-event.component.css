@@ -141,6 +141,12 @@
     align-items: center;
     width: 350px;
 }
+.divPart{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 .creador, .participantes{
     font-family: var(--antiqua);

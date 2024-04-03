@@ -7,8 +7,8 @@
                 <h2 class="tituloh2"> Top 3 - Mazos más votados</h2>
             </div>
 
-            <!-- <cdk-virtual-scroll-viewport itemSize="0" class="scroll2"> -->
-                <div class="bucleContainer"> 
+            <cdk-virtual-scroll-viewport itemSize="0" class="scroll2">
+                <!-- <div class="bucleContainer">  -->
                     <div class="leyenda">
                         <div class="datos usuario">Nombre de Usuario</div>
                         <div class="datos mazo">Nombre del Mazo</div>
@@ -18,8 +18,8 @@
                     <div *ngFor="let mazo of mejoresMazos" class="bucle">
                         <app-decks [mazo] = "mazo" (eventoExplorar) = 'seleccionMazo($event)'></app-decks>
                     </div>
-                </div>
-            <!-- </cdk-virtual-scroll-viewport> -->
+                <!-- </div> -->
+            </cdk-virtual-scroll-viewport>
         </div>
         <div class="buscador votar">
 
@@ -44,11 +44,11 @@
             </div>
 
             <cdk-virtual-scroll-viewport itemSize="50" class="scroll">
-                <div class="bucleContainer"> 
+                <!-- <div class="bucleContainer">  -->
                     <div *cdkVirtualFor="let mazo of mazos" class="bucle">
                         <app-decks [mazo] = "mazo" (eventoExplorar) = 'seleccionMazo($event)'
                         (eventoPuntuacion) = "score($event)" [typeRating] = typeRating></app-decks>
-                    </div>
+                    <!-- </div> -->
                 </div>
             </cdk-virtual-scroll-viewport>
 
