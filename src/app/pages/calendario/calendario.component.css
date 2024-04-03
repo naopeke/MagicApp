@@ -2,7 +2,8 @@
     background-image: url('src/assets/images/calendario/fondoCastillo.png');
     background-size: cover;
     background-repeat: no-repeat;
-    width: 100%;
+    width: 100%; /*importante*/
+    min-width: 900px; /*importante*/
     height: 1400px;
     display: flex;
     justify-content: center;

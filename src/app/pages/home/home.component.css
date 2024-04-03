@@ -1,8 +1,8 @@
 
 
 .mainHome{
-  width: 100%;
-  min-width: 900px;
+  width: 100%; /*importante*/
+  min-width: 900px; /*importante*/
   height: 1000px;
   display: flex;
   align-items: center;

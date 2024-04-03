@@ -1,7 +1,7 @@
 section{
     display: block;
-    width: 100%;
-    min-width: 699px;
+    width: 100%; /*importante*/
+    min-width: 699px; /*importante*/
 }
 
 .principal{

@@ -1,5 +1,6 @@
 .mainPerfil{
-    width: 100%;
+    width: 100%; /*importante*/
+    min-width: 900px; /*importante*/
     height: 1000px;
 
     display: flex;

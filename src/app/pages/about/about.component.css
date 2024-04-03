@@ -6,7 +6,8 @@
 
 section{
     display: block;
-    min-width: 900px;
+    width: 100%; /*importante*/
+    min-width: 900px; /*importante*/
     background-color: black;
 }
 

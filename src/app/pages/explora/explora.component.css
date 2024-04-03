@@ -1,6 +1,6 @@
 .mainExplora{
-    width: 100%;
-    min-width: 900px;
+    width: 100%; /*importante*/
+    min-width: 900px; /*importante*/
     display: flex;
     flex-direction: column;
  

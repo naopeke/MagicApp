@@ -4,14 +4,13 @@
     </div>
    
     <div class="dropdown">
-
         <button class="button_lateral" *ngIf="!usersService.isLoginSubject.value" routerLink="register">
             <span *ngIf="!isSmallScreen; else mobileIcon">Iniciar sesión</span>
             <ng-template #mobileIcon>
                 <mat-icon>input</mat-icon>
             </ng-template>
         </button>
-        <!-- <button class="button_lateral desktop-icon" routerLink="register"  *ngIf="!usersService.isLoginSubject.value">Iniciar sesión</button> -->
+
         <button class="button_lateral dropdown-toggle" (click)="modal_visible = !modal_visible" *ngIf="usersService.isLoginSubject.value">{{ currentUser?.nameUser }}</button>
         <div *ngIf="modal_visible" class="dropdown-child">
             <!-- Crar un espacio de ruptura (&nbsp) -->
