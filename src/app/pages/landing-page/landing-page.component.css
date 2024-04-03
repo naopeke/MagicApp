@@ -1,5 +1,6 @@
-body{
+section{
     display: block;
+    min-width: 699px;
 }
 
 .principal{
@@ -1064,9 +1065,22 @@ img-container{
         height:auto;
         z-index: 100;
         background-position: center;
+    }   
+}
+
+@media screen and (max-width: 1006px) {
+    .sumergete {
+        padding: 35px;
+        height: auto;
     }
 
-    
+    .texto-izq{
+        padding-right: 15px;
+    }
+
+    .texto-dcha {
+        padding-left: 15px;
+    }
 }
 
 @media screen and (max-width: 975px) {
@@ -1102,6 +1116,12 @@ img-container{
 
 }
 
+@media screen and (max-width: 816px) {
+    .sumergete h3 {
+        margin:0;
+        padding:0;
+    }
+}
 
 @media screen and (max-width: 780px) {
     .telarana-container, .antifaz-container, .cartas1-container, .mazo-container, .dragon-container{
@@ -1141,9 +1161,6 @@ img-container{
         align-content: center;
         flex-direction: column;
     }
-
-
-
 
     .texto-martillo{
         margin-left: 0;
