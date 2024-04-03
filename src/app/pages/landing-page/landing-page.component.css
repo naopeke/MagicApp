@@ -1114,6 +1114,11 @@ img-container{
         width: 90%;
     }
 
+    .guerreroAmarillo, .guerreroAzul, .guerreroMorado, .guerreroRojo, .guerreroVerde{ 
+        font-size: large;
+        padding-top: 10px;
+    }
+
 }
 
 @media screen and (max-width: 816px) {
