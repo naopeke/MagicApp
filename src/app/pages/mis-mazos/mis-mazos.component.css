@@ -195,8 +195,9 @@ mat-progress-spinner {
 
 #total-cards{
     position: absolute;
-    top: 12px;
-    left: 43px;
+    top: 43%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-family: var(--antiqua);
     color: var(--amarillo);
     font-size: 20pt;
