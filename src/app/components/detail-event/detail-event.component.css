@@ -141,6 +141,12 @@
     align-items: center;
     width: 350px;
 }
+.divPart{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 .creador, .participantes{
     font-family: var(--antiqua);
@@ -165,5 +171,17 @@
 
 .listaPart li {
     margin-bottom: 10px;
-    
 }
+
+.editEvent{
+    position: absolute;
+    /* right: 300px; */
+    
+
+}
+
+.deleteEvent{
+    position: absolute;
+    z-index: 9999;
+}
+

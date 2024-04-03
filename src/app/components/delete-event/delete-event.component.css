@@ -1,13 +1,31 @@
 #deleteMain{
-    position: absolute;
-    width: 20%;
-    height: 300px;
-    background-image: url(../../../assets/images/fondos/Fondo_verde.png); 
-    background-repeat: no-repeat;
+    position: relative;
+    width: 400px;
+    height: 160px;
+    background-image: url(../../../assets/images/detalleEvento/fondoDetalle2.png);
     background-size: cover;
-    left: 40%;
-    top: 300px;
-    display:block
+    border-radius: var(--borde-cuadrado);
+    /* background-image: url(../../../assets/images/fondos/Fondo_verde.png); 
+    background-repeat: no-repeat;
+    background-size: cover; */
+    background-color: black;
+    /* left: 40%;
+    top: 300px; */
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border: solid var(--amarillo) 1px;
+}
+#closeDetail{
+    width: 25px;
+    position: absolute;
+    right: 7px;
+    top: 5px;
+    cursor: pointer;
+}
+#closeDetail:hover{
+    border: solid var(--rojo) 2px;
+    border-radius: 5px;
 }
   
 .modal-dialog-delete{
@@ -17,30 +35,39 @@
 }
   
 .divDelete{
-    background-color: var(--negro-bg);
+   
+    /* background-color: var(--negro-bg); */
     width: 100%;
-    height: 200px;
+    height: 100%;
+    padding: 30px;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
-.divDelete h3{
+.divDelete p{
     font-family: var(--antiqua);
     color: var(--amarillo);
     text-align: center;
-    margin-top: 30px;
+    /* margin-top: 30px; */
 }
 
 .buttonDelete{
     padding: 10px;
     width: 50%;
+    height: 50px;
     background-color: var(--verde);
     border-radius: var(--borde-boton);
-    margin: 0 auto;
-    margin-top: 15px;
-    margin-bottom: 10%;
+    /* margin: 0 auto; */
+    /* margin-top: 15px;
+    margin-bottom: 10%; */
     color: #191A1B;
     font-weight: bold;
+    border: none;
+}
+
+.buttonDelete:hover{
+    background-color: var(--rojo);
 }
 
 #alertEvent{

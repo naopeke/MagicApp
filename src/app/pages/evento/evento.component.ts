@@ -197,6 +197,8 @@ export class EventoComponent {
   }
 
   public openModalDetail(evento:Evento){
+    console.log(evento);
+    
 
     const ev = new Eventos(evento.id,evento.title, evento.description, evento.date, evento.hour, evento.place, evento.direction, evento.creator.nameUser, evento.creator.id_user, null);
 

@@ -46,7 +46,7 @@
             <div class="contentParticipantes">
                 <h4 class="creador">Creador:</h4>
                 <p class="nombreCreador">{{evento.creator}}</p>
-                <div>
+                <div class="divPart">
                     <h4 class="participantes">Participantes:</h4>
                     <ul *ngIf="evento.participants && evento.participants.length > 0; else empty" class="listaPart">
                         <li *ngFor="let participante of evento.participants" class="participante">{{ participante.nameUser}}</li>
@@ -66,12 +66,21 @@
         <button *ngIf="type == 2" class="buttonParticipar" (click)="participar()">Participar</button>
         <!-- si eres el creador -->  <!-- Te elimina el evento -->
         <div *ngIf="type == 3" class="botonesEliminarEditar">
-            <button  class="buttonEliminar" (click)="abandonar()">Eliminar</button>
+            <button  class="buttonEliminar" (click)="eliminar()">Eliminar</button>
             <!-- Este navega a proximos eventos, con scroll hacia el tuyo(id_event) -->
             <button class="buttonParticipar" (click)="editar()">Editar evento</button>
         </div>
-       
+
+        <div *ngIf="openEdit && typeEdit == 2" class="editEvent">
+            <app-edit-event></app-edit-event>
+        </div>
+        <div *ngIf="openDelete" class="deleteEvent">
+            <app-delete-event (eventClose) = closeDelete($event) [user] = user [evento] = evento ></app-delete-event>
+        </div>
+
 
     </div>
+
+   
 
 </div>
