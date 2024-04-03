@@ -148,14 +148,6 @@ header nav ul li .children li a {
   @media (max-width: 600px) {
 
     .button_lateral{
-        position: absolute;
-        margin: 20px 10px;
-        right: 0;
         width: auto;
-        border: var(--amarillo) solid 2px;
-        background-color: rgb(0, 0, 0);
-        border-radius: var(--borde-boton);
-        padding: 10px;
-        color: var(--amarillo);
     }
   }

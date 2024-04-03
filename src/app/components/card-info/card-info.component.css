@@ -3,8 +3,8 @@
     z-index: 10000;
     height: 800px;
     width:auto;
+    min-width: 699px;
 }
-
 
 .bg_img{
     /* border:2px solid olive; */
@@ -28,7 +28,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-bottom: 20px;
+    padding: 20px;
 }
 
 .delete_button{
@@ -50,11 +50,12 @@
 }
 
 .title{
-    /* border:2px solid yellow; */
+    border:2px solid yellow;
     color: var(--amarillo);
     font-family: var(--antiqua);
     font-size: 40px;
-    margin-top: -160px;
+    /* margin-top: -160px; */
+    margin:0;
 }
 
 .main-cardinfo{
@@ -73,16 +74,19 @@
     display: flex;
     flex-direction: column;
     padding: 0 50px 0 0;
-    height: 100%;
+    margin:0;
+    height: 650px;
 }
 
 .box_left{
+    border:2px solid blue;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     padding-left: 25px;
+    margin:0;
 
 }
 
@@ -179,7 +183,56 @@ img{
     padding-top: 5px;
     font-size: 20px;
 }
-@media screen and (max-width: 1381px) {
+
+@media screen and (max-width: 1399px) {
+    .box_right {
+        max-height: 650px;
+        overflow-y: auto;
+        padding-left: 60px;
+    }
+}
+
+@media screen and (max-width: 1399px) {
+    .box_right {
+        max-height: 650px;
+        overflow-y: auto;
+        /* padding-left: 160px; */
+    }
+}
+
+@media screen and (max-width: 1999px) {
+    .box_right {
+        max-height: 650px;
+        overflow-y: auto;
+        padding-left: 160px;
+    }
+}
+
+@media screen and (max-width: 774px) {
+    .img-card {
+        width: 200px;
+        height: auto;
+    }
+    
+    .box_right {
+        max-height: 650px;
+        overflow-y: auto;
+        padding-left: 50px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .box_right {
+        max-height: 650px;
+        overflow-y: auto;
+        padding-left: 0;
+    }
+}
+
+
+
+
+/* @media screen and (max-width: 1381px) {
     .box_right {
         min-height: 900px;
         overflow-y: auto;
@@ -209,4 +262,4 @@ img{
         max-height: 900px;
         overflow-y: auto;
     }
-}
+} */
