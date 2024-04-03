@@ -9,6 +9,7 @@ import { Deck } from 'src/app/models/deck';
 export class DecksComponent {
 public explorar: boolean = false
 public score: number;
+public selectedStars: { [id: number]: number } = {};
 // @Input () typeRating: number;
 @Input () mazo: Deck
 @Output() eventoExplorar = new EventEmitter<number>();
@@ -21,5 +22,8 @@ public explora(id_deck:number){
 
 Handle(id_deck:number, score:number){
   this.eventoPuntuacion.emit({id_deck, score})
+  this.selectedStars[id_deck] = score;
+  console.log(this.selectedStars);
+  
 }
 }

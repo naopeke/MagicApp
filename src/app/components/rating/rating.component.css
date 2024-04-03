@@ -9,3 +9,7 @@
 .cursorPointer mat-icon{
     cursor: pointer;
 }
+
+.icon{
+    color: #b3b3b377;
+}
