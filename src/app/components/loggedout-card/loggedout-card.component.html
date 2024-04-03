@@ -26,6 +26,7 @@
                         <div class="search-message">
                             Busca las cartas poderosas!
                         </div>
+                        <img class="img-search-message" src="https://cards.scryfall.io/normal/front/7/7/77f1f6ac-983f-4f3e-8906-47f774e8367b.jpg?1582021719" alt="">
                     </div>
 
                     <div class="results-wrapper" *ngIf="resultsCards.length === 0 && searchPerformed && errorMessage">
@@ -34,8 +35,7 @@
                         <p>{{ errorMessage.split('.')[1] }}</p>
                         </div>
                     </div>
-
-
+                    
                 </div>
             </div>
         </div>

@@ -34,10 +34,17 @@
 }
 
 .search-message {
-    padding: 50px;
+    padding: 120px;
     color: var(--blanco);
     font-size: 25px;
     z-index: 5;
+}
+
+.img-search-message {
+    width: 200px;
+    height: auto;
+    border-radius: 13px;
+
 }
 
 form {

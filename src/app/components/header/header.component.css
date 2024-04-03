@@ -28,7 +28,7 @@ img{
     right: 0;
     width: 150px;
     border: var(--amarillo) solid 2px;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgb(0, 0, 0);
     border-radius: var(--borde-boton);
     padding: 10px;
     color: var(--amarillo);
@@ -143,3 +143,19 @@ header nav ul li .children li a {
 .dropdown-child span:hover {
     background-color: rgba(132, 133, 133, 0.096);
 }
+
+
+  @media (max-width: 600px) {
+
+    .button_lateral{
+        position: absolute;
+        margin: 20px 10px;
+        right: 0;
+        width: auto;
+        border: var(--amarillo) solid 2px;
+        background-color: rgb(0, 0, 0);
+        border-radius: var(--borde-boton);
+        padding: 10px;
+        color: var(--amarillo);
+    }
+  }
