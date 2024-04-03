@@ -41,10 +41,13 @@ export class HeaderComponent implements OnInit {
     });
 
     //para cambiar boton de login al icon por el tamaño de pantalla, observa el tamaño : nao
+    //https://www.thisdot.co/blog/how-to-manage-breakpoints-using-breakpointobserver-in-angular
     this.breakpointObserver.observe([Breakpoints.XSmall])
     .subscribe(result => this.isSmallScreen = result.matches);
 
     //para cambiar min-width por router : nao
+    //https://stackoverflow.com/questions/49722369/angular-router-events-navigationend-how-to-filter-only-the-last-event
+    //https://fireflysemantics.medium.com/capturing-all-angular-navigationend-events-aba3ac2da650
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
