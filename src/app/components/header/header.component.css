@@ -87,25 +87,28 @@ header nav ul {
     padding: 0;
     list-style: none;
     width: 100%;
+
 	/* list-style:none;
     display: block;
     width: 100%;
     padding: 0; */
 }
 header nav ul li {
-	/* display:inline-block;
-	position: relative;
-    width: 15%; */
-
     position: relative;
     flex-basis: 15%;
     margin: 0 5px 5px 5px;
     padding: 3px;
+
+    /* display:inline-block;
+	position: relative;
+    width: 15%; */
+
 }
 header nav ul li a {
 	display:block;
 	text-decoration:none;
 }
+
 /* header nav ul li:hover .children {
 	display:block;
 } */
@@ -118,19 +121,17 @@ header nav ul li.active .children {
 
 
 header nav ul li .children {
+    display: none; 
+    background: #000;
+    width: 100%; /* ajustando a padre */
+    z-index: 1000;
 
-
-	/* display: none;
+    /* display: none;
 	background:#000000;
 	position: absolute;
     left: 15%;
 	width: 200px;
 	z-index:1000; */
-
-    display: none; 
-    background: #000;
-    width: 100%; /* ajustando a padre */
-    z-index: 1000;
 }
 header nav ul li .children li {
 	display:block;
@@ -204,9 +205,10 @@ header nav ul li .children li a {
     }
 }
 
-  @media (max-width: 600px) {
+*/
 
+@media (max-width: 600px) {
     .button_lateral{
         width: auto;
     }
-  } */
+  } 
