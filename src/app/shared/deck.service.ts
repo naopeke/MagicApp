@@ -23,7 +23,7 @@ export class DeckService {
   
   // belen explora
   public getSharedDecks(){
-    return this.http.get(this.url + '/explora')
+    return this.http.get(this.urlExplora)
   }
 
   public getVotedDeck(){
@@ -45,13 +45,21 @@ export class DeckService {
        return this.http.get(this.urlExplora + '/deck/' + nameDeck)
   }
 
-  public putMediaScore(id_user:number,id_deck:number, score:number){
+  public putMediaScore(id_user:number,id_deck:number, sumScore:number, score:number){
+   
     const body = {
       id_user: id_user,
       id_deck: id_deck,
+      sumScore: sumScore,
       score: score
     }
+    console.log(body);
+    
        return this.http.put(this.urlExplora + '/mediaScore', body)
+  }
+
+  public getScore(id_user:number, id_deck:number){
+    return this.http.get(`${this.urlExplora}/score?id_user=${id_user}&id_deck=${id_deck}`)
   }
 
   public getDeckById(id_deck:number,filter:string){

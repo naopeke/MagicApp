@@ -313,7 +313,6 @@ cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb:hover{
 
 @media screen and (max-width: 1100px)  
 {
-    
     .buscador{ 
         width: 100%;
         padding: 40px;
@@ -322,7 +321,6 @@ cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb:hover{
 
 @media screen and (max-width: 1025px)
 {
- 
     .scroll, .scroll2{
         width: 900px;
     }
