@@ -186,8 +186,14 @@ export class CalendarioComponent implements OnInit {
   }
   
   public addEventClose(event:boolean){
-    this.show_addEvent = event; 
+    console.log(this.eventos);
+    
+ 
     this.refreshCalendar();
+    setTimeout(() => {
+      this.show_addEvent = event; 
+      
+    }, 200)
     this.bg_dark = false; 
   }
   
