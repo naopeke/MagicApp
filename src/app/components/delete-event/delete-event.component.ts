@@ -27,31 +27,30 @@ export class DeleteEventComponent {
   
   ngOnInit(): void {this.mostrarNotificacionEvento = false;} //Inicializamos la variable de la notificación a false
 
-  //Función para eliminar el evento al pulsar en aceptar
-  // deleteEvent(idEvent:number){
-  //   this.eventService.deleteEvent(idEvent).subscribe((respuesta: Response) => {
-  //     console.log(respuesta);
-  //     this.toastr.success('Evento eliminado correctamente', "")
-  //     this.closeModalDelete();
-  //   })
-
-  //   this.mostrarNotificacionEvento = true; //Cambiamos el estado de la notificación para que se muestre
-  // }
-
   deleteEvent(){
-    this.eventoService.deleteParticipacion(this.user.id_user, this.evento.id_event).subscribe((res:any) =>{
-      if(!res.error){
-        this.toastr.success(res.mensaje, 'Éxito')
-        this.eventClose.emit(false)
-      
-      }
-    })
+    console.log(this.evento);
+    
+    if(this.evento){
+      this.eventoService.deleteParticipacion(this.user.id_user, this.evento.id_event).subscribe((res:any) =>{
+        if(!res.error){
+          this.toastr.success(res.mensaje, 'Éxito')
+          this.closeDelete();
+        
+        }
+      })
+    }
+    if(this.eventoAEliminar){
+      this.eventoService.deleteEvent(this.eventoAEliminar.id).subscribe((respuesta: Response) => {
+            console.log(respuesta);
+            this.toastr.success('Evento eliminado correctamente', "")
+          })
+          this.mostrarNotificacionEvento = true;
+          setTimeout(() => {
+            this.closeDelete();
+          },500)
+          
+    }
   }
-  
-  //Funcion para cerrar la modal, llamada desde el icono de la X
-  // public closeModalDelete():void {
-  //   this.eventService.closeModalDeleteEvent();
-  // }
 
   public closeDelete(){
     this.eventClose.emit(false)

@@ -45,6 +45,8 @@ export class DetailEventComponent implements OnInit{
         });
       } 
     })
+    console.log(this.typeEdit);
+    
   }
 
   closeDetail(){
@@ -69,6 +71,7 @@ export class DetailEventComponent implements OnInit{
       if(!res.error){
         this.toastr.success(res.mensaje, 'Éxito')
         this.getparticipantes(); 
+        this.closeDetail();
       }
     })
   }
@@ -86,6 +89,7 @@ export class DetailEventComponent implements OnInit{
   }
   closeDelete(close:boolean){
     this.openDelete = close
+    this.closeDetail();
     console.log(close);
     
     console.log(this.openDelete);
