@@ -63,23 +63,23 @@ export class ExploraComponent implements OnInit {
     this.deckService.getSharedDecks().subscribe((res:any) => {
       if(!res.error){
         this.mazos = res.data
-        this.mazos.forEach(mazo =>{
-          if(mazo.id_user == this.currentUser.id_user){
-            mazo.typeRating = 3
-          } else {
-            let currentDate = new Date().toISOString().slice(0, 10);
-            let typeAssigned = false
-            mazo.previousScore.forEach(score => {
-              if(score.date == currentDate && score.userVotes == this.currentUser.id_user){
-                mazo.typeRating = 3;
-                typeAssigned = true
-              } 
-            })
-            if(!typeAssigned){
-              mazo.typeRating = 1
-            }
-          }
-        })
+        // this.mazos.forEach(mazo =>{
+        //   if(mazo.id_user == this.currentUser.id_user){
+        //     mazo.typeRating = 3
+        //   } else {
+        //     let currentDate = new Date().toISOString().slice(0, 10);
+        //     let typeAssigned = false
+        //     mazo.previousScore.forEach(score => {
+        //       if(score.date == currentDate && score.userVotes == this.currentUser.id_user){
+        //         mazo.typeRating = 3;
+        //         typeAssigned = true
+        //       } 
+        //     })
+        //     if(!typeAssigned){
+        //       mazo.typeRating = 1
+        //     }
+        //   }
+        // })
       }
       else {
         this.toastr.error(res.mensaje, 'Ups')
@@ -90,9 +90,9 @@ export class ExploraComponent implements OnInit {
     this.deckService.getVotedDeck().subscribe((res:any) =>{
       if(!res.error){
         this.mejoresMazos = res.data
-        this.mejoresMazos.forEach(mazo => {
-          mazo.typeRating = 2
-        })
+        // this.mejoresMazos.forEach(mazo => {
+        //   mazo.typeRating = 2
+        // })
       } else {
         this.toastr.error(res.mensaje, 'Ups')
       }

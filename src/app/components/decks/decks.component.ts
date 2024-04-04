@@ -10,7 +10,7 @@ export class DecksComponent {
 public explorar: boolean = false
 public score: number;
 public selectedStar: number
-// @Input () typeRating: number;
+@Input () typeRating: number;
 @Input () mazo: Deck
 @Output() eventoExplorar = new EventEmitter<number>();
 @Output() eventoPuntuacion = new EventEmitter<{id_deck:number, score:number}>()

@@ -8,7 +8,7 @@ import { Deck } from 'src/app/models/deck';
 })
 export class RatingComponent{
   // @Input() id_deck:number
-  // @Input() mazo: Deck
+  @Input() mazo: Deck
   @Input() mediaScore: number;
   @Input () typeRating: number;
   @Output() onRating = new EventEmitter<number>()
@@ -34,6 +34,8 @@ export class RatingComponent{
     
     this.selectedStar = index + 1; 
     this.previoSelection = this.selectedStar
+    console.log(this.mazo);
+    
     console.log(this.previoSelection);
     this.onRating.emit(this.selectedStar);
  
