@@ -21,8 +21,8 @@ export class EventosService {
 
 
   // private url = environment.url;
-  // private url = "http://localhost:3000/eventos"
-  private url = "https://magy-deck-api.vercel.app/eventos"; 
+  private url = "http://localhost:3000/eventos"
+  // private url = "https://magy-deck-api.vercel.app/eventos"; 
 
 
   private events: Evento [];
@@ -36,14 +36,14 @@ export class EventosService {
   constructor(private http: HttpClient) {
 
     // // Belen Home
-    //   this.urlHome = "http://localhost:3000/home"
-     this.urlHome = "https://magy-deck-api.vercel.app/eventos/home"; 
+      this.urlHome = "http://localhost:3000/home"
+    //  this.urlHome = "https://magy-deck-api.vercel.app/eventos/home"; 
 
     // // Belen Home
 
     // //Calendar
-    // this.urlCalendar = "http://localhost:3000/calendario"
-    this.urlCalendar = "https://magy-deck-api.vercel.app/eventos/calendario"; 
+    this.urlCalendar = "http://localhost:3000/calendario"
+    // this.urlCalendar = "https://magy-deck-api.vercel.app/eventos/calendario"; 
     // //calendar
 
     // this.events = [this.ev1, this.ev2, this.ev3, this.ev4, this.ev5];

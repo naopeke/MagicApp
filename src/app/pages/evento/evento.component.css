@@ -65,7 +65,7 @@
     text-align: center;
     padding-top: 27px;
     padding-bottom: 10px;
-    size: 20px;
+    font-size: 20px;
   }
   #contenedor_info{
     display: flex;
@@ -78,7 +78,6 @@
     position: relative; /*padre de marco-container*/
   }
   .marco-container{
-    position:absolute;
     bottom: 13px;
     position: relative;
     width: 192px; /* mismo como marco*/
@@ -95,6 +94,7 @@
   .marco {
     width: 100%;
     height: auto;
+    margin-top: 30px;
   }
   .nameuser {
     position: absolute;
@@ -145,7 +145,7 @@
     font-size: 18px;
   }
   #button_sabermas{
-    position: absolute; /*!hijo de #div_info_evento*/
+    /* position: absolute; !hijo de #div_info_evento */
     bottom: -38px;
     right: 40px;
     height: 40px;
@@ -192,6 +192,7 @@
   #img_superior{
     margin-top: 15px;
   }
+
 /* fin iconos */
 
 /* pagination */
@@ -230,6 +231,15 @@
   z-index: 999;
 }
 
+@media (max-width: 1200px) {
+  #img_evento {
+    width: 70%; /* Ajusta el tamaño según tu diseño */
+  }
+  #img_superior, #img_inferior{
+    width:30px
+  }
+}
+
 @media (max-width: 768px) {
   #img_evento {
     width: 80%; /* Ajusta el tamaño según tu diseño */
@@ -237,13 +247,50 @@
   #img_superior, #img_inferior{
     width:5px
   }
+  h1{
+    font-size: 15px;
+  }
 }
-@media (max-width: 1200px) {
+@media (max-width: 1328px) {
   #img_evento {
     width: 70%; /* Ajusta el tamaño según tu diseño */
   }
   #img_superior, #img_inferior{
     width:30px
+  }
+  h1{
+    font-size: 30px;
+  }
+  h2{
+    font-size: 20px;
+  }
+  #button_sabermas, .p_pagiantion{
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 1140px) {
+  h1{
+    font-size: 27px;
+  }
+  h2{
+    font-size: 18px;
+  }
+  #button_sabermas, .p_pagiantion, .paginationSpan{
+    font-size: 12px;
+  }
+  .icono_evento{
+    width: 20px;
+    margin-left: 20px;
+  }
+  .marco{
+    margin-top: 20px;
+    margin-left: 10px;
+  }
+  .btnBuscador {
+   
+    background-size: 40px;
+    
   }
 }
 
