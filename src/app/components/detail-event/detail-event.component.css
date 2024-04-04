@@ -1,6 +1,6 @@
 .content{
     height: 850px;
-    width: 900px;
+    width: 800px;
     background-image: url(../../../assets/images/detalleEvento/fondoDetalle2.png);
     background-size: cover;
     border-radius: var(--borde-cuadrado);
@@ -16,7 +16,6 @@
     padding: 40px;
     background-color: var(--negro-bg);
     border-radius: var(--borde-cuadrado);
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -97,7 +96,7 @@
 }
 .buttonParticipar, .buttonEliminar{
     height: 50px;
-    width: 200px;
+    max-width: 200px;
     border-radius: var(--borde-boton);
     font-family: var(--antiqua);
     font-size: 14pt;
@@ -185,3 +184,57 @@
     z-index: 9999;
 }
 
+
+@media screen and (max-width: 2100px) {
+    .content {
+        width: 650px;
+    }
+    
+    .bg-cuadrado {
+        width: 600px;
+    }
+}
+
+@media screen and (max-width: 1700px) {
+    .content {
+        margin-top: 70px;
+        width: 450px;
+    }
+    
+    .bg-cuadrado {
+        width: 400px;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .content {
+        margin-top: 90px;
+        width: 550px;
+    }
+    
+    .bg-cuadrado {
+        width: 500px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .content {
+        margin-top: 100px;
+        width: 350px;
+    }
+    
+    .bg-cuadrado {
+        width: 300px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .content {
+        margin-top: 100px; 
+        width: 250px;
+    }
+    
+    .bg-cuadrado {
+        width: 200px;
+    }
+}
