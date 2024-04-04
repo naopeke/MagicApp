@@ -70,7 +70,7 @@
         <app-delete-event [eventoAEliminar]="eventoSelect" (eventClose)="closeModalDelete($event)"></app-delete-event>
     </div>
     <div *ngIf="modalDetail == true" class="modalEvent">
-        <app-detail-event [evento]="selectEvento" (eventCloseDetail)="closeModalSaberMas($event)" [type]="id_logueado" [type]="typeButton"></app-detail-event>
+        <app-detail-event [evento]="selectEvento" (eventCloseDetail)="closeModalSaberMas($event)" [user]="id_logueado" [type]="typeButton"></app-detail-event>
     </div>
     
        

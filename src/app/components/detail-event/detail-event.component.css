@@ -96,6 +96,7 @@
 }
 .buttonParticipar, .buttonEliminar{
     height: 50px;
+    width: 200px;
     max-width: 200px;
     border-radius: var(--borde-boton);
     font-family: var(--antiqua);
@@ -185,7 +186,7 @@
 }
 
 
-@media screen and (max-width: 2100px) {
+/* @media screen and (max-width: 2100px) {
     .content {
         width: 650px;
     }
@@ -193,7 +194,7 @@
     .bg-cuadrado {
         width: 600px;
     }
-}
+} */
 
 @media screen and (max-width: 1700px) {
     .content {
@@ -219,8 +220,8 @@
 
 @media screen and (max-width: 900px) {
     .content {
-        margin-top: 100px;
-        width: 37s0px;
+        /* margin-top: 100px; */
+        width: 370px;
     }
     
     .bg-cuadrado {
@@ -230,7 +231,7 @@
 
 @media screen and (max-width: 600px) {
     .content {
-        margin-top: 100px; 
+        /* margin-top: 100px;  */
         width: 250px;
     }
     

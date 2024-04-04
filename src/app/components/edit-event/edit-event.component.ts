@@ -69,6 +69,8 @@ export class EditEventComponent implements OnInit {
  
   close(){
     this.eventClose.emit(false)
+    console.log(this.eventClose);
+    
   }
 
 }

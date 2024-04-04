@@ -280,7 +280,9 @@
 }
 .modalEdit{
   position: absolute;
-  top:180px;
+  bottom: 430px;
+  left: 700px;
+  z-index: 9999;
 }
 .modalDelete{
   position: absolute;

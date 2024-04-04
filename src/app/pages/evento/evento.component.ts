@@ -174,6 +174,8 @@ export class EventoComponent {
   }
   closeModalEdit(event: boolean){
     this.modalEdit = event
+    console.log(this.modalEdit);
+    
     this.getAllEventsForBBDD();
   }
   closeModalSaberMas(event: boolean){
