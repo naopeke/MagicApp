@@ -8,6 +8,7 @@ import { Deck } from 'src/app/models/deck';
 })
 export class RatingComponent{
   // @Input() id_deck:number
+  // @Input() mazo: Deck
   @Input() mediaScore: number;
   @Input () typeRating: number;
   @Output() onRating = new EventEmitter<number>()
