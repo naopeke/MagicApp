@@ -21,6 +21,7 @@ export class EventoComponent {
   public id_logueado: User;
   public modalEdit:boolean = false;
   public modalAdd:boolean = false;
+  public type:number;
   // Belen: te añado para abrir modal detalle evento
   public modalDetail:boolean = false
   public selectEvento: Eventos | undefined;
@@ -48,7 +49,7 @@ export class EventoComponent {
 
   getAllEventsForBBDD(){
 
-    console.log("getAllEventsForBBDD");
+    // console.log("getAllEventsForBBDD");
     this.eventService.getAllEvents().subscribe((respuesta: Response) => {
       // Recorrer el array "data" y añadir los eventos a "this.events" manualmente
       // Usando un bucle for
@@ -66,7 +67,7 @@ export class EventoComponent {
       }
 
       this.events = nuevosEventos;
-      console.log(this.events);
+      // console.log(this.events);
       this.calculatePagination();
     })
 
@@ -74,7 +75,7 @@ export class EventoComponent {
 
   getMyEventsForBBDD(){
 
-    console.log("getMyEventsForBBDD");
+    // console.log("getMyEventsForBBDD");
     this.eventService.getMyEvents(this.id_logueado.id_user).subscribe((respuesta: Response) => {
       // Recorrer el array "data" y añadir los eventos a "this.events" manualmente
       // Usando un bucle for
@@ -150,26 +151,26 @@ export class EventoComponent {
 
   findEventsWithNameMyEvents(tituloEvento:string){
 
-    console.log("llamo a mis eventos filtrado");
+    // console.log("llamo a mis eventos filtrado");
     if(tituloEvento == "")
     {
       this.getMyEventsForBBDD();
     }else{
       this.events = this.events.filter(event => event.title.toLowerCase().includes(tituloEvento.toLowerCase()));
-      console.log(this.events);
+      // console.log(this.events);
     }
     this.calculatePagination();
   }
 
   findEventsWithNameAllEvents(tituloEvento:string){
-    console.log("llamo a todos eventos filtrado");
+    // console.log("llamo a todos eventos filtrado");
     if(tituloEvento == "")
     {
       this.getAllEventsForBBDD();
     }else{
       console.log(this.events);
       this.events = this.events.filter(event => event.title.toLowerCase().includes(tituloEvento.toLowerCase()));
-      console.log(this.events);
+      // console.log(this.events);
     }
     this.calculatePagination();
   }
@@ -186,11 +187,9 @@ export class EventoComponent {
   openModalAdd(){
     this.modalAdd = true
   }
-  // openModalSaberMas(){
-  //   this.modalSaberMas = true
-  // }
+
   openModalEdit(ev:Evento){
-    console.log(ev);
+    // console.log(ev);
     
     this.setEventoEditar(ev);
     this.modalEdit = true
@@ -203,11 +202,31 @@ export class EventoComponent {
     const ev = new Eventos(evento.id,evento.title, evento.description, evento.date, evento.hour, evento.place, evento.direction, evento.creator.nameUser, evento.creator.id_user, null);
 
     this.selectEvento = ev;
-    console.log(this.selectEvento);
-    
+
+    // console.log(this.selectEvento);
+    // console.log(this.id_logueado);
+
+    // console.log(this.selectEvento);
+    if(this.id_logueado != null){
+    if(this.selectEvento.id_user == this.id_logueado.id_user){
+      this.type = 3;
+    }else{
+      this.type = 1;
+    }
+    }
     this.modalDetail = true;
+
   }
 
+  // public valueType(evento:Evento){   
+
+  //   const ev = new Eventos(evento.id,evento.title, evento.description, evento.date, evento.hour, evento.place, evento.direction, evento.creator.nameUser, evento.creator.id_user, null);
+
+  //   console.log(ev.id_user);
+  //   console.log(this.id_logueado.id_user);
+   
+  // }
+  
   // Cierrar Modals
   closeModalAdd(event: boolean){
     this.modalAdd = event

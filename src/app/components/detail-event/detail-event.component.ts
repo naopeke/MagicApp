@@ -27,24 +27,60 @@ export class DetailEventComponent implements OnInit{
 
 
   ngOnInit() {
-    this.getparticipantes();    
+    this.getParticipantes();
   }
 
-  getparticipantes(){
-    this.eventoService.getParticipantes(this.evento.id_event).subscribe((res:any) => {
-      if(!res.error){
-        this.evento.participants = [];
-        res.data.forEach(evento => {
-          console.log(res.data);
-          
-          if(evento.creatorEvent == 1){
-            this.evento.creator = evento.nameUser
-          } else {
-            this.evento.participants.push(new User(evento.id_user, evento.nameUser))
-          }
-        });
-      } 
-    })
+  getParticipantes() {
+    this.eventoService.getParticipantes(this.evento.id_event).subscribe((res: any) => {
+        if (!res.error) {
+            this.evento.participants = [];
+            res.data.forEach(evento => {
+                if (evento.creatorEvent === 1) {
+                    this.evento.creator = evento.nameUser;
+                } else {
+                    this.evento.participants.push(new User(evento.id_user, evento.nameUser));
+                }
+            });
+            // Call comprobarParticipacion() here after participants are populated
+            this.comprobarParticipacion();
+        } else {
+            // Handle errors appropriately (e.g., console.error(res.error))
+        }
+    });
+}
+
+  comprobarParticipacion(){
+
+    let encontrado = false;
+
+    if(this.evento != null && this.evento.participants != null && this.evento.participants.length > 0){
+
+      for(let i = 0; i < this.evento.participants.length; i++){
+        console.log(this.evento.participants[i].id_user);
+        console.log(this.user.id_user);
+        
+        
+        if(this.evento.participants[i].id_user == this.user.id_user){
+
+          encontrado = true;
+          break;
+        }
+      }
+    }
+
+
+    if(encontrado){
+      this.type = 1;
+    }else{
+      if(this.evento.id_user == this.user.id_user)
+      {
+      console.log("SOY EL CREADOR");
+      this.type = 3;
+      }else{
+        this.type = 2;
+      }
+    }
+
   }
 
   closeDetail(){
@@ -56,7 +92,7 @@ export class DetailEventComponent implements OnInit{
       if(!res.error){
         this.toastr.success(res.mensaje, '¡Bienvenido al evento!');
         this.evento.participants = [];
-        this.getparticipantes(); 
+        this.getParticipantes(); 
       } else{
         this.toastr.error(res.mensaje, '¡Ups!' )
       }
@@ -68,13 +104,13 @@ export class DetailEventComponent implements OnInit{
     this.eventoService.deleteParticipacion(this.user.id_user, this.evento.id_event).subscribe((res:any) =>{
       if(!res.error){
         this.toastr.success(res.mensaje, 'Éxito')
-        this.getparticipantes(); 
+        this.getParticipantes(); 
       }
     })
   }
   eliminar(){
     this.openDelete = true
-    this.getparticipantes(); 
+    this.getParticipantes(); 
   }
 
   editar() {

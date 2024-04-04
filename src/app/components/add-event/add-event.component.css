@@ -1,7 +1,7 @@
 section{
     position: absolute;
-    top: 300px;
-    left: 700px;
+    top: 20%;
+    left: 35%;
     z-index: 30;
 }
 .modalEdit{
@@ -83,4 +83,10 @@ input::placeholder, textarea::placeholder{
 
 .buttonEditar:hover, .saveButton:hover{
     background-color: var(--blanco);
+}
+
+@media (max-width: 1200px) {
+    section{
+        left: 27%;
+    }
 }
