@@ -6,49 +6,35 @@ import { Deck } from 'src/app/models/deck';
   templateUrl: './rating.component.html',
   styleUrls: ['./rating.component.css']
 })
-export class RatingComponent implements OnInit {
-  @Input() mazo:Deck
+export class RatingComponent{
+  // @Input() id_deck:number
   @Input() mediaScore: number;
   @Input () typeRating: number;
   @Output() onRating = new EventEmitter<number>()
-
-
-  public selectedStarsMap: { [key: number]: number } = {}
+  public selectedStar: number
   public showStar: number = 0
   public previoSelection:number = 0
   public maxRatingArr:number[] = [1,2,3,4,5]
-  // public maxRatingArr = Array(this.maxrating).fill(0);
-  // public maxRatingArr2 = Array(this.maxrating).fill(0);
-  // public maxRatingArr3 = Array(this.maxrating).fill(0);
-
-  ngOnInit(): void {
- 
-    
-    console.log(this.selectedStarsMap[this.mazo.id_deck]);
-    
- 
-  }
+  
 
   constructor(){
-    // this.maxRatingArr = Array(this.maxrating).fill(0);
   }
   HandleMouseEnter(index:number){
-    this.showStar = index +1
+    this.selectedStar = index +1
   }
   HandleMouseLeave(){
-    if(this.previoSelection != 0){
-      this.showStar = this.previoSelection
-    }else 
-    this.showStar = 0
+    // if(this.previoSelection != 0){
+    //   this.selectedStar = this.previoSelection
+    // }else 
+    this.selectedStar = 0
   }
   
-  rating(index:number, mazoId:number){
-    console.log(mazoId);
-    this.selectedStarsMap[mazoId] = index + 1; 
-    this.previoSelection = this.selectedStarsMap[mazoId];
+  rating(index:number){
+    
+    this.selectedStar = index + 1; 
+    this.previoSelection = this.selectedStar
     console.log(this.previoSelection);
-    console.log(this.selectedStarsMap[mazoId]);
-    this.onRating.emit(this.selectedStarsMap[mazoId]);
+    this.onRating.emit(this.selectedStar);
  
   
   

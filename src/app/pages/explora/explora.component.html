@@ -8,17 +8,15 @@
             </div>
 
             <cdk-virtual-scroll-viewport itemSize="0" class="scroll2">
-                <!-- <div class="bucleContainer">  -->
-                    <div class="leyenda">
-                        <div class="datos usuario">Nombre de Usuario</div>
-                        <div class="datos mazo">Nombre del Mazo</div>
-                        <div class="datos explorar"> Cartas</div>
-                        <div  class="datos estrellas">Puntuación</div>
-                    </div>
-                    <div *ngFor="let mazo of mejoresMazos" class="bucle">
-                        <app-decks [mazo] = "mazo" (eventoExplorar) = 'seleccionMazo($event)'></app-decks>
-                    </div>
-                <!-- </div> -->
+                <div class="leyenda">
+                    <div class="datos usuario">Nombre de Usuario</div>
+                    <div class="datos mazo">Nombre del Mazo</div>
+                    <div class="datos explorar"> Cartas</div>
+                    <div  class="datos estrellas">Puntuación</div>
+                </div>
+                <div *ngFor="let mazo of mejoresMazos" class="bucle">
+                    <app-decks [mazo] = "mazo" (eventoExplorar) = 'seleccionMazo($event)'></app-decks>
+                </div>
             </cdk-virtual-scroll-viewport>
         </div>
         <div class="buscador votar">
@@ -44,12 +42,12 @@
             </div>
 
             <cdk-virtual-scroll-viewport itemSize="50" class="scroll">
-                <!-- <div class="bucleContainer">  -->
-                    <div *cdkVirtualFor="let mazo of mazos" class="bucle">
+            
+                    <div *cdkVirtualFor="let mazo of mazos" class="bucle" >
                         <app-decks [mazo] = "mazo" (eventoExplorar) = 'seleccionMazo($event)'
                         (eventoPuntuacion) = "score($event)" [typeRating] = typeRating></app-decks>
-                    <!-- </div> -->
-                </div>
+                    </div>
+        
             </cdk-virtual-scroll-viewport>
 
         </div>

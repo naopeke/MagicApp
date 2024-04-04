@@ -138,7 +138,7 @@ export class ExploraComponent implements OnInit {
   public score(event:{id_deck:number, score:number}){
     this.mazos.find ((deck) => {
       if(deck.id_deck == event.id_deck){
-        this.deckService.putMediaScore(this.currentUser.id_user,event.id_deck, event.score).subscribe((res:any) => {
+        this.deckService.putMediaScore(this.currentUser.id_user,event.id_deck, event.score, event.score).subscribe((res:any) => {
           if(!res.error){
             this.getVotedDeck();
             this.getSharedDecks();

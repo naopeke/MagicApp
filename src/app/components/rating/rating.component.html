@@ -3,8 +3,8 @@
     <mat-icon *ngFor="let icon of maxRatingArr; let index= index"
     (mouseenter) = "HandleMouseEnter(index)"
     (mouseleave) = "HandleMouseLeave()"
-    (click)="rating(index, mazo.id_deck)"
-    [ngClass]="{'show': index < showStar}">
+    (click)="rating(index)"
+    [ngClass]="{'checked': index < selectedStar}">
     star
     </mat-icon>
 </div>
@@ -18,8 +18,8 @@ star
 
 <div *ngIf="typeRating == 3">
     <mat-icon *ngFor="let icon of maxRatingArr;let index= index" class="icon"
-     (click)="rating(index, mazo.id)"
-     [ngClass]="{ 'checked': selectedStarsMap[mazo.id_deck] > index}">
+     (click)="rating(index)"
+     [ngClass]="{'checked': index < selectedStar}">
 star
 </mat-icon>
 </div>
