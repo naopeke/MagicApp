@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
   public modal_visible:boolean;
   public currentUser: User | null = null;
   public isSmallScreen: boolean = false; //para medir si es la pantalla es pequeño (600px) o no : nao
-  public   isSpecialRoute: boolean = false;   //para cambiar min-width por router : nao
+  public isSpecialRoute: boolean = false;   //para cambiar min-width por router : nao
 
 
   constructor(public usersService: UsersService, private router: Router, private breakpointObserver: BreakpointObserver){

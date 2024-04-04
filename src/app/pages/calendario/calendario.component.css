@@ -2,6 +2,7 @@
     background-image: url('src/assets/images/calendario/fondoCastillo.png');
     background-size: cover;
     background-repeat: no-repeat;
+    background-color: black;
     width: 100%; /*importante*/
     min-width: 900px; /*importante*/
     height: 1400px;
@@ -103,7 +104,8 @@ button.highlight-event::before {
     background-color: var(--amarillo);
     border-radius: 10px;
     width: 90%;
-    margin-left: 7px;
+    /* margin-left: 7px; */
+    margin-left: 5%;
 }
 
 .cuadroDcha{
@@ -218,54 +220,3 @@ h3.detalle_evento_descripcion{
     left: 0px;
     z-index:999; 
 } */
-
-
-
-
-@media screen and (max-width: 1902px) {
-    button.highlight-event::before {
-        width: 100px;
-    }
-}
-
-@media screen and (max-width: 1718px) {
-    button.highlight-event::before {
-        width: 95px;
-    }
-}
-
-@media screen and (max-width: 1649px) {
-    button.highlight-event::before {
-        width: 90px;
-    }
-}
-
-@media screen and (max-width: 1552px) {
-    button.highlight-event::before {
-        width: 85px;
-    }
-}
-
-@media screen and (max-width: 1505px) {
-    button.highlight-event::before {
-        width: 80px;
-    }
-}
-
-@media screen and (max-width: 1448px) {
-    button.highlight-event::before {
-        width: 75px;
-    }
-}
-
-@media screen and (max-width: 1407px) {
-    button.highlight-event::before {
-        width: 70px;
-    }
-}
-
-@media screen and (max-width: 1352px) {
-    button.highlight-event::before {
-        width: 85%;
-    }
-}
