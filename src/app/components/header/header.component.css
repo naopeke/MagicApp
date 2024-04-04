@@ -1,5 +1,7 @@
 header{
     font-family: var(--antiqua)!important;
+}
+header{
     background-color: black;
     text-align: center;
     height: 200px;
@@ -52,6 +54,7 @@ img{
 }
 
 /* CSS ANIMACION */
+
 .icono {
     width: 50px;
     height: 50px;
@@ -93,11 +96,11 @@ header nav ul li:hover .children {
 	display:block;
 }
 header nav ul li .children {
-    display: none;
+	display: none;
 	background:#000000;
 	position: absolute;
-    left: 15%;
-	width: 200px;
+    left: 20px;
+	width: 150px;
 	z-index:1000;
 }
 header nav ul li .children li {
@@ -149,17 +152,3 @@ header nav ul li .children li a {
         width: auto;
     }
   }
-@media (max-width: 1200px) {
-    header nav ul li .children {
-        left: 13%;
-        width: 150px;
-
-    }
-}
-
-@media (max-width: 900px) {
-    header nav ul li .children {
-        left: 13%;
-        width: 120px;
-    }
-}
