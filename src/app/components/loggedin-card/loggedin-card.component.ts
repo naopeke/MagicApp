@@ -62,6 +62,7 @@ export class LoggedinCardComponent implements OnInit {
       },
       error: (err) => {
         this.resultsCards = [];
+        console.log('resultscard empty: ', this.resultsCards);
         console.log('Error in fetching cards:', err);
     }});
   }

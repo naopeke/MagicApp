@@ -25,9 +25,9 @@
                                 <app-card [childCard]="card" [templateCard]="'type3'" (childCardClicked)="onCardInfoOpen($event)" (addCardToBuilder)="onAddCardToBuilder(card)"></app-card>
                             </div>
                         </div>
-                        <div class="list-cards" *ngIf="!resultsCards && searchPerformed">
+                        <div class="list-cards" *ngIf="resultsCards.length === 0 && searchPerformed">
                             <div class="no-results-message">
-                            Intenta otra vez con el nombre más concretopara buscar tu nueva carta poderosa.
+                            Intenta otra vez con el nombre más concreto para buscar tu nueva carta poderosa.
                             </div>
                         </div>
                         <div class="list-cards" *ngIf="resultsCards.length === 0 && !searchPerformed">
