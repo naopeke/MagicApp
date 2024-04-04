@@ -48,7 +48,7 @@ export class AddEventComponent implements OnInit {
     this.addEvent.disable();
     setTimeout(() => {
       this.close();
-    }, 100)
+    }, 1000)
  
   }
 
