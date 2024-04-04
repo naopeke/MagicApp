@@ -198,11 +198,11 @@
 @media screen and (max-width: 1700px) {
     .content {
         margin-top: 70px;
-        width: 450px;
+        width: 520px;
     }
     
     .bg-cuadrado {
-        width: 400px;
+        width: 500px;
     }
 }
 
@@ -220,11 +220,11 @@
 @media screen and (max-width: 900px) {
     .content {
         margin-top: 100px;
-        width: 350px;
+        width: 37s0px;
     }
     
     .bg-cuadrado {
-        width: 300px;
+        width: 320px;
     }
 }
 
