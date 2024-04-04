@@ -1,7 +1,5 @@
 header{
     font-family: var(--antiqua)!important;
-}
-header{
     background-color: black;
     text-align: center;
     height: 200px;
@@ -76,32 +74,63 @@ header nav {
 	z-index:1000;
 	width:100%;
 	margin:20px auto;
+    display: flex;
+    justify-content: center;
+    /* z-index:1000;
+	width:100%;
+	margin:20px auto; */
 }
 header nav ul {
-	list-style:none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+	/* list-style:none;
     display: block;
     width: 100%;
-    padding: 0;
+    padding: 0; */
 }
 header nav ul li {
-	display:inline-block;
+	/* display:inline-block;
 	position: relative;
-    width: 15%;
+    width: 15%; */
+
+    position: relative;
+    flex-basis: 15%;
+    margin: 0 5px 5px 5px;
+    padding: 3px;
 }
 header nav ul li a {
 	display:block;
 	text-decoration:none;
 }
-header nav ul li:hover .children {
+/* header nav ul li:hover .children {
 	display:block;
+} */
+
+header nav ul li:hover .children,
+header nav ul li.active .children {
+    display: flex;
+    flex-direction: column;
 }
+
+
 header nav ul li .children {
-	display: none;
+
+
+	/* display: none;
 	background:#000000;
 	position: absolute;
-    left: 20px;
-	width: 150px;
-	z-index:1000;
+    left: 15%;
+	width: 200px;
+	z-index:1000; */
+
+    display: none; 
+    background: #000;
+    width: 100%; /* ajustando a padre */
+    z-index: 1000;
 }
 header nav ul li .children li {
 	display:block;
@@ -145,10 +174,39 @@ header nav ul li .children li a {
     background-color: rgba(132, 133, 133, 0.096);
 }
 
+/* 
+@media (max-width: 1698px) {
+    header nav ul li .children {
+        left: 13%;
+        width: 180px;
+    }
+}
+
+
+@media (max-width: 1387px) {
+    header nav ul li .children {
+        left: 11%;
+        width: 180px;
+    }
+}
+
+@media (max-width: 1200px) {
+    header nav ul li .children {
+        left: 13%;
+        width: 150px;
+    }
+}
+
+@media (max-width: 900px) {
+    header nav ul li .children {
+        left: 13%;
+        width: 120px;
+    }
+}
 
   @media (max-width: 600px) {
 
     .button_lateral{
         width: auto;
     }
-  }
+  } */
