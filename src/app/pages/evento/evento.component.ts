@@ -19,11 +19,15 @@ export class EventoComponent {
   public eventoABorrar:Evento;
   public evento:Evento;
   public id_logueado: User;
+  public loadUser:boolean = false
   public modalEdit:boolean = false;
+  public eventoSelect: Evento;
   public modalAdd:boolean = false;
+  public modalDelete: boolean = false;
   // Belen: te añado para abrir modal detalle evento
   public modalDetail:boolean = false
   public selectEvento: Eventos | undefined;
+  public typeButton: number;
 
   paginatedEvents:any[] = [];
   currentPage:number = 0;
@@ -42,6 +46,7 @@ export class EventoComponent {
     // this.id_logueado = this.usersService.getCurrentUserId();
     this.usersService.currentUserChanges().subscribe(user =>{
       this.id_logueado = user
+      this.loadUser = true
       })
     this.getAllEventsForBBDD();
   }
@@ -54,6 +59,8 @@ export class EventoComponent {
       // Usando un bucle for
       //console.log(data);
       let nuevosEventos: Evento[] = [];
+      console.log(respuesta.data);
+      
 
       for (let i = 0; i < respuesta.data.length; i++) {
         const eventoData = respuesta.data[i];
@@ -122,31 +129,85 @@ export class EventoComponent {
 
 
   // llamar al componente add-event
-  openModalAddEvent(){
-    this.eventService.openModalCreateEvent();
+  openModalAdd(){
+    this.modalAdd = true
+  }
+  // openModalAddEvent(){
+  //   this.eventService.openModalCreateEvent();
+  // }
+
+  // getModalCreateEvent(){
+  //   return this.eventService.getModalCreateEvent();
+  // }
+  editar(evento:Evento){
+    this.eventoSelect = evento
+    this.modalEdit = true
+  }
+  eliminar(evento:Evento){
+    this.eventoSelect = evento
+    this.modalDelete = true
+  }
+  public openModalDetail(evento:Evento){
+    console.log(evento);
+    
+    const ev = new Eventos(evento.id,evento.title, evento.description, evento.date, evento.hour, evento.place, evento.direction, evento.creator.nameUser, evento.creator.id_user, null);
+    this.selectEvento = ev;
+    console.log(this.selectEvento);
+    this.eventService.getParticipation(this.selectEvento.id_event, this.id_logueado.id_user).subscribe((res:any) => {
+      console.log(res.data);
+      if (res.data.length > 0){
+        this.typeButton = 1
+      } else this.typeButton = 2
+    })
+  
+    setTimeout(() => {
+      this.modalDetail = true
+    }, 300)
+    
+  
   }
 
-  getModalCreateEvent(){
-    return this.eventService.getModalCreateEvent();
+  // Cierrar Modals
+  closeModalAdd(event: boolean){
+    this.modalAdd = event
+    this.getAllEventsForBBDD();
+  }
+  closeModalEdit(event: boolean){
+    this.modalEdit = event
+    console.log(this.modalEdit);
+    
+    this.getAllEventsForBBDD();
+  }
+  closeModalSaberMas(event: boolean){
+    this.modalDetail = event
   }
 
-  openModalDeleteEvent(ev:Evento){
-    this.setEventoAEliminar(ev);
-    this.eventService.openModalDeleteEvent();
+  closeModalDelete(event:boolean){
+    this.modalDelete = event
+    this.getAllEventsForBBDD();
   }
 
-  openModalEditEvent(ev:Evento){
-    this.setEventoEditar(ev);
-    this.eventService.openModalEditEvent();
-  }
 
-  getModalDeleteEvent(){
-    return this.eventService.getModalDeleteEvent();
-  }
+
+
+  // openModalDeleteEvent(ev:Evento){
+  //   this.setEventoAEliminar(ev);
+  //   this.eventService.openModalDeleteEvent();
+  // }
+
+  // openModalEditEvent(ev:Evento){
+  //   this.setEventoEditar(ev);
+  //   this.eventService.openModalEditEvent();
+  // }
+
+  // getModalDeleteEvent(){
+  //   return this.eventService.getModalDeleteEvent();
+  // }
  
-  getModalEditEvent(){
-    return this.eventService.getModalEditEvent();
-  }
+  // getModalEditEvent(){
+  //   return this.eventService.getModalEditEvent();
+  // }
+
 
   findEventsWithNameMyEvents(tituloEvento:string){
 
@@ -175,49 +236,25 @@ export class EventoComponent {
   }
 
   // Para que se pueda acceder a la modal desde fuera
-  setEventoAEliminar(ev:Evento){
-    this.eventoABorrar = ev;
-  }
-  setEventoEditar(ev:Evento){
-    this.evento = ev;
-  }
+  // setEventoAEliminar(ev:Evento){
+  //   this.eventoABorrar = ev;
+  // }
+  // setEventoEditar(ev:Evento){
+  //   this.evento = ev;
+  // }
 
   // Abrir Modal
-  openModalAdd(){
-    this.modalAdd = true
-  }
+
   // openModalSaberMas(){
   //   this.modalSaberMas = true
   // }
-  openModalEdit(ev:Evento){
-    console.log(ev);
+  // openModalEdit(ev:Evento){
+  //   console.log(ev);
     
-    this.setEventoEditar(ev);
-    this.modalEdit = true
-  }
+  //   this.setEventoEditar(ev);
+  //   this.modalEdit = true
+  // }
 
-  public openModalDetail(evento:Evento){
-    console.log(evento);
-    
-
-    const ev = new Eventos(evento.id,evento.title, evento.description, evento.date, evento.hour, evento.place, evento.direction, evento.creator.nameUser, evento.creator.id_user, null);
-
-    this.selectEvento = ev;
-    console.log(this.selectEvento);
-    
-    this.modalDetail = true;
-  }
-
-  // Cierrar Modals
-  closeModalAdd(event: boolean){
-    this.modalAdd = event
-  }
-  closeModal(event: boolean){
-    this.modalEdit = event
-  }
-  closeModalSaberMas(event: boolean){
-    this.modalDetail = event
-  }
 
 
 }

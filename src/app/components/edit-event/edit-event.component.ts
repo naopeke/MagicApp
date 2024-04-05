@@ -51,8 +51,7 @@ export class EditEventComponent implements OnInit {
     console.log(date);
 
     const event:Evento = new Evento(id, title, description, new Date(date), hour, place, creator, direction);
-    //console.log("saco los datos del evento que mando al back ");
-    //console.log(event);
+ 
     this.eventService.modifyEvent(event).subscribe((respuesta: Response) => {
       console.log(respuesta);
       this.toastr.success('Evento editado correctamente', "")
@@ -61,21 +60,17 @@ export class EditEventComponent implements OnInit {
 
     this.editar = false;
     this.editEvent.disable();
-    this.close();
+        setTimeout(() => {
+      this.close();
+    }, 500)
   }
 
-  // saveEdit(){
-  //   this.editEvent.markAsUntouched();
-  //   if(!this.editEvent.invalid){
-  //     this.evento = this.editEvent.value
-  //   } else {
-  //     this.editar = false;
-  //     this.editEvent.disable();
-  //     }
-  // }
+
  
   close(){
     this.eventClose.emit(false)
+    console.log(this.eventClose);
+    
   }
 
 }

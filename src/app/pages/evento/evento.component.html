@@ -17,7 +17,7 @@
     </div>
 
     <div id="divEvento" *ngFor="let item of paginatedEvents; let i = index">
-        <h1>{{ item.title }}</h1>
+       
         <div id="contenedor_info">
             <div id="divImg">
 
@@ -32,7 +32,8 @@
             </div>
     
             <div id="div_info_evento">
-                <div class="parr_img">
+                <h4>{{ item.title }}</h4>
+                <div class="parr_img date">
                     <img class="icono_evento" src="../../../assets/images/iconos/fecha_evento.png" width="30px">
                     <p>&nbsp;&nbsp;{{ item.date | date:'dd/MM/yyyy' }}</p><p> , </p>
                     <p>&nbsp;&nbsp;{{ item.hour }}</p>
@@ -41,33 +42,45 @@
                     <img class="icono_evento" src="../../../assets/images/iconos/lugar_evento.png" width="28px">
                     <p>&nbsp;&nbsp;{{ item.place }}   ,   {{ item.direction }}</p>
                 </div> 
-                <div>
-                    <button id="button_sabermas" (click)="openModalDetail(item)">Saber más</button>
-                </div> 
-
             </div>
 
-            <div id="icono_elim_edit" *ngIf="item.creator.id_user === id_logueado">
+            <div class="botonesEventos">
+                <div *ngIf="item.creator.id_user === id_logueado.id_user && loadUser" class="botonesCreador">
+                    <img (click)="editar(item)" src="../../../assets/images/iconos/editar.png" alt="" class="iconosEventos">
+                    <img (click)="eliminar(item)" src="../../../assets/images/iconos/eliminar.png" alt="" class="iconosEventos">
+                </div>
+                <button id="button_sabermas" (click)="openModalDetail(item)">Saber más</button>
+
+
+            </div> 
+
+            <!-- <div id="icono_elim_edit" *ngIf="item.creator.id_user === id_logueado">
                 <img (click)="openModalEdit(item)" id="img_superior" src="../../../assets/images/iconos/editar_evento.png" width="45px">
                 <img (click)="openModalDeleteEvent(item)" data-bs-toggle="modal" data-bs-target="#deleteEvent" id="img_inferior"src="../../../assets/images/iconos/eliminar_evento.png" width="45px">
-            </div>
+            </div> -->
         </div>
+        
     </div>
 
-    <div>
-        <!--MODAL edit--><div *ngIf="modalEdit == true" class="modalEdit"><app-edit-event [evento] = "evento" (eventClose) = closeModal($event)></app-edit-event></div>
-        <!-- MODAL delete--> <app-delete-event *ngIf="getModalDeleteEvent()" [eventoAEliminar]="eventoABorrar" ></app-delete-event>
-        <div *ngIf="modalDetail == true" class="modalEvent">
-            <app-detail-event [evento] = "selectEvento"  (eventCloseDetail) = closeModalSaberMas($event) [type]=2 [user]="id_logueado" [typeEdit] = 2></app-detail-event>
-        </div>
+    
+    <div *ngIf="modalEdit" class="modalEdit">
+        <app-edit-event [evento]="eventoSelect" (eventClose)="closeModalEdit($event)"></app-edit-event>
+    </div>
+    <div *ngIf="modalDelete" class="modalDelete">
+        <app-delete-event [eventoAEliminar]="eventoSelect" (eventClose)="closeModalDelete($event)"></app-delete-event>
+    </div>
+    <div *ngIf="modalDetail == true" class="modalEvent">
+        <app-detail-event [evento]="selectEvento" (eventCloseDetail)="closeModalSaberMas($event)" [user]="id_logueado" [type]="typeButton"></app-detail-event>
+    </div>
+    
        
-    </div> 
+    
 
     <!-- Pagination -->
     <div class="pagination" *ngIf="totalPages > 1">
-        <button class="buttonPagination" (click)="prevPage()"><p class="p_pagiantion">Anterior</p></button>
+        <button class="buttonPagination" (click)="prevPage()">Anterior</button>
         <span class="paginationSpan">{{ currentPage + 1 }} / {{ totalPages }}</span>
-        <button class="buttonPagination" (click)="nextPage()"><p class="p_pagiantion">Siguiente</p></button>
+        <button class="buttonPagination" (click)="nextPage()">Siguiente</button>
     </div>
 
 </div>

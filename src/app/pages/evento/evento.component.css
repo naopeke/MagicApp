@@ -8,6 +8,7 @@
   padding-bottom: 30px;
   min-height: 1000px;
   background-image: url("../../../assets/images/fondos/fondo_evento.png");
+  background-size: cover;
 }
 
 /* Div buscador*/
@@ -58,6 +59,7 @@
     display: flex;
     flex-direction: column;
     margin: 30px auto;
+    margin-bottom: 0px;
     width: 65%;
     height: 210px;
     text-align: center;
@@ -69,18 +71,21 @@
     size: 20px;
   }
   #contenedor_info{
+    height: 100%;
     display: flex;
     flex-direction: row;
   }
   #divImg{
     width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
     text-align: center;
-    margin: -50px auto;
+    /* margin: -50px auto; */
     position: relative; /*padre de marco-container*/
   }
   .marco-container{
-    position:absolute;
-    bottom: 13px;
+    
     position: relative;
     width: 192px; /* mismo como marco*/
     height: auto; 
@@ -112,13 +117,17 @@
     padding-top: 5px;
     width: 100%;
   }
-  h1, h2{
+  h4, h2{
     font-family: var(--antiqua);
     color: var(--verde);
   }
   #div_info_evento{
-    width: 65%;
-    position: relative; /*! padre de sabermas boton*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    gap: 10px;
+    width: 55%;
   }
   #div_info_evento p{
     color: var(--blanco);
@@ -127,6 +136,7 @@
     margin-top: 10px;
   }
   .parr_img {
+    width: 100%;
     display: flex; 
     align-items: center; 
     /* padding: 6px; */
@@ -136,9 +146,21 @@
     overflow-wrap: break-word;
     word-break: break-word;
   }
+  .date{
+    margin-top: 20px;
+    align-self: center;
+  }
 /* Fin Card Evento */
 
 /* Botones */
+.botonesEventos{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 15%;
+}
   #button_sabermas, .button_lateral {
     border: var(--verde) solid 2px;
     background-color: var(--verde);
@@ -146,16 +168,22 @@
     color: var(--negro);
     font-family: var(--antiqua);
     font-size: 18px;
+    border: none;
+  }
+  #button_sabermas:hover, .button_lateral:hover{
+    background-color: var(--amarillo);
   }
   #button_sabermas{
-    position: absolute; /*!hijo de #div_info_evento*/
-    bottom: -38px;
+    /* position: absolute; !hijo de #div_info_evento */
+    /* bottom: -38px;
     right: 40px;
     height: 40px;
     width: 20%;
     color: var(--negro);
     margin-top: 10px;
-    z-index: 6;
+    z-index: 6; */
+    height: 40px;
+    width: 150px;
   }
   .btnBuscador {
     width: 60px;
@@ -173,10 +201,21 @@
     height: 60px;
     width: 15%;
   }
+
+  .botonesCreador{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .iconosEventos{
+    cursor: pointer;
+  }
 /* Fin botones */
 
 /* Iconos */
-  #icono_elim_edit{
+  /* #icono_elim_edit{
     width: 5%;
     padding: 10px;
     display: flex;
@@ -194,25 +233,32 @@
   }
   #img_superior{
     margin-top: 15px;
-  }
+  } */
 /* fin iconos */
 
 /* pagination */
   .pagination{
+    display: flex;
+    align-items: center;
+    height: 60px;
     width: 20%;
     margin: 0 auto;
   }
   .buttonPagination{
-    padding-top: 10px;
+    /* padding-top: 10px; */
+    height: 40px;
     width: 35%;
     background-color: var(--verde);
     border-radius: var(--borde-boton);
-  }
-  .p_pagiantion{
     font-family: var(--antiqua);
     font-size: 19px;
     color: var(--negro);
+    border: none;
   }
+  .buttonPagination:hover{
+    background-color: var(--amarillo);
+  }
+
   .paginationSpan{
     text-align: center;
     width: 30%;
@@ -232,6 +278,19 @@
   right:500px;
   z-index: 999;
 }
+.modalEdit{
+  position: absolute;
+  bottom: 430px;
+  left: 700px;
+  z-index: 9999;
+}
+.modalDelete{
+  position: absolute;
+  bottom: 0px;
+  left: 800px;
+  z-index: 9999;
+}
+
 
 @media (max-width: 768px) {
   #img_evento {

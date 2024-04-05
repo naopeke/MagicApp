@@ -14,6 +14,7 @@ export class EventosService {
 
   // Belen Home intenta arreglar
   private urlHome: string
+  private urlPart:string;
    // Belen Home
 
   private urlCalendar: string; 
@@ -36,6 +37,8 @@ export class EventosService {
     // Belen Home
     //   this.urlHome = "http://localhost:3000/home"
      this.urlHome = "https://magy-deck-api.vercel.app/home"; 
+     this.urlPart = "https://magy-deck-api.vercel.app/participacion"
+    //  this.urlPart = "http://localhost:3000/participacion"
 
     // Belen Home
 
@@ -97,39 +100,43 @@ export class EventosService {
     return this.http.delete(`${this.url}?id_event=${id}`)
   }
 
+  getParticipation(id_event:number, id_user:number){
+    return this.http.get(`${this.urlPart}?id_event=${id_event}&id_user=${id_user}`)
+  }
+
   
 // Modal Crear evento
-  getModalCreateEvent(){
-    return this.modalCreateEvent;
-  }
-  closeModalCreateEvent(){
-    this.modalCreateEvent = false;
-  }
-  openModalCreateEvent(){
-    this.modalCreateEvent = true;
-  }
+  // getModalCreateEvent(){
+  //   return this.modalCreateEvent;
+  // }
+  // closeModalCreateEvent(){
+  //   this.modalCreateEvent = false;
+  // }
+  // openModalCreateEvent(){
+  //   this.modalCreateEvent = true;
+  // }
 
   // Modal Delete
-  getModalDeleteEvent(){
-    return this.modalDeleteEvent;
-  }
-  closeModalDeleteEvent(){
-    this.modalDeleteEvent = false;
-  }
-  openModalDeleteEvent(){
-    this.modalDeleteEvent = true;
-  }
+  // getModalDeleteEvent(){
+  //   return this.modalDeleteEvent;
+  // }
+  // closeModalDeleteEvent(){
+  //   this.modalDeleteEvent = false;
+  // }
+  // openModalDeleteEvent(){
+  //   this.modalDeleteEvent = true;
+  // }
 
   // Modal Editar evento
-  getModalEditEvent(){
-    return this.modalEditEvent;
-  }
-  closeModalEditEvent(){
-    this.modalEditEvent = false;
-  }
-  openModalEditEvent(){
-    this.modalEditEvent = true;
-  }
+  // getModalEditEvent(){
+  //   return this.modalEditEvent;
+  // }
+  // closeModalEditEvent(){
+  //   this.modalEditEvent = false;
+  // }
+  // openModalEditEvent(){
+  //   this.modalEditEvent = true;
+  // }
 
 
   //calendar
