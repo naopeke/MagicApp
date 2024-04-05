@@ -1,8 +1,11 @@
 ```
-npm i bootstrap @popperjs/core
+nvm use 18.10.0
 ```
 ```
-ng add @angular/material
+npm i bootstrap@5.3.3 @popperjs/core@2.11.8
+```
+```
+ng add @angular/material@16.2.14
 ```
 ```
 npm i swiper@10.3.1
