@@ -19,9 +19,26 @@
         </div>
     </div>
 
-    <nav>
+    <nav *ngIf="!usersService.isLoginSubject.value" class="nav-logout">
         <ul>
+            <li class="about-item">
+                <a routerLink="about" class="linkActive" routerLinkActive="active-link">
+                    <img class="icono" src="../../../assets/images/header/Llamita_marron.png" alt="Magic Llanuras">
+                    <p id="pAmarillo">About</p>
+                </a>
+            </li>
             <li >
+                <a routerLink="cartas" class="linkActive" routerLinkActive="active-link" >
+                    <img class="icono" src="../../../assets/images/header/Llamita_azul.png" alt="Magic Isla">
+                    <p id="pAzul">Cartas</p>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <nav *ngIf="usersService.isLoginSubject.value" class="nav-login">
+        <ul>
+            <li class="about-item">
                 <a routerLink="about" class="linkActive" routerLinkActive="active-link">
                     <img class="icono" src="../../../assets/images/header/Llamita_marron.png" alt="Magic Llanuras">
                     <p id="pAmarillo">About</p>
