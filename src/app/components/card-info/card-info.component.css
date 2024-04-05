@@ -179,27 +179,18 @@ img{
     font-size: 20px;
 }
 
+
+@media screen and (max-width: 1999px) {
+    .box_right {
+        max-height: 650px;
+    }
+}
+
 @media screen and (max-width: 1399px) {
     .box_right {
         max-height: 650px;
         overflow-y: auto;
         padding-left: 60px;
-    }
-}
-
-@media screen and (max-width: 1399px) {
-    .box_right {
-        max-height: 650px;
-        overflow-y: auto;
-        /* padding-left: 160px; */
-    }
-}
-
-@media screen and (max-width: 1999px) {
-    .box_right {
-        max-height: 650px;
-        overflow-y: auto;
-        padding-left: 160px;
     }
 }
 
