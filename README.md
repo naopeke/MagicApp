@@ -1,4 +1,6 @@
 # MagicApp
+![Captura desde 2024-04-05 15-14-45](https://github.com/naopeke/MagyDeck/assets/143800388/20ed46db-dbc6-4ea6-a15a-3c0f3f9d0924)
+  
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
 
