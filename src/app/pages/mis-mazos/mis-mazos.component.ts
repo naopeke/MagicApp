@@ -74,7 +74,6 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
       const swiper = this.mySwiper.nativeElement.swiper;
 
       swiper.slideTo(0, 0);  //  indice por la primera vez, tiempo
-      console.log('Initial deck: ', this.datos[0]);       // con indice por la primera vez y primer mazo
 
       this.mazo = this.datos[0];
       this.filteredCards = this.mazo?.cards ? [...this.mazo.cards] : []; // mostrar todas las cartas
@@ -82,7 +81,6 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
       
       swiper.on('slideChange', () => {
         const activeIndex = swiper.activeIndex;
-        console.log('This is inside of the deck: ', this.datos[activeIndex]);
         this.mazo = this.datos[activeIndex]; // update deck info, asociado con indice de mazo
         this.filteredCards = this.mazo?.cards ? [...this.mazo.cards] : []; // clear cartas filtrado y mostrar todas las cartas
       });
@@ -93,14 +91,12 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
 
   public getDecksWithSwiper():void {
     const userId = this.usersService.getCurrentUserId();
-    console.log('User id mismazos:', userId);
 
     this.isLoading = true; // antes de tener dato, true
     
     this.decksService.getMyDecks(userId).subscribe({
         next: (response: any) => {
                 this.datos = response;
-                console.log('API Response Deck: ', this.datos);
                 // solo ngAfterInit no funciona. hay que meter en getDecksWithSwiper por el timing de initialize y obtener dato
                 this.initializeSwiper(); 
         },
@@ -124,14 +120,12 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
 
       swiper.slideTo(0, 0);
       if (this.datos.length > 0) {
-        console.log('Initial deck: ', this.datos[0]);
         this.mazo = this.datos[0];
         this.filteredCards = [...this.mazo.cards];
       }
   
       swiper.on('slideChange', () => {
         const activeIndex = swiper.activeIndex;
-        console.log('This is inside of the deck: ', this.datos[activeIndex]);
         this.mazo = this.datos[activeIndex];
         this.filteredCards = this.mazo?.cards ? [...this.mazo.cards] : [];
       });
@@ -142,12 +136,10 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
 
   public getDecksInfo():void {
     const userId = this.usersService.getCurrentUserId();
-    console.log('User id mismazos:', userId);
     
     this.decksService.getMyDecks(userId).subscribe({
         next: (response: any) => {
                 this.datos = response;
-                console.log('API Response Deck: ', this.datos);
         },
         error: (err) => {
             console.log('Error in fetching Deck: ', err);
@@ -161,11 +153,9 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
     const card = this.mazo?.cards.find(card => card.id === cardId);
     if (card && this.mazo) {
       card.quantity += 1;
-      console.log(`Quantity ${cardId}: `, card.quantity);
 
       // pasar id_deckCard y action: increase a updateQuantity
       this.updateQuantity(card.id_deckCard, 'increase'); 
-      console.log('Result increase: ', 'id_deckCard: ', card.id_deckCard, this.updateQuantity);
     }
   }
 
@@ -175,11 +165,9 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
     const card = this.mazo?.cards.find(card => card.id === cardId);
     if (card && this.mazo && card.quantity > 1) {  //para que la cantidad no sea menor que cero
       card.quantity -= 1;
-      console.log(`Quantity ${cardId}: `, card.quantity);
 
       // pasar id_deckCard y action: decrease a updateQuantity
       this.updateQuantity(card.id_deckCard, 'decrease'); 
-      console.log('Result decrease: ', 'id_deckCard: ', card.id_deckCard, this.updateQuantity);
     }
   }
 
@@ -200,17 +188,11 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
 
   public onDeleteAllCardsFromChild(id_deckCard: number){
 
-    console.log('id_deckCard:', id_deckCard); 
-
     const card = this.mazo?.cards.find(card => card.id_deckCard === id_deckCard);
     if (card && this.mazo && card.quantity > 0) {  //para que la cantidad no sea menor que cero
 
-      console.log('Deleting card with id_deckCard:', card.id_deckCard); 
-
-
       // pasar id_deckCard y action: delete a updateQuantity
       this.deleteQuantity(card.id_deckCard); 
-      console.log('Result delete: ', 'id_deckCard: ', card.id_deckCard, this.deleteQuantity);
     } else {
       console.log('Card not found or quantity is 0'); 
     }
@@ -221,11 +203,9 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
   public deleteQuantity(id_deckCard: number){
   this.decksService.deleteCardQuantity(id_deckCard).subscribe({
     next: (response) => {
-      console.log('Deleted the card :', response);
       // cambiar la lista de cards de front
       this.mazo.cards = this.mazo.cards.filter(card => card.id_deckCard !== id_deckCard);
-      console.log('Deleted card id_deckCard: ', id_deckCard);
-      console.log('After deleting : ', this.mazo.cards);
+
       this.filteredCards = this.filteredCards.filter(card => card.id_deckCard !== id_deckCard);
     },
     error: (err) => {
@@ -252,10 +232,8 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
     );
       this.isFiltered = true;
     }
-    console.log('filtered card', this.filteredCards);
 
     const totalQuantity = this.getTotalQuantity(this.filteredCards);
-    console.log('Total Quantity of Filtered Cards:', totalQuantity);
   }
   
   
@@ -298,26 +276,20 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
     if (this.mazo) {
       this.isEditing = false;
       this.mazo.nameDeck = this.editedName; // guardar como mazo.nameDeck
-      console.log('New Deck Name in front: ', this.mazo.nameDeck);
 
       let userId = this.usersService.getCurrentUserId();
-      console.log('user id :', userId);
 
       let indexDeck = this.mySwiper.nativeElement.swiper.activeIndex; // indexDeck es activeIndex de swiper
-      console.log('indexDeck: ', indexDeck);
 
       // buscar id_deck con indexDeck de datos
     const targetDeck = this.datos[indexDeck];
     if (targetDeck) {
       const id_deck = targetDeck.id_deck; // id_deck
-      console.log('id_deck: ', id_deck);
       const nameDeck = this.mazo.nameDeck; // nuevo nombre de deck
-      console.log('new deck name for back: ', nameDeck);
 
       // llamar editDeckName (http client de angular no deja mandar object asi que hay que cambiar object a JSON. En decksService, data:any)
       this.decksService.editDeckName( nameDeck, id_deck ).subscribe({
         next: (response: any) => {
-          console.log('Updated deck name: ', response);
           this.toastr.success(`"${nameDeck}" es el nombre del nuevo mazo`, '', {
             timeOut: 6000,
             positionClass: 'toast-top-center'
@@ -341,21 +313,16 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
 
   public onToggleShare(){
     const userId = this.usersService.getCurrentUserId();
-      console.log('user id :', userId);
 
     const indexDeck = this.mySwiper.nativeElement.swiper.activeIndex; // indexDeck es activeIndex de swiper
-      console.log('index swiper: ', indexDeck);
       
-
       // buscar id_deck con indexDeck de datos
     const targetDeck = this.datos[indexDeck];
     if (targetDeck) {
       const id_deck = targetDeck.id_deck; // id_deck
-      console.log('id_deck: ', id_deck);
 
     this.decksService.toggleShare( id_deck ).subscribe({
       next: (response: any) => {
-        console.log('Updated share status', response);
         this.toastr.info(response.message, '', {
           timeOut: 6000,
           positionClass: 'toast-top-center'
@@ -374,12 +341,6 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
       console.log('Error updating share status: ', err);
       this.snackBar.open('Ha habido un error', 'Cerrar', {
         duration: 5000,
-
-      //* versión snackBar
-      // this.snackBar.open('Ha habido un error', 'Cerrar', {
-      //   duration: 5000,
-      //   verticalPosition: 'top',
-      //   });
       })
       }
     })
@@ -401,6 +362,4 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
     this.darkenOverlay = false;
     this.show_cardinfo = false;
   }
-
-
 }
