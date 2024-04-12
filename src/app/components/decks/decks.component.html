@@ -5,12 +5,24 @@
     <div class="datos explorar" (click)="explora(mazo.id_deck)">Explora</div>
     <div  class="datos estrellas">
     <div class="datos puntuacion">
-        <div class="estrellas">
-            <app-rating  (onRating)="Handle(mazo.id_deck, $event)" [mediaScore] = "mazo.mediaScore" [typeRating]="typeRating" [id_deck] = mazo.id_deck [mazo] = 'mazo'></app-rating>
+        <div *ngIf="typeRating == 1" class="estrellas puntuar">
+            <mat-icon *ngFor="let icon of maxRatingArr; let index= index" 
+            (mouseover) = "HandleMouseEnter(index)"
+            (mouseleave) = "HandleMouseLeave()"
+            (click)="rating(index, mazo.id_deck)"
+            [ngClass]="{checked: mazo.selectedStar > index || mazo.previousScore.score > index}">
+            star
+            </mat-icon>
+            <!-- <app-rating  (onRating)="Handle(mazo.id_deck, $event)" [mediaScore] = "mazo.mediaScore" [typeRating]="typeRating" [mazo] = 'mazo'></app-rating> -->
+        </div>
+        <div *ngIf="typeRating == 2" class="estrellas">
+            <mat-icon *ngFor="let icon of maxRatingArr; let index= index"
+            [ngClass]="{checked:index <  roundMediaScore()}">
+        star
+        </mat-icon>
+            <!-- <app-rating  (onRating)="Handle(mazo.id_deck, $event)" [mediaScore] = "mazo.mediaScore" [typeRating]="typeRating" [mazo] = 'mazo'></app-rating> -->
         </div>
         <div >{{ mazo.mediaScore}}</div>
-
-    
     </div>
 </div>
 
