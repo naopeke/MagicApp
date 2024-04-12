@@ -11,6 +11,7 @@ export class RatingComponent{
   @Input() mazo: Deck
   @Input() mediaScore: number;
   @Input () typeRating: number;
+  @Input () i: number
   @Output() onRating = new EventEmitter<number>()
   public selectedStar: number
   public showStar: number = 0
@@ -24,9 +25,9 @@ export class RatingComponent{
     this.selectedStar = index +1
   }
   HandleMouseLeave(){
-    // if(this.previoSelection != 0){
-    //   this.selectedStar = this.previoSelection
-    // }else 
+    if(this.previoSelection != 0){
+      this.selectedStar = this.previoSelection
+    }else 
     this.selectedStar = 0
   }
   
@@ -34,8 +35,7 @@ export class RatingComponent{
     
     this.selectedStar = index + 1; 
     this.previoSelection = this.selectedStar
-    console.log(this.mazo);
-    
+    console.log(this.mazo)
     console.log(this.previoSelection);
     this.onRating.emit(this.selectedStar);
  
