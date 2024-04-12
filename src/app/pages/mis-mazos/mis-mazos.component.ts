@@ -173,7 +173,7 @@ export class MisMazosComponent implements OnInit, AfterViewInit {
 
   public onDecreaseCardQuantityFromChild(cardId: string){
     const card = this.mazo?.cards.find(card => card.id === cardId);
-    if (card && this.mazo && card.quantity > 0) {  //para que la cantidad no sea menor que cero
+    if (card && this.mazo && card.quantity > 1) {  //para que la cantidad no sea menor que cero
       card.quantity -= 1;
       console.log(`Quantity ${cardId}: `, card.quantity);
 
