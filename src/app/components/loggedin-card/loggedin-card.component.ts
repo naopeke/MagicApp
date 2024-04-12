@@ -39,15 +39,12 @@ export class LoggedinCardComponent implements OnInit {
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
     private toastr: ToastrService,
-  ){
-
-  }
+  ){}
 
 
 
   ngOnInit(): void {
     const currentUser = this.usersService.getCurrentUser(); // PARA GET ULTIMO CURRENT USER
-    console.log('Current user loginCarta:', currentUser);
     };
 
 
@@ -58,12 +55,9 @@ export class LoggedinCardComponent implements OnInit {
     this.cardsService.getByName(cardName).subscribe({
       next: (data:any) => {
         this.resultsCards = [data]; // como dato desde back(axios) es un object y no es array...
-        console.log('API Response: ', data);
       },
       error: (err) => {
         this.resultsCards = [];
-        console.log('resultscard empty: ', this.resultsCards);
-        console.log('Error in fetching cards:', err);
     }});
   }
 
@@ -75,7 +69,6 @@ export class LoggedinCardComponent implements OnInit {
     // si no existe, push para añadir
     if (!cardExists) {
       this.builderCards.push(card);
-      console.log('Added to Builder: ', this.builderCards);
     } else {
       // si existe, toastr
       this.toastr.info('Esta carta ya ha sido añadida al constructor. Después de añadir a tu mazo, puedes cambiar la cantidad en la pagina de "Mazos"', 'Información', {
@@ -89,8 +82,6 @@ export class LoggedinCardComponent implements OnInit {
 
   onDeleteFromChild(cardId: string){
     this.builderCards = this.builderCards.filter(card => card.id !== cardId);
-    console.log('Deteleted card', cardId);
-    console.log('After deleting from Builder: ', this.builderCards);
   }
 
 
@@ -115,44 +106,30 @@ export class LoggedinCardComponent implements OnInit {
     });
   
     dialogRef.afterClosed().subscribe(async (result: DialogData) => {
-      console.log('The dialog was closed');
   
       // Obtener deckIndex desde modal
-      // Obtener deckIndex desde modal
       const indexDeck = result.selectedDeckIndex;
-      console.log('Selected Deck Index: ', indexDeck);
 
   
       // Obtener current user
       const currentUser = await this.usersService.getCurrentUser();
-      console.log('Current user:', currentUser);
       if (!currentUser) {
         console.log('No current user found.');
       }
   
       // Obtener current user Id
       const userId = this.usersService.getCurrentUserId();
-      console.log('User id logincard:', userId);
 
       // Obtener cardApiIds y deckIndex en front
       const cardApiIds = this.builderCards.map(card => card.id); 
-      console.log('Card Api Ids: ',cardApiIds)
 
       // addCardsToDeck con cardApiIds(array de builderCards), userId y deckIndex
       this.cardsService.addCardsToDeck(cardApiIds, userId, indexDeck).subscribe({
         next: (response: any) => {
-          console.log('Cards added to deck:', response);
 
           this.toastr.info(`Añadido tu carta al mazo #${indexDeck}`, 'Enhorabuena!', {
             timeOut: 6000,
             positionClass: 'toast-top-center'
-
-          
-          //* versión snackBar
-          // this.snackBar.open(`Añadido tu carta al mazo #${indexDeck + 1}`, 'Cerrar', {
-          //   duration: 6000,
-          //   verticalPosition: 'top',
-          //   });
           });
           
           // vaciar builderCards
@@ -164,12 +141,6 @@ export class LoggedinCardComponent implements OnInit {
             timeOut: 4000,
             positionClass: 'toast-top-center'
           });
-
-          //* versión snackBar
-          // this.snackBar.open('Ha habido un error', 'Cerrar', {
-          //   duration: 4000,
-          //   verticalPosition: 'top',
-          //   });
         }
       });
   
@@ -179,7 +150,6 @@ export class LoggedinCardComponent implements OnInit {
 
 
   public onCardInfoOpen(card:Card):void{
-    console.log('clicked card', card);
     this.selectedCard = card;
     this.darkenOverlay = true; 
     this.show_cardinfo = true; 

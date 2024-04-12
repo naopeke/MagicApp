@@ -14,16 +14,14 @@ export class UsersService {
   // private url = "http://localhost:3000/";
   private url = "https://magy-deck-api.vercel.app"; 
 
-  
-// https://netbasal.com/angular-2-persist-your-login-status-with-behaviorsubject-45da9ec43243
+  //nao
+  // https://netbasal.com/angular-2-persist-your-login-status-with-behaviorsubject-45da9ec43243
   // si está logueado (true) o no (false) Manejar estado de Login
   public isLoginSubject = new BehaviorSubject<boolean>(false);
 
-  // guarda info de users 
+  // nao : guarda info de users 
   private currentUserSubject = new BehaviorSubject<User | null>(null);
   public currentUser = this.currentUserSubject.asObservable();
-
-  // public loggedIn: boolean = true; 
 
 
   constructor(private http: HttpClient) { 
@@ -36,11 +34,11 @@ export class UsersService {
     return this.http.post(registerUrl, user)
   }
 
+  // nao
   public login(user:User): Observable<Object>{
     let loginUrl = this.url + '/login';
     return this.http.post(loginUrl, user).pipe(
       tap((resp: any) => {
-        console.log('Response from login API:', resp); 
         if (resp && resp.id_user){
           // si se coincide id_user, isLoginSubject (true) y update currentUserSubject (resp)
           this.isLoginSubject.next(true);
@@ -50,11 +48,12 @@ export class UsersService {
     )
   }
   
-  // devolver estado de login
+  // nao: devolver estado de login
   public isloggedIn(): BehaviorSubject<boolean> {
     return this.isLoginSubject;
   }
 
+  // nao
   public logout(){
     // borrar info de currentUser
     this.currentUserSubject.next(null);
@@ -101,7 +100,7 @@ export class UsersService {
   
   
   
-    // va a devolver numero de id_user o null. si no está logueado, null
+    // nao: va a devolver numero de id_user o null. si no está logueado, null
     public getCurrentUserId(): number | null { // Para meter en otras paginas en ngOnInit 
       // obtener user object usando getCurrentUser
       const currentUser = this.getCurrentUser();

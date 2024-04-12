@@ -10,6 +10,9 @@ npm i swiper@10.3.1
 ```
 npm i ngx-toastr@18.0.0
 ```
+```
+npm i @angular/cdk
+```
 
 para prod
 ```

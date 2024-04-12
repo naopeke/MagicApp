@@ -52,12 +52,10 @@ export class CardInfoComponent implements OnInit{
   constructor(private cardsService: CardsService){}
 
   ngOnInit(): void {
-    console.log('carta: ', this.carta); 
     this.legalities = this.changeLegalitiesToArray(this.carta.legalities);
 
     this.cardsService.fetchCardSymbols().subscribe(data => {
       this.cardSymbolsData = data;
-      console.log('mana data: ', this.cardSymbolsData);
     });
 }
 

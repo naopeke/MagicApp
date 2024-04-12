@@ -11,7 +11,12 @@
             </ng-template>
         </button>
 
-        <button class="button_lateral dropdown-toggle" (click)="modal_visible = !modal_visible" *ngIf="usersService.isLoginSubject.value">{{ currentUser?.nameUser }}</button>
+        <button class="button_lateral dropdown-toggle" (click)="modal_visible = !modal_visible" *ngIf="usersService.isLoginSubject.value">
+            <span *ngIf="!isSmallScreen; else mobileIconName">{{ currentUser?.nameUser }}</span>
+            <ng-template #mobileIconName>
+                <span><mat-icon>person</mat-icon></span>
+            </ng-template>
+        </button>
         <div *ngIf="modal_visible" class="dropdown-child">
             <!-- Crar un espacio de ruptura (&nbsp) -->
             <span (click)="modal_visible = !modal_visible" routerLink="profile">Perfil</span>

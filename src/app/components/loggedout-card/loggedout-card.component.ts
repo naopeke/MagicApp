@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Card } from 'src/app/models/card';
 import { CardsService } from 'src/app/shared/cards.service';
 
@@ -24,9 +23,7 @@ export class LoggedoutCardComponent implements OnInit {
   public selectedCard: Card | null = null; // selectedCard sea Card o null, default null
 
   constructor(
-    public cardsService: CardsService,
-    private router: Router,
-    private rutaActiva: ActivatedRoute
+    public cardsService: CardsService
   ){
 
 
@@ -37,13 +34,9 @@ export class LoggedoutCardComponent implements OnInit {
     this.searchPerformed = true;
     this.errorMessage = null; // cada vez busca, refresh
 
-    // const currentUser = this.usersService.getCurrentUser();
-    // if (currentUser && currentUser.id_user){
-
     this.cardsService.getByName(cardName).subscribe({
       next: (data:any) => {
         this.resultsCards = [data]; // como dato desde back(axios) es un object y no es array...
-        console.log('API Response: ', data);
         this.errorMessage = null; // refresh errorMessage
       },
       error: (err) => {
@@ -69,6 +62,5 @@ export class LoggedoutCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      
   }
 }

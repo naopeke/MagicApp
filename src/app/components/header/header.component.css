@@ -207,6 +207,22 @@ header nav ul li .children li a {
 }
 
 
+cdk-virtual-scroll-viewport::-webkit-scrollbar {
+    background-color: transparent;
+}
+
+cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb {
+    background-color: rgba(195, 138, 49, 0.6);
+    border-radius: var(--borde-cuadrado);
+}
+
+cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb:hover {
+    background-color: var(--amarillo);
+    cursor: pointer;
+}
+
+
+
 
 /* 
 @media (max-width: 1698px) {

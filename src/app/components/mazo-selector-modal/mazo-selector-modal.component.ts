@@ -46,14 +46,12 @@ export class MazoSelectorModalComponent implements OnInit {
   }
 
   selectDeck(deckNumber: number):void{
-    console.log('Selected deck: ', deckNumber);
     this.dialogRef.close({ selectedDeckIndex: deckNumber});
   }
   
 
   ngOnInit():void{
     const currentUser = this.usersService.getCurrentUser(); // PARA GET ULTIMO CURRENT USER
-    console.log('Current user deck Modal:', currentUser);
 }
 
 }
