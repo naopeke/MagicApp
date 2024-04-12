@@ -10,7 +10,8 @@ export class Deck {
         public cards?: Card[],
         public URLphoto?:string,
         public id_user?: number,
-        public previousScore?: { date: string, userVotes: number, score:number }[],
+        public previousScore?: { date: string, id_user: number, score:number },
+        public selectedStar?: number,
         public typeRating?:number
        ){}
 }

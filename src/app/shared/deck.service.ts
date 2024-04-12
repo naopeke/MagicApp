@@ -59,6 +59,7 @@ export class DeckService {
 
   public getScore(id_user:number, id_deck:number){
     return this.http.get(`${this.urlExplora}/score?id_user=${id_user}&id_deck=${id_deck}`)
+
   }
 
   public getDeckById(id_deck:number,filter:string){
